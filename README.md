@@ -8,3 +8,5 @@ Repository organization:
     - Documentation in Markdown
     - PNG or other "cartoon" of template (optional)
     
+## Documentation of the EXCEADS specific tags
+
