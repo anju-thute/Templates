@@ -9,7 +9,11 @@ Repository directory organization:
     - PNG or other "cartoon" of template (optional)
 * dev
   - Similar to the above structure for development of new templates
-  
+
+## Contents
+#### Disease
+* [SEIR] (https://github.com/NSSAC/EXCEADS-Templates/disease/seir/seir.md)
+
     
 ## Documentation of the EXCEADS specific tags
 Documentation of the "exceads" specific tags in the templates
