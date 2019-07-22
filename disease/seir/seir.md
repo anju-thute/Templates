@@ -6,7 +6,7 @@ For classic **SEIR** diseases with addition of symptomatic and asymptomatic Infe
 S-> E -> Isymp -> R   
       -> Iasymp-> R 
 ```
-
+![SEIR model diagram](seir.png)
 This template allows for specifying the overall infectivity and susceptibility as well as the proportion with symptoms and the reduction in infectivity for those without symptoms
 
 
