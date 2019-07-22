@@ -12,7 +12,8 @@ Repository directory organization:
 
 ## Contents
 #### Disease
-* [SEIR] (https://github.com/NSSAC/EXCEADS-Templates/disease/seir/seir.md)
+* [SEIR](https://github.com/NSSAC/EXCEADS-Templates/blob/master/disease/seir/seir.md)
+* [Ebola](https://github.com/NSSAC/EXCEADS-Templates/blob/master/disease/ebola/ebola.md)
 
     
 ## Documentation of the EXCEADS specific tags
