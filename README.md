@@ -15,6 +15,11 @@ Repository directory organization:
 * [SEIR](https://github.com/NSSAC/EXCEADS-Templates/blob/master/disease/seir/seir.md)
 * [Ebola](https://github.com/NSSAC/EXCEADS-Templates/blob/master/disease/ebola/ebola.md)
 
+#### Initialization
+* [agebased_prevaccination](https://github.com/NSSAC/EXCEADS-Templates/blob/master/initialization/agebased_prevaccination/agebased_prevaccination.md)
+* [initial_infection_number]  
+* [initial_infection_percent]  
+
     
 ## Documentation of the EXCEADS specific tags
 Documentation of the "exceads" specific tags in the templates
