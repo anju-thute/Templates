@@ -204,7 +204,9 @@
       "value": ["/template/states/4/infectivity"],
       "exceads": {
         "minValue": 0,
-        "maxValue": 1
+        "maxValue": 1,
+        "sweep":false,
+        "calibrate":false
       }
     },
     {
@@ -214,7 +216,9 @@
       "value": ["/template/states/5/infectivity"],
       "exceads": {
         "minValue": 0,
-        "maxValue": 1
+        "maxValue": 1,
+        "sweep":false,
+        "calibrate":false
       }
     },
     {
@@ -225,6 +229,8 @@
       "exceads": {
         "minValue": 0,
         "maxValue": 1,
+        "sweep":false,
+        "calibrate":false,
         "autoAdjust": {
           "target": ["/template/transitions/2/probability"],
           "value": "1.0 - /template/transitions/1/probability - /template/transitions/3/probability"
@@ -239,6 +245,8 @@
       "exceads": {
         "minValue": 0,
         "maxValue": 1,
+        "sweep":false,
+        "calibrate":false,
         "autoAdjust": {
           "target": ["/template/transitions/3/probability"],
           "value": "1.0 - /template/transitions/1/probability - /template/transitions/2/probability"
@@ -253,6 +261,8 @@
       "exceads": {
         "minValue": 0,
         "maxValue": 1,
+        "sweep":false,
+        "calibrate":false,
         "autoAdjust": {
           "target": ["/template/transitions/1/probability"],
           "value": "1.0 - /template/transitions/2/probability - /template/transitions/3/probability"
@@ -267,6 +277,8 @@
       "exceads": {
         "minValue": 0,
         "maxValue": 1,
+        "sweep":false,
+        "calibrate":false,
         "autoAdjust": {
           "target": ["/template/transitions/5/probability"],
           "value": "1.0 - /template/transitions/4/probability"
@@ -281,6 +293,8 @@
       "exceads": {
         "minValue": 0,
         "maxValue": 1,
+        "sweep":false,
+        "calibrate":false,
         "autoAdjust": {
           "target": ["/template/transitions/4/probability"],
           "value": "1.0 - /template/transitions/5/probability"
