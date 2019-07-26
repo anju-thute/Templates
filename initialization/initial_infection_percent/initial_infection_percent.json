@@ -8,7 +8,9 @@
     "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/initializationSchema.json",
     "initializations": [
       {
-        "target": {"elementType": "node"},
+        "target": {
+          "elementType": "node"
+        },
         "sampling": {
           "type": "group",
           "number": 2,
@@ -18,10 +20,14 @@
                 "operations": [
                   {
                     "target": {
-                      "node": {"property": "healthState"}
+                      "node": {
+                        "property": "healthState"
+                      }
                     },
                     "operator": "=",
-                    "value": {"healthState": "Isymp"}
+                    "value": {
+                      "healthState": "Isymp"
+                    }
                   }
                 ]
               }
@@ -36,18 +42,29 @@
       "ann:id": "PercentOfInfectedPopulation",
       "ann:label": "Precent of population to initially infect",
       "ann:description": "Percentage of population that will be infected at the start of the simulation.",
-      "value": ["/template/initializations/1/sampling/number"],
-      "exceads": {}
+      "value": [
+        "/template/initializations/1/sampling/number"
+      ],
+      "exceads": {
+        "minValue": 0,
+        "maxValue": 1,
+        "sweep": false,
+        "calibrate": false
+      }
     }
   ],
   "requirements": [
     {
-      "value": {"healthState": "Isymp"}
+      "value": {
+        "healthState": "Isymp"
+      }
     }
   ],
   "exceads": {
     "requires": {
-      "allOf": ["diseaseModelTemplate1.json"]
+      "allOf": [
+        "diseaseModelTemplate1.json"
+      ]
     }
   }
 }
