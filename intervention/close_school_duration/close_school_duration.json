@@ -41,10 +41,14 @@
             "operations": [
               {
                 "target": {
-                  "variable": {"idRef": "schoolClosed"}
+                  "variable": {
+                    "idRef": "schoolClosed"
+                  }
                 },
                 "operator": "=",
-                "value": {"number": 1}
+                "value": {
+                  "number": 1
+                }
               }
             ]
           }
@@ -54,10 +58,14 @@
             "operations": [
               {
                 "target": {
-                  "edge": {"property": "active"}
+                  "edge": {
+                    "property": "active"
+                  }
                 },
                 "operator": "=",
-                "value": {"boolean": false}
+                "value": {
+                  "boolean": false
+                }
               }
             ]
           },
@@ -66,10 +74,14 @@
             "operations": [
               {
                 "target": {
-                  "edge": {"property": "active"}
+                  "edge": {
+                    "property": "active"
+                  }
                 },
                 "operator": "=",
-                "value": {"boolean": true}
+                "value": {
+                  "boolean": true
+                }
               }
             ]
           }
@@ -100,10 +112,14 @@
             "operations": [
               {
                 "target": {
-                  "edge": {"property": "active"}
+                  "edge": {
+                    "property": "active"
+                  }
                 },
                 "operator": "=",
-                "value": {"boolean": false}
+                "value": {
+                  "boolean": false
+                }
               }
             ]
           },
@@ -112,10 +128,14 @@
             "operations": [
               {
                 "target": {
-                  "edge": {"property": "active"}
+                  "edge": {
+                    "property": "active"
+                  }
                 },
                 "operator": "=",
-                "value": {"boolean": true}
+                "value": {
+                  "boolean": true
+                }
               }
             ]
           }
@@ -132,7 +152,12 @@
         "/template/interventions/1/foreach/2/delay",
         "/template/interventions/2/foreach/2/delay"
       ],
-      "exceads": {}
+      "exceads": {
+        "minValue": 0,
+        "maxValue": 1,
+        "sweep": false,
+        "calibrate": false
+      }
     }
   ],
   "requirements": [
