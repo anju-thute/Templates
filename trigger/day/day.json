@@ -34,7 +34,7 @@
       ],
       "exceads": {
         "minValue": 0,
-        "maxValue": 1,
+        "maxValue": 999,
         "sweep": false,
         "calibrate": false
       }
