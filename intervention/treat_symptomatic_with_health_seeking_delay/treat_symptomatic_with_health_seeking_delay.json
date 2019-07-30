@@ -27,7 +27,9 @@
         "$comment": "Treatment",
         "id": "interventionTemplate2_1",
         "target": {
-          "set": {"idRef": "enteredIsymp"}
+          "set": {
+            "idRef": "enteredIsymp"
+          }
         },
         "sampling": {
           "type": "individual",
@@ -40,20 +42,28 @@
                   "and": [
                     {
                       "left": {
-                        "variable": {"idRef": "dailyTreatments"}
+                        "variable": {
+                          "idRef": "dailyTreatments"
+                        }
                       },
                       "operator": "<",
                       "right": {
-                        "value": {"number": 500}
+                        "value": {
+                          "number": 500
+                        }
                       }
                     },
                     {
                       "left": {
-                        "variable": {"idRef": "totalTreatments"}
+                        "variable": {
+                          "idRef": "totalTreatments"
+                        }
                       },
                       "operator": "<",
                       "right": {
-                        "value": {"number": 20000}
+                        "value": {
+                          "number": 20000
+                        }
                       }
                     }
                   ]
@@ -61,24 +71,36 @@
                 "operations": [
                   {
                     "target": {
-                      "variable": {"idRef": "dailyTreatments"}
+                      "variable": {
+                        "idRef": "dailyTreatments"
+                      }
                     },
                     "operator": "+=",
-                    "value": {"number": 1}
+                    "value": {
+                      "number": 1
+                    }
                   },
                   {
                     "target": {
-                      "variable": {"idRef": "totalTreatments"}
+                      "variable": {
+                        "idRef": "totalTreatments"
+                      }
                     },
                     "operator": "+=",
-                    "value": {"number": 1}
+                    "value": {
+                      "number": 1
+                    }
                   },
                   {
                     "target": {
-                      "node": {"property": "infectivityFactor"}
+                      "node": {
+                        "property": "infectivityFactor"
+                      }
                     },
                     "operator": "*=",
-                    "value": {"number": 0.2}
+                    "value": {
+                      "number": 0.2
+                    }
                   },
                   {
                     "target": {
@@ -131,10 +153,14 @@
                 "operations": [
                   {
                     "target": {
-                      "node": {"property": "infectivityFactor"}
+                      "node": {
+                        "property": "infectivityFactor"
+                      }
                     },
                     "operator": "/=",
-                    "value": {"number": 0.2}
+                    "value": {
+                      "number": 0.2
+                    }
                   },
                   {
                     "target": {
@@ -166,20 +192,28 @@
                       "and": [
                         {
                           "left": {
-                            "variable": {"idRef": "dailyTreatments"}
+                            "variable": {
+                              "idRef": "dailyTreatments"
+                            }
                           },
                           "operator": "<",
                           "right": {
-                            "value": {"number": 500}
+                            "value": {
+                              "number": 500
+                            }
                           }
                         },
                         {
                           "left": {
-                            "variable": {"idRef": "totalTreatments"}
+                            "variable": {
+                              "idRef": "totalTreatments"
+                            }
                           },
                           "operator": "<",
                           "right": {
-                            "value": {"number": 20000}
+                            "value": {
+                              "number": 20000
+                            }
                           }
                         }
                       ]
@@ -187,24 +221,36 @@
                     "operations": [
                       {
                         "target": {
-                          "variable": {"idRef": "dailyTreatments"}
+                          "variable": {
+                            "idRef": "dailyTreatments"
+                          }
                         },
                         "operator": "+=",
-                        "value": {"number": 1}
+                        "value": {
+                          "number": 1
+                        }
                       },
                       {
                         "target": {
-                          "variable": {"idRef": "totalTreatments"}
+                          "variable": {
+                            "idRef": "totalTreatments"
+                          }
                         },
                         "operator": "+=",
-                        "value": {"number": 1}
+                        "value": {
+                          "number": 1
+                        }
                       },
                       {
                         "target": {
-                          "node": {"property": "infectivityFactor"}
+                          "node": {
+                            "property": "infectivityFactor"
+                          }
                         },
                         "operator": "*=",
-                        "value": {"number": 0.2}
+                        "value": {
+                          "number": 0.2
+                        }
                       },
                       {
                         "target": {
@@ -257,10 +303,14 @@
                     "operations": [
                       {
                         "target": {
-                          "node": {"property": "infectivityFactor"}
+                          "node": {
+                            "property": "infectivityFactor"
+                          }
                         },
                         "operator": "/=",
-                        "value": {"number": 0.2}
+                        "value": {
+                          "number": 0.2
+                        }
                       },
                       {
                         "target": {
@@ -291,15 +341,29 @@
       "ann:id": "EarlyTreatmentResponseRate",
       "ann:label": "Early Treatment Response Rate",
       "ann:description": "Proportion of symptomatic individuals that seek care and get treatments as soon as they are infectious",
-      "value": ["/template/interventions/1/sampling/number"],
-      "exceads": {}
+      "value": [
+        "/template/interventions/1/sampling/number"
+      ],
+      "exceads": {
+        "minValue": 0,
+        "maxValue": 1,
+        "sweep": false,
+        "calibrate": false
+      }
     },
     {
       "ann:id": "LateTreatmentResponseRate",
       "ann:label": "Late Treatment Response Rate",
       "ann:description": "Poportion of symptomatic individuals who didn't seek early care that get it 3 days after becoming infectious",
-      "value": ["/template/interventions/1/sampling/nonsampled/sampling/number"],
-      "exceads": {}
+      "value": [
+        "/template/interventions/1/sampling/nonsampled/sampling/number"
+      ],
+      "exceads": {
+        "minValue": 0,
+        "maxValue": 1,
+        "sweep": false,
+        "calibrate": false
+      }
     },
     {
       "ann:id": "DailyAvailableTreatment",
@@ -309,7 +373,12 @@
         "/template/interventions/1/sampling/sampled/foreach/condition/and/1/right/value/number",
         "/template/interventions/1/sampling/nonsampled/sampling/sampled/foreach/condition/and/1/right/value/number"
       ],
-      "exceads": {}
+      "exceads": {
+        "minValue": 0,
+        "maxValue": 1,
+        "sweep": false,
+        "calibrate": false
+      }
     },
     {
       "ann:id": "TotalAvailableTreatment",
@@ -319,12 +388,19 @@
         "/template/interventions/1/sampling/sampled/foreach/condition/and/2/right/value/number",
         "/template/interventions/1/sampling/nonsampled/sampling/sampled/foreach/condition/and/2/right/value/number"
       ],
-      "exceads": {}
+      "exceads": {
+        "minValue": 0,
+        "maxValue": 1,
+        "sweep": false,
+        "calibrate": false
+      }
     }
   ],
   "requirements": [
     {
-      "set": {"idRef": "enteredIsymp"}
+      "set": {
+        "idRef": "enteredIsymp"
+      }
     },
     {
       "property": "nodeTrait",
@@ -365,7 +441,9 @@
   ],
   "exceads": {
     "requires": {
-      "allOf": ["triggerTemplate1.json"]
+      "allOf": [
+        "triggerTemplate1.json"
+      ]
     }
   }
 }
