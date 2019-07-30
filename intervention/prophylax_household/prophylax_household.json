@@ -158,7 +158,7 @@
       ],
       "exceads": {
         "minValue": 0,
-        "maxValue": 1,
+        "maxValue": 999,
         "sweep": false,
         "calibrate": false
       }
@@ -236,7 +236,7 @@
     "exceads": {
       "requires": {
         "allOf": [
-          "interventionTemplate2.json",
+          "treat_symptomatic_with_health_seeking_delay.json",
           "montgomery_county_va.json"
         ]
       }
