@@ -153,8 +153,8 @@
         "/template/interventions/2/foreach/2/delay"
       ],
       "exceads": {
-        "minValue": 0,
-        "maxValue": 1,
+        "minValue": 1,
+        "maxValue": 999,
         "sweep": false,
         "calibrate": false
       }
