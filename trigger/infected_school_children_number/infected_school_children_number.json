@@ -15,7 +15,9 @@
           "operation": "intersection",
           "sets": [
             {
-              "set": {"idRef": "triggerTemplate1_enteredIsymp"}
+              "set": {
+                "idRef": "triggerTemplate1_enteredIsymp"
+              }
             },
             {
               "elementType": "node",
@@ -54,11 +56,15 @@
       {
         "trigger": {
           "left": {
-            "value": {"number": 500}
+            "value": {
+              "number": 500
+            }
           },
           "operator": "<=",
           "right": {
-            "variable": {"idRef": "schoolChildrenEnteredIsympCounter"}
+            "variable": {
+              "idRef": "schoolChildrenEnteredIsympCounter"
+            }
           }
         },
         "interventionIds": []
@@ -70,26 +76,36 @@
         "trigger": {
           "left": {
             "sizeof": {
-              "set": {"idRef": "schoolChildrenEnteredIsymp"}
+              "set": {
+                "idRef": "schoolChildrenEnteredIsymp"
+              }
             }
           },
           "operator": ">",
           "right": {
-            "value": {"number": 0}
+            "value": {
+              "number": 0
+            }
           }
         },
         "target": {
-          "set": {"idRef": "schoolChildrenEnteredIsymp"}
+          "set": {
+            "idRef": "schoolChildrenEnteredIsymp"
+          }
         },
         "foreach": [
           {
             "operations": [
               {
                 "target": {
-                  "variable": {"idRef": "schoolChildrenEnteredIsympCounter"}
+                  "variable": {
+                    "idRef": "schoolChildrenEnteredIsympCounter"
+                  }
                 },
                 "operator": "+=",
-                "value": {"number": 1}
+                "value": {
+                  "number": 1
+                }
               }
             ]
           }
@@ -102,16 +118,27 @@
       "ann:id": "ThresholdInfectedSchoolChildren",
       "ann:label": "Infected School Children - Number",
       "ann:description": "Number school children that are symptomatic.",
-      "value": ["/template/triggers/2/trigger/left/value/number"],
-      "exceads": {}
+      "value": [
+        "/template/triggers/2/trigger/left/value/number"
+      ],
+      "exceads": {
+        "minValue": 0,
+        "maxValue": 1,
+        "sweep": false,
+        "calibrate": false
+      }
     }
   ],
   "requirements": [
     {
-      "set": {"idRef": "triggerTemplate1_enteredIsymp"}
+      "set": {
+        "idRef": "triggerTemplate1_enteredIsymp"
+      }
     },
     {
-      "value": {"healthState": "Isymp"}
+      "value": {
+        "healthState": "Isymp"
+      }
     },
     {
       "property": "sourceActivity",
