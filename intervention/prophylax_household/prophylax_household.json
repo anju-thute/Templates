@@ -25,7 +25,9 @@
             "table": "montgomery_county_va",
             "field": "hid",
             "selector": {
-              "set": {"idRef": "triggerTemplate4_prophylaxTrue"}
+              "set": {
+                "idRef": "triggerTemplate4_prophylaxTrue"
+              }
             }
           }
         },
@@ -35,7 +37,9 @@
               "and": [
                 {
                   "left": {
-                    "node": {"property": "healthState"}
+                    "node": {
+                      "property": "healthState"
+                    }
                   },
                   "operator": "in",
                   "right": {
@@ -69,10 +73,14 @@
             "operations": [
               {
                 "target": {
-                  "node": {"property": "susceptibilityFactor"}
+                  "node": {
+                    "property": "susceptibilityFactor"
+                  }
                 },
                 "operator": "*=",
-                "value": {"number": 0.4}
+                "value": {
+                  "number": 0.4
+                }
               },
               {
                 "target": {
@@ -111,10 +119,14 @@
             "operations": [
               {
                 "target": {
-                  "node": {"property": "susceptibilityFactor"}
+                  "node": {
+                    "property": "susceptibilityFactor"
+                  }
                 },
                 "operator": "/=",
-                "value": {"number": 0.4}
+                "value": {
+                  "number": 0.4
+                }
               },
               {
                 "target": {
@@ -141,8 +153,15 @@
       "ann:id": "DaysTreatment",
       "ann:label": "Days of Treatment",
       "ann:description": "Number days for the prophylactic treatment",
-      "value": ["/template/internentions/1/foreach/2/delay"],
-      "exceads": {}
+      "value": [
+        "/template/internentions/1/foreach/2/delay"
+      ],
+      "exceads": {
+        "minValue": 0,
+        "maxValue": 1,
+        "sweep": false,
+        "calibrate": false
+      }
     },
     {
       "ann:id": "ProphylaxEffectiveness",
@@ -152,12 +171,19 @@
         "/template/interventions/1/foreach/1/operations/1/value/number",
         "/template/interventions/1/foreach/2/operations/1/value/number"
       ],
-      "exceads": {}
+      "exceads": {
+        "minValue": 0,
+        "maxValue": 1,
+        "sweep": false,
+        "calibrate": false
+      }
     }
   ],
   "requirements": [
     {
-      "set": {"idRef": "triggerTemplate4_prophylaxTrue"}
+      "set": {
+        "idRef": "triggerTemplate4_prophylaxTrue"
+      }
     },
     {
       "property": "nodeTrait",
