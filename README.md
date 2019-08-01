@@ -59,4 +59,4 @@ How do we want to do:
 * Grouping of templates??
 * Specify upper and lower bounds
 * Type of input widget (eg text box, slider, etc. )
-
+* Ordering and grouping of elements (eg which of the text boxes should come first in the GUI, do some belong under a common header, eg coverage of vaccine by age-group)
