@@ -366,6 +366,20 @@
       }
     },
     {
+      "ann:id": "TreatmentEfficacy",
+      "ann:label": "Treatment Efficacy",
+      "ann:description": "The efficacy of the treatment in reducing the risk of becoming infected or infecting others if infectious",
+      "value": [
+        "/template/interventions/1/sampling/nonsampled/sampling/sampled/foreach/operations/3/operator/value/number"
+      ],
+      "exceads": {
+        "minValue": 0,
+        "maxValue": 1,
+        "sweep": false,
+        "calibrate": false
+      }
+    },
+    {
       "ann:id": "DailyAvailableTreatment",
       "ann:label": "Daily Available Treatment Regimens",
       "ann:description": "Number of treatment regimens that can be dispensed in a single day",
