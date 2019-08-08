@@ -1,5 +1,5 @@
 {
-  "$schema": "../../schema/templateSchema.json",
+  "$schema": "../../../EpiHiper-Schema/schema/templateSchema.json",
   "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/templateSchema.json",
   "ann:id": "NewlySymptomaticIndividuals",
   "ann:label": "Newly Symptomatic Individuals",
@@ -101,7 +101,15 @@
       }
     ]
   },
-  "userInput": [],
+  "userInput": [
+    {
+      "ann:id": "InterventionIds",
+      "ann:label": "Intervention Ids",
+      "ann:description": "The intervention ids which are triggered by this template.",
+      "value": ["/template/triggers/1/trigger/interventionIds/"],
+      "exceads": {}
+    }
+  ],
   "requirements": [
     {
       "value": {"healthState": "Isymp"}
@@ -123,13 +131,6 @@
         "feature": "enteredIsymp",
         "enum": "false"
       }
-    },
-    {
-      "ann:id": "InterventionIds",
-      "ann:label": "Intervention Ids",
-      "ann:description": "The intervention ids which are triggered by this template.",
-      "value": ["/template/triggers/1/trigger/interventionIds/"],
-      "exceads": {}
     }
   ],
   "exceads": {
