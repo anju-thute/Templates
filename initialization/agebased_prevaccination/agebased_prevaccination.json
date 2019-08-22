@@ -10,14 +10,13 @@
       {
         "target": {
           "elementType": "node",
+          "scope": "local",
           "left": {
             "table": "montgomery_county_va",
             "field": "age_group"
           },
           "operator": "==",
-          "right": {
-            "value": "0-18"
-          }
+          "right": {"value": "0-18"}
         },
         "sampling": {
           "type": "individual",
@@ -28,25 +27,17 @@
                 "operations": [
                   {
                     "target": {
-                      "node": {
-                        "property": "infectivityFactor"
-                      }
+                      "node": {"property": "infectivityFactor"}
                     },
                     "operator": "*=",
-                    "value": {
-                      "number": 0.8
-                    }
+                    "value": {"number": 0.8}
                   },
                   {
                     "target": {
-                      "node": {
-                        "property": "susceptibilityFactor"
-                      }
+                      "node": {"property": "susceptibilityFactor"}
                     },
                     "operator": "*=",
-                    "value": {
-                      "number": 0.8
-                    }
+                    "value": {"number": 0.8}
                   }
                 ]
               }
@@ -57,14 +48,13 @@
       {
         "target": {
           "elementType": "node",
+          "scope": "local",
           "left": {
             "table": "montgomery_county_va",
             "field": "age_group"
           },
           "operator": "==",
-          "right": {
-            "value": "19-64"
-          }
+          "right": {"value": "19-64"}
         },
         "sampling": {
           "type": "individual",
@@ -75,25 +65,17 @@
                 "operations": [
                   {
                     "target": {
-                      "node": {
-                        "property": "infectivityFactor"
-                      }
+                      "node": {"property": "infectivityFactor"}
                     },
                     "operator": "*=",
-                    "value": {
-                      "number": 0.8
-                    }
+                    "value": {"number": 0.8}
                   },
                   {
                     "target": {
-                      "node": {
-                        "property": "susceptibilityFactor"
-                      }
+                      "node": {"property": "susceptibilityFactor"}
                     },
                     "operator": "*=",
-                    "value": {
-                      "number": 0.8
-                    }
+                    "value": {"number": 0.8}
                   }
                 ]
               }
@@ -104,14 +86,13 @@
       {
         "target": {
           "elementType": "node",
+          "scope": "local",
           "left": {
             "table": "montgomery_county_va",
             "field": "age_group"
           },
           "operator": "==",
-          "right": {
-            "value": "65+"
-          }
+          "right": {"value": "65+"}
         },
         "sampling": {
           "type": "individual",
@@ -122,25 +103,17 @@
                 "operations": [
                   {
                     "target": {
-                      "node": {
-                        "property": "infectivityFactor"
-                      }
+                      "node": {"property": "infectivityFactor"}
                     },
                     "operator": "*=",
-                    "value": {
-                      "number": 0.8
-                    }
+                    "value": {"number": 0.8}
                   },
                   {
                     "target": {
-                      "node": {
-                        "property": "susceptibilityFactor"
-                      }
+                      "node": {"property": "susceptibilityFactor"}
                     },
                     "operator": "*=",
-                    "value": {
-                      "number": 0.8
-                    }
+                    "value": {"number": 0.8}
                   }
                 ]
               }
@@ -155,9 +128,7 @@
       "ann:id": "VaccinationRate0_18",
       "ann:label": "Vaccination Rate for Age Group 0-18",
       "ann:description": "Proportion of individuals in the Age Group 0-18 vaccinated",
-      "value": [
-        "/template/initializations/1/sampling/number"
-      ],
+      "value": ["/template/initializations/1/sampling/number"],
       "exceads": {
         "minValue": 0,
         "maxValue": 1,
@@ -169,9 +140,7 @@
       "ann:id": "VaccinationRate19_64",
       "ann:label": "Vaccination Rate for Age Group 19-64",
       "ann:description": "Proportion of individuals in the Age Group 19-64 vaccinated",
-      "value": [
-        "/template/initializations/2/sampling/number"
-      ],
+      "value": ["/template/initializations/2/sampling/number"],
       "exceads": {
         "minValue": 0,
         "maxValue": 1,
@@ -183,9 +152,7 @@
       "ann:id": "VaccinationRate65_",
       "ann:label": "Vaccination Rate for Age Group 65+",
       "ann:description": "Proportion of individuals in the Age Group 65+ vaccinated",
-      "value": [
-        "/template/initializations/3/sampling/number"
-      ],
+      "value": ["/template/initializations/3/sampling/number"],
       "exceads": {
         "minValue": 0,
         "maxValue": 1,
@@ -221,9 +188,7 @@
   ],
   "exceads": {
     "requires": {
-      "allOf": [
-        "montgomery_county_va.json"
-      ]
+      "allOf": ["montgomery_county_va.json"]
     }
   }
 }
