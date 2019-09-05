@@ -42,8 +42,8 @@
       "value": ["/template/initializations/1/sampling/number"],
       "exceads": {
         "minValue": 0,
-        "maxValue": 1,
-        "sweep": false,
+        "maxValue": 999,
+        "sweep": true,
         "calibrate": false
       }
     }
