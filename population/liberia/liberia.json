@@ -1,11 +1,10 @@
 {
-  "$schema": "../../../EpiHiper-Schema/schema/csvDataResourceSchema.json",
   "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/csvDataResourceSchema.json",
-  "description": "Person trait database for Montgomery County, Va",
-  "name": "montgomery_county_va",
-  "title": "Montgomery County Virginia Person Trait DB",
+  "description": "Person trait database for Liberia",
+  "name": "liberia",
+  "title": "Liberia Person Trait DB",
   "profile": "tabular-data-resource",
-  "path": "MontgomeryCounty.csv",
+  "path": "liberia.csv",
   "schema": {
     "fields": [
       {
@@ -59,24 +58,24 @@
         {
           "ann:id": "0_18",
           "ann:label": "0-18",
-          "value": 15527
+          "value": 2092962
         },
         {
           "ann:id": "19_64",
           "ann:label": "19-64",
-          "value": 52239
+          "value": 1872130
         },
         {
           "ann:id": "65_",
           "ann:label": "65+",
-          "value": 10054
+          "value": 127218
         }
       ]
     },
     {
       "ann:id": "total",
       "ann:label": "Total population",
-      "value": 77820
+      "value": 4092310
     }
   ]
 }
