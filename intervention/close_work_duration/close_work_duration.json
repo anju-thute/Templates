@@ -3,7 +3,7 @@
   "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/templateSchema.json",
   "ann:id": "WorkClosure",
   "ann:label": "Work Closure",
-  "ann:description": "Work closure for a given time which removes interactions that occur at the school",
+  "ann:description": "Work closure for a given time which removes interactions that occur at the workplace",
   "template": {
     "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/interventionSchema.json",
     "variables": [
@@ -42,7 +42,7 @@
               {
                 "target": {
                   "variable": {
-                    "idRef": "schoolClosed"
+                    "idRef": "workClosed"
                   }
                 },
                 "operator": "=",
@@ -114,26 +114,13 @@
       "value": {
         "trait": "activityTrait",
         "feature": "activityType",
-        "enum": "SCHOOL"
+        "enum": "WORK"
       }
     }
   ],
   "exceads": {
     "requires": {
-      "allOff": [
-        {
-          "oneOf": [
-            "montgomery_county_2009.txt",
-            "montgomery_county_2009.bin"
-          ]
-        },
-        {
-          "oneOf": [
-            "interventionTemplate1.json",
-            "interventionTemplate2.json"
-          ]
-        }
-      ]
+
     }
   }
 }
