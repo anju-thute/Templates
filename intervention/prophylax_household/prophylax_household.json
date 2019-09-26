@@ -155,7 +155,7 @@
       "ann:label": "Days of Treatment",
       "ann:description": "Number days for the prophylactic treatment",
       "value": [
-        "/template/internentions/1/foreach/2/delay"
+        "/template/interventions/1/foreach/2/delay"
       ],
       "exceads": {
         "minValue": 0,
@@ -221,26 +221,12 @@
     }
   ],
   "exceads": {
-    "input": [
-      {
-        "ann:id": "HouseholdIfTable",
-        "ann:label": "Table containing Household",
-        "ann:description": "??",
-        "value": [
-          "/template/interventions/1/target/left/table",
-          "/template/interventions/1/target/right/table",
-          "/requirements/4/table"
-        ],
-        "exceads": {}
-      }
-    ],
-    "exceads": {
-      "requires": {
-        "allOf": [
-          "treat_symptomatic_with_health_seeking_delay.json",
-          "montgomery_county_va.json"
-        ]
-      }
-    }
+    "requires": {
+      "allOf": [
+        "treat_symptomatic_with_health_seeking_delay.json",
+        "montgomery_county_va.json"
+      ]
+    },
+    "interventionType": "PROPHYLAX"
   }
 }
