@@ -370,7 +370,7 @@
       "ann:label": "Treatment Efficacy",
       "ann:description": "The efficacy of the treatment in reducing the risk of becoming infected or infecting others if infectious",
       "value": [
-        "/template/interventions/1/sampling/nonsampled/sampling/sampled/foreach/operations/3/operator/value/number"
+        "/template/interventions/1/sampling/nonsampled/sampling/sampled/foreach/1/operations/3/value/number"
       ],
       "exceads": {
         "minValue": 0,
@@ -384,8 +384,8 @@
       "ann:label": "Daily Available Treatment Regimens",
       "ann:description": "Number of treatment regimens that can be dispensed in a single day",
       "value": [
-        "/template/interventions/1/sampling/sampled/foreach/condition/and/1/right/value/number",
-        "/template/interventions/1/sampling/nonsampled/sampling/sampled/foreach/condition/and/1/right/value/number"
+        "/template/interventions/1/sampling/sampled/foreach/1/condition/and/1/right/value/number",
+        "/template/interventions/1/sampling/nonsampled/sampling/sampled/foreach/1/condition/and/1/right/value/number"
       ],
       "exceads": {
         "minValue": 0,
@@ -399,8 +399,8 @@
       "ann:label": "Total Available Treatment",
       "ann:description": "Total treatment regimens available throughout the course of the simulation",
       "value": [
-        "/template/interventions/1/sampling/sampled/foreach/condition/and/2/right/value/number",
-        "/template/interventions/1/sampling/nonsampled/sampling/sampled/foreach/condition/and/2/right/value/number"
+        "/template/interventions/1/sampling/sampled/foreach/1/condition/and/2/right/value/number",
+        "/template/interventions/1/sampling/nonsampled/sampling/sampled/foreach/1/condition/and/2/right/value/number"
       ],
       "exceads": {
         "minValue": 0,
@@ -458,6 +458,7 @@
       "allOf": [
         "triggerTemplate1.json"
       ]
-    }
+    },
+    "interventionType": "TREATMENT"
   }
 }
