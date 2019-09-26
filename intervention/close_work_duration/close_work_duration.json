@@ -36,23 +36,6 @@
             }
           }
         },
-        "once": [
-          {
-            "operations": [
-              {
-                "target": {
-                  "variable": {
-                    "idRef": "workClosed"
-                  }
-                },
-                "operator": "=",
-                "value": {
-                  "number": 1
-                }
-              }
-            ]
-          }
-        ],
         "foreach": [
           {
             "operations": [
@@ -81,6 +64,23 @@
                 "operator": "=",
                 "value": {
                   "boolean": true
+                }
+              }
+            ]
+          }
+        ],
+        "once": [
+          {
+            "operations": [
+              {
+                "target": {
+                  "variable": {
+                    "idRef": "workClosed"
+                  }
+                },
+                "operator": "=",
+                "value": {
+                  "number": 1
                 }
               }
             ]
@@ -119,8 +119,7 @@
     }
   ],
   "exceads": {
-    "requires": {
-
-    }
+    "requires": {},
+    "interventionType": "CLOSE_WORK"
   }
 }
