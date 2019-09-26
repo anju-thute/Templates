@@ -36,23 +36,6 @@
             }
           }
         },
-        "once": [
-          {
-            "operations": [
-              {
-                "target": {
-                  "variable": {
-                    "idRef": "schoolClosed"
-                  }
-                },
-                "operator": "=",
-                "value": {
-                  "number": 1
-                }
-              }
-            ]
-          }
-        ],
         "foreach": [
           {
             "operations": [
@@ -81,6 +64,23 @@
                 "operator": "=",
                 "value": {
                   "boolean": true
+                }
+              }
+            ]
+          }
+        ],
+        "once": [
+          {
+            "operations": [
+              {
+                "target": {
+                  "variable": {
+                    "idRef": "schoolClosed"
+                  }
+                },
+                "operator": "=",
+                "value": {
+                  "number": 1
                 }
               }
             ]
@@ -189,6 +189,7 @@
           ]
         }
       ]
-    }
+    },
+    "interventionType": "SCHOOL_CLOSURE"
   }
 }
