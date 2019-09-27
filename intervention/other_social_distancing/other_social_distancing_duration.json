@@ -1,0 +1,126 @@
+{
+  "$schema": "../../../EpiHiper-Schema/schema/templateSchema.json",
+  "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/templateSchema.json",
+  "ann:id": "OtherSocialDistancing",
+  "ann:label": "Other Social Distancing",
+  "ann:description": "Generalized Social Distancing, removal of interactions that occur outside of home, school, and work",
+  "template": {
+    "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/interventionSchema.json",
+    "variables": [
+      {
+        "id": "socialDistancing",
+        "ann:label": "A value indication whether other social distancing is occurring",
+        "scope": "global",
+        "initialValue": 0
+      }
+    ],
+    "triggers": [],
+    "interventions": [
+      {
+        "$comment": "Other Social Distancing",
+        "id": "intervention_1",
+        "target": {
+          "elementType": "edge",
+          "left": {
+            "edge": {
+              "property": "targetActivity",
+              "feature": "activityType"
+            }
+          },
+          "operator": "==",
+          "right": {
+            "value": {
+              "trait": "activityTrait",
+              "feature": "activityType",
+              "enum": "SHOP"
+            }
+          }
+        },
+        "once": [
+          {
+            "operations": [
+              {
+                "target": {
+                  "variable": {
+                    "idRef": "socialDistancing"
+                  }
+                },
+                "operator": "=",
+                "value": {
+                  "number": 1
+                }
+              }
+            ]
+          }
+        ],
+        "foreach": [
+          {
+            "operations": [
+              {
+                "target": {
+                  "edge": {
+                    "property": "active"
+                  }
+                },
+                "operator": "=",
+                "value": {
+                  "boolean": false
+                }
+              }
+            ]
+          },
+          {
+            "delay": 14,
+            "operations": [
+              {
+                "target": {
+                  "edge": {
+                    "property": "active"
+                  }
+                },
+                "operator": "=",
+                "value": {
+                  "boolean": true
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "userInput": [
+    {
+      "ann:id": "DaysOtherSocialDistancing",
+      "ann:label": "Duration of other Social Distancing",
+      "ann:description": "Number of days other social distancing will be in effect",
+      "value": [
+        "/template/interventions/1/foreach/2/delay"
+      ],
+      "exceads": {
+        "minValue": 1,
+        "maxValue": 999,
+        "sweep": false,
+        "calibrate": false
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "property": "targetActivity",
+      "feature": "activityType"
+    },
+    {
+      "value": {
+        "trait": "activityTrait",
+        "feature": "activityType",
+        "enum": "SHOP"
+      }
+    }
+  ],
+  "exceads": {
+    "requires": {
+
+    }
+  }
+}
