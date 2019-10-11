@@ -342,34 +342,15 @@
     },
     "userInput": [
         {
-            "ann:id": "Sucsceptibility",
-            "ann:label": "Sucsceptibility Factor",
-            "ann:description": "Level of susceptibility of an uninfected individual.",
-            "value": ["/template/states/1/susceptibility"],
-            "exceads": {
-                "minValue": 0,
-                "maxValue": 1,
-                "sweep": false,
-                "calibrate": false
-            }
-        },
-        {
-            "ann:id": "InfectivitySymptomatic",
-            "ann:label": "Infectious and symptomatic",
-            "ann:description": "Infectious with symptoms. Symptomatic individuals are more likely to be observed, thus counted or eligible for interventions.",
-            "value": ["/template/states/3/infectivity"],
-            "exceads": {
-                "minValue": 0,
-                "maxValue": 1,
-                "sweep": false,
-                "calibrate": false
-            }
-        },
-        {
-            "ann:id": "InfectivityAsymptomatic",
-            "ann:label": "Infectious but asympotmatic",
-            "ann:description": "Infectious without symptoms. Asymptomatic individuals are less likely to infect others or be observed, thus may not be counted and are less likely to receive interventions.",
-            "value": ["/template/states/4/infectivity"],
+            "ann:id": "Transmissibility",
+            "ann:label": "Transmissibility",
+            "ann:description": "Probability of Transmission per unit time (secs)",
+            "value": [
+                "/template/transmissions/1/transmissibility",
+                "/template/transmissions/2/transmissibility",
+                "/template/transmissions/3/transmissibility",
+                "/template/transmissions/4/transmissibility"
+            ],
             "exceads": {
                 "minValue": 0,
                 "maxValue": 1,
@@ -391,6 +372,18 @@
                     "target": ["/template/transitions/1/probability"],
                     "value": "1.0 - /template/transitions/2/probability"
                 }
+            }
+        },
+        {
+            "ann:id": "InfectivityAsymptomatic",
+            "ann:label": "Infectious but asympotmatic",
+            "ann:description": "Infectious without symptoms. Asymptomatic individuals are less likely to infect others or be observed, thus may not be counted and are less likely to receive interventions.",
+            "value": ["/template/states/4/infectivity"],
+            "exceads": {
+                "minValue": 0,
+                "maxValue": 1,
+                "sweep": false,
+                "calibrate": false
             }
         }
     ],
