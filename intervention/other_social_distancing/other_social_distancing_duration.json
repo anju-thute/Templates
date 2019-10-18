@@ -119,6 +119,7 @@
     }
   ],
   "exceads": {
+    "interventionType": "SOCIAL_DISTANCE",
     "requires": {
 
     }
