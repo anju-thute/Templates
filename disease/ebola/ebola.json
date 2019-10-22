@@ -178,9 +178,9 @@
                 "probability": 1,
                 "dwellTime": {"fixed": 1}
             }
-        ]
+        ],
+        "analysis": {"infectiousStates": "I"}
     },
-    "analysis": {"infectiousStates": "I"},
     "userInput": [
         {
             "ann:id": "FuneralCommunityInfectivity",
