@@ -376,9 +376,9 @@
         },
         {
             "ann:id": "InfectivityAsymptomatic",
-            "ann:label": "Infectious but asympotmatic",
+            "ann:label": "Infectiousness of asympotmatic infections",
             "ann:description": "Infectious without symptoms. Asymptomatic individuals are less likely to infect others or be observed, thus may not be counted and are less likely to receive interventions.",
-            "value": ["/template/states/4/infectivity"],
+            "value": ["/template/states/6/infectivity"],
             "exceads": {
                 "minValue": 0,
                 "maxValue": 1,
