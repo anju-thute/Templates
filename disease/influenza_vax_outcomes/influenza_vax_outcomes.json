@@ -338,7 +338,8 @@
                     ]
                 }
             }
-        ]
+        ],
+        "analysis": {"infectiousStates": "Isymp+Iasymp"}
     },
     "userInput": [
         {
@@ -388,7 +389,6 @@
         }
     ],
     "requirements": [],
-    "analysis": {"infectiousStates": "Isymp+Iasymp"},
     "exceads": {
         "name": "Influenza Disease Model with vaccination and outcomes",
         "shortName": "Influenza_vax_and_outcomes",
