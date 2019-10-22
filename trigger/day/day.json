@@ -1,46 +1,39 @@
 {
-  "$schema": "../../schema/templateSchema.json",
-  "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/templateSchema.json",
-  "ann:id": "DayTrigger",
-  "ann:label": "Trigger at a specified Day",
-  "ann:description": "Trigger based on a specific day of the simulation.",
-  "template": {
-    "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/interventionSchema.json",
-    "triggers": [
-      {
-        "trigger": {
-          "left": {"observable": "time"},
-          "operator": "==",
-          "right": {
-            "value": {"number": 5}
-          }
-        },
-        "interventionIds": []
-      }
-    ],
-    "interventions": []
-  },
-  "userInput": [
-    {
-      "ann:id": "TriggerDay",
-      "ann:label": "Day",
-      "ann:description": "Specific simulation day to trigger the intervention.",
-      "value": ["/template/triggers/1/trigger/right/value/number"],
-      "exceads": {
-        "minValue": 0,
-        "maxValue": 999,
-        "sweep": false,
-        "calibrate": false
-      }
+    "$schema": "../../schema/templateSchema.json",
+    "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/templateSchema.json",
+    "ann:id": "DayTrigger",
+    "ann:label": "Trigger at a specified Day",
+    "ann:description": "Trigger based on a specific day of the simulation.",
+    "template": {
+        "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/interventionSchema.json",
+        "triggers": [
+            {
+                "trigger": {
+                    "left": {"observable": "time"},
+                    "operator": "==",
+                    "right": {
+                        "value": {"number": 5}
+                    }
+                },
+                "interventionIds": []
+            }
+        ],
+        "interventions": []
     },
-    {
-      "ann:id": "InterventionIds",
-      "ann:label": "Intervention Ids",
-      "ann:description": "The intervention ids which are triggered by this template.",
-      "value": ["/template/triggers/1/trigger/interventionIds/"],
-      "exceads": {}
-    }
-  ],
-  "requirements": [],
-  "exceads": {}
+    "userInput": [
+        {
+            "ann:id": "TriggerDay",
+            "ann:label": "Day",
+            "ann:description": "Specific simulation day to trigger the intervention.",
+            "value": ["/template/triggers/1/trigger/right/value/number"],
+            "exceads": {
+                "minValue": 0,
+                "maxValue": 999,
+                "sweep": false,
+                "calibrate": false
+            }
+        }
+    ],
+    "requirements": [],
+    "exceads": ""
 }
