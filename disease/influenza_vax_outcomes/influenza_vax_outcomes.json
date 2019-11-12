@@ -14,13 +14,13 @@
                 "susceptibility": 1
             },
             {
-                "id": "Vax-unprot",
+                "id": "Vax_unprot",
                 "ann:label": "Vaccinated but unprotected",
                 "infectivity": 0,
                 "susceptibility": 1
             },
             {
-                "id": "Vax-prot",
+                "id": "Vax_prot",
                 "ann:label": "Vaccinated and protected",
                 "infectivity": 0,
                 "susceptibility": 0
@@ -76,7 +76,7 @@
                 "entryState": "S",
                 "exitState": "E",
                 "contactState": "Isymp",
-                "transmissibility": ".000001"
+                "transmissibility": 0.000001
             },
             {
                 "id": "infection_Iasymp",
@@ -84,23 +84,23 @@
                 "entryState": "S",
                 "exitState": "E",
                 "contactState": "Iasymp",
-                "transmissibility": ".000001"
+                "transmissibility": 0.000001
             },
             {
-                "id": "infection_Vax-unprot_Isymp",
+                "id": "infection_Vax_unprot_Isymp",
                 "ann:label": "Infection of ineffective vaccine (symptomatic)",
-                "entryState": "Vax-unprot",
+                "entryState": "Vax_unprot",
                 "exitState": "E",
                 "contactState": "Isymp",
-                "transmissibility": ".000001"
+                "transmissibility": 0.000001
             },
             {
-                "id": "infection_Vax-unprot_Iasymp",
+                "id": "infection_Vax_unprot_Iasymp",
                 "ann:label": "Infection of ineffective vaccine (symptomatic)",
-                "entryState": "Vax-unprot",
+                "entryState": "Vax_unprot",
                 "exitState": "E",
                 "contactState": "Iasymp",
-                "transmissibility": ".000001"
+                "transmissibility": 0.000001
             }
         ],
         "transitions": [
@@ -111,12 +111,11 @@
                 "exitState": "Isymp",
                 "probability": 0.67,
                 "dwellTime": {
-                    "normal": [
+                    "normal":
                         {
-                            "mean": "",
-                            "standardDeviation": ""
+                            "mean": 0,
+                            "standardDeviation": 0
                         }
-                    ]
                 }
             },
             {
@@ -261,12 +260,11 @@
                 "exitState": "Vent",
                 "probability": 0.105,
                 "dwellTime": {
-                    "normal": [
+                    "normal":
                         {
                             "mean": 7,
                             "standardDeviation": 1
                         }
-                    ]
                 }
             },
             {
@@ -333,7 +331,7 @@
                     "discrete": [
                         {
                             "probability": 0.1,
-                            "7": 3
+                            "value": 3
                         }
                     ]
                 }
