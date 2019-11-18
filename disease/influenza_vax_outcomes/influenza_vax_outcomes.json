@@ -70,7 +70,7 @@
       "entryState": "S",
       "exitState": "E",
       "contactState": "Isymp",
-      "transmissibility": 0.000001
+      "transmissibility": 0.4
     },
     {
       "id": "infection_Iasymp",
@@ -78,7 +78,7 @@
       "entryState": "S",
       "exitState": "E",
       "contactState": "Iasymp",
-      "transmissibility": 0.000001
+      "transmissibility": 0.4
     },
     {
       "id": "infection_Vax_unprot_Isymp",
@@ -86,7 +86,7 @@
       "entryState": "Vax_unprot",
       "exitState": "E",
       "contactState": "Isymp",
-      "transmissibility": 0.000001
+      "transmissibility": 0.1
     },
     {
       "id": "infection_Vax_unprot_Iasymp",
@@ -94,7 +94,7 @@
       "entryState": "Vax_unprot",
       "exitState": "E",
       "contactState": "Iasymp",
-      "transmissibility": 0.000001
+      "transmissibility": 0.1
     }
   ],
   "transitions": [
@@ -338,6 +338,10 @@
           {
             "probability": 0.1,
             "value": 3
+          },
+          {
+            "probability": 0.9,
+            "value": 4
           }
         ]
       }
