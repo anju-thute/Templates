@@ -155,7 +155,7 @@
       "exceads": {
         "minValue": 1,
         "maxValue": 999,
-        "sweep": false,
+        "sweep": true,
         "calibrate": false
       }
     }
