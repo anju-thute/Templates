@@ -1,9 +1,9 @@
 {
     "$schema": "../../schema/templateSchema.json",
     "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/templateSchema.json",
-    "ann:id": "FluVacination_CDCagegroups",
-    "ann:label": "Flu Vaccination using CDC Age Groups",
-    "ann:description": "Seasonal influenza vaccination and age-specific effectiveness.",
+    "ann:id": "CDC_age_risk_groups",
+    "ann:label": "Initialization of a population into proper age and risk based susceptible states",
+    "ann:description": "For age and risk expanded influenza models, with appropriate age-risk Susceptible states, initialize all individuals to their proper initial state.",
     "template": {
         "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/initializationSchema.json",
         "initializations": [
@@ -11,9 +11,7 @@
                 "target": {
                     "elementType": "node",
                     "scope": "local",
-                    "left": {
-                        "field": "age_group"
-                    },
+                    "left": {"field": "age_group"},
                     "operator": "==",
                     "right": {"value": "p"}
                 },
@@ -56,9 +54,7 @@
                 "target": {
                     "elementType": "node",
                     "scope": "local",
-                    "left": {
-                        "field": "age_group"
-                    },
+                    "left": {"field": "age_group"},
                     "operator": "==",
                     "right": {"value": "s"}
                 },
@@ -101,9 +97,7 @@
                 "target": {
                     "elementType": "node",
                     "scope": "local",
-                    "left": {
-                        "field": "age_group"
-                    },
+                    "left": {"field": "age_group"},
                     "operator": "==",
                     "right": {"value": "a"}
                 },
@@ -146,9 +140,7 @@
                 "target": {
                     "elementType": "node",
                     "scope": "local",
-                    "left": {
-                        "field": "age_group"
-                    },
+                    "left": {"field": "age_group"},
                     "operator": "==",
                     "right": {"value": "o"}
                 },
@@ -191,15 +183,13 @@
                 "target": {
                     "elementType": "node",
                     "scope": "local",
-                    "left": {
-                        "field": "age_group"
-                    },
+                    "left": {"field": "age_group"},
                     "operator": "==",
                     "right": {"value": "g"}
                 },
                 "sampling": {
                     "type": "individual",
-                    "number": 88,
+                    "number": 53,
                     "sampled": {
                         "foreach": [
                             {
@@ -297,13 +287,11 @@
         }
     ],
     "requirements": [
-        {
-            "field": "age_group"
-        }
+        {"field": "age_group"}
     ],
     "exceads": {
         "requires": {
-            "allOf": ["montgomery_county_va.json"]
+            "allOf": ["influenza_stompflu_agegroups.json"]
         }
     }
 }
