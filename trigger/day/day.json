@@ -2,7 +2,7 @@
     "$schema": "../../schema/templateSchema.json",
     "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/templateSchema.json",
     "ann:id": "DayTrigger",
-    "ann:label": "Trigger at a specified Day",
+    "ann:label": "Trigger on a specified Day",
     "ann:description": "Trigger based on a specific day of the simulation.",
     "template": {
         "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/interventionSchema.json",
@@ -29,7 +29,7 @@
             "exceads": {
                 "minValue": 0,
                 "maxValue": 999,
-                "sweep": false,
+                "sweep": true,
                 "calibrate": false
             }
         }
