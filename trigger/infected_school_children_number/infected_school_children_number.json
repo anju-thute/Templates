@@ -110,13 +110,6 @@
         "sweep": false,
         "calibrate": false
       }
-    },
-    {
-      "ann:id": "InterventionIds",
-      "ann:label": "Intervention Ids",
-      "ann:description": "The intervention ids which are triggered by this template.",
-      "value": ["/template/triggers/1/trigger/interventionIds/"],
-      "exceads": {}
     }
   ],
   "requirements": [
