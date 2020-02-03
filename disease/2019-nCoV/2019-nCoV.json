@@ -394,7 +394,7 @@
                         "standardDeviation": 1
                     }
                 }
-            },            
+            }            
         ],
         "analysis": {"infectiousStates": "Isymp+Iasymp"}
     },
