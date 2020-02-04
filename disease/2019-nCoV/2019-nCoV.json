@@ -268,10 +268,29 @@
                 "exitState": "Hosp",
                 "probability": 0.5,
                 "dwellTime": {
-                    "normal": {
-                        "mean": 12,
-                        "standardDeviation": 1
-                    }
+                    "discrete": [
+                        {"probability": 0.007, "value": 1},
+                        {"probability": 0.022, "value": 2},
+                        {"probability": 0.035, "value": 3},
+                        {"probability": 0.055, "value": 4},
+                        {"probability": 0.069, "value": 5},
+                        {"probability": 0.088, "value": 6},
+                        {"probability": 0.101, "value": 7},
+                        {"probability": 0.103, "value": 8},
+                        {"probability": 0.099, "value": 9},
+                        {"probability": 0.092, "value": 10},
+                        {"probability": 0.085, "value": 11},
+                        {"probability": 0.072, "value": 12},
+                        {"probability": 0.059, "value": 13},
+                        {"probability": 0.039, "value": 14},
+                        {"probability": 0.032, "value": 15},
+                        {"probability": 0.018, "value": 16},
+                        {"probability": 0.012, "value": 17},
+                        {"probability": 0.007, "value": 18},
+                        {"probability": 0.003, "value": 19},
+                        {"probability": 0.001, "value": 20},
+                        {"probability": 0.001, "value": 21}                        
+                    ]
                 }
             },
             {
