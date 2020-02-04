@@ -108,6 +108,22 @@
                 "exitState": "E",
                 "contactState": "Iasymp",
                 "transmissibility": 0.1
+            },
+            {
+                "id": "reinfection_Isymp",
+                "ann:label": "Reinfection of RyetS (symptomatic)",
+                "entryState": "RyetS",
+                "exitState": "E",
+                "contactState": "Isymp",
+                "transmissibility": 0.4
+            },
+            {
+                "id": "reinfection_Iasymp",
+                "ann:label": "Reinfection of RyetS (asymptomatic)",
+                "entryState": "RyetS",
+                "exitState": "E",
+                "contactState": "Iasymp",
+                "transmissibility": 0.4
             }
         ],
         "transitions": [
@@ -407,7 +423,9 @@
                 "/template/transmissions/1/transmissibility",
                 "/template/transmissions/2/transmissibility",
                 "/template/transmissions/3/transmissibility",
-                "/template/transmissions/4/transmissibility"
+                "/template/transmissions/4/transmissibility",
+                "/template/transmissions/5/transmissibility",
+                "/template/transmissions/6/transmissibility"
             ],
             "exceads": {
                 "minValue": 0,
