@@ -110,7 +110,7 @@
                 "entryState": "HypRx_fail",
                 "exitState": "E",
                 "contactState": "Isymp",
-                "transmissibility": 0.1
+                "transmissibility": 0.4
             },
             {
                 "id": "infection_HypRx_fail_Iasymp",
@@ -118,7 +118,7 @@
                 "entryState": "HypRx_fail",
                 "exitState": "E",
                 "contactState": "Iasymp",
-                "transmissibility": 0.1
+                "transmissibility": 0.4
             },
             {
                 "id": "reinfection_Isymp",
@@ -511,7 +511,7 @@
                         {"probability": 0.069, "value": 1},
                         {"probability": 0.088, "value": 2},
                         {"probability": 0.101, "value": 3},
-                        {"probability": 0.103, "value": 4},
+                        {"probability": 0.103, "value": 4},##+0.064 so sum is 1
                         {"probability": 0.099, "value": 5},
                         {"probability": 0.092, "value": 6},
                         {"probability": 0.085, "value": 7},
@@ -533,7 +533,7 @@
                 "ann:label": "Isymp to Hospitalized",
                 "entryState": "Isymp",
                 "exitState": "Hosp",
-                "probability": 0.2,
+                "probability": 0,
                 "dwellTime": {
                     "discrete": [
                         {
@@ -680,7 +680,7 @@
                             "value": 11
                         },
                         {
-                            "probability": 0.066,
+                            "probability": 0.065,
                             "value": 12
                         },
                         {
@@ -881,7 +881,7 @@
                             "value": 5
                         },
                         {
-                            "probability": 0.076,
+                            "probability": 0.077,
                             "value": 6
                         },
                         {
