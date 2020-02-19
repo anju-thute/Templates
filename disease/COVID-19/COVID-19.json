@@ -158,7 +158,7 @@
                 "ann:label": "Exposed to Infectious and presymptomatic",
                 "entryState": "E",
                 "exitState": "Ipresymp",
-                "probability": 0.1,
+                "probability": 0,
                 "dwellTime": {
                     "discrete": [
                         {
@@ -185,7 +185,106 @@
                 "ann:label": "Exposed to Infectious and presymptomatic",
                 "entryState": "E",
                 "exitState": "Isymp",
-                "probability": 0.9,
+                "probability": 0.8,
+                "dwellTime": {
+                    "discrete": [
+                        {
+                            "probability": 0.001,
+                            "value": 0
+                        },
+                        {
+                            "probability": 0.06,
+                            "value": 1
+                        },
+                        {
+                            "probability": 0.163,
+                            "value": 2
+                        },
+                        {
+                            "probability": 0.178,
+                            "value": 3
+                        },
+                        {
+                            "probability": 0.15,
+                            "value": 4
+                        },
+                        {
+                            "probability": 0.117,
+                            "value": 5
+                        },
+                        {
+                            "probability": 0.086,
+                            "value": 6
+                        },
+                        {
+                            "probability": 0.064,
+                            "value": 7
+                        },
+                        {
+                            "probability": 0.046,
+                            "value": 8
+                        },
+                        {
+                            "probability": 0.034,
+                            "value": 9
+                        },
+                        {
+                            "probability": 0.025,
+                            "value": 10
+                        },
+                        {
+                            "probability": 0.019,
+                            "value": 11
+                        },
+                        {
+                            "probability": 0.014,
+                            "value": 12
+                        },
+                        {
+                            "probability": 0.011,
+                            "value": 13
+                        },
+                        {
+                            "probability": 0.008,
+                            "value": 14
+                        },
+                        {
+                            "probability": 0.006,
+                            "value": 15
+                        },
+                        {
+                            "probability": 0.005,
+                            "value": 16
+                        },
+                        {
+                            "probability": 0.004,
+                            "value": 17
+                        },
+                        {
+                            "probability": 0.003,
+                            "value": 18
+                        },
+                        {
+                            "probability": 0.002,
+                            "value": 19
+                        },
+                        {
+                            "probability": 0.002,
+                            "value": 20
+                        },
+                        {
+                            "probability": 0.002,
+                            "value": 21
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "E_to_Iasymp",
+                "ann:label": "Exposed to Infectious and presymptomatic",
+                "entryState": "E",
+                "exitState": "Isymp",
+                "probability": 0.2,
                 "dwellTime": {
                     "discrete": [
                         {
@@ -401,6 +500,35 @@
                 }
             },
             {
+                "id": "MedAttend_to_Hosp",
+                "ann:label": "Medically Attended to Hospitalization",
+                "entryState": "MedAttend",
+                "exitState": "Hosp",
+                "probability": 1,
+                "dwellTime": {
+                    "discrete": [
+                        {'probability': 0.055, 'value': 0},
+                        {'probability': 0.069, 'value': 1},
+                        {'probability': 0.088, 'value': 2},
+                        {'probability': 0.101, 'value': 3},
+                        {'probability': 0.103, 'value': 4},
+                        {'probability': 0.099, 'value': 5},
+                        {'probability': 0.092, 'value': 6},
+                        {'probability': 0.085, 'value': 7},
+                        {'probability': 0.072, 'value': 8},
+                        {'probability': 0.059, 'value': 9},
+                        {'probability': 0.039, 'value': 10},
+                        {'probability': 0.032, 'value': 11},
+                        {'probability': 0.018, 'value': 12},
+                        {'probability': 0.012, 'value': 13},
+                        {'probability': 0.007, 'value': 14},
+                        {'probability': 0.003, 'value': 15},
+                        {'probability': 0.001, 'value': 16},
+                        {'probability': 0.001, 'value': 17}
+                    ]
+                }
+            },
+            {
                 "id": "Isymp_to_Hosp",
                 "ann:label": "Isymp to Hospitalized",
                 "entryState": "Isymp",
@@ -500,49 +628,169 @@
                 "ann:label": "Isymp to Death",
                 "entryState": "Isymp",
                 "exitState": "Death",
-                "probability": 0.01,
+                "probability": 0.02,
                 "dwellTime": {
                     "discrete": [
-                        {"probability": 0.0, "value": 0},
-                        {"probability": 0.001, "value": 1},
-                        {"probability": 0.003, "value": 2},
-                        {"probability": 0.006, "value": 3},
-                        {"probability": 0.011, "value": 4},
-                        {"probability": 0.019, "value": 5},
-                        {"probability": 0.03, "value": 6},
-                        {"probability": 0.04, "value": 7},
-                        {"probability": 0.048, "value": 8},
-                        {"probability": 0.056, "value": 9},
-                        {"probability": 0.061, "value": 10},
-                        {"probability": 0.065, "value": 11},
-                        {"probability": 0.066, "value": 12},
-                        {"probability": 0.065, "value": 13},
-                        {"probability": 0.062, "value": 14},
-                        {"probability": 0.059, "value": 15},
-                        {"probability": 0.054, "value": 16},
-                        {"probability": 0.051, "value": 17},
-                        {"probability": 0.044, "value": 18},
-                        {"probability": 0.04, "value": 19},
-                        {"probability": 0.035, "value": 20},
-                        {"probability": 0.03, "value": 21},
-                        {"probability": 0.027, "value": 22},
-                        {"probability": 0.022, "value": 23},
-                        {"probability": 0.019, "value": 24},
-                        {"probability": 0.016, "value": 25},
-                        {"probability": 0.014, "value": 26},
-                        {"probability": 0.012, "value": 27},
-                        {"probability": 0.009, "value": 28},
-                        {"probability": 0.008, "value": 29},
-                        {"probability": 0.006, "value": 30},
-                        {"probability": 0.005, "value": 31},
-                        {"probability": 0.004, "value": 32},
-                        {"probability": 0.003, "value": 33},
-                        {"probability": 0.003, "value": 34},
-                        {"probability": 0.002, "value": 35},
-                        {"probability": 0.002, "value": 36},
-                        {"probability": 0.001, "value": 37},
-                        {"probability": 0.001, "value": 38},
-                        {"probability": 0.001, "value": 39}
+                        {
+                            "probability": 0,
+                            "value": 0
+                        },
+                        {
+                            "probability": 0.001,
+                            "value": 1
+                        },
+                        {
+                            "probability": 0.003,
+                            "value": 2
+                        },
+                        {
+                            "probability": 0.006,
+                            "value": 3
+                        },
+                        {
+                            "probability": 0.011,
+                            "value": 4
+                        },
+                        {
+                            "probability": 0.019,
+                            "value": 5
+                        },
+                        {
+                            "probability": 0.03,
+                            "value": 6
+                        },
+                        {
+                            "probability": 0.04,
+                            "value": 7
+                        },
+                        {
+                            "probability": 0.048,
+                            "value": 8
+                        },
+                        {
+                            "probability": 0.056,
+                            "value": 9
+                        },
+                        {
+                            "probability": 0.061,
+                            "value": 10
+                        },
+                        {
+                            "probability": 0.065,
+                            "value": 11
+                        },
+                        {
+                            "probability": 0.066,
+                            "value": 12
+                        },
+                        {
+                            "probability": 0.065,
+                            "value": 13
+                        },
+                        {
+                            "probability": 0.062,
+                            "value": 14
+                        },
+                        {
+                            "probability": 0.059,
+                            "value": 15
+                        },
+                        {
+                            "probability": 0.054,
+                            "value": 16
+                        },
+                        {
+                            "probability": 0.051,
+                            "value": 17
+                        },
+                        {
+                            "probability": 0.044,
+                            "value": 18
+                        },
+                        {
+                            "probability": 0.04,
+                            "value": 19
+                        },
+                        {
+                            "probability": 0.035,
+                            "value": 20
+                        },
+                        {
+                            "probability": 0.03,
+                            "value": 21
+                        },
+                        {
+                            "probability": 0.027,
+                            "value": 22
+                        },
+                        {
+                            "probability": 0.022,
+                            "value": 23
+                        },
+                        {
+                            "probability": 0.019,
+                            "value": 24
+                        },
+                        {
+                            "probability": 0.016,
+                            "value": 25
+                        },
+                        {
+                            "probability": 0.014,
+                            "value": 26
+                        },
+                        {
+                            "probability": 0.012,
+                            "value": 27
+                        },
+                        {
+                            "probability": 0.009,
+                            "value": 28
+                        },
+                        {
+                            "probability": 0.008,
+                            "value": 29
+                        },
+                        {
+                            "probability": 0.006,
+                            "value": 30
+                        },
+                        {
+                            "probability": 0.005,
+                            "value": 31
+                        },
+                        {
+                            "probability": 0.004,
+                            "value": 32
+                        },
+                        {
+                            "probability": 0.003,
+                            "value": 33
+                        },
+                        {
+                            "probability": 0.003,
+                            "value": 34
+                        },
+                        {
+                            "probability": 0.002,
+                            "value": 35
+                        },
+                        {
+                            "probability": 0.002,
+                            "value": 36
+                        },
+                        {
+                            "probability": 0.001,
+                            "value": 37
+                        },
+                        {
+                            "probability": 0.001,
+                            "value": 38
+                        },
+                        {
+                            "probability": 0.001,
+                            "value": 39
+                        }
                     ]
                 }
             },
@@ -551,7 +799,7 @@
                 "ann:label": "Isymp to Recovered",
                 "entryState": "Isymp",
                 "exitState": "R",
-                "probability": 0.58,
+                "probability": 0.78,
                 "dwellTime": {
                     "discrete": [
                         {
@@ -605,39 +853,130 @@
                 "ann:label": "Hospitalized to Death",
                 "entryState": "Hosp",
                 "exitState": "Death",
-                "probability": 0.105,
+                "probability": 0.02,
                 "dwellTime": {
-                    "discrete": 
-                    [{"probability": 0.003, "value": 0},
-                     {"probability": 0.035, "value": 1},
-                     {"probability": 0.052, "value": 2},
-                     {"probability": 0.065, "value": 3},
-                     {"probability": 0.072, "value": 4},
-                     {"probability": 0.076, "value": 5},
-                     {"probability": 0.076, "value": 6},
-                     {"probability": 0.075, "value": 7},
-                     {"probability": 0.071, "value": 8},
-                     {"probability": 0.066, "value": 9},
-                     {"probability": 0.061, "value": 10},
-                     {"probability": 0.055, "value": 11},
-                     {"probability": 0.048, "value": 12},
-                     {"probability": 0.043, "value": 13},
-                     {"probability": 0.037, "value": 14},
-                     {"probability": 0.032, "value": 15},
-                     {"probability": 0.026, "value": 16},
-                     {"probability": 0.021, "value": 17},
-                     {"probability": 0.018, "value": 18},
-                     {"probability": 0.015, "value": 19},
-                     {"probability": 0.012, "value": 20},
-                     {"probability": 0.009, "value": 21},
-                     {"probability": 0.008, "value": 22},
-                     {"probability": 0.006, "value": 23},
-                     {"probability": 0.005, "value": 24},
-                     {"probability": 0.004, "value": 25},
-                     {"probability": 0.003, "value": 26},
-                     {"probability": 0.002, "value": 27},
-                     {"probability": 0.002, "value": 28},
-                     {"probability": 0.001, "value": 29}]
+                    "discrete": [
+                        {
+                            "probability": 0.003,
+                            "value": 0
+                        },
+                        {
+                            "probability": 0.035,
+                            "value": 1
+                        },
+                        {
+                            "probability": 0.052,
+                            "value": 2
+                        },
+                        {
+                            "probability": 0.065,
+                            "value": 3
+                        },
+                        {
+                            "probability": 0.072,
+                            "value": 4
+                        },
+                        {
+                            "probability": 0.076,
+                            "value": 5
+                        },
+                        {
+                            "probability": 0.076,
+                            "value": 6
+                        },
+                        {
+                            "probability": 0.075,
+                            "value": 7
+                        },
+                        {
+                            "probability": 0.071,
+                            "value": 8
+                        },
+                        {
+                            "probability": 0.066,
+                            "value": 9
+                        },
+                        {
+                            "probability": 0.061,
+                            "value": 10
+                        },
+                        {
+                            "probability": 0.055,
+                            "value": 11
+                        },
+                        {
+                            "probability": 0.048,
+                            "value": 12
+                        },
+                        {
+                            "probability": 0.043,
+                            "value": 13
+                        },
+                        {
+                            "probability": 0.037,
+                            "value": 14
+                        },
+                        {
+                            "probability": 0.032,
+                            "value": 15
+                        },
+                        {
+                            "probability": 0.026,
+                            "value": 16
+                        },
+                        {
+                            "probability": 0.021,
+                            "value": 17
+                        },
+                        {
+                            "probability": 0.018,
+                            "value": 18
+                        },
+                        {
+                            "probability": 0.015,
+                            "value": 19
+                        },
+                        {
+                            "probability": 0.012,
+                            "value": 20
+                        },
+                        {
+                            "probability": 0.009,
+                            "value": 21
+                        },
+                        {
+                            "probability": 0.008,
+                            "value": 22
+                        },
+                        {
+                            "probability": 0.006,
+                            "value": 23
+                        },
+                        {
+                            "probability": 0.005,
+                            "value": 24
+                        },
+                        {
+                            "probability": 0.004,
+                            "value": 25
+                        },
+                        {
+                            "probability": 0.003,
+                            "value": 26
+                        },
+                        {
+                            "probability": 0.002,
+                            "value": 27
+                        },
+                        {
+                            "probability": 0.002,
+                            "value": 28
+                        },
+                        {
+                            "probability": 0.001,
+                            "value": 29
+                        }
+                    ]
                 }
             },
             {
@@ -645,7 +984,7 @@
                 "ann:label": "Hospitalized to Recovered",
                 "entryState": "Hosp",
                 "exitState": "R",
-                "probability": 0.895,
+                "probability": 0.98,
                 "dwellTime": {
                     "discrete": [
                         {
