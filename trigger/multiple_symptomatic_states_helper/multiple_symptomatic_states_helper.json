@@ -46,7 +46,23 @@
               "operator": "withPropertyIn",
               "right": {
                 "valueList": {
-                  "healthState": ["Isymp"]
+                  "healthState": [
+                    "Ipresymp_p",
+                    "Isymp_p",
+                    "Iasymp_p",
+                    "Ipresymp_s",
+                    "Isymp_s",
+                    "Iasymp_s",
+                    "Ipresymp_a",
+                    "Isymp_a",
+                    "Iasymp_a",
+                    "Ipresymp_o",
+                    "Isymp_o",
+                    "Iasymp_o",
+                    "Ipresymp_g",
+                    "Isymp_g",
+                    "Iasymp_g"
+                  ]
                 }
               }
             },
@@ -133,9 +149,7 @@
       "ann:id": "SymptomaticHealthStates",
       "ann:label": "Symptomatic Health States",
       "ann:description": "A list of state which are considered symptomatic.",
-      "value": [
-        "/template/sets/0/content/sets/0/right/valueList/healthState/"
-      ],
+      "value": ["/template/sets/0/content/sets/0/right/valueList/healthState/"],
       "exceads": {
         "validValues": "file:///disease/template/states/*/id",
         "sweep": false,
