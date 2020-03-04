@@ -1,0 +1,147 @@
+{
+  "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
+  "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/templateSchema.json",
+  "ann:id": "NewlySymptomaticIndividuals",
+  "ann:label": "Newly Symptomatic Individuals",
+  "ann:description": "Helper trigger for counting and tagging people entering any of the specified symptomatic states",
+  "template": {
+    "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/interventionSchema.json",
+    "traits": [
+      {
+        "id": "nodeTrait",
+        "ann:label": "Node Trait",
+        "features": [
+          {
+            "id": "enteredIsymp",
+            "ann:label": "Entered State Isypm",
+            "enums": [
+              {
+                "id": "true",
+                "ann:label": "true"
+              },
+              {
+                "id": "false",
+                "ann:label": "false"
+              }
+            ],
+            "default": "false"
+          }
+        ]
+      }
+    ],
+    "sets": [
+      {
+        "id": "triggerTemplate1_enteredIsymp",
+        "ann:label": "Nodes which newly entered a symptomatics State (e.g. Isymp).",
+        "scope": "local",
+        "content": {
+          "operation": "intersection",
+          "sets": [
+            {
+              "elementType": "node",
+              "scope": "local",
+              "left": {
+                "node": {"property": "healthState"}
+              },
+              "operator": "withPropertyIn",
+              "right": {
+                "valueList": {
+                  "healthState": ["Isymp"]
+                }
+              }
+            },
+            {
+              "elementType": "node",
+              "scope": "local",
+              "left": {
+                "node": {
+                  "property": "nodeTrait",
+                  "feature": "enteredIsymp"
+                }
+              },
+              "operator": "==",
+              "right": {
+                "value": {
+                  "trait": "nodeTrait",
+                  "feature": "enteredIsymp",
+                  "enum": "false"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "triggers": [
+      {
+        "trigger": {
+          "left": {
+            "sizeof": {
+              "set": {"idRef": "triggerTemplate1_enteredIsymp"}
+            }
+          },
+          "operator": ">",
+          "right": {
+            "value": {"number": 0}
+          }
+        },
+        "interventionIds": []
+      }
+    ],
+    "interventions": [
+      {
+        "$comment": "Mark indiviudals as having entered previously",
+        "trigger": {
+          "left": {
+            "sizeof": {
+              "set": {"idRef": "triggerTemplate1_enteredIsymp"}
+            }
+          },
+          "operator": ">",
+          "right": {
+            "value": {"number": 0}
+          }
+        },
+        "target": {
+          "set": {"idRef": "triggerTemplate1_enteredIsymp"}
+        },
+        "foreach": [
+          {
+            "operations": [
+              {
+                "target": {
+                  "node": {
+                    "property": "nodeTrait",
+                    "feature": "enteredIsymp"
+                  }
+                },
+                "operator": "=",
+                "value": {
+                  "trait": "nodeTrait",
+                  "feature": "enteredIsymp",
+                  "enum": "true"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "userInput": [
+    {
+      "ann:id": "SymptomaticHealthStates",
+      "ann:label": "Symptomatic Health States",
+      "ann:description": "A list of state which are considered symptomatic.",
+      "value": [
+        "/template/sets/0/content/sets/0/right/valueList/healthState/"
+      ],
+      "exceads": {
+        "validValues": "file:///disease/template/states/*/id",
+        "sweep": false,
+        "calibrate": false
+      }
+    }
+  ],
+  "requirements": []
+}
