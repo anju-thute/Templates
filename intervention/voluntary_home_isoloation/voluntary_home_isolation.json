@@ -46,47 +46,6 @@
     ],
     "sets": [
       {
-        "id": "triggerTemplate1_enteredIsymp",
-        "ann:label": "Nodes which entered state Isymp.",
-        "scope": "local",
-        "content": {
-          "operation": "intersection",
-          "sets": [
-            {
-              "elementType": "node",
-              "scope": "local",
-              "left": {
-                "node": {"property": "healthState"}
-              },
-              "operator": "withPropertyIn",
-              "right": {
-                "valueList": {
-                  "healthState": ["Isymp"]
-                }
-              }
-            },
-            {
-              "elementType": "node",
-              "scope": "local",
-              "left": {
-                "node": {
-                  "property": "nodeTrait",
-                  "feature": "enteredIsymp"
-                }
-              },
-              "operator": "==",
-              "right": {
-                "value": {
-                  "trait": "nodeTrait",
-                  "feature": "enteredIsymp",
-                  "enum": "false"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
         "id": "participateInHomeIsolationLocal",
         "ann:label": "All nodes which participate in volutaru home isolation.",
         "scope": "local",
@@ -133,13 +92,34 @@
         }
       },
       {
-        "id": "workEdges",
+        "id": "workEdgesTarget",
         "scope": "local",
         "content": {
           "elementType": "edge",
           "left": {
             "edge": {
               "property": "targetActivity",
+              "feature": "activityType"
+            }
+          },
+          "operator": "==",
+          "right": {
+            "value": {
+              "trait": "activityTrait",
+              "feature": "activityType",
+              "enum": "work"
+            }
+          }
+        }
+      },
+      {
+        "id": "workEdgesSource",
+        "scope": "local",
+        "content": {
+          "elementType": "edge",
+          "left": {
+            "edge": {
+              "property": "sourceActivity",
               "feature": "activityType"
             }
           },
@@ -178,7 +158,7 @@
                 "set": {"idRef": "targetNodeParticipateInHomeIsolation"}
               },
               {
-                "set": {"idRef": "workEdges"}
+                "set": {"idRef": "workEdgesTarget"}
               }
             ]
           }
@@ -209,7 +189,7 @@
                 "set": {"idRef": "sourceNodeParticipateInHomeIsolation"}
               },
               {
-                "set": {"idRef": "workEdges"}
+                "set": {"idRef": "workEdgesSource"}
               }
             ]
           }
