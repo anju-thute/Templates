@@ -294,10 +294,10 @@
             "operations": [
               {
                 "target": {
-                  "edge": {"property": "active"}
+                  "edge": {"property": "weight"}
                 },
-                "operator": "=",
-                "value": {"boolean": false}
+                "operator": "/=",
+                "value": {"number": 1000000}
               }
             ]
           },
@@ -306,10 +306,10 @@
             "operations": [
               {
                 "target": {
-                  "edge": {"property": "active"}
+                  "edge": {"property": "weight"}
                 },
-                "operator": "=",
-                "value": {"boolean": true}
+                "operator": "*=",
+                "value": {"number": 1000000}
               }
             ]
           }
@@ -326,10 +326,10 @@
             "operations": [
               {
                 "target": {
-                  "edge": {"property": "active"}
+                  "edge": {"property": "weight"}
                 },
-                "operator": "=",
-                "value": {"boolean": false}
+                "operator": "/=",
+                "value": {"number": 1000000}
               }
             ]
           },
@@ -338,10 +338,10 @@
             "operations": [
               {
                 "target": {
-                  "edge": {"property": "active"}
+                  "edge": {"property": "weight"}
                 },
-                "operator": "=",
-                "value": {"boolean": true}
+                "operator": "*=",
+                "value": {"number": 1000000}
               }
             ]
           }
