@@ -27,7 +27,7 @@
             "default": "false"
           },
           {
-            "id": "participateInHomeIsolationGlobal",
+            "id": "participateInHomeIsolation",
             "ann:label": "Treatment",
             "enums": [
               {
@@ -47,7 +47,7 @@
     "sets": [
       {
         "id": "participateInHomeIsolationLocal",
-        "ann:label": "All nodes which participate in volutaru home isolation.",
+        "ann:label": "All nodes which participate in voluntary home isolation.",
         "scope": "local",
         "content": {
           "elementType": "node",
@@ -55,14 +55,14 @@
           "left": {
             "node": {
               "property": "nodeTrait",
-              "feature": "participateInHomeIsolationGlobal"
+              "feature": "participateInHomeIsolation"
             }
           },
           "operator": "==",
           "right": {
             "value": {
               "trait": "nodeTrait",
-              "feature": "participateInHomeIsolationGlobal",
+              "feature": "participateInHomeIsolation",
               "enum": "true"
             }
           }
@@ -70,7 +70,7 @@
       },
       {
         "id": "participateInHomeIsolationGlobal",
-        "ann:label": "All nodes which participate in volutaru home isolation.",
+        "ann:label": "All nodes which participate in voluntary home isolation.",
         "scope": "global",
         "content": {
           "elementType": "node",
@@ -78,14 +78,14 @@
           "left": {
             "node": {
               "property": "nodeTrait",
-              "feature": "participateInHomeIsolationGlobal"
+              "feature": "participateInHomeIsolation"
             }
           },
           "operator": "==",
           "right": {
             "value": {
               "trait": "nodeTrait",
-              "feature": "participateInHomeIsolationGlobal",
+              "feature": "participateInHomeIsolation",
               "enum": "true"
             }
           }
@@ -145,26 +145,6 @@
         }
       },
       {
-        "id": "self",
-        "scope": "local",
-        "content": {
-          "elementType": "node",
-          "scope": "local",
-          "operator": "withIncomingEdgeIn",
-          "selector": {
-            "operation": "intersection",
-            "sets": [
-              {
-                "set": {"idRef": "targetNodeParticipateInHomeIsolation"}
-              },
-              {
-                "set": {"idRef": "workEdgesTarget"}
-              }
-            ]
-          }
-        }
-      },
-      {
         "id": "sourceNodeParticipateInHomeIsolation",
         "scope": "local",
         "content": {
@@ -172,26 +152,6 @@
           "operator": "withSourceNodeIn",
           "selector": {
             "set": {"idRef": "participateInHomeIsolationGlobal"}
-          }
-        }
-      },
-      {
-        "id": "coWorker",
-        "scope": "local",
-        "content": {
-          "elementType": "node",
-          "scope": "local",
-          "operator": "withIncomingEdgeIn",
-          "selector": {
-            "operation": "intersection",
-            "sets": [
-              {
-                "set": {"idRef": "sourceNodeParticipateInHomeIsolation"}
-              },
-              {
-                "set": {"idRef": "workEdgesSource"}
-              }
-            ]
           }
         }
       }
@@ -203,7 +163,7 @@
         "trigger": {
           "left": {
             "sizeof": {
-              "set": {"idRef": "self"}
+              "set": {"idRef": "targetNodeParticipateInHomeIsolation"}
             }
           },
           "operator": ">",
@@ -218,7 +178,7 @@
         "trigger": {
           "left": {
             "sizeof": {
-              "set": {"idRef": "coWorker"}
+              "set": {"idRef": "sourceNodeParticipateInHomeIsolation"}
             }
           },
           "operator": ">",
@@ -248,13 +208,13 @@
                     "target": {
                       "node": {
                         "property": "nodeTrait",
-                        "feature": "participateInHomeIsolationGlobal"
+                        "feature": "participateInHomeIsolation"
                       }
                     },
                     "operator": "=",
                     "value": {
                       "trait": "nodeTrait",
-                      "feature": "participateInHomeIsolationGlobal",
+                      "feature": "participateInHomeIsolation",
                       "enum": "true"
                     }
                   }
@@ -267,13 +227,13 @@
                     "target": {
                       "node": {
                         "property": "nodeTrait",
-                        "feature": "participateInHomeIsolationGlobal"
+                        "feature": "participateInHomeIsolation"
                       }
                     },
                     "operator": "=",
                     "value": {
                       "trait": "nodeTrait",
-                      "feature": "participateInHomeIsolationGlobal",
+                      "feature": "participateInHomeIsolation",
                       "enum": "false"
                     }
                   }
@@ -287,7 +247,7 @@
         "$comment": "Voluntary Home Isolation (self)",
         "id": "intervention_1",
         "target": {
-          "set": {"idRef": "self"}
+          "set": {"idRef": "targetNodeParticipateInHomeIsolation"}
         },
         "foreach": [
           {
@@ -319,7 +279,7 @@
         "$comment": "Voluntary Home Isolation (co-worker)",
         "id": "intervention_2",
         "target": {
-          "set": {"idRef": "coWorker"}
+          "set": {"idRef": "sourceNodeParticipateInHomeIsolation"}
         },
         "foreach": [
           {
