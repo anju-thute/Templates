@@ -1,0 +1,477 @@
+{
+  "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
+  "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/templateSchema.json",
+  "ann:id": "NewlySymptomaticIndividuals",
+  "ann:label": "Newly Symptomatic Individuals",
+  "ann:description": "Helper trigger for counting and tagging people entering any of the specified symptomatic states",
+  "template": {
+    "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/interventionSchema.json",
+    "traits": [
+      {
+        "id": "nodeTrait",
+        "ann:label": "Node Trait",
+        "features": [
+          {
+            "id": "enteredIsymp",
+            "ann:label": "Entered State Isypm",
+            "enums": [
+              {
+                "id": "true",
+                "ann:label": "true"
+              },
+              {
+                "id": "false",
+                "ann:label": "false"
+              }
+            ],
+            "default": "false"
+          },
+          {
+            "id": "participateInHomeQuarantine",
+            "ann:label": "Treatment",
+            "enums": [
+              {
+                "id": "true",
+                "ann:label": "true"
+              },
+              {
+                "id": "false",
+                "ann:label": "false"
+              }
+            ],
+            "default": "false"
+          }
+        ]
+      }
+    ],
+    "sets": [
+      {
+        "id": "enteredIsympGlobal",
+        "ann:label": "Nodes which newly entered a symptomatics State (e.g. Isymp).",
+        "scope": "local",
+        "content": {
+          "operation": "intersection",
+          "sets": [
+            {
+              "elementType": "node",
+              "scope": "local",
+              "left": {
+                "node": {"property": "healthState"}
+              },
+              "operator": "withPropertyIn",
+              "right": {
+                "valueList": {
+                  "healthState": [
+                    "Ipresymp_p",
+                    "Isymp_p",
+                    "Iasymp_p",
+                    "Ipresymp_s",
+                    "Isymp_s",
+                    "Iasymp_s",
+                    "Ipresymp_a",
+                    "Isymp_a",
+                    "Iasymp_a",
+                    "Ipresymp_o",
+                    "Isymp_o",
+                    "Iasymp_o",
+                    "Ipresymp_g",
+                    "Isymp_g",
+                    "Iasymp_g"
+                  ]
+                }
+              }
+            },
+            {
+              "elementType": "node",
+              "scope": "local",
+              "left": {
+                "node": {
+                  "property": "nodeTrait",
+                  "feature": "enteredIsymp"
+                }
+              },
+              "operator": "==",
+              "right": {
+                "value": {
+                  "trait": "nodeTrait",
+                  "feature": "enteredIsymp",
+                  "enum": "false"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "activeEdgesWithSourceNodeNewlyInfected",
+        "ann:label": "All edges which are currently active, i.e., weight < 999,999",
+        "scope": "local",
+        "content": {
+          "operation": "intersection",
+          "sets": [
+            {
+              "elementType": "edge",
+              "scope": "local",
+              "left": {
+                "edge": {"property": "weight"}
+              },
+              "operator": "<",
+              "right": {
+                "value": {"number": 999999}
+              }
+            },
+            {
+              "elementType": "edge",
+              "scope": "local",
+              "operator": "withSourceNodeIn",
+              "selector": {
+                "set": {"idRef": "enteredIsympGlobal"}
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "knowsNewlySymptomatic",
+        "ann:label": "All nodes which are in contact with a newly symptomatics node",
+        "scope": "local",
+        "content": {
+          "elementType": "node",
+          "scope": "local",
+          "operator": "withIncomingEdgeIn",
+          "selector": {
+              "set": {"idRef": "activeEdgesWithSourceNodeNewlyInfected"}
+          }
+        }
+      },
+      {
+        "id": "participateInHomeQuarantineLocal",
+        "ann:label": "All nodes which participate in voluntary home quarantine.",
+        "scope": "local",
+        "content": {
+          "elementType": "node",
+          "scope": "local",
+          "left": {
+            "node": {
+              "property": "nodeTrait",
+              "feature": "participateInHomeQuarantine"
+            }
+          },
+          "operator": "==",
+          "right": {
+            "value": {
+              "trait": "nodeTrait",
+              "feature": "participateInHomeQuarantine",
+              "enum": "true"
+            }
+          }
+        }
+      },
+      {
+        "id": "participateInHomeQuarantineGlobal",
+        "ann:label": "All nodes which participate in voluntary home quarantine.",
+        "scope": "global",
+        "content": {
+          "elementType": "node",
+          "scope": "global",
+          "left": {
+            "node": {
+              "property": "nodeTrait",
+              "feature": "participateInHomeQuarantine"
+            }
+          },
+          "operator": "==",
+          "right": {
+            "value": {
+              "trait": "nodeTrait",
+              "feature": "participateInHomeQuarantine",
+              "enum": "true"
+            }
+          }
+        }
+      },
+      {
+        "id": "workEdgesTarget",
+        "scope": "local",
+        "content": {
+          "elementType": "edge",
+          "left": {
+            "edge": {
+              "property": "targetActivity",
+              "feature": "activityType"
+            }
+          },
+          "operator": "==",
+          "right": {
+            "value": {
+              "trait": "activityTrait",
+              "feature": "activityType",
+              "enum": "work"
+            }
+          }
+        }
+      },
+      {
+        "id": "workEdgesSource",
+        "scope": "local",
+        "content": {
+          "elementType": "edge",
+          "left": {
+            "edge": {
+              "property": "sourceActivity",
+              "feature": "activityType"
+            }
+          },
+          "operator": "==",
+          "right": {
+            "value": {
+              "trait": "activityTrait",
+              "feature": "activityType",
+              "enum": "work"
+            }
+          }
+        }
+      },
+      {
+        "id": "targetNodeparticipateInHomeQuarantine",
+        "scope": "local",
+        "content": {
+          "operation": "intersection",
+          "sets": [
+            {
+              "scope": "local",
+              "elementType": "edge",
+              "operator": "withTargetNodeIn",
+              "selector": {
+                "set": {"idRef": "participateInHomeQuarantineLocal"}
+              }
+            },
+            {
+              "set": {"idRef": "workEdgesTarget"}
+            }
+          ]
+        }
+      },
+      {
+        "id": "sourceNodeparticipateInHomeQuarantine",
+        "scope": "local",
+        "content": {
+          "operation": "intersection",
+          "sets": [
+            {
+              "elementType": "edge",
+              "operator": "withSourceNodeIn",
+              "selector": {
+                "set": {"idRef": "participateInHomeQuarantineGlobal"}
+              }
+            },
+            {
+              "set": {"idRef": "workEdgesSource"}
+            }
+          ]
+        }
+      }
+    ],
+    "variables": [],
+    "triggers": [
+      {
+        "ann:id": "knowsNewlySymptomatic",
+        "trigger": {
+          "left": {
+            "sizeof": {
+              "set": {"idRef": "knowsNewlySymptomatic"}
+            }
+          },
+          "operator": ">",
+          "right": {
+            "value": {"number": 0}
+          }
+        },
+        "interventionIds": ["interventionVoluntaryHomeQuarantine_0"]
+      },
+      {
+        "ann:id": "voluntaryHomeQuarantineSelf",
+        "trigger": {
+          "left": {
+            "sizeof": {
+              "set": {"idRef": "targetNodeparticipateInHomeQuarantine"}
+            }
+          },
+          "operator": ">",
+          "right": {
+            "value": {"number": 0}
+          }
+        },
+        "interventionIds": ["interventionVoluntaryHomeQuarantine_1"]
+      },
+      {
+        "ann:id": "voluntaryHomeQuarantineCoWorker",
+        "trigger": {
+          "left": {
+            "sizeof": {
+              "set": {"idRef": "sourceNodeparticipateInHomeQuarantine"}
+            }
+          },
+          "operator": ">",
+          "right": {
+            "value": {"number": 0}
+          }
+        },
+        "interventionIds": ["interventionVoluntaryHomeQuarantine_2"]
+      }
+    ],
+    "interventions": [
+      {
+        "$comment": "Select Participants for voluntary home quarantine",
+        "id": "interventionVoluntaryHomeQuarantine_0",
+        "target": {
+          "set": {"idRef": "knowsNewlySymptomatic"}
+        },
+        "sampling": {
+          "type": "individual",
+          "number": 30,
+          "sampled": {
+            "foreach": [
+              {
+                "delay": 0,
+                "operations": [
+                  {
+                    "target": {
+                      "node": {
+                        "property": "nodeTrait",
+                        "feature": "participateInHomeQuarantine"
+                      }
+                    },
+                    "operator": "=",
+                    "value": {
+                      "trait": "nodeTrait",
+                      "feature": "participateInHomeQuarantine",
+                      "enum": "true"
+                    }
+                  }
+                ]
+              },
+              {
+                "delay": 1,
+                "operations": [
+                  {
+                    "target": {
+                      "node": {
+                        "property": "nodeTrait",
+                        "feature": "participateInHomeQuarantine"
+                      }
+                    },
+                    "operator": "=",
+                    "value": {
+                      "trait": "nodeTrait",
+                      "feature": "participateInHomeQuarantine",
+                      "enum": "false"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "$comment": "voluntary home quarantine (self)",
+        "id": "interventionVoluntaryHomeQuarantine_1",
+        "target": {
+          "set": {"idRef": "targetNodeparticipateInHomeQuarantine"}
+        },
+        "foreach": [
+          {
+            "operations": [
+              {
+                "target": {
+                  "edge": {"property": "weight"}
+                },
+                "operator": "/=",
+                "value": {"number": 1000000}
+              }
+            ]
+          },
+          {
+            "delay": 14,
+            "operations": [
+              {
+                "target": {
+                  "edge": {"property": "weight"}
+                },
+                "operator": "*=",
+                "value": {"number": 1000000}
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "$comment": "voluntary home quarantine (co-worker)",
+        "id": "interventionVoluntaryHomeQuarantine_2",
+        "target": {
+          "set": {"idRef": "sourceNodeparticipateInHomeQuarantine"}
+        },
+        "foreach": [
+          {
+            "operations": [
+              {
+                "target": {
+                  "edge": {"property": "weight"}
+                },
+                "operator": "/=",
+                "value": {"number": 1000000}
+              }
+            ]
+          },
+          {
+            "delay": 14,
+            "operations": [
+              {
+                "target": {
+                  "edge": {"property": "weight"}
+                },
+                "operator": "*=",
+                "value": {"number": 1000000}
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "userInput": [
+    {
+      "ann:id": "ParticipationPercentage",
+      "ann:label": "Participation Percentage",
+      "ann:description": "The percent of individuals voluntary participating.",
+      "value": ["/template/intervention/0/sampling/number"],
+      "exceads": {
+        "min": 0.0,
+        "max": 100.0,
+        "sweep": true,
+        "calibrate": false
+      }
+    },
+    {
+      "ann:id": "DurationOfParticipation",
+      "ann:label": "Duration of Participation",
+      "ann:description": "The duration in days the individuals participate.",
+      "value": [
+        "/template/intervention/1/foreach/1/delay",
+        "/template/intervention/2/foreach/1/delay"
+      ],
+      "exceads": {
+        "min": 1,
+        "max": 30,
+        "sweep": true,
+        "calibrate": false
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "set": {"idRef": "triggerTemplate1_enteredIsymp"}
+    }
+  ]
+}
