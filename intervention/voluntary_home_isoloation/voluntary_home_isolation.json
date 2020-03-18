@@ -137,22 +137,39 @@
         "id": "targetNodeParticipateInHomeIsolation",
         "scope": "local",
         "content": {
-          "elementType": "edge",
-          "operator": "withTargetNodeIn",
-          "selector": {
-            "set": {"idRef": "participateInHomeIsolationLocal"}
-          }
+          "operation": "intersection",
+          "sets": [
+            {
+              "scope": "local",
+              "elementType": "edge",
+              "operator": "withTargetNodeIn",
+              "selector": {
+                "set": {"idRef": "participateInHomeIsolationLocal"}
+              }
+            },
+            {
+              "set": {"idRef": "workEdgesTarget"}
+            }
+          ]
         }
       },
       {
         "id": "sourceNodeParticipateInHomeIsolation",
         "scope": "local",
         "content": {
-          "elementType": "edge",
-          "operator": "withSourceNodeIn",
-          "selector": {
-            "set": {"idRef": "participateInHomeIsolationGlobal"}
-          }
+          "operation": "intersection",
+          "sets": [
+            {
+              "elementType": "edge",
+              "operator": "withSourceNodeIn",
+              "selector": {
+                "set": {"idRef": "participateInHomeIsolationGlobal"}
+              }
+            },
+            {
+              "set": {"idRef": "workEdgesSource"}
+            }
+          ]
         }
       }
     ],
