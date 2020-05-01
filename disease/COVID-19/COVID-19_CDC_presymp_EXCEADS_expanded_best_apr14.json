@@ -1,0 +1,4505 @@
+{
+ "$schema": "../../../EpiHiper-Schema/schema/templateSchema.json",
+ "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/templateSchema.json",
+ "ann:id": "COVID19_CDCparams_Best-Apr14th",
+ "ann:label": "COVID-19_CDCparams_BestGuess-Apr14",
+ "ann:description": "Classic SEIR model extended to include both symptomatic and an asymptomatic infectious states as well as presymptomatic, medically attended, hospitalization, ventilation, death, hyptothetical treatments and vaccines, as well as post-recovery susceptibility.",
+ "template": {
+  "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/diseaseModelSchema.json",
+  "states": [
+   {
+    "id": "S_p",
+    "ann:label": "Susceptible preschool (0-4)",
+    "infectivity": 0,
+    "susceptibility": 1
+   },
+   {
+    "id": "HypRxFail_p",
+    "ann:label": "Hypothetical treatment with failure preschool (0-4)",
+    "infectivity": 0,
+    "susceptibility": 1
+   },
+   {
+    "id": "HypRxProt_p",
+    "ann:label": "Successful Hypothetical treatment preschool (0-4)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "E_p",
+    "ann:label": "Exposed preschool (0-4)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "Ipresymp_p",
+    "ann:label": "Presymptomatic Infectious preschool (0-4)",
+    "infectivity": 0.8,
+    "susceptibility": 0
+   },
+   {
+    "id": "Isymp_p",
+    "ann:label": "Infectious (symptomatic) preschool (0-4)",
+    "infectivity": 1,
+    "susceptibility": 0
+   },
+   {
+    "id": "Iasymp_p",
+    "ann:label": "Infectious (asymptomatic) preschool (0-4)",
+    "infectivity": 1.0,
+    "susceptibility": 0
+   },
+   {
+    "id": "rMedAttend_p",
+    "ann:label": "Eventually Recovered Medically Attended preschool (0-4)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "hMedAttend_p",
+    "ann:label": "Eventually Hospitalized Medically Attended preschool (0-4)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "dMedAttend_p",
+    "ann:label": "Eventual Death Medically Attended preschool (0-4)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "Hosp_p",
+    "ann:label": "Hospitalized preschool (0-4)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "dHosp_p",
+    "ann:label": "Eventual Death Hospitalized preschool (0-4)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "Vent_p",
+    "ann:label": "Ventilation preschool (0-4)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "dVent_p",
+    "ann:label": "Eventual Death Ventilation preschool (0-4)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "Death_p",
+    "ann:label": "Death preschool (0-4)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "R_p",
+    "ann:label": "Recovered preschool (0-4)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "RyetS_p",
+    "ann:label": "Recovered yet Susceptible preschool (0-4)",
+    "infectivity": 0,
+    "susceptibility": 1
+   },
+   {
+    "id": "Rimmune_p",
+    "ann:label": "Recovered permanently immune preschool (0-4)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "S_s",
+    "ann:label": "Susceptible school (5-17)",
+    "infectivity": 0,
+    "susceptibility": 1
+   },
+   {
+    "id": "HypRxFail_s",
+    "ann:label": "Hypothetical treatment with failure school (5-17)",
+    "infectivity": 0,
+    "susceptibility": 1
+   },
+   {
+    "id": "HypRxProt_s",
+    "ann:label": "Successful Hypothetical treatment school (5-17)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "E_s",
+    "ann:label": "Exposed school (5-17)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "Ipresymp_s",
+    "ann:label": "Presymptomatic Infectious school (5-17)",
+    "infectivity": 0.8,
+    "susceptibility": 0
+   },
+   {
+    "id": "Isymp_s",
+    "ann:label": "Infectious (symptomatic) school (5-17)",
+    "infectivity": 1,
+    "susceptibility": 0
+   },
+   {
+    "id": "Iasymp_s",
+    "ann:label": "Infectious (asymptomatic) school (5-17)",
+    "infectivity": 1.0,
+    "susceptibility": 0
+   },
+   {
+    "id": "rMedAttend_s",
+    "ann:label": "Eventually Recovered Medically Attended school (5-17)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "hMedAttend_s",
+    "ann:label": "Eventually Hospitalized Medically Attended school (5-17)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "dMedAttend_s",
+    "ann:label": "Eventual Death Medically Attended school (5-17)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "Hosp_s",
+    "ann:label": "Hospitalized school (5-17)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "dHosp_s",
+    "ann:label": "Eventual Death Hospitalized school (5-17)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "Vent_s",
+    "ann:label": "Ventilation school (5-17)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "dVent_s",
+    "ann:label": "Eventual Death Ventilation school (5-17)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "Death_s",
+    "ann:label": "Death school (5-17)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "R_s",
+    "ann:label": "Recovered school (5-17)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "RyetS_s",
+    "ann:label": "Recovered yet Susceptible school (5-17)",
+    "infectivity": 0,
+    "susceptibility": 1
+   },
+   {
+    "id": "Rimmune_s",
+    "ann:label": "Recovered permanently immune school (5-17)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "S_a",
+    "ann:label": "Susceptible adult (18-49)",
+    "infectivity": 0,
+    "susceptibility": 1
+   },
+   {
+    "id": "HypRxFail_a",
+    "ann:label": "Hypothetical treatment with failure adult (18-49)",
+    "infectivity": 0,
+    "susceptibility": 1
+   },
+   {
+    "id": "HypRxProt_a",
+    "ann:label": "Successful Hypothetical treatment adult (18-49)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "E_a",
+    "ann:label": "Exposed adult (18-49)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "Ipresymp_a",
+    "ann:label": "Presymptomatic Infectious adult (18-49)",
+    "infectivity": 0.8,
+    "susceptibility": 0
+   },
+   {
+    "id": "Isymp_a",
+    "ann:label": "Infectious (symptomatic) adult (18-49)",
+    "infectivity": 1,
+    "susceptibility": 0
+   },
+   {
+    "id": "Iasymp_a",
+    "ann:label": "Infectious (asymptomatic) adult (18-49)",
+    "infectivity": 1.0,
+    "susceptibility": 0
+   },
+   {
+    "id": "rMedAttend_a",
+    "ann:label": "Eventually Recovered Medically Attended adult (18-49)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "hMedAttend_a",
+    "ann:label": "Eventually Hospitalized Medically Attended adult (18-49)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "dMedAttend_a",
+    "ann:label": "Eventual Death Medically Attended adult (18-49)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "Hosp_a",
+    "ann:label": "Hospitalized adult (18-49)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "dHosp_a",
+    "ann:label": "Eventual Death Hospitalized adult (18-49)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "Vent_a",
+    "ann:label": "Ventilation adult (18-49)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "dVent_a",
+    "ann:label": "Eventual Death Ventilation adult (18-49)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "Death_a",
+    "ann:label": "Death adult (18-49)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "R_a",
+    "ann:label": "Recovered adult (18-49)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "RyetS_a",
+    "ann:label": "Recovered yet Susceptible adult (18-49)",
+    "infectivity": 0,
+    "susceptibility": 1
+   },
+   {
+    "id": "Rimmune_a",
+    "ann:label": "Recovered permanently immune adult (18-49)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "S_o",
+    "ann:label": "Susceptible older adult (50-64)",
+    "infectivity": 0,
+    "susceptibility": 1
+   },
+   {
+    "id": "HypRxFail_o",
+    "ann:label": "Hypothetical treatment with failure older adult (50-64)",
+    "infectivity": 0,
+    "susceptibility": 1
+   },
+   {
+    "id": "HypRxProt_o",
+    "ann:label": "Successful Hypothetical treatment older adult (50-64)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "E_o",
+    "ann:label": "Exposed older adult (50-64)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "Ipresymp_o",
+    "ann:label": "Presymptomatic Infectious older adult (50-64)",
+    "infectivity": 0.8,
+    "susceptibility": 0
+   },
+   {
+    "id": "Isymp_o",
+    "ann:label": "Infectious (symptomatic) older adult (50-64)",
+    "infectivity": 1,
+    "susceptibility": 0
+   },
+   {
+    "id": "Iasymp_o",
+    "ann:label": "Infectious (asymptomatic) older adult (50-64)",
+    "infectivity": 1.0,
+    "susceptibility": 0
+   },
+   {
+    "id": "rMedAttend_o",
+    "ann:label": "Eventually Recovered Medically Attended older adult (50-64)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "hMedAttend_o",
+    "ann:label": "Eventually Hospitalized Medically Attended older adult (50-64)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "dMedAttend_o",
+    "ann:label": "Eventual Death Medically Attended older adult (50-64)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "Hosp_o",
+    "ann:label": "Hospitalized older adult (50-64)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "dHosp_o",
+    "ann:label": "Eventual Death Hospitalized older adult (50-64)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "Vent_o",
+    "ann:label": "Ventilation older adult (50-64)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "dVent_o",
+    "ann:label": "Eventual Death Ventilation older adult (50-64)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "Death_o",
+    "ann:label": "Death older adult (50-64)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "R_o",
+    "ann:label": "Recovered older adult (50-64)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "RyetS_o",
+    "ann:label": "Recovered yet Susceptible older adult (50-64)",
+    "infectivity": 0,
+    "susceptibility": 1
+   },
+   {
+    "id": "Rimmune_o",
+    "ann:label": "Recovered permanently immune older adult (50-64)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "S_g",
+    "ann:label": "Susceptible golden-aged (65+)",
+    "infectivity": 0,
+    "susceptibility": 1
+   },
+   {
+    "id": "HypRxFail_g",
+    "ann:label": "Hypothetical treatment with failure golden-aged (65+)",
+    "infectivity": 0,
+    "susceptibility": 1
+   },
+   {
+    "id": "HypRxProt_g",
+    "ann:label": "Successful Hypothetical treatment golden-aged (65+)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "E_g",
+    "ann:label": "Exposed golden-aged (65+)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "Ipresymp_g",
+    "ann:label": "Presymptomatic Infectious golden-aged (65+)",
+    "infectivity": 0.8,
+    "susceptibility": 0
+   },
+   {
+    "id": "Isymp_g",
+    "ann:label": "Infectious (symptomatic) golden-aged (65+)",
+    "infectivity": 1,
+    "susceptibility": 0
+   },
+   {
+    "id": "Iasymp_g",
+    "ann:label": "Infectious (asymptomatic) golden-aged (65+)",
+    "infectivity": 1.0,
+    "susceptibility": 0
+   },
+   {
+    "id": "rMedAttend_g",
+    "ann:label": "Eventually Recovered Medically Attended golden-aged (65+)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "hMedAttend_g",
+    "ann:label": "Eventually Hospitalized Medically Attended golden-aged (65+)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "dMedAttend_g",
+    "ann:label": "Eventual Death Medically Attended golden-aged (65+)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "Hosp_g",
+    "ann:label": "Hospitalized golden-aged (65+)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "dHosp_g",
+    "ann:label": "Eventual Death Hospitalized golden-aged (65+)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "Vent_g",
+    "ann:label": "Ventilation golden-aged (65+)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "dVent_g",
+    "ann:label": "Eventual Death Ventilation golden-aged (65+)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "Death_g",
+    "ann:label": "Death golden-aged (65+)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "R_g",
+    "ann:label": "Recovered golden-aged (65+)",
+    "infectivity": 0,
+    "susceptibility": 0
+   },
+   {
+    "id": "RyetS_g",
+    "ann:label": "Recovered yet Susceptible golden-aged (65+)",
+    "infectivity": 0,
+    "susceptibility": 1
+   },
+   {
+    "id": "Rimmune_g",
+    "ann:label": "Recovered permanently immune golden-aged (65+)",
+    "infectivity": 0,
+    "susceptibility": 0
+   }
+  ],
+  "initialState": "S_p",
+  "transmissions": [
+   {
+    "id": "txm_S_p_to_E_p_by_Isymp_p",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_p",
+    "exitState": "E_p",
+    "contactState": "Isymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_p_to_E_p_by_Isymp_s",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_p",
+    "exitState": "E_p",
+    "contactState": "Isymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_p_to_E_p_by_Isymp_a",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_p",
+    "exitState": "E_p",
+    "contactState": "Isymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_p_to_E_p_by_Isymp_o",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_p",
+    "exitState": "E_p",
+    "contactState": "Isymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_p_to_E_p_by_Isymp_g",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_p",
+    "exitState": "E_p",
+    "contactState": "Isymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_p_to_E_p_by_Iasymp_p",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_p",
+    "exitState": "E_p",
+    "contactState": "Iasymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_p_to_E_p_by_Iasymp_s",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_p",
+    "exitState": "E_p",
+    "contactState": "Iasymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_p_to_E_p_by_Iasymp_a",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_p",
+    "exitState": "E_p",
+    "contactState": "Iasymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_p_to_E_p_by_Iasymp_o",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_p",
+    "exitState": "E_p",
+    "contactState": "Iasymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_p_to_E_p_by_Iasymp_g",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_p",
+    "exitState": "E_p",
+    "contactState": "Iasymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_p_to_E_p_by_Ipresymp_p",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_p",
+    "exitState": "E_p",
+    "contactState": "Ipresymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_p_to_E_p_by_Ipresymp_s",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_p",
+    "exitState": "E_p",
+    "contactState": "Ipresymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_p_to_E_p_by_Ipresymp_a",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_p",
+    "exitState": "E_p",
+    "contactState": "Ipresymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_p_to_E_p_by_Ipresymp_o",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_p",
+    "exitState": "E_p",
+    "contactState": "Ipresymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_p_to_E_p_by_Ipresymp_g",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_p",
+    "exitState": "E_p",
+    "contactState": "Ipresymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_p_to_E_p_by_Isymp_p",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_p",
+    "exitState": "E_p",
+    "contactState": "Isymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_p_to_E_p_by_Isymp_s",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_p",
+    "exitState": "E_p",
+    "contactState": "Isymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_p_to_E_p_by_Isymp_a",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_p",
+    "exitState": "E_p",
+    "contactState": "Isymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_p_to_E_p_by_Isymp_o",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_p",
+    "exitState": "E_p",
+    "contactState": "Isymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_p_to_E_p_by_Isymp_g",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_p",
+    "exitState": "E_p",
+    "contactState": "Isymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_p_to_E_p_by_Iasymp_p",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_p",
+    "exitState": "E_p",
+    "contactState": "Iasymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_p_to_E_p_by_Iasymp_s",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_p",
+    "exitState": "E_p",
+    "contactState": "Iasymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_p_to_E_p_by_Iasymp_a",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_p",
+    "exitState": "E_p",
+    "contactState": "Iasymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_p_to_E_p_by_Iasymp_o",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_p",
+    "exitState": "E_p",
+    "contactState": "Iasymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_p_to_E_p_by_Iasymp_g",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_p",
+    "exitState": "E_p",
+    "contactState": "Iasymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_p_to_E_p_by_Ipresymp_p",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_p",
+    "exitState": "E_p",
+    "contactState": "Ipresymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_p_to_E_p_by_Ipresymp_s",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_p",
+    "exitState": "E_p",
+    "contactState": "Ipresymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_p_to_E_p_by_Ipresymp_a",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_p",
+    "exitState": "E_p",
+    "contactState": "Ipresymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_p_to_E_p_by_Ipresymp_o",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_p",
+    "exitState": "E_p",
+    "contactState": "Ipresymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_p_to_E_p_by_Ipresymp_g",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_p",
+    "exitState": "E_p",
+    "contactState": "Ipresymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_p_to_E_p_by_Isymp_p",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_p",
+    "exitState": "E_p",
+    "contactState": "Isymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_p_to_E_p_by_Isymp_s",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_p",
+    "exitState": "E_p",
+    "contactState": "Isymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_p_to_E_p_by_Isymp_a",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_p",
+    "exitState": "E_p",
+    "contactState": "Isymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_p_to_E_p_by_Isymp_o",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_p",
+    "exitState": "E_p",
+    "contactState": "Isymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_p_to_E_p_by_Isymp_g",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_p",
+    "exitState": "E_p",
+    "contactState": "Isymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_p_to_E_p_by_Iasymp_p",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_p",
+    "exitState": "E_p",
+    "contactState": "Iasymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_p_to_E_p_by_Iasymp_s",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_p",
+    "exitState": "E_p",
+    "contactState": "Iasymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_p_to_E_p_by_Iasymp_a",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_p",
+    "exitState": "E_p",
+    "contactState": "Iasymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_p_to_E_p_by_Iasymp_o",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_p",
+    "exitState": "E_p",
+    "contactState": "Iasymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_p_to_E_p_by_Iasymp_g",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_p",
+    "exitState": "E_p",
+    "contactState": "Iasymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_p_to_E_p_by_Ipresymp_p",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_p",
+    "exitState": "E_p",
+    "contactState": "Ipresymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_p_to_E_p_by_Ipresymp_s",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_p",
+    "exitState": "E_p",
+    "contactState": "Ipresymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_p_to_E_p_by_Ipresymp_a",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_p",
+    "exitState": "E_p",
+    "contactState": "Ipresymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_p_to_E_p_by_Ipresymp_o",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_p",
+    "exitState": "E_p",
+    "contactState": "Ipresymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_p_to_E_p_by_Ipresymp_g",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_p",
+    "exitState": "E_p",
+    "contactState": "Ipresymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_s_to_E_s_by_Isymp_p",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_s",
+    "exitState": "E_s",
+    "contactState": "Isymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_s_to_E_s_by_Isymp_s",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_s",
+    "exitState": "E_s",
+    "contactState": "Isymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_s_to_E_s_by_Isymp_a",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_s",
+    "exitState": "E_s",
+    "contactState": "Isymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_s_to_E_s_by_Isymp_o",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_s",
+    "exitState": "E_s",
+    "contactState": "Isymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_s_to_E_s_by_Isymp_g",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_s",
+    "exitState": "E_s",
+    "contactState": "Isymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_s_to_E_s_by_Iasymp_p",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_s",
+    "exitState": "E_s",
+    "contactState": "Iasymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_s_to_E_s_by_Iasymp_s",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_s",
+    "exitState": "E_s",
+    "contactState": "Iasymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_s_to_E_s_by_Iasymp_a",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_s",
+    "exitState": "E_s",
+    "contactState": "Iasymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_s_to_E_s_by_Iasymp_o",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_s",
+    "exitState": "E_s",
+    "contactState": "Iasymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_s_to_E_s_by_Iasymp_g",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_s",
+    "exitState": "E_s",
+    "contactState": "Iasymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_s_to_E_s_by_Ipresymp_p",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_s",
+    "exitState": "E_s",
+    "contactState": "Ipresymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_s_to_E_s_by_Ipresymp_s",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_s",
+    "exitState": "E_s",
+    "contactState": "Ipresymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_s_to_E_s_by_Ipresymp_a",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_s",
+    "exitState": "E_s",
+    "contactState": "Ipresymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_s_to_E_s_by_Ipresymp_o",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_s",
+    "exitState": "E_s",
+    "contactState": "Ipresymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_s_to_E_s_by_Ipresymp_g",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_s",
+    "exitState": "E_s",
+    "contactState": "Ipresymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_s_to_E_s_by_Isymp_p",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_s",
+    "exitState": "E_s",
+    "contactState": "Isymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_s_to_E_s_by_Isymp_s",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_s",
+    "exitState": "E_s",
+    "contactState": "Isymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_s_to_E_s_by_Isymp_a",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_s",
+    "exitState": "E_s",
+    "contactState": "Isymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_s_to_E_s_by_Isymp_o",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_s",
+    "exitState": "E_s",
+    "contactState": "Isymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_s_to_E_s_by_Isymp_g",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_s",
+    "exitState": "E_s",
+    "contactState": "Isymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_s_to_E_s_by_Iasymp_p",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_s",
+    "exitState": "E_s",
+    "contactState": "Iasymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_s_to_E_s_by_Iasymp_s",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_s",
+    "exitState": "E_s",
+    "contactState": "Iasymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_s_to_E_s_by_Iasymp_a",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_s",
+    "exitState": "E_s",
+    "contactState": "Iasymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_s_to_E_s_by_Iasymp_o",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_s",
+    "exitState": "E_s",
+    "contactState": "Iasymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_s_to_E_s_by_Iasymp_g",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_s",
+    "exitState": "E_s",
+    "contactState": "Iasymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_s_to_E_s_by_Ipresymp_p",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_s",
+    "exitState": "E_s",
+    "contactState": "Ipresymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_s_to_E_s_by_Ipresymp_s",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_s",
+    "exitState": "E_s",
+    "contactState": "Ipresymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_s_to_E_s_by_Ipresymp_a",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_s",
+    "exitState": "E_s",
+    "contactState": "Ipresymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_s_to_E_s_by_Ipresymp_o",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_s",
+    "exitState": "E_s",
+    "contactState": "Ipresymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_s_to_E_s_by_Ipresymp_g",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_s",
+    "exitState": "E_s",
+    "contactState": "Ipresymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_s_to_E_s_by_Isymp_p",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_s",
+    "exitState": "E_s",
+    "contactState": "Isymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_s_to_E_s_by_Isymp_s",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_s",
+    "exitState": "E_s",
+    "contactState": "Isymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_s_to_E_s_by_Isymp_a",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_s",
+    "exitState": "E_s",
+    "contactState": "Isymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_s_to_E_s_by_Isymp_o",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_s",
+    "exitState": "E_s",
+    "contactState": "Isymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_s_to_E_s_by_Isymp_g",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_s",
+    "exitState": "E_s",
+    "contactState": "Isymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_s_to_E_s_by_Iasymp_p",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_s",
+    "exitState": "E_s",
+    "contactState": "Iasymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_s_to_E_s_by_Iasymp_s",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_s",
+    "exitState": "E_s",
+    "contactState": "Iasymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_s_to_E_s_by_Iasymp_a",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_s",
+    "exitState": "E_s",
+    "contactState": "Iasymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_s_to_E_s_by_Iasymp_o",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_s",
+    "exitState": "E_s",
+    "contactState": "Iasymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_s_to_E_s_by_Iasymp_g",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_s",
+    "exitState": "E_s",
+    "contactState": "Iasymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_s_to_E_s_by_Ipresymp_p",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_s",
+    "exitState": "E_s",
+    "contactState": "Ipresymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_s_to_E_s_by_Ipresymp_s",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_s",
+    "exitState": "E_s",
+    "contactState": "Ipresymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_s_to_E_s_by_Ipresymp_a",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_s",
+    "exitState": "E_s",
+    "contactState": "Ipresymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_s_to_E_s_by_Ipresymp_o",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_s",
+    "exitState": "E_s",
+    "contactState": "Ipresymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_s_to_E_s_by_Ipresymp_g",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_s",
+    "exitState": "E_s",
+    "contactState": "Ipresymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_a_to_E_a_by_Isymp_p",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_a",
+    "exitState": "E_a",
+    "contactState": "Isymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_a_to_E_a_by_Isymp_s",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_a",
+    "exitState": "E_a",
+    "contactState": "Isymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_a_to_E_a_by_Isymp_a",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_a",
+    "exitState": "E_a",
+    "contactState": "Isymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_a_to_E_a_by_Isymp_o",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_a",
+    "exitState": "E_a",
+    "contactState": "Isymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_a_to_E_a_by_Isymp_g",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_a",
+    "exitState": "E_a",
+    "contactState": "Isymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_a_to_E_a_by_Iasymp_p",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_a",
+    "exitState": "E_a",
+    "contactState": "Iasymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_a_to_E_a_by_Iasymp_s",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_a",
+    "exitState": "E_a",
+    "contactState": "Iasymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_a_to_E_a_by_Iasymp_a",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_a",
+    "exitState": "E_a",
+    "contactState": "Iasymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_a_to_E_a_by_Iasymp_o",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_a",
+    "exitState": "E_a",
+    "contactState": "Iasymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_a_to_E_a_by_Iasymp_g",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_a",
+    "exitState": "E_a",
+    "contactState": "Iasymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_a_to_E_a_by_Ipresymp_p",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_a",
+    "exitState": "E_a",
+    "contactState": "Ipresymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_a_to_E_a_by_Ipresymp_s",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_a",
+    "exitState": "E_a",
+    "contactState": "Ipresymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_a_to_E_a_by_Ipresymp_a",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_a",
+    "exitState": "E_a",
+    "contactState": "Ipresymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_a_to_E_a_by_Ipresymp_o",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_a",
+    "exitState": "E_a",
+    "contactState": "Ipresymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_a_to_E_a_by_Ipresymp_g",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_a",
+    "exitState": "E_a",
+    "contactState": "Ipresymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_a_to_E_a_by_Isymp_p",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_a",
+    "exitState": "E_a",
+    "contactState": "Isymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_a_to_E_a_by_Isymp_s",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_a",
+    "exitState": "E_a",
+    "contactState": "Isymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_a_to_E_a_by_Isymp_a",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_a",
+    "exitState": "E_a",
+    "contactState": "Isymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_a_to_E_a_by_Isymp_o",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_a",
+    "exitState": "E_a",
+    "contactState": "Isymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_a_to_E_a_by_Isymp_g",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_a",
+    "exitState": "E_a",
+    "contactState": "Isymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_a_to_E_a_by_Iasymp_p",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_a",
+    "exitState": "E_a",
+    "contactState": "Iasymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_a_to_E_a_by_Iasymp_s",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_a",
+    "exitState": "E_a",
+    "contactState": "Iasymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_a_to_E_a_by_Iasymp_a",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_a",
+    "exitState": "E_a",
+    "contactState": "Iasymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_a_to_E_a_by_Iasymp_o",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_a",
+    "exitState": "E_a",
+    "contactState": "Iasymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_a_to_E_a_by_Iasymp_g",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_a",
+    "exitState": "E_a",
+    "contactState": "Iasymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_a_to_E_a_by_Ipresymp_p",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_a",
+    "exitState": "E_a",
+    "contactState": "Ipresymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_a_to_E_a_by_Ipresymp_s",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_a",
+    "exitState": "E_a",
+    "contactState": "Ipresymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_a_to_E_a_by_Ipresymp_a",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_a",
+    "exitState": "E_a",
+    "contactState": "Ipresymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_a_to_E_a_by_Ipresymp_o",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_a",
+    "exitState": "E_a",
+    "contactState": "Ipresymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_a_to_E_a_by_Ipresymp_g",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_a",
+    "exitState": "E_a",
+    "contactState": "Ipresymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_a_to_E_a_by_Isymp_p",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_a",
+    "exitState": "E_a",
+    "contactState": "Isymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_a_to_E_a_by_Isymp_s",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_a",
+    "exitState": "E_a",
+    "contactState": "Isymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_a_to_E_a_by_Isymp_a",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_a",
+    "exitState": "E_a",
+    "contactState": "Isymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_a_to_E_a_by_Isymp_o",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_a",
+    "exitState": "E_a",
+    "contactState": "Isymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_a_to_E_a_by_Isymp_g",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_a",
+    "exitState": "E_a",
+    "contactState": "Isymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_a_to_E_a_by_Iasymp_p",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_a",
+    "exitState": "E_a",
+    "contactState": "Iasymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_a_to_E_a_by_Iasymp_s",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_a",
+    "exitState": "E_a",
+    "contactState": "Iasymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_a_to_E_a_by_Iasymp_a",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_a",
+    "exitState": "E_a",
+    "contactState": "Iasymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_a_to_E_a_by_Iasymp_o",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_a",
+    "exitState": "E_a",
+    "contactState": "Iasymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_a_to_E_a_by_Iasymp_g",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_a",
+    "exitState": "E_a",
+    "contactState": "Iasymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_a_to_E_a_by_Ipresymp_p",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_a",
+    "exitState": "E_a",
+    "contactState": "Ipresymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_a_to_E_a_by_Ipresymp_s",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_a",
+    "exitState": "E_a",
+    "contactState": "Ipresymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_a_to_E_a_by_Ipresymp_a",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_a",
+    "exitState": "E_a",
+    "contactState": "Ipresymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_a_to_E_a_by_Ipresymp_o",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_a",
+    "exitState": "E_a",
+    "contactState": "Ipresymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_a_to_E_a_by_Ipresymp_g",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_a",
+    "exitState": "E_a",
+    "contactState": "Ipresymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_o_to_E_o_by_Isymp_p",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_o",
+    "exitState": "E_o",
+    "contactState": "Isymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_o_to_E_o_by_Isymp_s",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_o",
+    "exitState": "E_o",
+    "contactState": "Isymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_o_to_E_o_by_Isymp_a",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_o",
+    "exitState": "E_o",
+    "contactState": "Isymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_o_to_E_o_by_Isymp_o",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_o",
+    "exitState": "E_o",
+    "contactState": "Isymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_o_to_E_o_by_Isymp_g",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_o",
+    "exitState": "E_o",
+    "contactState": "Isymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_o_to_E_o_by_Iasymp_p",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_o",
+    "exitState": "E_o",
+    "contactState": "Iasymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_o_to_E_o_by_Iasymp_s",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_o",
+    "exitState": "E_o",
+    "contactState": "Iasymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_o_to_E_o_by_Iasymp_a",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_o",
+    "exitState": "E_o",
+    "contactState": "Iasymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_o_to_E_o_by_Iasymp_o",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_o",
+    "exitState": "E_o",
+    "contactState": "Iasymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_o_to_E_o_by_Iasymp_g",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_o",
+    "exitState": "E_o",
+    "contactState": "Iasymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_o_to_E_o_by_Ipresymp_p",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_o",
+    "exitState": "E_o",
+    "contactState": "Ipresymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_o_to_E_o_by_Ipresymp_s",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_o",
+    "exitState": "E_o",
+    "contactState": "Ipresymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_o_to_E_o_by_Ipresymp_a",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_o",
+    "exitState": "E_o",
+    "contactState": "Ipresymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_o_to_E_o_by_Ipresymp_o",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_o",
+    "exitState": "E_o",
+    "contactState": "Ipresymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_o_to_E_o_by_Ipresymp_g",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_o",
+    "exitState": "E_o",
+    "contactState": "Ipresymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_o_to_E_o_by_Isymp_p",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_o",
+    "exitState": "E_o",
+    "contactState": "Isymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_o_to_E_o_by_Isymp_s",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_o",
+    "exitState": "E_o",
+    "contactState": "Isymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_o_to_E_o_by_Isymp_a",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_o",
+    "exitState": "E_o",
+    "contactState": "Isymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_o_to_E_o_by_Isymp_o",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_o",
+    "exitState": "E_o",
+    "contactState": "Isymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_o_to_E_o_by_Isymp_g",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_o",
+    "exitState": "E_o",
+    "contactState": "Isymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_o_to_E_o_by_Iasymp_p",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_o",
+    "exitState": "E_o",
+    "contactState": "Iasymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_o_to_E_o_by_Iasymp_s",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_o",
+    "exitState": "E_o",
+    "contactState": "Iasymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_o_to_E_o_by_Iasymp_a",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_o",
+    "exitState": "E_o",
+    "contactState": "Iasymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_o_to_E_o_by_Iasymp_o",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_o",
+    "exitState": "E_o",
+    "contactState": "Iasymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_o_to_E_o_by_Iasymp_g",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_o",
+    "exitState": "E_o",
+    "contactState": "Iasymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_o_to_E_o_by_Ipresymp_p",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_o",
+    "exitState": "E_o",
+    "contactState": "Ipresymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_o_to_E_o_by_Ipresymp_s",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_o",
+    "exitState": "E_o",
+    "contactState": "Ipresymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_o_to_E_o_by_Ipresymp_a",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_o",
+    "exitState": "E_o",
+    "contactState": "Ipresymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_o_to_E_o_by_Ipresymp_o",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_o",
+    "exitState": "E_o",
+    "contactState": "Ipresymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_o_to_E_o_by_Ipresymp_g",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_o",
+    "exitState": "E_o",
+    "contactState": "Ipresymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_o_to_E_o_by_Isymp_p",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_o",
+    "exitState": "E_o",
+    "contactState": "Isymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_o_to_E_o_by_Isymp_s",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_o",
+    "exitState": "E_o",
+    "contactState": "Isymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_o_to_E_o_by_Isymp_a",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_o",
+    "exitState": "E_o",
+    "contactState": "Isymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_o_to_E_o_by_Isymp_o",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_o",
+    "exitState": "E_o",
+    "contactState": "Isymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_o_to_E_o_by_Isymp_g",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_o",
+    "exitState": "E_o",
+    "contactState": "Isymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_o_to_E_o_by_Iasymp_p",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_o",
+    "exitState": "E_o",
+    "contactState": "Iasymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_o_to_E_o_by_Iasymp_s",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_o",
+    "exitState": "E_o",
+    "contactState": "Iasymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_o_to_E_o_by_Iasymp_a",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_o",
+    "exitState": "E_o",
+    "contactState": "Iasymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_o_to_E_o_by_Iasymp_o",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_o",
+    "exitState": "E_o",
+    "contactState": "Iasymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_o_to_E_o_by_Iasymp_g",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_o",
+    "exitState": "E_o",
+    "contactState": "Iasymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_o_to_E_o_by_Ipresymp_p",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_o",
+    "exitState": "E_o",
+    "contactState": "Ipresymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_o_to_E_o_by_Ipresymp_s",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_o",
+    "exitState": "E_o",
+    "contactState": "Ipresymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_o_to_E_o_by_Ipresymp_a",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_o",
+    "exitState": "E_o",
+    "contactState": "Ipresymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_o_to_E_o_by_Ipresymp_o",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_o",
+    "exitState": "E_o",
+    "contactState": "Ipresymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_o_to_E_o_by_Ipresymp_g",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_o",
+    "exitState": "E_o",
+    "contactState": "Ipresymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_g_to_E_g_by_Isymp_p",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_g",
+    "exitState": "E_g",
+    "contactState": "Isymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_g_to_E_g_by_Isymp_s",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_g",
+    "exitState": "E_g",
+    "contactState": "Isymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_g_to_E_g_by_Isymp_a",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_g",
+    "exitState": "E_g",
+    "contactState": "Isymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_g_to_E_g_by_Isymp_o",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_g",
+    "exitState": "E_g",
+    "contactState": "Isymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_g_to_E_g_by_Isymp_g",
+    "ann:label": "Infection (symptomatic)",
+    "entryState": "S_g",
+    "exitState": "E_g",
+    "contactState": "Isymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_g_to_E_g_by_Iasymp_p",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_g",
+    "exitState": "E_g",
+    "contactState": "Iasymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_g_to_E_g_by_Iasymp_s",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_g",
+    "exitState": "E_g",
+    "contactState": "Iasymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_g_to_E_g_by_Iasymp_a",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_g",
+    "exitState": "E_g",
+    "contactState": "Iasymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_g_to_E_g_by_Iasymp_o",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_g",
+    "exitState": "E_g",
+    "contactState": "Iasymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_g_to_E_g_by_Iasymp_g",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_g",
+    "exitState": "E_g",
+    "contactState": "Iasymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_g_to_E_g_by_Ipresymp_p",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_g",
+    "exitState": "E_g",
+    "contactState": "Ipresymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_g_to_E_g_by_Ipresymp_s",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_g",
+    "exitState": "E_g",
+    "contactState": "Ipresymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_g_to_E_g_by_Ipresymp_a",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_g",
+    "exitState": "E_g",
+    "contactState": "Ipresymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_g_to_E_g_by_Ipresymp_o",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_g",
+    "exitState": "E_g",
+    "contactState": "Ipresymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_S_g_to_E_g_by_Ipresymp_g",
+    "ann:label": "Infection (asymptomatic)",
+    "entryState": "S_g",
+    "exitState": "E_g",
+    "contactState": "Ipresymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_g_to_E_g_by_Isymp_p",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_g",
+    "exitState": "E_g",
+    "contactState": "Isymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_g_to_E_g_by_Isymp_s",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_g",
+    "exitState": "E_g",
+    "contactState": "Isymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_g_to_E_g_by_Isymp_a",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_g",
+    "exitState": "E_g",
+    "contactState": "Isymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_g_to_E_g_by_Isymp_o",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_g",
+    "exitState": "E_g",
+    "contactState": "Isymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_g_to_E_g_by_Isymp_g",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_g",
+    "exitState": "E_g",
+    "contactState": "Isymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_g_to_E_g_by_Iasymp_p",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_g",
+    "exitState": "E_g",
+    "contactState": "Iasymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_g_to_E_g_by_Iasymp_s",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_g",
+    "exitState": "E_g",
+    "contactState": "Iasymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_g_to_E_g_by_Iasymp_a",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_g",
+    "exitState": "E_g",
+    "contactState": "Iasymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_g_to_E_g_by_Iasymp_o",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_g",
+    "exitState": "E_g",
+    "contactState": "Iasymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_g_to_E_g_by_Iasymp_g",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_g",
+    "exitState": "E_g",
+    "contactState": "Iasymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_g_to_E_g_by_Ipresymp_p",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_g",
+    "exitState": "E_g",
+    "contactState": "Ipresymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_g_to_E_g_by_Ipresymp_s",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_g",
+    "exitState": "E_g",
+    "contactState": "Ipresymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_g_to_E_g_by_Ipresymp_a",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_g",
+    "exitState": "E_g",
+    "contactState": "Ipresymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_g_to_E_g_by_Ipresymp_o",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_g",
+    "exitState": "E_g",
+    "contactState": "Ipresymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_HypRxFail_g_to_E_g_by_Ipresymp_g",
+    "ann:label": "Infection of ineffective vaccine (symptomatic)",
+    "entryState": "HypRxFail_g",
+    "exitState": "E_g",
+    "contactState": "Ipresymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_g_to_E_g_by_Isymp_p",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_g",
+    "exitState": "E_g",
+    "contactState": "Isymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_g_to_E_g_by_Isymp_s",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_g",
+    "exitState": "E_g",
+    "contactState": "Isymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_g_to_E_g_by_Isymp_a",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_g",
+    "exitState": "E_g",
+    "contactState": "Isymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_g_to_E_g_by_Isymp_o",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_g",
+    "exitState": "E_g",
+    "contactState": "Isymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_g_to_E_g_by_Isymp_g",
+    "ann:label": "Reinfection of RyetS (symptomatic)",
+    "entryState": "RyetS_g",
+    "exitState": "E_g",
+    "contactState": "Isymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_g_to_E_g_by_Iasymp_p",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_g",
+    "exitState": "E_g",
+    "contactState": "Iasymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_g_to_E_g_by_Iasymp_s",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_g",
+    "exitState": "E_g",
+    "contactState": "Iasymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_g_to_E_g_by_Iasymp_a",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_g",
+    "exitState": "E_g",
+    "contactState": "Iasymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_g_to_E_g_by_Iasymp_o",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_g",
+    "exitState": "E_g",
+    "contactState": "Iasymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_g_to_E_g_by_Iasymp_g",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_g",
+    "exitState": "E_g",
+    "contactState": "Iasymp_g",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_g_to_E_g_by_Ipresymp_p",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_g",
+    "exitState": "E_g",
+    "contactState": "Ipresymp_p",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_g_to_E_g_by_Ipresymp_s",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_g",
+    "exitState": "E_g",
+    "contactState": "Ipresymp_s",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_g_to_E_g_by_Ipresymp_a",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_g",
+    "exitState": "E_g",
+    "contactState": "Ipresymp_a",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_g_to_E_g_by_Ipresymp_o",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_g",
+    "exitState": "E_g",
+    "contactState": "Ipresymp_o",
+    "transmissibility": 0.185
+   },
+   {
+    "id": "txm_RyetS_g_to_E_g_by_Ipresymp_g",
+    "ann:label": "Reinfection of RyetS (asymptomatic)",
+    "entryState": "RyetS_g",
+    "exitState": "E_g",
+    "contactState": "Ipresymp_g",
+    "transmissibility": 0.185
+   }
+  ],
+  "transitions": [
+   {
+    "id": "HypRxProt_p_to_R_p",
+    "ann:label": "Hypothetical treatment with protection to Recovered",
+    "entryState": "HypRxProt_p",
+    "exitState": "R_p",
+    "probability": 1,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "E_p_to_Ipresymp_p",
+    "ann:label": "Exposed to Infectious and presymptomatic",
+    "entryState": "E_p",
+    "exitState": "Ipresymp_p",
+    "probability": 0.65,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 3
+      }
+     ]
+    }
+   },
+   {
+    "id": "E_p_to_Iasymp_p",
+    "ann:label": "Exposed to Infectious and presymptomatic",
+    "entryState": "E_p",
+    "exitState": "Iasymp_p",
+    "probability": 0.35,
+    "dwellTime": {
+     "normal": {
+      "mean": 5,
+      "standardDeviation": 1
+     }
+    }
+   },
+   {
+    "id": "Ipresymp_p_to_Isymp_p",
+    "ann:label": "Infectious preSymptomatic to Infections Symptomatic",
+    "entryState": "Ipresymp_p",
+    "exitState": "Isymp_p",
+    "probability": 1,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "Iasymp_p_to_R_p",
+    "ann:label": "Asymptomatic to Recovered",
+    "entryState": "Iasymp_p",
+    "exitState": "R_p",
+    "probability": 1,
+    "dwellTime": {
+     "normal": {
+      "mean": 5,
+      "standardDeviation": 1
+     }
+    }
+   },
+   {
+    "id": "Isymp_p_to_rMedAttend_p",
+    "ann:label": "Isymp to recovered Medically Attended",
+    "entryState": "Isymp_p",
+    "exitState": "rMedAttend_p",
+    "probability": 0.9594,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0.175,
+       "value": 1
+      },
+      {
+       "probability": 0.175,
+       "value": 2
+      },
+      {
+       "probability": 0.1,
+       "value": 3
+      },
+      {
+       "probability": 0.1,
+       "value": 4
+      },
+      {
+       "probability": 0.1,
+       "value": 5
+      },
+      {
+       "probability": 0.1,
+       "value": 6
+      },
+      {
+       "probability": 0.1,
+       "value": 7
+      },
+      {
+       "probability": 0.05,
+       "value": 8
+      },
+      {
+       "probability": 0.05,
+       "value": 9
+      },
+      {
+       "probability": 0.05,
+       "value": 10
+      }
+     ]
+    }
+   },
+   {
+    "id": "rMedAttend_p_to_R_p",
+    "ann:label": "Recovered Medically Attended to Recovered",
+    "entryState": "rMedAttend_p",
+    "exitState": "R_p",
+    "probability": 1,
+    "dwellTime": {
+     "normal": {
+      "mean": 5,
+      "standardDeviation": 1
+     }
+    }
+   },
+   {
+    "id": "Isymp_p_to_hMedAttend_p",
+    "ann:label": "Isymp to hospitalized Medically Attended",
+    "entryState": "Isymp_p",
+    "exitState": "hMedAttend_p",
+    "probability": 0.04,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "hMedAttend_p_to_Hosp_p",
+    "ann:label": "Hospitalized Medically Attended to  Hospitalized",
+    "entryState": "hMedAttend_p",
+    "exitState": "Hosp_p",
+    "probability": 1,
+    "dwellTime": {
+     "normal": {
+      "mean": 5.0,
+      "standardDeviation": 4.6
+     }
+    }
+   },
+   {
+    "id": "Hosp_p_to_Vent_p",
+    "ann:label": "Hospitalized to Ventilated",
+    "entryState": "Hosp_p",
+    "exitState": "Vent_p",
+    "probability": 0.06,
+    "dwellTime": {
+     "normal": {
+      "mean": 1,
+      "standardDeviation": 0.2
+     }
+    }
+   },
+   {
+    "id": "Hosp_p_to_R_p",
+    "ann:label": "Hospitalized to Recovered",
+    "entryState": "Hosp_p",
+    "exitState": "R_p",
+    "probability": 0.94,
+    "dwellTime": {
+     "normal": {
+      "mean": 3.1,
+      "standardDeviation": 3.7
+     }
+    }
+   },
+   {
+    "id": "Vent_p_to_R_p",
+    "ann:label": "Ventilated to Recovered",
+    "entryState": "Vent_p",
+    "exitState": "R_p",
+    "probability": 1,
+    "dwellTime": {
+     "normal": {
+      "mean": 2.1,
+      "standardDeviation": 3.7
+     }
+    }
+   },
+   {
+    "id": "Isymp_p_to_dMedAttend_p",
+    "ann:label": "Isymp to death Medically Attended",
+    "entryState": "Isymp_p",
+    "exitState": "dMedAttend_p",
+    "probability": 0.0006,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 1,
+       "value": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "dMedAttend_p_to_dHosp_p",
+    "ann:label": "Death Medically Attended to death Hospitalization",
+    "entryState": "dMedAttend_p",
+    "exitState": "dHosp_p",
+    "probability": 0.95,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 1,
+       "value": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "dHosp_p_to_dVent_p",
+    "ann:label": "Death Hospitalized to  death Ventilated",
+    "entryState": "dHosp_p",
+    "exitState": "dVent_p",
+    "probability": 0.06,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 1,
+       "value": 2
+      },
+      {
+       "probability": 0,
+       "value": 3
+      },
+      {
+       "probability": 0,
+       "value": 4
+      }
+     ]
+    }
+   },
+   {
+    "id": "dMedAttend_p_to_Death_p",
+    "ann:label": "Death Medically Attended to Death",
+    "entryState": "dMedAttend_p",
+    "exitState": "Death_p",
+    "probability": 0.05,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 0,
+       "value": 2
+      },
+      {
+       "probability": 0,
+       "value": 3
+      },
+      {
+       "probability": 0,
+       "value": 4
+      },
+      {
+       "probability": 0,
+       "value": 5
+      },
+      {
+       "probability": 0,
+       "value": 6
+      },
+      {
+       "probability": 0,
+       "value": 7
+      },
+      {
+       "probability": 1,
+       "value": 8
+      },
+      {
+       "probability": 0,
+       "value": 9
+      },
+      {
+       "probability": 0,
+       "value": 10
+      }
+     ]
+    }
+   },
+   {
+    "id": "dHosp_p_to_Death_p",
+    "ann:label": "Death Hospitalized to  Death",
+    "entryState": "dHosp_p",
+    "exitState": "Death_p",
+    "probability": 0.94,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 0,
+       "value": 2
+      },
+      {
+       "probability": 0,
+       "value": 3
+      },
+      {
+       "probability": 0,
+       "value": 4
+      },
+      {
+       "probability": 0,
+       "value": 5
+      },
+      {
+       "probability": 1,
+       "value": 6
+      },
+      {
+       "probability": 0,
+       "value": 7
+      },
+      {
+       "probability": 0,
+       "value": 8
+      }
+     ]
+    }
+   },
+   {
+    "id": "dVent_p_to_Death_p",
+    "ann:label": "Death Ventilated to Death",
+    "entryState": "dVent_p",
+    "exitState": "Death_p",
+    "probability": 1,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 0,
+       "value": 2
+      },
+      {
+       "probability": 0,
+       "value": 3
+      },
+      {
+       "probability": 1,
+       "value": 4
+      }
+     ]
+    }
+   },
+   {
+    "id": "R_p_to_RyetS_p",
+    "ann:label": "Recovered to Recovered yet Susceptible",
+    "entryState": "R_p",
+    "exitState": "RyetS_p",
+    "probability": 0,
+    "dwellTime": {
+     "normal": {
+      "mean": 30,
+      "standardDeviation": 5
+     }
+    }
+   },
+   {
+    "id": "R_p_to_Rimmune_p",
+    "ann:label": "Recovered to Recovered yet Susceptible",
+    "entryState": "R_p",
+    "exitState": "Rimmune_p",
+    "probability": 1,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "HypRxProt_s_to_R_s",
+    "ann:label": "Hypothetical treatment with protection to Recovered",
+    "entryState": "HypRxProt_s",
+    "exitState": "R_s",
+    "probability": 1,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "E_s_to_Ipresymp_s",
+    "ann:label": "Exposed to Infectious and presymptomatic",
+    "entryState": "E_s",
+    "exitState": "Ipresymp_s",
+    "probability": 0.65,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 3
+      }
+     ]
+    }
+   },
+   {
+    "id": "E_s_to_Iasymp_s",
+    "ann:label": "Exposed to Infectious and presymptomatic",
+    "entryState": "E_s",
+    "exitState": "Iasymp_s",
+    "probability": 0.35,
+    "dwellTime": {
+     "normal": {
+      "mean": 5,
+      "standardDeviation": 1
+     }
+    }
+   },
+   {
+    "id": "Ipresymp_s_to_Isymp_s",
+    "ann:label": "Infectious preSymptomatic to Infections Symptomatic",
+    "entryState": "Ipresymp_s",
+    "exitState": "Isymp_s",
+    "probability": 1,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "Iasymp_s_to_R_s",
+    "ann:label": "Asymptomatic to Recovered",
+    "entryState": "Iasymp_s",
+    "exitState": "R_s",
+    "probability": 1,
+    "dwellTime": {
+     "normal": {
+      "mean": 5,
+      "standardDeviation": 1
+     }
+    }
+   },
+   {
+    "id": "Isymp_s_to_rMedAttend_s",
+    "ann:label": "Isymp to recovered Medically Attended",
+    "entryState": "Isymp_s",
+    "exitState": "rMedAttend_s",
+    "probability": 0.9894,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0.175,
+       "value": 1
+      },
+      {
+       "probability": 0.175,
+       "value": 2
+      },
+      {
+       "probability": 0.1,
+       "value": 3
+      },
+      {
+       "probability": 0.1,
+       "value": 4
+      },
+      {
+       "probability": 0.1,
+       "value": 5
+      },
+      {
+       "probability": 0.1,
+       "value": 6
+      },
+      {
+       "probability": 0.1,
+       "value": 7
+      },
+      {
+       "probability": 0.05,
+       "value": 8
+      },
+      {
+       "probability": 0.05,
+       "value": 9
+      },
+      {
+       "probability": 0.05,
+       "value": 10
+      }
+     ]
+    }
+   },
+   {
+    "id": "rMedAttend_s_to_R_s",
+    "ann:label": "Recovered Medically Attended to Recovered",
+    "entryState": "rMedAttend_s",
+    "exitState": "R_s",
+    "probability": 1,
+    "dwellTime": {
+     "normal": {
+      "mean": 5,
+      "standardDeviation": 1
+     }
+    }
+   },
+   {
+    "id": "Isymp_s_to_hMedAttend_s",
+    "ann:label": "Isymp to hospitalized Medically Attended",
+    "entryState": "Isymp_s",
+    "exitState": "hMedAttend_s",
+    "probability": 0.01,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "hMedAttend_s_to_Hosp_s",
+    "ann:label": "Hospitalized Medically Attended to  Hospitalized",
+    "entryState": "hMedAttend_s",
+    "exitState": "Hosp_s",
+    "probability": 1,
+    "dwellTime": {
+     "normal": {
+      "mean": 5.0,
+      "standardDeviation": 4.6
+     }
+    }
+   },
+   {
+    "id": "Hosp_s_to_Vent_s",
+    "ann:label": "Hospitalized to Ventilated",
+    "entryState": "Hosp_s",
+    "exitState": "Vent_s",
+    "probability": 0.06,
+    "dwellTime": {
+     "normal": {
+      "mean": 1,
+      "standardDeviation": 0.2
+     }
+    }
+   },
+   {
+    "id": "Hosp_s_to_R_s",
+    "ann:label": "Hospitalized to Recovered",
+    "entryState": "Hosp_s",
+    "exitState": "R_s",
+    "probability": 0.94,
+    "dwellTime": {
+     "normal": {
+      "mean": 3.1,
+      "standardDeviation": 3.7
+     }
+    }
+   },
+   {
+    "id": "Vent_s_to_R_s",
+    "ann:label": "Ventilated to Recovered",
+    "entryState": "Vent_s",
+    "exitState": "R_s",
+    "probability": 1,
+    "dwellTime": {
+     "normal": {
+      "mean": 2.1,
+      "standardDeviation": 3.7
+     }
+    }
+   },
+   {
+    "id": "Isymp_s_to_dMedAttend_s",
+    "ann:label": "Isymp to death Medically Attended",
+    "entryState": "Isymp_s",
+    "exitState": "dMedAttend_s",
+    "probability": 0.0006,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 1,
+       "value": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "dMedAttend_s_to_dHosp_s",
+    "ann:label": "Death Medically Attended to death Hospitalization",
+    "entryState": "dMedAttend_s",
+    "exitState": "dHosp_s",
+    "probability": 0.95,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 1,
+       "value": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "dHosp_s_to_dVent_s",
+    "ann:label": "Death Hospitalized to  death Ventilated",
+    "entryState": "dHosp_s",
+    "exitState": "dVent_s",
+    "probability": 0.06,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 1,
+       "value": 2
+      },
+      {
+       "probability": 0,
+       "value": 3
+      },
+      {
+       "probability": 0,
+       "value": 4
+      }
+     ]
+    }
+   },
+   {
+    "id": "dMedAttend_s_to_Death_s",
+    "ann:label": "Death Medically Attended to Death",
+    "entryState": "dMedAttend_s",
+    "exitState": "Death_s",
+    "probability": 0.05,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 0,
+       "value": 2
+      },
+      {
+       "probability": 0,
+       "value": 3
+      },
+      {
+       "probability": 0,
+       "value": 4
+      },
+      {
+       "probability": 0,
+       "value": 5
+      },
+      {
+       "probability": 0,
+       "value": 6
+      },
+      {
+       "probability": 0,
+       "value": 7
+      },
+      {
+       "probability": 1,
+       "value": 8
+      },
+      {
+       "probability": 0,
+       "value": 9
+      },
+      {
+       "probability": 0,
+       "value": 10
+      }
+     ]
+    }
+   },
+   {
+    "id": "dHosp_s_to_Death_s",
+    "ann:label": "Death Hospitalized to  Death",
+    "entryState": "dHosp_s",
+    "exitState": "Death_s",
+    "probability": 0.94,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 0,
+       "value": 2
+      },
+      {
+       "probability": 0,
+       "value": 3
+      },
+      {
+       "probability": 0,
+       "value": 4
+      },
+      {
+       "probability": 0,
+       "value": 5
+      },
+      {
+       "probability": 1,
+       "value": 6
+      },
+      {
+       "probability": 0,
+       "value": 7
+      },
+      {
+       "probability": 0,
+       "value": 8
+      }
+     ]
+    }
+   },
+   {
+    "id": "dVent_s_to_Death_s",
+    "ann:label": "Death Ventilated to Death",
+    "entryState": "dVent_s",
+    "exitState": "Death_s",
+    "probability": 1,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 0,
+       "value": 2
+      },
+      {
+       "probability": 0,
+       "value": 3
+      },
+      {
+       "probability": 1,
+       "value": 4
+      }
+     ]
+    }
+   },
+   {
+    "id": "R_s_to_RyetS_s",
+    "ann:label": "Recovered to Recovered yet Susceptible",
+    "entryState": "R_s",
+    "exitState": "RyetS_s",
+    "probability": 0,
+    "dwellTime": {
+     "normal": {
+      "mean": 30,
+      "standardDeviation": 5
+     }
+    }
+   },
+   {
+    "id": "R_s_to_Rimmune_s",
+    "ann:label": "Recovered to Recovered yet Susceptible",
+    "entryState": "R_s",
+    "exitState": "Rimmune_s",
+    "probability": 1,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "HypRxProt_a_to_R_a",
+    "ann:label": "Hypothetical treatment with protection to Recovered",
+    "entryState": "HypRxProt_a",
+    "exitState": "R_a",
+    "probability": 1,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "E_a_to_Ipresymp_a",
+    "ann:label": "Exposed to Infectious and presymptomatic",
+    "entryState": "E_a",
+    "exitState": "Ipresymp_a",
+    "probability": 0.65,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 3
+      }
+     ]
+    }
+   },
+   {
+    "id": "E_a_to_Iasymp_a",
+    "ann:label": "Exposed to Infectious and presymptomatic",
+    "entryState": "E_a",
+    "exitState": "Iasymp_a",
+    "probability": 0.35,
+    "dwellTime": {
+     "normal": {
+      "mean": 5,
+      "standardDeviation": 1
+     }
+    }
+   },
+   {
+    "id": "Ipresymp_a_to_Isymp_a",
+    "ann:label": "Infectious preSymptomatic to Infections Symptomatic",
+    "entryState": "Ipresymp_a",
+    "exitState": "Isymp_a",
+    "probability": 1,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "Iasymp_a_to_R_a",
+    "ann:label": "Asymptomatic to Recovered",
+    "entryState": "Iasymp_a",
+    "exitState": "R_a",
+    "probability": 1,
+    "dwellTime": {
+     "normal": {
+      "mean": 5,
+      "standardDeviation": 1
+     }
+    }
+   },
+   {
+    "id": "Isymp_a_to_rMedAttend_a",
+    "ann:label": "Isymp to recovered Medically Attended",
+    "entryState": "Isymp_a",
+    "exitState": "rMedAttend_a",
+    "probability": 0.9594,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0.175,
+       "value": 1
+      },
+      {
+       "probability": 0.175,
+       "value": 2
+      },
+      {
+       "probability": 0.1,
+       "value": 3
+      },
+      {
+       "probability": 0.1,
+       "value": 4
+      },
+      {
+       "probability": 0.1,
+       "value": 5
+      },
+      {
+       "probability": 0.1,
+       "value": 6
+      },
+      {
+       "probability": 0.1,
+       "value": 7
+      },
+      {
+       "probability": 0.05,
+       "value": 8
+      },
+      {
+       "probability": 0.05,
+       "value": 9
+      },
+      {
+       "probability": 0.05,
+       "value": 10
+      }
+     ]
+    }
+   },
+   {
+    "id": "rMedAttend_a_to_R_a",
+    "ann:label": "Recovered Medically Attended to Recovered",
+    "entryState": "rMedAttend_a",
+    "exitState": "R_a",
+    "probability": 1,
+    "dwellTime": {
+     "normal": {
+      "mean": 5,
+      "standardDeviation": 1
+     }
+    }
+   },
+   {
+    "id": "Isymp_a_to_hMedAttend_a",
+    "ann:label": "Isymp to hospitalized Medically Attended",
+    "entryState": "Isymp_a",
+    "exitState": "hMedAttend_a",
+    "probability": 0.04,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "hMedAttend_a_to_Hosp_a",
+    "ann:label": "Hospitalized Medically Attended to  Hospitalized",
+    "entryState": "hMedAttend_a",
+    "exitState": "Hosp_a",
+    "probability": 1,
+    "dwellTime": {
+     "normal": {
+      "mean": 5.0,
+      "standardDeviation": 4.6
+     }
+    }
+   },
+   {
+    "id": "Hosp_a_to_Vent_a",
+    "ann:label": "Hospitalized to Ventilated",
+    "entryState": "Hosp_a",
+    "exitState": "Vent_a",
+    "probability": 0.06,
+    "dwellTime": {
+     "normal": {
+      "mean": 1,
+      "standardDeviation": 0.2
+     }
+    }
+   },
+   {
+    "id": "Hosp_a_to_R_a",
+    "ann:label": "Hospitalized to Recovered",
+    "entryState": "Hosp_a",
+    "exitState": "R_a",
+    "probability": 0.94,
+    "dwellTime": {
+     "normal": {
+      "mean": 3.1,
+      "standardDeviation": 3.7
+     }
+    }
+   },
+   {
+    "id": "Vent_a_to_R_a",
+    "ann:label": "Ventilated to Recovered",
+    "entryState": "Vent_a",
+    "exitState": "R_a",
+    "probability": 1,
+    "dwellTime": {
+     "normal": {
+      "mean": 2.1,
+      "standardDeviation": 3.7
+     }
+    }
+   },
+   {
+    "id": "Isymp_a_to_dMedAttend_a",
+    "ann:label": "Isymp to death Medically Attended",
+    "entryState": "Isymp_a",
+    "exitState": "dMedAttend_a",
+    "probability": 0.0006,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 1,
+       "value": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "dMedAttend_a_to_dHosp_a",
+    "ann:label": "Death Medically Attended to death Hospitalization",
+    "entryState": "dMedAttend_a",
+    "exitState": "dHosp_a",
+    "probability": 0.95,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 1,
+       "value": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "dHosp_a_to_dVent_a",
+    "ann:label": "Death Hospitalized to  death Ventilated",
+    "entryState": "dHosp_a",
+    "exitState": "dVent_a",
+    "probability": 0.06,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 1,
+       "value": 2
+      },
+      {
+       "probability": 0,
+       "value": 3
+      },
+      {
+       "probability": 0,
+       "value": 4
+      }
+     ]
+    }
+   },
+   {
+    "id": "dMedAttend_a_to_Death_a",
+    "ann:label": "Death Medically Attended to Death",
+    "entryState": "dMedAttend_a",
+    "exitState": "Death_a",
+    "probability": 0.05,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 0,
+       "value": 2
+      },
+      {
+       "probability": 0,
+       "value": 3
+      },
+      {
+       "probability": 0,
+       "value": 4
+      },
+      {
+       "probability": 0,
+       "value": 5
+      },
+      {
+       "probability": 0,
+       "value": 6
+      },
+      {
+       "probability": 0,
+       "value": 7
+      },
+      {
+       "probability": 1,
+       "value": 8
+      },
+      {
+       "probability": 0,
+       "value": 9
+      },
+      {
+       "probability": 0,
+       "value": 10
+      }
+     ]
+    }
+   },
+   {
+    "id": "dHosp_a_to_Death_a",
+    "ann:label": "Death Hospitalized to  Death",
+    "entryState": "dHosp_a",
+    "exitState": "Death_a",
+    "probability": 0.94,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 0,
+       "value": 2
+      },
+      {
+       "probability": 0,
+       "value": 3
+      },
+      {
+       "probability": 0,
+       "value": 4
+      },
+      {
+       "probability": 0,
+       "value": 5
+      },
+      {
+       "probability": 1,
+       "value": 6
+      },
+      {
+       "probability": 0,
+       "value": 7
+      },
+      {
+       "probability": 0,
+       "value": 8
+      }
+     ]
+    }
+   },
+   {
+    "id": "dVent_a_to_Death_a",
+    "ann:label": "Death Ventilated to Death",
+    "entryState": "dVent_a",
+    "exitState": "Death_a",
+    "probability": 1,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 0,
+       "value": 2
+      },
+      {
+       "probability": 0,
+       "value": 3
+      },
+      {
+       "probability": 1,
+       "value": 4
+      }
+     ]
+    }
+   },
+   {
+    "id": "R_a_to_RyetS_a",
+    "ann:label": "Recovered to Recovered yet Susceptible",
+    "entryState": "R_a",
+    "exitState": "RyetS_a",
+    "probability": 0,
+    "dwellTime": {
+     "normal": {
+      "mean": 30,
+      "standardDeviation": 5
+     }
+    }
+   },
+   {
+    "id": "R_a_to_Rimmune_a",
+    "ann:label": "Recovered to Recovered yet Susceptible",
+    "entryState": "R_a",
+    "exitState": "Rimmune_a",
+    "probability": 1,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "HypRxProt_o_to_R_o",
+    "ann:label": "Hypothetical treatment with protection to Recovered",
+    "entryState": "HypRxProt_o",
+    "exitState": "R_o",
+    "probability": 1,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "E_o_to_Ipresymp_o",
+    "ann:label": "Exposed to Infectious and presymptomatic",
+    "entryState": "E_o",
+    "exitState": "Ipresymp_o",
+    "probability": 0.65,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 3
+      }
+     ]
+    }
+   },
+   {
+    "id": "E_o_to_Iasymp_o",
+    "ann:label": "Exposed to Infectious and presymptomatic",
+    "entryState": "E_o",
+    "exitState": "Iasymp_o",
+    "probability": 0.35,
+    "dwellTime": {
+     "normal": {
+      "mean": 5,
+      "standardDeviation": 1
+     }
+    }
+   },
+   {
+    "id": "Ipresymp_o_to_Isymp_o",
+    "ann:label": "Infectious preSymptomatic to Infections Symptomatic",
+    "entryState": "Ipresymp_o",
+    "exitState": "Isymp_o",
+    "probability": 1,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "Iasymp_o_to_R_o",
+    "ann:label": "Asymptomatic to Recovered",
+    "entryState": "Iasymp_o",
+    "exitState": "R_o",
+    "probability": 1,
+    "dwellTime": {
+     "normal": {
+      "mean": 5,
+      "standardDeviation": 1
+     }
+    }
+   },
+   {
+    "id": "Isymp_o_to_rMedAttend_o",
+    "ann:label": "Isymp to recovered Medically Attended",
+    "entryState": "Isymp_o",
+    "exitState": "rMedAttend_o",
+    "probability": 0.912,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0.175,
+       "value": 1
+      },
+      {
+       "probability": 0.175,
+       "value": 2
+      },
+      {
+       "probability": 0.1,
+       "value": 3
+      },
+      {
+       "probability": 0.1,
+       "value": 4
+      },
+      {
+       "probability": 0.1,
+       "value": 5
+      },
+      {
+       "probability": 0.1,
+       "value": 6
+      },
+      {
+       "probability": 0.1,
+       "value": 7
+      },
+      {
+       "probability": 0.05,
+       "value": 8
+      },
+      {
+       "probability": 0.05,
+       "value": 9
+      },
+      {
+       "probability": 0.05,
+       "value": 10
+      }
+     ]
+    }
+   },
+   {
+    "id": "rMedAttend_o_to_R_o",
+    "ann:label": "Recovered Medically Attended to Recovered",
+    "entryState": "rMedAttend_o",
+    "exitState": "R_o",
+    "probability": 1,
+    "dwellTime": {
+     "normal": {
+      "mean": 5,
+      "standardDeviation": 1
+     }
+    }
+   },
+   {
+    "id": "Isymp_o_to_hMedAttend_o",
+    "ann:label": "Isymp to hospitalized Medically Attended",
+    "entryState": "Isymp_o",
+    "exitState": "hMedAttend_o",
+    "probability": 0.085,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "hMedAttend_o_to_Hosp_o",
+    "ann:label": "Hospitalized Medically Attended to  Hospitalized",
+    "entryState": "hMedAttend_o",
+    "exitState": "Hosp_o",
+    "probability": 1,
+    "dwellTime": {
+     "normal": {
+      "mean": 5.3,
+      "standardDeviation": 5.2
+     }
+    }
+   },
+   {
+    "id": "Hosp_o_to_Vent_o",
+    "ann:label": "Hospitalized to Ventilated",
+    "entryState": "Hosp_o",
+    "exitState": "Vent_o",
+    "probability": 0.15000000000000002,
+    "dwellTime": {
+     "normal": {
+      "mean": 1,
+      "standardDeviation": 0.2
+     }
+    }
+   },
+   {
+    "id": "Hosp_o_to_R_o",
+    "ann:label": "Hospitalized to Recovered",
+    "entryState": "Hosp_o",
+    "exitState": "R_o",
+    "probability": 0.85,
+    "dwellTime": {
+     "normal": {
+      "mean": 7.8,
+      "standardDeviation": 6.3
+     }
+    }
+   },
+   {
+    "id": "Vent_o_to_R_o",
+    "ann:label": "Ventilated to Recovered",
+    "entryState": "Vent_o",
+    "exitState": "R_o",
+    "probability": 1,
+    "dwellTime": {
+     "normal": {
+      "mean": 6.8,
+      "standardDeviation": 6.3
+     }
+    }
+   },
+   {
+    "id": "Isymp_o_to_dMedAttend_o",
+    "ann:label": "Isymp to death Medically Attended",
+    "entryState": "Isymp_o",
+    "exitState": "dMedAttend_o",
+    "probability": 0.003,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 1,
+       "value": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "dMedAttend_o_to_dHosp_o",
+    "ann:label": "Death Medically Attended to death Hospitalization",
+    "entryState": "dMedAttend_o",
+    "exitState": "dHosp_o",
+    "probability": 0.95,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 1,
+       "value": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "dHosp_o_to_dVent_o",
+    "ann:label": "Death Hospitalized to  death Ventilated",
+    "entryState": "dHosp_o",
+    "exitState": "dVent_o",
+    "probability": 0.15000000000000002,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 1,
+       "value": 2
+      },
+      {
+       "probability": 0,
+       "value": 3
+      },
+      {
+       "probability": 0,
+       "value": 4
+      }
+     ]
+    }
+   },
+   {
+    "id": "dMedAttend_o_to_Death_o",
+    "ann:label": "Death Medically Attended to Death",
+    "entryState": "dMedAttend_o",
+    "exitState": "Death_o",
+    "probability": 0.05,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 0,
+       "value": 2
+      },
+      {
+       "probability": 0,
+       "value": 3
+      },
+      {
+       "probability": 0,
+       "value": 4
+      },
+      {
+       "probability": 0,
+       "value": 5
+      },
+      {
+       "probability": 0,
+       "value": 6
+      },
+      {
+       "probability": 0,
+       "value": 7
+      },
+      {
+       "probability": 1,
+       "value": 8
+      },
+      {
+       "probability": 0,
+       "value": 9
+      },
+      {
+       "probability": 0,
+       "value": 10
+      }
+     ]
+    }
+   },
+   {
+    "id": "dHosp_o_to_Death_o",
+    "ann:label": "Death Hospitalized to  Death",
+    "entryState": "dHosp_o",
+    "exitState": "Death_o",
+    "probability": 0.85,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 0,
+       "value": 2
+      },
+      {
+       "probability": 0,
+       "value": 3
+      },
+      {
+       "probability": 0,
+       "value": 4
+      },
+      {
+       "probability": 0,
+       "value": 5
+      },
+      {
+       "probability": 1,
+       "value": 6
+      },
+      {
+       "probability": 0,
+       "value": 7
+      },
+      {
+       "probability": 0,
+       "value": 8
+      }
+     ]
+    }
+   },
+   {
+    "id": "dVent_o_to_Death_o",
+    "ann:label": "Death Ventilated to Death",
+    "entryState": "dVent_o",
+    "exitState": "Death_o",
+    "probability": 1,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 0,
+       "value": 2
+      },
+      {
+       "probability": 0,
+       "value": 3
+      },
+      {
+       "probability": 1,
+       "value": 4
+      }
+     ]
+    }
+   },
+   {
+    "id": "R_o_to_RyetS_o",
+    "ann:label": "Recovered to Recovered yet Susceptible",
+    "entryState": "R_o",
+    "exitState": "RyetS_o",
+    "probability": 0,
+    "dwellTime": {
+     "normal": {
+      "mean": 30,
+      "standardDeviation": 5
+     }
+    }
+   },
+   {
+    "id": "R_o_to_Rimmune_o",
+    "ann:label": "Recovered to Recovered yet Susceptible",
+    "entryState": "R_o",
+    "exitState": "Rimmune_o",
+    "probability": 1,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "HypRxProt_g_to_R_g",
+    "ann:label": "Hypothetical treatment with protection to Recovered",
+    "entryState": "HypRxProt_g",
+    "exitState": "R_g",
+    "probability": 1,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "E_g_to_Ipresymp_g",
+    "ann:label": "Exposed to Infectious and presymptomatic",
+    "entryState": "E_g",
+    "exitState": "Ipresymp_g",
+    "probability": 0.65,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 3
+      }
+     ]
+    }
+   },
+   {
+    "id": "E_g_to_Iasymp_g",
+    "ann:label": "Exposed to Infectious and presymptomatic",
+    "entryState": "E_g",
+    "exitState": "Iasymp_g",
+    "probability": 0.35,
+    "dwellTime": {
+     "normal": {
+      "mean": 5,
+      "standardDeviation": 1
+     }
+    }
+   },
+   {
+    "id": "Ipresymp_g_to_Isymp_g",
+    "ann:label": "Infectious preSymptomatic to Infections Symptomatic",
+    "entryState": "Ipresymp_g",
+    "exitState": "Isymp_g",
+    "probability": 1,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "Iasymp_g_to_R_g",
+    "ann:label": "Asymptomatic to Recovered",
+    "entryState": "Iasymp_g",
+    "exitState": "R_g",
+    "probability": 1,
+    "dwellTime": {
+     "normal": {
+      "mean": 5,
+      "standardDeviation": 1
+     }
+    }
+   },
+   {
+    "id": "Isymp_g_to_rMedAttend_g",
+    "ann:label": "Isymp to recovered Medically Attended",
+    "entryState": "Isymp_g",
+    "exitState": "rMedAttend_g",
+    "probability": 0.788,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0.175,
+       "value": 1
+      },
+      {
+       "probability": 0.175,
+       "value": 2
+      },
+      {
+       "probability": 0.1,
+       "value": 3
+      },
+      {
+       "probability": 0.1,
+       "value": 4
+      },
+      {
+       "probability": 0.1,
+       "value": 5
+      },
+      {
+       "probability": 0.1,
+       "value": 6
+      },
+      {
+       "probability": 0.1,
+       "value": 7
+      },
+      {
+       "probability": 0.05,
+       "value": 8
+      },
+      {
+       "probability": 0.05,
+       "value": 9
+      },
+      {
+       "probability": 0.05,
+       "value": 10
+      }
+     ]
+    }
+   },
+   {
+    "id": "rMedAttend_g_to_R_g",
+    "ann:label": "Recovered Medically Attended to Recovered",
+    "entryState": "rMedAttend_g",
+    "exitState": "R_g",
+    "probability": 1,
+    "dwellTime": {
+     "normal": {
+      "mean": 5,
+      "standardDeviation": 1
+     }
+    }
+   },
+   {
+    "id": "Isymp_g_to_hMedAttend_g",
+    "ann:label": "Isymp to hospitalized Medically Attended",
+    "entryState": "Isymp_g",
+    "exitState": "hMedAttend_g",
+    "probability": 0.195,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "hMedAttend_g_to_Hosp_g",
+    "ann:label": "Hospitalized Medically Attended to  Hospitalized",
+    "entryState": "hMedAttend_g",
+    "exitState": "Hosp_g",
+    "probability": 1,
+    "dwellTime": {
+     "normal": {
+      "mean": 4.2,
+      "standardDeviation": 5.2
+     }
+    }
+   },
+   {
+    "id": "Hosp_g_to_Vent_g",
+    "ann:label": "Hospitalized to Ventilated",
+    "entryState": "Hosp_g",
+    "exitState": "Vent_g",
+    "probability": 0.22499999999999998,
+    "dwellTime": {
+     "normal": {
+      "mean": 1,
+      "standardDeviation": 0.2
+     }
+    }
+   },
+   {
+    "id": "Hosp_g_to_R_g",
+    "ann:label": "Hospitalized to Recovered",
+    "entryState": "Hosp_g",
+    "exitState": "R_g",
+    "probability": 0.775,
+    "dwellTime": {
+     "normal": {
+      "mean": 6.5,
+      "standardDeviation": 4.9
+     }
+    }
+   },
+   {
+    "id": "Vent_g_to_R_g",
+    "ann:label": "Ventilated to Recovered",
+    "entryState": "Vent_g",
+    "exitState": "R_g",
+    "probability": 1,
+    "dwellTime": {
+     "normal": {
+      "mean": 5.5,
+      "standardDeviation": 4.9
+     }
+    }
+   },
+   {
+    "id": "Isymp_g_to_dMedAttend_g",
+    "ann:label": "Isymp to death Medically Attended",
+    "entryState": "Isymp_g",
+    "exitState": "dMedAttend_g",
+    "probability": 0.017,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 1,
+       "value": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "dMedAttend_g_to_dHosp_g",
+    "ann:label": "Death Medically Attended to death Hospitalization",
+    "entryState": "dMedAttend_g",
+    "exitState": "dHosp_g",
+    "probability": 0.95,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 1,
+       "value": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "dHosp_g_to_dVent_g",
+    "ann:label": "Death Hospitalized to  death Ventilated",
+    "entryState": "dHosp_g",
+    "exitState": "dVent_g",
+    "probability": 0.22499999999999998,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 1,
+       "value": 2
+      },
+      {
+       "probability": 0,
+       "value": 3
+      },
+      {
+       "probability": 0,
+       "value": 4
+      }
+     ]
+    }
+   },
+   {
+    "id": "dMedAttend_g_to_Death_g",
+    "ann:label": "Death Medically Attended to Death",
+    "entryState": "dMedAttend_g",
+    "exitState": "Death_g",
+    "probability": 0.05,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 0,
+       "value": 2
+      },
+      {
+       "probability": 0,
+       "value": 3
+      },
+      {
+       "probability": 0,
+       "value": 4
+      },
+      {
+       "probability": 0,
+       "value": 5
+      },
+      {
+       "probability": 0,
+       "value": 6
+      },
+      {
+       "probability": 0,
+       "value": 7
+      },
+      {
+       "probability": 1,
+       "value": 8
+      },
+      {
+       "probability": 0,
+       "value": 9
+      },
+      {
+       "probability": 0,
+       "value": 10
+      }
+     ]
+    }
+   },
+   {
+    "id": "dHosp_g_to_Death_g",
+    "ann:label": "Death Hospitalized to  Death",
+    "entryState": "dHosp_g",
+    "exitState": "Death_g",
+    "probability": 0.775,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 0,
+       "value": 2
+      },
+      {
+       "probability": 0,
+       "value": 3
+      },
+      {
+       "probability": 0,
+       "value": 4
+      },
+      {
+       "probability": 0,
+       "value": 5
+      },
+      {
+       "probability": 1,
+       "value": 6
+      },
+      {
+       "probability": 0,
+       "value": 7
+      },
+      {
+       "probability": 0,
+       "value": 8
+      }
+     ]
+    }
+   },
+   {
+    "id": "dVent_g_to_Death_g",
+    "ann:label": "Death Ventilated to Death",
+    "entryState": "dVent_g",
+    "exitState": "Death_g",
+    "probability": 1,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 0,
+       "value": 1
+      },
+      {
+       "probability": 0,
+       "value": 2
+      },
+      {
+       "probability": 0,
+       "value": 3
+      },
+      {
+       "probability": 1,
+       "value": 4
+      }
+     ]
+    }
+   },
+   {
+    "id": "R_g_to_RyetS_g",
+    "ann:label": "Recovered to Recovered yet Susceptible",
+    "entryState": "R_g",
+    "exitState": "RyetS_g",
+    "probability": 0,
+    "dwellTime": {
+     "normal": {
+      "mean": 30,
+      "standardDeviation": 5
+     }
+    }
+   },
+   {
+    "id": "R_g_to_Rimmune_g",
+    "ann:label": "Recovered to Recovered yet Susceptible",
+    "entryState": "R_g",
+    "exitState": "Rimmune_g",
+    "probability": 1,
+    "dwellTime": {
+     "discrete": [
+      {
+       "probability": 1,
+       "value": 1
+      }
+     ]
+    }
+   }
+  ],
+  "analysis": {
+   "infectiousStates": "Isymp+Iasymp"
+  }
+ },
+ "userInput": [
+  {
+   "ann:id": "Transmissibility",
+   "ann:label": "Transmissibility",
+   "ann:description": "Probability of Transmission per unit time (secs)",
+   "value": [
+    "/template/transmissions/1/transmissibility",
+    "/template/transmissions/2/transmissibility",
+    "/template/transmissions/3/transmissibility",
+    "/template/transmissions/4/transmissibility",
+    "/template/transmissions/5/transmissibility",
+    "/template/transmissions/6/transmissibility"
+   ],
+   "exceads": {
+    "minValue": 0,
+    "maxValue": 1,
+    "sweep": false,
+    "calibrate": false
+   }
+  },
+  {
+   "ann:id": "ProbabilityOfAsymptomaticProgression",
+   "ann:label": "Probability of Asymptomatic Progression",
+   "ann:description": "Proportion of Infectious that are asymptomatic.  Represents the probability an individual in the Exposed state will become Infectious and asymtomatic.",
+   "value": [
+    "/template/transitions/2/probability"
+   ],
+   "exceads": {
+    "minValue": 0,
+    "maxValue": 1,
+    "sweep": false,
+    "calibrate": false,
+    "autoAdjust": {
+     "target": [
+      "/template/transitions/1/probability"
+     ],
+     "value": "1.0 - /template/transitions/2/probability"
+    }
+   }
+  },
+  {
+   "ann:id": "InfectivityAsymptomatic",
+   "ann:label": "Infectiousness of asympotmatic infections",
+   "ann:description": "Infectious without symptoms. Asymptomatic individuals are less likely to infect others or be observed, thus may not be counted and are less likely to receive interventions.",
+   "value": [
+    "/template/states/6/infectivity"
+   ],
+   "exceads": {
+    "minValue": 0,
+    "maxValue": 1,
+    "sweep": false,
+    "calibrate": false
+   }
+  }
+ ],
+ "requirements": [],
+ "exceads": {
+  "name": "COVID-19, SARS-CoV2 disease",
+  "shortName": "COVID-19",
+  "groupName": [
+   "Coronavirus",
+   "2019-nCoV"
+  ],
+  "referenceImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAEGwAAAWfCAIAAABvzEBBAAAAAXNSR0IArs4c6QAAAJBlWElmTU0AKgAAAAgABgEGAAMAAAABAAIAAAESAAMAAAABAAEAAAEaAAUAAAABAAAAVgEbAAUAAAABAAAAXgEoAAMAAAABAAIAAIdpAAQAAAABAAAAZgAAAAAAAACWAAAAAQAAAJYAAAABAAOgAQADAAAAAQABAACgAgAEAAAAAQAAEGygAwAEAAAAAQAABZ8AAAAAshf29gAAAAlwSFlzAAAXEgAAFxIBZ5/SUgAAAgtpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNC4wIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICAgICA8dGlmZjpQaG90b21ldHJpY0ludGVycHJldGF0aW9uPjI8L3RpZmY6UGhvdG9tZXRyaWNJbnRlcnByZXRhdGlvbj4KICAgICAgICAgPHRpZmY6UmVzb2x1dGlvblVuaXQ+MjwvdGlmZjpSZXNvbHV0aW9uVW5pdD4KICAgICAgICAgPHRpZmY6Q29tcHJlc3Npb24+NTwvdGlmZjpDb21wcmVzc2lvbj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+Cs+OiooAAEAASURBVHgB7N0HeBRV24fxk17ovUsVBESQKkoVbDQRpQmigCAIFhSxN1REBRs2XpqgNKWj2OhVegdBekvoIQESkpB8fzKy35oETNlsttxzeS2zszNnzvnNmpmdOc95fBITEw0TAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIODpAr6e3kDahwACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAghcESCIgu8BAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIeIUAQRRecZhpJAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCBBEwXcAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEvEKAIAqvOMw0EgEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBAii4DuAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACXiFAEIVXHGYaiQACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAgRR8B1AAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABrxAgiMIrDjONRAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAYIo+A4ggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIICAVwgQROEVh5lGIoAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAEEUfAcQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEDAKwQIovCKw0wjEUAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAgCAKvgMIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCDgFQIEUXjFYaaRCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAgggQBAF3wEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBDwCgGCKLziMNNIBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQIIiC7wACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAgh4hQBBFF5xmGkkAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIEETBdwABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQS8QsDfK1pJIxFAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQACB9AgkJCTEx8fHxcXp1Tbp7eXLl/VWrymntCxXsfaTCrF/+5/zWj8xtUkbprY4lWVaUwz6IFWMtC/3uTqpnKuzPumd9/f39706qRA/P7+r75zxr/auPWqyzaR9XrVNFZCFCCCAAAIIIIAAAq4vQBCF6x8jaogAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAgFcIKEQhNjb20tXJNp9sRm81aWVrfdtryplkq9lWsA+KsM1bM1rHmrlWOIFXHAka+V8CCqIICAhQ9MX1J62jwIyUawYGBmpDLU85/edybWtN2vbqbGCyeb39rxbwOQIIIIAAAggg4L0CPlzre+/Bp+UIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCKRHQGkQoqOjL168aL1aM5qPSfNkv7JiJRTkYEVMWDP0ZUrP0WBdBK4nkDLQwloSlDRp3n4m2Vt9ZC2xLdeS4OBg+9dkbwnbuN7B4DMEEEAAAQQQcDEBgihc7IBQHQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEHC2g0IULSdP58+etmZRv9ZEtOsKKkbBe7Rcq1MHRVaM8BBDwBAFfX18rKkPBFbb4Cs2EhISk91WbhCZN1oyK9QQg2oAAAggggAACriRAEIUrHQ3qggACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIBAagIJCQkKcohK2xQZGWkFS1ivioLQ5qmVyjIEEEDA1QUUnqFoCiugQrEV1kzK1xxXJ61zdTZHsnlt5ePj4+oNpn4IIIAAAgggkPUCBFFkvTF7QAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEDATkAhDYpzOHd1ioiIuDr7r3/tlytxRGJiol0ZzCKAAAIIpE9AERRWWIVec6ZtypUrl7WiZjT5+/unb5esjQACCCCAAAIuKUAQhUseFiqFAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggg4G4CSvhw5syZs2fP/uerQiVIDeFuh5f6IoAAAiY4ONiKptBr7ty5rVfNJJvy5MmjJXq1JmXAwA4BBBBAAAEEXEqAIAqXOhxUBgEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQMDlBOLi4k6dOnXy35OWnD592v41JibG5apOhRBAAAEEslsgICBAMRV5r06KrLg6mzdf0qS3tpn8+fMHBQVld5XZPwIIIIAAAh4uQBCFhx9gmocAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCBwfYFLly6Fh4eHhYXpVdOJEyeOHz9u/xoREXH9EvgUAQQQQAABRwmEhoYqlEKTIiv0WsBuKliwoN7pVZM+8vHxcdROKQcBBBBAAAGvEiCIwqsON41FAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQS8VEBpJI6kmBQ4oYkYCS/9TtBsBBBAwJ0F/Pz8FEdRKGkqco0pODjYnZtI3RFAAAEEEMgqAYIoskqWchFAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQScKZCQkKAMEikCJa4sOHr0qNJNOLMy7AuBtAj4pmFSP+lka2nseWvS8quzafrXfv2U1VMRKRdqybWWJyZNWsGa0Wt657VJfHy8/s+1Jr29fPny1XcJyd7aliebSbXOLEQAAUtAuSxKpDaVKlVKuSxQQgABBBBAwGsFCKLw2kNPwxFAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAXcVUO6Iffv27d+/X6/WpPkDBw7ExcW5a5Ood4YE1L/f398/MDAwICDAek05k2y59VZb2SZtYpvXTFreKrAh5aRtUy7UkmTLFcmghVY8Q4YazUbJBWyhF2mMu7CFYSiEQ9tqss2ka15/cLThf06prhYbG6vl1kfWTLJXFaslalHy1vIeAQcJhIaGlkmaSpcubZspX748wRUOAqYYBBBAAAGXFiCIwqUPD5VDAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQS8WUB9iA8ePJgsWEJRE2fPnvVmFhdvuwIbgtM8BQUFKarB9ppyxvrUWq5S9VaTZqxgCcUnuLgG1UMgMwIK6kgWXGG9VQyGNent1dkrURn/Oa+cPJq0mu015Yz1qbWcKI7MHD433TZv3rw3/nuqWLGiFrppc6g2AggggAACqQoQRJEqCwsRQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEnC1w6tSpv5KmXbt26d+dO3cquYT6EDu7Hl62P6VE0HjkOa5Omg8JCUnXq1a2D5pQkIOXEdJcBDxWQIEZVjRFTNKkef2b8vVaC7U8Ojr6Oq8qymPtPKthxYsXr2o3ValSJU+ePJ7VRFqDAAIIIOBdAgRReNfxprUIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggIArCCg0QvklrJAJ2+vp06ddoW5uVwcFMORKbcqZM6ciI6zXqyESqbxVyITbNZkKI4CAZwgo00XKEIuLFy8q9EKvthnrrf1rso/09kLSpNI8Q8b1W1G6dOmadlPRokVdv87UEAEEEEAAAZsAQRQ2CmYQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEskRA3WQVMrFly5bNmzdv3bpVKSb27NkTGxubJTtz50KV0kFje+fNm1evKafcuXOnFiuRy9/f350bTd0RQAABhwkkJCTYAipsMwqvSDl//t9TVFSUbYHybzisQl5TULFixWrXrn170lSnTh3C87zmyNNQBBBAwF0FCKJw1yNHvRFAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAZcVUFdUBUsoZMIWOKH+qS5b26yrmJ+fX76kKX/+/PrXerVmNJ8yWIJwiKw7FpSMAAIIpFFAMX62gAprRqewlFNkZKQW6tU26a2iONK4Fw9eTeeyGjVqKJ6iUaNGTZs21fnOgxtL0xBAAAEE3FSAIAo3PXBUGwEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQcBUBK9GELWRCgRP79u3TQlepXxbUQ2kiCiZNBQoU0L+2V83Yx0sod0QW7JwiEUAAAQRcUUAnPmW9OJc0KbLCmrG9RiRNemvNWK+Ku3DFljiuTr6+vgqoaJY0NWzYUAmXHFc2JSGAAAIIIJBxAYIoMm7HlggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAgNcKhIWFrV27ds2aNXrVdPbsWY+hCAkJKVKkSOHChW2vmilkNylqIjAw0GPaS0MQQAABBLJLID4+3oqm0GlU05kzZ6xXzdim00mT3mrl7KqnQ/YbFBSkxBRt2rRp3bp1yZIlHVImhSCAAAIIIJAxAYIoMubGVggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAgHcJaPDsdevWKV7CCpw4cuSI+7Y/R44cJUqUUA9OTcWLFy9atGixYsX0as3kypXLfZtGzRFA"
+ }
+}
