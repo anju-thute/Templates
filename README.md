@@ -60,3 +60,20 @@ How do we want to do:
 * Specify upper and lower bounds
 * Type of input widget (eg text box, slider, etc. )
 * Ordering and grouping of elements (eg which of the text boxes should come first in the GUI, do some belong under a common header, eg coverage of vaccine by age-group)
+
+## Template Validation Rules and mapping of attributes in EXCEADS :
+
+* ann:label is mapped to name of the template and cannot exceed more than 100 characters.
+* ann:description is mapped to description of the template and cannot exceed more than 2000 characters.
+
+* Every user input under userInput array, should have exceads block - a JSON object which can have following attributes :
+  - If section has "minValue", then it's value cannot be empty. Specify the value in number
+  - If section has "maxValue", then it's value cannot be empty. Specify the value in number
+  - If section has "sweep", then it's value cannot be empty. Specify the value in boolean i.e. true/false
+  - If section has "calibrate", then it's value cannot be empty. Specify the value in boolean i.e. true/false
+
+* Every template has generic exceads block - a JSON object (at the level of template, userInput, requirements etc.) which can have following attributes :
+  - name (Optional) - This is not being used currently since we are using ann:label to map the name attribute for the template.
+  - shortName - Short Name of the Template
+  - groupName - This is an array of strings which specifies that this template belongs to which all groups.
+  - referenceImage - This attribute is specific to Disease Model, in case Parallel PNG is not present for the corresponding template, this is to be taken up as an Image Represntation for the Disease Model
