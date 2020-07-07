@@ -331,7 +331,7 @@
       "ann:id": "ParticipationPercentage",
       "ann:label": "Participation Percentage",
       "ann:description": "The percent of individuals voluntary participating.",
-      "value": ["/template/intervention/0/sampling/number"],
+      "value": ["/template/interventions/1/sampling/number"],
       "exceads": {
         "min": 0.0,
         "max": 100.0,
@@ -344,8 +344,8 @@
       "ann:label": "Duration of Participation",
       "ann:description": "The duration in days the individuals participate.",
       "value": [
-        "/template/intervention/1/foreach/1/delay",
-        "/template/intervention/2/foreach/1/delay"
+        "/template/interventions/2/foreach/2/delay",
+        "/template/interventions/3/foreach/2/delay"
       ],
       "exceads": {
         "min": 1,
