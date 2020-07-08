@@ -140,7 +140,7 @@
                 "id": "H_to_Fh",
                 "ann:label": "Hospital to FuneralHospital",
                 "entryState": "H",
-                "exitState": "F",
+                "exitState": "Fh",
                 "probability": 0.64,
                 "dwellTime": {
                     "normal": {
