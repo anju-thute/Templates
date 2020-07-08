@@ -103,7 +103,7 @@
       "ann:id": "ThresholdInfectedSchoolChildren",
       "ann:label": "Infected School Children - Number",
       "ann:description": "Number school children that are symptomatic.",
-      "value": ["/template/triggers/2/trigger/left/value/number"],
+      "value": ["/template/triggers/1/trigger/left/value/number"],
       "exceads": {
         "minValue": 0,
         "maxValue": 1,
