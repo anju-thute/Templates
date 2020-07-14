@@ -52,7 +52,8 @@
             "ann:label": "Health state of individuals for initial infections",
             "ann:description": "The specific disease state the individuals will be placed in at the beginning of the simulation",
             "value": ["/template/initializations/1/sampling/sampled/foreach/1/operations/1/value/healthState"],
-            "exceads": {"validValues": "diseaseModel/states/./id"}
+            "attributeType": "text",
+            "exceads": {"validExpression": "$..states[?(@.id)]"}
         }
     ],
     "requirements": [
