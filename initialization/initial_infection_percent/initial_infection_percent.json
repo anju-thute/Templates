@@ -51,13 +51,16 @@
       "ann:id": "InfectedState",
       "ann:label": "The health state of infected individuals",
       "ann:description": "The health state of individuals that will be infected at the start of the simulation",
-      "value": ["/template/initializations/1/sampling/sampled/foreach/operations/1/value/healthState"],
-      "exceads": {"validValues": "diseaseModel/states/./id"}
+      "value": ["/template/initializations/1/sampling/sampled/foreach/1/operations/1/value/healthState"],
+      "exceads": {
+          "attributeType": "text",
+          "validExpression": "$..states[?(@.id)]"
+        }
     }
   ],
   "requirements": [
     {
-      "value": {"healthState": "/template/initializations/1/sampling/sampled/foreach/operations/1/value/healthState"}
+      "value": {"healthState": "/template/initializations/1/sampling/sampled/foreach/1/operations/1/value/healthState"}
     }
   ]
 }
