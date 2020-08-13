@@ -1,0 +1,84 @@
+{
+    "$schema": "../../schema/templateSchema.json",
+    "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/templateSchema.json",
+    "ann:id": "InitialInfectionsCustomHealthValidValues",
+    "ann:label": "Valid Values[Covid Disease]-ipresymp, Hosp, Death, RyetS,Rimmune, MedAttend",
+    "ann:description": "Initially infect the specified number of individuals by moving them to the specified disease state.",
+    "template": {
+      "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/initializationSchema.json",
+      "initializations": [
+        {
+          "target": {
+            "elementType": "node",
+            "scope": "local"
+          },
+          "sampling": {
+            "type": "absolute",
+            "number": 25,
+            "sampled": {
+              "foreach": [
+                {
+                  "operations": [
+                    {
+                      "target": {
+                        "node": {
+                          "property": "healthState"
+                        }
+                      },
+                      "operator": "=",
+                      "value": {
+                        "healthState": "Isymp"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "userInput": [
+      {
+        "ann:id": "NumberOfIndividuals",
+        "ann:label": "Number of individuals to initially infect",
+        "ann:description": "Number of individuals that will be infected at the start of the simulation",
+        "value": [
+          "/template/initializations/1/sampling/number"
+        ],
+        "exceads": {
+          "minValue": 0,
+          "maxValue": 999,
+          "sweep": true,
+          "calibrate": false
+        }
+      },
+      {
+        "ann:id": "StateOfInfections",
+        "ann:label": "Health state of individuals for initial infections",
+        "ann:description": "The specific disease state the individuals will be placed in at the beginning of the simulation",
+        "value": [
+          "/template/initializations/1/sampling/sampled/foreach/1/operations/1/value/healthState"
+        ],
+        "exceads": {
+          "attributeType": "text",
+          "validValues": ["Ipresymp", "Hosp", "Death", "RyetS", "Rimmune", "MedAttend"]
+        }
+      }
+    ],
+    "requirements": [
+      {
+        "value": {
+          "healthState": "Isymp"
+        }
+      }
+    ],
+    "exceads": {
+      "requires": {
+        "allOf": [
+          "diseaseModelTemplate1.json"
+        ]
+      },
+      "groupName": ["Health State Templates"]
+    }
+  }
