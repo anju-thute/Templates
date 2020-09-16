@@ -1,10 +1,10 @@
 # Population Selection  
 
 ## Abstract
-For initialization, interventions, and analysis it is necessary to specify a subset of the population. In order to do this, EXCEADS needs to be able to dynamically build a query based on the currently given user context.
+For initialization, interventions, and analysis it is necessary to specify a subset of the population. In order to do this, EXCEADS needs to be able to dynamically build a query based on the currently given user context since not all fileds and their values are known a priori. 
 
 ## Problem
-Individuals have dynamic properties which are only available at simulation time and static properties (including geo-spacial). The difference between the 2 types should not affect the user interface but will affect the way the query can be built.
+Individuals have dynamic properties which are only available at simulation time and static properties (including geo-spacial). The difference between the 2 types should not affect the user interface, i.e., the user must not made aware of these distinction and should just properties from on list, but will affect the way the query can be built.
 
 ## Implementation
 ### Dynamic Porperties
