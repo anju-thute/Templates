@@ -46,7 +46,7 @@ Please note that the types of `A` and `B` must be compatible. Furthermore, the f
 * __not__: `not Boolean`
 
 ### Static properties
-Static properties are given through an external read-only database containing two tables, one specifying node properties indexed by the node id and another specifying location properties indexed by the location id. The fields available in these tables will only be known to EXCEADS through the selected region and population. The fields, including types and labels, are specified in the JSON header of the associated CSV files.
+Static properties are given through an external read-only database containing two tables, one specifying node properties indexed by the node id and another specifying location properties indexed by the location id. The fields available in these tables will only be known to EXCEADS once the region and population are selected. After slection the fields, including types and labels, are specified in the JSON header of the associated CSV files.
 
 ### Queries for static properties
 At this point, static queries are very limited. They return a sets which contains only field values. The returned field is either the id (node or location) in case the queries constraint (where clause) a field name or a selected field when the constraint contains a list of ids. Please note that all returned values will be unique. 
