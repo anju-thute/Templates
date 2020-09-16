@@ -1,13 +1,13 @@
 # Population Selection  
 
 ## Abstract
-For initialization, interventions, and analysis it is necessary to specify a subset of the population. In order to do this, EXCEADS needs to be able to dynamically build a query based on the currently given user context since not all fileds and their values are known a priori. 
+When running EpiHiper, it is necessary to specify intervention targets. These are needed for initialization, interventions, and for analysis. To specify a target is to specify a subset of the population. In order to support this, EXCEADS must be able to dynamically build the corresponding query to specify the population subset, and must do that in the context established by the user through, e.g., his/her choice of region, population, network, and configurations. The set of fields and their values will depend on these particular choices, and are not known a priori. 
 
 ## Problem
-Individuals have dynamic properties which are only available at simulation time and static properties (including geo-spacial). The difference between the 2 types should not affect the user interface, i.e., the user must not made aware of these distinction and should just properties from on list, but will affect the way the query can be built.
+Individuals have dynamic properties which are only available at simulation time, and static properties (including geo-spatial). The difference between the two types should be made transparent in the user interface, i.e., the user should not be made aware of these distinctions, they should just be properties from on list. This distinction, however, will impact the way in which query are built.
 
 ## Implementation
-### Dynamic Porperties
+### Dynamic Properties
 A node's (individual's) dynamic properties in EpiHiper are:
 * __node id__: integer 
 * __health state__: disease state of the currently selected disease model
