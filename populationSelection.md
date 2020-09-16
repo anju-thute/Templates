@@ -42,7 +42,7 @@ Operations returning a Boolean (true, false):
 
 Please note that the types of `A` and `B` must be compatible. Furthermore the following operations returning a Boolean (true, false) are supported:
 * __and__: `and [Boolean1, Boolean2, ..., Booleank]`
-* __or__: `and [Boolean1, Boolean2, ..., Booleank]`
+* __or__: `or [Boolean1, Boolean2, ..., Booleank]`
 * __not__: `not Boolean`
 
 ### Static properties
@@ -64,7 +64,7 @@ At this point static queries are very limited. They return a sets which contains
 Please note that the types of `A` and `B` must be compatible. 
 
 ### Supporting `and` and `or` in static queries.
-EpiHiper supports the set operations `union` and `intersection`. Since the return of a static query is a a set these operations can be used to implement `or` (`union`)  and `and` (`intersection`).
+EpiHiper supports the set operations `union` and `intersection`. Since the return value of a static query is a a set these operations can be used to implement `or` (`union`)  and `and` (`intersection`).
 
 ### Encoding of the query
 The query will be encoded in JSON following the [schemata](https://github.com/NSSAC/EpiHiper-Schema/tree/master/schema).
