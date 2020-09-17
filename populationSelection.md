@@ -1,7 +1,7 @@
 # Population Selection  
 
 ## Abstract
-When running EpiHiper, it is necessary to specify intervention targets. These are needed for initialization, interventions, and for analysis. To specify a target is to specify a subset of the population. In order to support this, EXCEADS must be able to dynamically build the corresponding query to specify the population subset, and must do that in the context established by the user through, e.g., his/her choice of region, population, network, and configurations. The set of fields and their values will depend on these particular choices, and are not known a priori. 
+When running EpiHiper, it is necessary to specify target sets of indiviudals or their contacts. These are needed for initialization, interventions, and for analysis. To specify a target is to specify a subset of the population. In order to support this, EXCEADS must be able to dynamically build the corresponding query to specify the population subset, and must do that in the context established by the user through, e.g., his/her choice of region, population, network, and configurations. The set of fields and their values will depend on these particular choices, and are not known a priori. 
 
 ## Problem
 Individuals have dynamic properties which are only available at simulation time, and static properties (including geo-spatial). The difference between the two types should be made transparent in the user interface, i.e., the user should not be made aware of these distinctions, they should just be properties from on list. This distinction, however, will impact the way in which query are built.
