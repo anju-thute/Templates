@@ -1,10 +1,10 @@
 # Population Selection  
 
 ## Abstract
-When running EpiHiper, it is necessary to specify target sets of indiviudals or their contacts. These are needed for initialization, interventions, and for analysis. To specify a target is to specify a subset of the population. In order to support this, EXCEADS must be able to dynamically build the corresponding query to specify the population subset, and must do that in the context established by the user through, e.g., his/her choice of region, population, network, and configurations. The set of fields and their values will depend on these particular choices, and are not known a priori. 
+When running EpiHiper, it is necessary to specify target sets of individuals or their contacts. These are needed for initialization, interventions, and analysis. To specify a target set is to specify a subset of the population. In order to support this, EXCEADS must be able to dynamically build the corresponding query to specify the population subset, and must do that in the context established by the user through, e.g., his/her choice of region, population, network, and configurations. The set of fields and their values will depend on these particular choices, and are not known a priori. 
 
 ## Problem
-Individuals have dynamic properties which are only available at simulation time, and static properties (including geo-spatial). The difference between the two types should no tbe made transparent in the user interface, i.e., the user should not be made aware of these distinctions, they should just be properties from on list. This distinction, however, will impact the way in which query are built.
+Individuals have dynamic properties which are only available at simulation time, and static properties (including geo-spatial). The difference between the two types should not be made transparent in the user interface, i.e., the user should not be made aware of these distinctions, they should just be properties that can be selected from a list. This distinction, however, will impact the way in which the queries are built.
 
 ## Implementation
 ### Dynamic Properties
@@ -46,12 +46,12 @@ Please note that the types of `A` and `B` must be compatible. Furthermore, the f
 * __not__: `not Boolean`
 
 ### Static properties
-Static properties are given through an external read-only database containing two tables, one specifying node properties indexed by the node id and another specifying location properties indexed by the location id. The fields available in these tables will only be known to EXCEADS once the region and population are selected. After slection the fields, including types and labels, are specified in the JSON header of the associated CSV files.
+Static properties are given through an external read-only database containing two tables, one specifying node properties indexed by the node id and another specifying location properties indexed by the location id. The fields available in these tables will only be known to EXCEADS once the region and population are selected. After selection, the fields, including types and labels, are specified in the JSON header of the associated CSV files.
 
 ### Queries for static properties
-At this point, static queries are very limited. They return a set which contains values for only a single field; the returned field is either the id (node or location) in the case that the queries constraint (where clause) includes a field name, or the selected field when the constraint contains a list of ids. Please note that all returned values will be unique. 
+At this point, static queries are very limited. They return a set which contains values for only a single field; the returned field is either the id (node or location) in the case that the query's constraint (where clause) includes a field name, or the selected field when the constraint contains a list of ids. Please note that all returned values will be unique. 
 
-### Queries constraints for static properties
+### Query constraints for static properties
 * __equal__: `A == B`
 * __not equal__: `A != B`
 * __less__: `A < B`
@@ -70,4 +70,4 @@ EpiHiper supports the set operations `union` and `intersection`. Since the retur
 The query will be encoded in JSON following the [schemata](https://github.com/NSSAC/EpiHiper-Schema/tree/master/schema).
 
 ### Geo-spacial queries
-Currently EpiHiper does not support geo-spacial queries based on shapes. This feature will be implemented in the future and the encoding will use JSON. This, however, does not mean that we cannot select locations. Locations of homes or activities will have admin levels 1 through 2 (country, state, county) in the location table, thus locations can be selected based on these field values. We will provide a JSON encoding for admin levels which represent a tree structure so that EXCEADS can map user understandable names to the appropriate admin levels. Since the admin levels are a static property, the above described implementation will suffice. 
+Currently EpiHiper does not support geo-spacial queries based on shapes. This feature will be implemented in the future and the encoding will use JSON. This, however, does not mean that we cannot select locations. Locations of homes or activities will have admin levels 1 through 2 (country (implied admin 0), state, county) in the location tables, thus locations can be selected based on these field values. We will provide a JSON encoding for admin levels which represent a tree structure so that EXCEADS can map user understandable names to the appropriate admin levels. Since the admin levels are a static property, the above described implementation will suffice. 
