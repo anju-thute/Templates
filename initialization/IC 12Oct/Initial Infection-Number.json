@@ -2,7 +2,7 @@
   "$schema": "../../schema/templateSchema.json",
   "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/templateSchema.json",
   "ann:id": "NumberInitialInfections",
-  "ann:label": "Initial Infections - number",
+  "ann:label": "Initial Infections - number- 12th Oct",
   "ann:description": "Initially infect the specified number of individuals by moving them to the E health state",
   "template": {
     "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/initializationSchema.json",
