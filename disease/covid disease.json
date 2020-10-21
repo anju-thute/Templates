@@ -1,0 +1,1101 @@
+{
+    "$schema": "../../../EpiHiper-Schema/schema/templateSchema.json",
+    "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/templateSchema.json",
+    "ann:id": "FluWithAsymptomaticInfection",
+    "ann:label": "Covid Disease- All group",
+    "ann:description": "Classic SEIR model extended to include both symptomatic and an asymptomatic infectious states as well as hospitalization, ventilation, death, as well as, vaccinated.",
+    "template": {
+        "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/diseaseModelSchema.json",
+        "states": [
+            {
+                "id": "S",
+                "ann:label": "Susceptible",
+                "infectivity": 0,
+                "susceptibility": 1
+            },
+            {
+                "id": "HypRx_fail",
+                "ann:label": "Hypothetical treatment with failure",
+                "infectivity": 0,
+                "susceptibility": 1
+            },
+            {
+                "id": "HypRx_prot",
+                "ann:label": "Vaccinated and protected",
+                "infectivity": 0,
+                "susceptibility": 0
+            },
+            {
+                "id": "E",
+                "ann:label": "Exposed",
+                "infectivity": 0,
+                "susceptibility": 0
+            },
+            {
+                "id": "Ipresymp",
+                "ann:label": "Presymptomatic Infectious",
+                "infectivity": 1,
+                "susceptibility": 0
+            },
+            {
+                "id": "Isymp",
+                "ann:label": "Infectious (symptomatic)",
+                "infectivity": 1,
+                "susceptibility": 0
+            },
+            {
+                "id": "Iasymp",
+                "ann:label": "Infectious (asymptomatic)",
+                "infectivity": 0.5,
+                "susceptibility": 0
+            },
+            {
+                "id": "MedAttend",
+                "ann:label": "Medically Attended",
+                "infectivity": 0,
+                "susceptibility": 0
+            },
+            {
+                "id": "Hosp",
+                "ann:label": "Hospitalized",
+                "infectivity": 0,
+                "susceptibility": 0
+            },
+            {
+                "id": "Death",
+                "ann:label": "Death",
+                "infectivity": 0,
+                "susceptibility": 0
+            },
+            {
+                "id": "R",
+                "ann:label": "Recovered",
+                "infectivity": 0,
+                "susceptibility": 0
+            },
+            {
+                "id": "RyetS",
+                "ann:label": "Recovered yet Susceptible",
+                "infectivity": 0,
+                "susceptibility": 1
+            },
+            {
+                "id": "Rimmune",
+                "ann:label": "Recovered permanently immune",
+                "infectivity": 0,
+                "susceptibility": 0
+            }
+        ],
+        "initialState": "S",
+        "transmissions": [
+            {
+                "id": "infection_Isymp",
+                "ann:label": "Infection (symptomatic)",
+                "entryState": "S",
+                "exitState": "E",
+                "contactState": "Isymp",
+                "transmissibility": 0.4
+            },
+            {
+                "id": "infection_Iasymp",
+                "ann:label": "Infection (asymptomatic)",
+                "entryState": "S",
+                "exitState": "E",
+                "contactState": "Iasymp",
+                "transmissibility": 0.4
+            },
+            {
+                "id": "infection_HypRx_fail_Isymp",
+                "ann:label": "Infection of ineffective vaccine (symptomatic)",
+                "entryState": "HypRx_fail",
+                "exitState": "E",
+                "contactState": "Isymp",
+                "transmissibility": 0.4
+            },
+            {
+                "id": "infection_HypRx_fail_Iasymp",
+                "ann:label": "Infection of ineffective vaccine (symptomatic)",
+                "entryState": "HypRx_fail",
+                "exitState": "E",
+                "contactState": "Iasymp",
+                "transmissibility": 0.4
+            },
+            {
+                "id": "reinfection_Isymp",
+                "ann:label": "Reinfection of RyetS (symptomatic)",
+                "entryState": "RyetS",
+                "exitState": "E",
+                "contactState": "Isymp",
+                "transmissibility": 0.4
+            },
+            {
+                "id": "reinfection_Iasymp",
+                "ann:label": "Reinfection of RyetS (asymptomatic)",
+                "entryState": "RyetS",
+                "exitState": "E",
+                "contactState": "Iasymp",
+                "transmissibility": 0.4
+            }
+        ],
+        "transitions": [
+            {
+                "id": "HypRx_prot_to_R",
+                "ann:label": "Hypothetical treatment with protection to Recovered",
+                "entryState": "HypRx_prot",
+                "exitState": "R",
+                "probability": 1,
+                "dwellTime": {
+                    "discrete": [
+                        {
+                            "probability": 1,
+                            "value": 1
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "E_to_Ipresymp",
+                "ann:label": "Exposed to Infectious and presymptomatic",
+                "entryState": "E",
+                "exitState": "Ipresymp",
+                "probability": 0,
+                "dwellTime": {
+                    "discrete": [
+                        {
+                            "probability": 0.1,
+                            "value": 0
+                        },
+                        {
+                            "probability": 0.2,
+                            "value": 1
+                        },
+                        {
+                            "probability": 0.6,
+                            "value": 2
+                        },
+                        {
+                            "probability": 0.1,
+                            "value": 3
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "E_to_Isymp",
+                "ann:label": "Exposed to Infectious and presymptomatic",
+                "entryState": "E",
+                "exitState": "Isymp",
+                "probability": 0.8,
+                "dwellTime": {
+                    "discrete": [
+                        {
+                            "probability": 0.001,
+                            "value": 0
+                        },
+                        {
+                            "probability": 0.06,
+                            "value": 1
+                        },
+                        {
+                            "probability": 0.163,
+                            "value": 2
+                        },
+                        {
+                            "probability": 0.178,
+                            "value": 3
+                        },
+                        {
+                            "probability": 0.15,
+                            "value": 4
+                        },
+                        {
+                            "probability": 0.117,
+                            "value": 5
+                        },
+                        {
+                            "probability": 0.086,
+                            "value": 6
+                        },
+                        {
+                            "probability": 0.064,
+                            "value": 7
+                        },
+                        {
+                            "probability": 0.046,
+                            "value": 8
+                        },
+                        {
+                            "probability": 0.034,
+                            "value": 9
+                        },
+                        {
+                            "probability": 0.025,
+                            "value": 10
+                        },
+                        {
+                            "probability": 0.019,
+                            "value": 11
+                        },
+                        {
+                            "probability": 0.014,
+                            "value": 12
+                        },
+                        {
+                            "probability": 0.011,
+                            "value": 13
+                        },
+                        {
+                            "probability": 0.008,
+                            "value": 14
+                        },
+                        {
+                            "probability": 0.006,
+                            "value": 15
+                        },
+                        {
+                            "probability": 0.005,
+                            "value": 16
+                        },
+                        {
+                            "probability": 0.004,
+                            "value": 17
+                        },
+                        {
+                            "probability": 0.003,
+                            "value": 18
+                        },
+                        {
+                            "probability": 0.002,
+                            "value": 19
+                        },
+                        {
+                            "probability": 0.002,
+                            "value": 20
+                        },
+                        {
+                            "probability": 0.002,
+                            "value": 21
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "E_to_Iasymp",
+                "ann:label": "Exposed to Infectious and presymptomatic",
+                "entryState": "E",
+                "exitState": "Isymp",
+                "probability": 0.2,
+                "dwellTime": {
+                    "discrete": [
+                        {
+                            "probability": 0.001,
+                            "value": 0
+                        },
+                        {
+                            "probability": 0.06,
+                            "value": 1
+                        },
+                        {
+                            "probability": 0.163,
+                            "value": 2
+                        },
+                        {
+                            "probability": 0.178,
+                            "value": 3
+                        },
+                        {
+                            "probability": 0.15,
+                            "value": 4
+                        },
+                        {
+                            "probability": 0.117,
+                            "value": 5
+                        },
+                        {
+                            "probability": 0.086,
+                            "value": 6
+                        },
+                        {
+                            "probability": 0.064,
+                            "value": 7
+                        },
+                        {
+                            "probability": 0.046,
+                            "value": 8
+                        },
+                        {
+                            "probability": 0.034,
+                            "value": 9
+                        },
+                        {
+                            "probability": 0.025,
+                            "value": 10
+                        },
+                        {
+                            "probability": 0.019,
+                            "value": 11
+                        },
+                        {
+                            "probability": 0.014,
+                            "value": 12
+                        },
+                        {
+                            "probability": 0.011,
+                            "value": 13
+                        },
+                        {
+                            "probability": 0.008,
+                            "value": 14
+                        },
+                        {
+                            "probability": 0.006,
+                            "value": 15
+                        },
+                        {
+                            "probability": 0.005,
+                            "value": 16
+                        },
+                        {
+                            "probability": 0.004,
+                            "value": 17
+                        },
+                        {
+                            "probability": 0.003,
+                            "value": 18
+                        },
+                        {
+                            "probability": 0.002,
+                            "value": 19
+                        },
+                        {
+                            "probability": 0.002,
+                            "value": 20
+                        },
+                        {
+                            "probability": 0.002,
+                            "value": 21
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "Ipresymp_to_Isymp",
+                "ann:label": "Exposed to Symptomatic",
+                "entryState": "Ipresymp",
+                "exitState": "Isymp",
+                "probability": 0.67,
+                "dwellTime": {
+                    "discrete": [
+                        {
+                            "probability": 0.1,
+                            "value": 0
+                        },
+                        {
+                            "probability": 0.2,
+                            "value": 1
+                        },
+                        {
+                            "probability": 0.6,
+                            "value": 2
+                        },
+                        {
+                            "probability": 0.1,
+                            "value": 3
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "Ipresymp_to_Iasymp",
+                "ann:label": "Exposed to Asymptomatic",
+                "entryState": "Ipresymp",
+                "exitState": "Iasymp",
+                "probability": 0.33,
+                "dwellTime": {
+                    "discrete": [
+                        {
+                            "probability": 0.1,
+                            "value": 0
+                        },
+                        {
+                            "probability": 0.2,
+                            "value": 1
+                        },
+                        {
+                            "probability": 0.6,
+                            "value": 2
+                        },
+                        {
+                            "probability": 0.1,
+                            "value": 3
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "Isymp_to_MedAttend",
+                "ann:label": "Isymp to Medically Attended",
+                "entryState": "Isymp",
+                "exitState": "MedAttend",
+                "probability": 0.2,
+                "dwellTime": {
+                    "discrete": [
+                        {
+                            "probability": 0.125,
+                            "value": 0
+                        },
+                        {
+                            "probability": 0.125,
+                            "value": 1
+                        },
+                        {
+                            "probability": 0.1,
+                            "value": 2
+                        },
+                        {
+                            "probability": 0.1,
+                            "value": 3
+                        },
+                        {
+                            "probability": 0.15,
+                            "value": 4
+                        },
+                        {
+                            "probability": 0.075,
+                            "value": 5
+                        },
+                        {
+                            "probability": 0.075,
+                            "value": 6
+                        },
+                        {
+                            "probability": 0.075,
+                            "value": 7
+                        },
+                        {
+                            "probability": 0.05,
+                            "value": 8
+                        },
+                        {
+                            "probability": 0.05,
+                            "value": 9
+                        },
+                        {
+                            "probability": 0.03,
+                            "value": 10
+                        },
+                        {
+                            "probability": 0.02,
+                            "value": 11
+                        },
+                        {
+                            "probability": 0.02,
+                            "value": 12
+                        },
+                        {
+                            "probability": 0.005,
+                            "value": 13
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "MedAttend_to_Hosp",
+                "ann:label": "Medically Attended to Hospitalization",
+                "entryState": "MedAttend",
+                "exitState": "Hosp",
+                "probability": 1,
+                "dwellTime": {
+                    "discrete": [
+                         {"probability": 0.059, "value": 0},
+                         {"probability": 0.074, "value": 1},
+                         {"probability": 0.094, "value": 2},
+                         {"probability": 0.108, "value": 3},
+                         {"probability": 0.11, "value": 4},
+                         {"probability": 0.106, "value": 5},
+                         {"probability": 0.098, "value": 6},
+                         {"probability": 0.091, "value": 7},
+                         {"probability": 0.077, "value": 8},
+                         {"probability": 0.063, "value": 9},
+                         {"probability": 0.042, "value": 10},
+                         {"probability": 0.034, "value": 11},
+                         {"probability": 0.019, "value": 12},
+                         {"probability": 0.013, "value": 13},
+                         {"probability": 0.007, "value": 14},
+                         {"probability": 0.003, "value": 15},
+                         {"probability": 0.001, "value": 16},
+                         {"probability": 0.001, "value": 17}                 
+                         ]
+                }
+            },
+            {
+                "id": "Isymp_to_Hosp",
+                "ann:label": "Isymp to Hospitalized",
+                "entryState": "Isymp",
+                "exitState": "Hosp",
+                "probability": 0,
+                "dwellTime": {
+                    "discrete": [
+                        {
+                            "probability": 0.007,
+                            "value": 1
+                        },
+                        {
+                            "probability": 0.022,
+                            "value": 2
+                        },
+                        {
+                            "probability": 0.035,
+                            "value": 3
+                        },
+                        {
+                            "probability": 0.055,
+                            "value": 4
+                        },
+                        {
+                            "probability": 0.069,
+                            "value": 5
+                        },
+                        {
+                            "probability": 0.088,
+                            "value": 6
+                        },
+                        {
+                            "probability": 0.101,
+                            "value": 7
+                        },
+                        {
+                            "probability": 0.103,
+                            "value": 8
+                        },
+                        {
+                            "probability": 0.099,
+                            "value": 9
+                        },
+                        {
+                            "probability": 0.092,
+                            "value": 10
+                        },
+                        {
+                            "probability": 0.085,
+                            "value": 11
+                        },
+                        {
+                            "probability": 0.072,
+                            "value": 12
+                        },
+                        {
+                            "probability": 0.059,
+                            "value": 13
+                        },
+                        {
+                            "probability": 0.039,
+                            "value": 14
+                        },
+                        {
+                            "probability": 0.032,
+                            "value": 15
+                        },
+                        {
+                            "probability": 0.018,
+                            "value": 16
+                        },
+                        {
+                            "probability": 0.012,
+                            "value": 17
+                        },
+                        {
+                            "probability": 0.007,
+                            "value": 18
+                        },
+                        {
+                            "probability": 0.003,
+                            "value": 19
+                        },
+                        {
+                            "probability": 0.001,
+                            "value": 20
+                        },
+                        {
+                            "probability": 0.001,
+                            "value": 21
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "Isymp_to_Death",
+                "ann:label": "Isymp to Death",
+                "entryState": "Isymp",
+                "exitState": "Death",
+                "probability": 0.02,
+                "dwellTime": {
+                    "discrete": [
+                        {
+                            "probability": 0,
+                            "value": 0
+                        },
+                        {
+                            "probability": 0.001,
+                            "value": 1
+                        },
+                        {
+                            "probability": 0.003,
+                            "value": 2
+                        },
+                        {
+                            "probability": 0.006,
+                            "value": 3
+                        },
+                        {
+                            "probability": 0.011,
+                            "value": 4
+                        },
+                        {
+                            "probability": 0.019,
+                            "value": 5
+                        },
+                        {
+                            "probability": 0.03,
+                            "value": 6
+                        },
+                        {
+                            "probability": 0.04,
+                            "value": 7
+                        },
+                        {
+                            "probability": 0.048,
+                            "value": 8
+                        },
+                        {
+                            "probability": 0.056,
+                            "value": 9
+                        },
+                        {
+                            "probability": 0.061,
+                            "value": 10
+                        },
+                        {
+                            "probability": 0.065,
+                            "value": 11
+                        },
+                        {
+                            "probability": 0.065,
+                            "value": 12
+                        },
+                        {
+                            "probability": 0.065,
+                            "value": 13
+                        },
+                        {
+                            "probability": 0.062,
+                            "value": 14
+                        },
+                        {
+                            "probability": 0.059,
+                            "value": 15
+                        },
+                        {
+                            "probability": 0.054,
+                            "value": 16
+                        },
+                        {
+                            "probability": 0.051,
+                            "value": 17
+                        },
+                        {
+                            "probability": 0.044,
+                            "value": 18
+                        },
+                        {
+                            "probability": 0.04,
+                            "value": 19
+                        },
+                        {
+                            "probability": 0.035,
+                            "value": 20
+                        },
+                        {
+                            "probability": 0.03,
+                            "value": 21
+                        },
+                        {
+                            "probability": 0.027,
+                            "value": 22
+                        },
+                        {
+                            "probability": 0.022,
+                            "value": 23
+                        },
+                        {
+                            "probability": 0.019,
+                            "value": 24
+                        },
+                        {
+                            "probability": 0.016,
+                            "value": 25
+                        },
+                        {
+                            "probability": 0.014,
+                            "value": 26
+                        },
+                        {
+                            "probability": 0.012,
+                            "value": 27
+                        },
+                        {
+                            "probability": 0.009,
+                            "value": 28
+                        },
+                        {
+                            "probability": 0.008,
+                            "value": 29
+                        },
+                        {
+                            "probability": 0.006,
+                            "value": 30
+                        },
+                        {
+                            "probability": 0.005,
+                            "value": 31
+                        },
+                        {
+                            "probability": 0.004,
+                            "value": 32
+                        },
+                        {
+                            "probability": 0.003,
+                            "value": 33
+                        },
+                        {
+                            "probability": 0.003,
+                            "value": 34
+                        },
+                        {
+                            "probability": 0.002,
+                            "value": 35
+                        },
+                        {
+                            "probability": 0.002,
+                            "value": 36
+                        },
+                        {
+                            "probability": 0.001,
+                            "value": 37
+                        },
+                        {
+                            "probability": 0.001,
+                            "value": 38
+                        },
+                        {
+                            "probability": 0.001,
+                            "value": 39
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "Isymp_to_R",
+                "ann:label": "Isymp to Recovered",
+                "entryState": "Isymp",
+                "exitState": "R",
+                "probability": 0.78,
+                "dwellTime": {
+                    "discrete": [
+                        {
+                            "probability": 0.3,
+                            "value": 3
+                        },
+                        {
+                            "probability": 0.4,
+                            "value": 4
+                        },
+                        {
+                            "probability": 0.2,
+                            "value": 5
+                        },
+                        {
+                            "probability": 0.1,
+                            "value": 6
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "Iasymp_to_R",
+                "ann:label": "Asymptomatic to Recovered",
+                "entryState": "Iasymp",
+                "exitState": "R",
+                "probability": 1,
+                "dwellTime": {
+                    "discrete": [
+                        {
+                            "probability": 0.3,
+                            "value": 3
+                        },
+                        {
+                            "probability": 0.4,
+                            "value": 4
+                        },
+                        {
+                            "probability": 0.2,
+                            "value": 5
+                        },
+                        {
+                            "probability": 0.1,
+                            "value": 6
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "Hosp_to_Death",
+                "ann:label": "Hospitalized to Death",
+                "entryState": "Hosp",
+                "exitState": "Death",
+                "probability": 0.02,
+                "dwellTime": {
+                    "discrete": [
+                        {
+                            "probability": 0.003,
+                            "value": 0
+                        },
+                        {
+                            "probability": 0.035,
+                            "value": 1
+                        },
+                        {
+                            "probability": 0.052,
+                            "value": 2
+                        },
+                        {
+                            "probability": 0.065,
+                            "value": 3
+                        },
+                        {
+                            "probability": 0.072,
+                            "value": 4
+                        },
+                        {
+                            "probability": 0.076,
+                            "value": 5
+                        },
+                        {
+                            "probability": 0.077,
+                            "value": 6
+                        },
+                        {
+                            "probability": 0.075,
+                            "value": 7
+                        },
+                        {
+                            "probability": 0.071,
+                            "value": 8
+                        },
+                        {
+                            "probability": 0.066,
+                            "value": 9
+                        },
+                        {
+                            "probability": 0.061,
+                            "value": 10
+                        },
+                        {
+                            "probability": 0.055,
+                            "value": 11
+                        },
+                        {
+                            "probability": 0.048,
+                            "value": 12
+                        },
+                        {
+                            "probability": 0.043,
+                            "value": 13
+                        },
+                        {
+                            "probability": 0.037,
+                            "value": 14
+                        },
+                        {
+                            "probability": 0.032,
+                            "value": 15
+                        },
+                        {
+                            "probability": 0.026,
+                            "value": 16
+                        },
+                        {
+                            "probability": 0.021,
+                            "value": 17
+                        },
+                        {
+                            "probability": 0.018,
+                            "value": 18
+                        },
+                        {
+                            "probability": 0.015,
+                            "value": 19
+                        },
+                        {
+                            "probability": 0.012,
+                            "value": 20
+                        },
+                        {
+                            "probability": 0.009,
+                            "value": 21
+                        },
+                        {
+                            "probability": 0.008,
+                            "value": 22
+                        },
+                        {
+                            "probability": 0.006,
+                            "value": 23
+                        },
+                        {
+                            "probability": 0.005,
+                            "value": 24
+                        },
+                        {
+                            "probability": 0.004,
+                            "value": 25
+                        },
+                        {
+                            "probability": 0.003,
+                            "value": 26
+                        },
+                        {
+                            "probability": 0.002,
+                            "value": 27
+                        },
+                        {
+                            "probability": 0.002,
+                            "value": 28
+                        },
+                        {
+                            "probability": 0.001,
+                            "value": 29
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "Hosp_to_R",
+                "ann:label": "Hospitalized to Recovered",
+                "entryState": "Hosp",
+                "exitState": "R",
+                "probability": 0.98,
+                "dwellTime": {
+                    "discrete": [
+                        {
+                            "probability": 0.1,
+                            "value": 0
+                        },
+                        {
+                            "probability": 0.2,
+                            "value": 1
+                        },
+                        {
+                            "probability": 0.6,
+                            "value": 2
+                        },
+                        {
+                            "probability": 0.1,
+                            "value": 3
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "R_to_RyetS",
+                "ann:label": "Recovered to Recovered yet Susceptible",
+                "entryState": "R",
+                "exitState": "RyetS",
+                "probability": 0.05,
+                "dwellTime": {
+                    "discrete": [
+                        {
+                            "probability": 1,
+                            "value": 1
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "R_to_Rimmune",
+                "ann:label": "Recovered to Recovered yet Susceptible",
+                "entryState": "R",
+                "exitState": "Rimmune",
+                "probability": 0.95,
+                "dwellTime": {
+                    "discrete": [
+                        {
+                            "probability": 1,
+                            "value": 1
+                        }
+                    ]
+                }
+            }
+        ],
+        "analysis": {"infectiousStates": "Isymp+Iasymp"}
+    },
+    "userInput": [
+        {
+            "ann:id": "Transmissibility",
+            "ann:label": "Transmissibility",
+            "ann:description": "Probability of Transmission per unit time (secs)",
+            "value": [
+                "/template/transmissions/1/transmissibility",
+                "/template/transmissions/2/transmissibility",
+                "/template/transmissions/3/transmissibility",
+                "/template/transmissions/4/transmissibility",
+                "/template/transmissions/5/transmissibility",
+                "/template/transmissions/6/transmissibility"
+            ],
+            "exceads": {
+                "minValue": 0,
+                "maxValue": 1,
+                "sweep": false,
+                "calibrate": false
+            }
+        },
+        {
+            "ann:id": "ProbabilityOfAsymptomaticProgression",
+            "ann:label": "Probability of Asymptomatic Progression",
+            "ann:description": "Proportion of Infectious that are asymptomatic.  Represents the probability an individual in the Exposed state will become Infectious and asymtomatic.",
+            "value": ["/template/transitions/2/probability"],
+            "exceads": {
+                "minValue": 0,
+                "maxValue": 1,
+                "sweep": false,
+                "calibrate": false,
+                "autoAdjust": {
+                    "target": ["/template/transitions/1/probability"],
+                    "value": "1.0 - /template/transitions/2/probability"
+                }
+            }
+        },
+        {
+            "ann:id": "InfectivityAsymptomatic",
+            "ann:label": "Infectiousness of asympotmatic infections",
+            "ann:description": "Infectious without symptoms. Asymptomatic individuals are less likely to infect others or be observed, thus may not be counted and are less likely to receive interventions.",
+            "value": ["/template/states/6/infectivity"],
+            "exceads": {
+                "minValue": 0,
+                "maxValue": 1,
+                "sweep": false,
+                "calibrate": false
+            }
+        }
+    ],
+    "requirements": [],
+    "exceads": {
+        "name": "Novel Coronavirus 2019, pandemic virus orginally discovered in Wuhan, China",
+        "shortName": "2019-nCoV",
+        "groupName": [
+            "Coronavirus",
+            "2019-nCoV", "All"
+        ],
+        "referenceImage": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAD5EAAAMLCAIAAABSVxYKAAAAAXNSR0IArs4c6QAAAJBlWElmTU0AKgAAAAgABgEGAAMAAAABAAIAAAESAAMAAAABAAEAAAEaAAUAAAABAAAAVgEbAAUAAAABAAAAXgEoAAMAAAABAAIAAIdpAAQAAAABAAAAZgAAAAAAAACWAAAAAQAAAJYAAAABAAOgAQADAAAAAQABAACgAgAEAAAAAQAAD5GgAwAEAAAAAQAAAwsAAAAAVJLKwgAAAAlwSFlzAAAXEgAAFxIBZ5/SUgAAAgtpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNC4wIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICAgICA8dGlmZjpQaG90b21ldHJpY0ludGVycHJldGF0aW9uPjI8L3RpZmY6UGhvdG9tZXRyaWNJbnRlcnByZXRhdGlvbj4KICAgICAgICAgPHRpZmY6UmVzb2x1dGlvblVuaXQ+MjwvdGlmZjpSZXNvbHV0aW9uVW5pdD4KICAgICAgICAgPHRpZmY6Q29tcHJlc3Npb24+NTwvdGlmZjpDb21wcmVzc2lvbj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+Cs+OiooAAEAASURBVHgB7N0JnE31/8fxjxlj38mWLVrIvotCEqKyhhYqSyotKpXUr1RK0oKi/pUlSwrZQlkqlGixRRIhZN/GNjNmwv99ndzGzJ0xY+7cucvrPjw495zvOef7fZ7rnO855/P9fjOdOXPGUvY5ffp01NlPTExMbGzsqVOnNCdlq5IKAQQQQACBNAmEhYWFh4dnyZIlW7ZsOc5+NCdNW2RlBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBDwiUCmlMSsnzhxIjIy8tixYylJ7JNssxMEEEAAgZAWyJQpU+7cufPly5czZ86QhqDwCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCPi9wAVi1tWv+r59+6Kjo/2+IGQQAQQQQCAUBbJnz164cGF1vB6KhafMCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCASCQJIx66dOndq7d++RI0cCoRTkEQEEEEAgpAXy5s1bpEiR8PDwkFag8AgggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAgj4pYDnmHV1rL5z5864uDi/zDOZQgABBBBAIKFARETEpZdeqm7XEy7gOwIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIZKiAh5j148eP//3332fOnMnQjLFzBBBAAAEEUieQKVOmEiVK5MqVK3WrkRoBBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBNJTIGHMugLWd+zYkZ57ZNsIIIAAAgiko0DJkiUJW09HXzaNAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAQCoFwuKnj46OVg/r8ecwjQACCCCAQGAJ6EKmy1lg5ZncIoAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIBDEAv/FrJ86dWrnzp1nzpwJ4tJSNAQQQACBoBfQhUyXM13Ugr6kFBABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQACBgBD4L2Z97969cXFxAZFpMokAAggggEAyArqc6aKWTAIWIYAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIICAzwT+jVmPioo6cuSIz/bKjhBAAAEEEEhXAV3UdGlL112wcQQQQAABBBBAAAEEEEAAAQQQQAABBBBA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9TZt2nTr1q1WrVr+m3tyhkDgCOzbt0/BXp9++unSpUvduS6S05qWtetKW41iVrmwZVOXpHwQQAABBM4J7DxqK3fbL7ts4Rb7caepX3bnoyAzta+744471P+6+mI/l5x/EUDAywKnTp2aN2/e2LFj1VDf3aV6qczWKqc1zO6KVi+Xxct7ZHMIIICA1wU2n41cXxJts0/YjnPD0Knz9datW99zzz3NmzenLuF1czaIAAIIIIAAAggggAACCCCAQEALhETM+j///DNhwoR33303fhdrOmyNGjV65ZVXFLOexkN44MCBnTt37tq168SJE9FnP+oNJX5fsGncPqsjgAACSQmosY1G21T/JfrkypWrePHiJUqUSHsXJhqGuH///j/++GP8/WoYij59+nTq1Cks0CKFiVmPfxz9fPrkyZMzZsz48MMP1bWYk9WIzNakqrVrYC1qWfGCfp59socAAghcQODICft6tU1fanN+smPR/yauVq1ajx497rzzznz58l1gfRYjgEAiAd16q9qg+/0vvvhCLTC1PFMma1TaWl1hzcpZ5SKur3wQQAABBC4ocDTGvv3L5m+26b/b7nOjxFx66aW9zn4KFy58wS2QAAEEUi5w7NixDz74YOjQoX///bezVrWsdlsuuzmXVcma8s2QEgEEEPAvgV9P2uzjNuW4rT75b8b0tkLvFO677z7GuPavQ0VuEEAAAQQQQAABBBBAAAEEEMg4geCPWf/tt9+ee+65+L20SrtSpUqvvfaaxrq9CHmNM75ixYpfz37WrVu3bds2BdhdxHZYBQEEEEgnAcWvly5dunLlylXOfmrWrKnXzBexr88//1yR6xs3boy/rjY7cOBAjRgef6afTxOz7ucHyMne0aNH33vvPb2v1bgozpym1a1rU2tVx/LkCIgSkEkEEEAgFQKxca7g9U++tWlLLfZsP2Q5c+bs2bPn448/XrJkyVRsiKQIhLCAGo2PGzdO0err1693GGoVt9srWadKdmmeEHah6AgggEDaBNT8R8Hrk9ba579bZIxrW+oqtWPHjo888ogGh2GYyrTpsjYCtnfv3nfeeWfkyJGHDx8WR4EwuyOPdctj1bOBgwACCASPwKoYG33UPjlqh86O4pI/f/4HH3zw4YcfLlKkSPAUkpIggAACCCCAAAIIIIAAAggggMBFCQRzzLrG1lRHrXr+q37W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idMwx+sCzu2Teth96aWXNN2mPgHrXjdmgwgggICfChTMY307uPKmy/SJEycUvuOt5tF+WmCy5Q0B50Wp6mnvv/eetje0BQHr3mBlGwgggAACngS6Vbd6JUy1lNdff139SlJX8YTEvNQJOM9A9HNSjzmq+rbPRcB66gBJjQACCPi/gFoi6fSuk7xO9U79QSd//882OUQgKQH9mJ0KzMSJE10B6/nz23PPJZWY+QgggEDACDz6qJUsuX379vfee0/Xa53oeDcRMMeOjHoScK7X+jFPmzaNgHVPQsxDAIEAFti7d++wYcO8eL3OmJj1cePGuQ/CY4895p6OPzF48ODDhw87c7p373755ZfHX8o0AggggEDACVStWlWDZjjZ3r17t65niYugoPY+ffo483VrOn78+MRpmONdAfft0+rVq+fNm6ce617u6t09sDUEEEAAAb8WeLS1Fc1vejSsga2cV7k8GvbrA5bRmXPXHN58882YkycblrY2FTI6T+wfAQQQQCB4BTT6yxvNXMWbOHHC1q1bFbNOzFnwHm1flMypyeiH9Oeff86ePVu7fKmgL/bLPhBAAAEEfCzw4tnTu071OuE79Qeedfj4ELA7Lwro16uf8fHjxwcOHOjabP/+rrB1PggggECgC2TLZme7Ln3jzTf379/P/X6gH0/y71yvo6Oj1XsjGggggEDwCQwfPnzXrl1O2HraS5cBMesHDx784osvnKwXK1asU6dOiYuhWEaV05mfPXv2559/PnEa5iCAAAIIBJyAuvHW0BlOttVHmrttUvyC3H333RpPxJnz+eef6zFc/KVMe13AeV+rioVasWvjHa+z8iW9vhM2iAACCCDgvwI5stnj7V3Ze//99zXmBo+G/fdQ+UfOnJ691Mn6xx9/rBw938g/skUu/EYg7pTtPW6HPIyolF5ZPHPG9hyzk/+kaftafddRO34yTRvxuLK2ufOoHY62U8HVsaMO9O5jFhntsdAXnhkT5wKPjrtwyrSk8P2vMS25Zd1kBBqUshsus9jYuLfeestpX0fYejJcLEpewHkGokrviBEj9ENqmdOuzpr8GixFAAEEEAhIgYpZTSd5nep1wtdpXxO6BARkSch0yAs4AXCqBo8cOdI1NHGpUvbQQyGvAgACCASLQJcuVrnykchIZ2gUrtfBclxDsRzuiIuPPvpoy5YtoUhAmRFAINgFNBSqhm13YtbTfn/9b+CgL9E+/fTT2NhYZ48PPfRQRERE4r2rlXBU1L9vOB9++OHixYsnTsMcBBBAAIGAE9CgGT169FBInHIeGRmpsPVBgwYlKEXOnDl79uypRZqva57C1hXFniANX70l4L59UmuxadM+12YfaeOtbbMdBBBAAIGAEejWzF6cYL///vs333zTvHnz8PDwsLAwDX4SMAUgo74S0GsDtWrQ+/6hQ4fGxMQ0KGk3lPXVvtmPzwUUbN13fnJ7LVfAnmzgSrDxgH26zr7YaBsP2tFzYd+5sliZfFa5sHWtas3KmQbzSf6T8t0521FY/Bs/2I87beVui4yx8Ex2eQGrWNhur2Ttr7bkT2CKUP9yk836w7YfsT3HbbeC7M/FXufNaiXy2JUFrV0Fa13ecqc+kFGh2NM32MwN9uch23vCouKFZRfNZdWKuv7ULGY3XWE5s3ggmf67zfvTw/z4s/pda2WS7VMvKtZ17E4nHZNz85V281WuMPrec+JvOOF0i8vPG0jh1z32+e82e6Nti3SJOZvPltlUruvL2B2V7frLLDzpA/3T3/bxGlu63XYeswPnWjUUzO4Cb1zGetZ0Hb6kPin/eXjl15hUNpifgQIvNLavt7q6Wn/88cfLlSunukoGZoZdB7SAKjN6s6I+/D755BMVpG+yp9OALimZRwABBBDQSX7uCdMJ/5lnnlEfanrQoQ8sCAScgPMoRrWXt95+25V59Umsnon5IIAAAsEhoEvz4MHWsuWHH33Uq1evK664QhdrbvmD49iGWimc67UTABNqZae8CCAQOgLjxo178MEHK1asmPbrdab169f7Ek7R6k2aNDl06JB2qg7Ud+zYUbBgwtE31e1uiRIlnJj1vHnzqgVSgQIFfJlJ9oUAAgggkH4CGitEkesaFEm7UH/qf//9d44cORLsTleHsmXL6iWi5qvZ0rx589Jyd1qhQoUE2+erW8B5WauYs5dffvmNN964poItecO9kAkEAl7gs8V2l6v9i/c/fdvboG7e3yxbRCADBfq8byO+sBtvvHHy5MnZsmVT0+K0XHwzsCDsOl0FFLCum/rt27dXq1ZN9Yf5XezGcum6QzaeVgFFZreceOGNLOtu9RKNtHPghF0yJLl165e0b++2V76zQd9ZXLKdiCso+aE61rd+cgHNKdnd0u7/5kdR3d1m2q5jnrNXpYgNaGxtPd0EfL3FJvxqigs/ci623vMmzs5VNLZiuwfdYJcnfHDleaXNh+zRL23upn+DuT0nOjc3dxa7raLdU82uK31u1tl/Z22w1p+eNyfxlyfr2+vNEs/+b847P9ojX/73NfHUiJb2YB2L/ceynh1YPnECZ07FS2xdb9fkHwdc0e2KGE7+c0UBm3ybVSuWMNWcjfbkfPv9QML5Cb5fX8YmtLPieRLMdn1Nyc/Di79GDzlglh8INBlr3/5l995777Bhw7Jmzaox3Ag784PDEmBZcD8DUZ9AgwcPrpHVVpx/Eg6w8pBdBBBAAIELCdTcZitP2tNPP92/f38966D+cCEwlvudgHod0puykydPPvnkk67eoKpUsVWrLtwo3O/KQYYQQACBZAWaNLFvv+3QocPo0aN1v693E/Snk6wXC/1OwH29fuGFFzRIoN/ljwwhgAAC3hNo1arVpEmT0v583tcNymfNmuUErIuiS5cuiQPWNf/DDz90d7KuvnMIWPfez4YtIYAAAhkvoBj0Bx54wMmHGimpGVbiPJUsWVL3pc58xbgvXLgwcRrmeEXAeV+r/uzHjh2rDT58q1e2ykYQQAABBAJP4KGzlwBdczdu3Ki4ZF0g0j6qV+ApkONkBfSr0G9D70oVLKiA9XolCFhP1isEFv6802p9YC8tvkDAuiT+Pmr9FlrjsbY90gsuLy2yFhOSDFjXDn7d64poP31+GP3BKLttsjUdZ2NXpyhgXduJ+cemrreq79vw5XbG6VQ86ey/9YNVGmlzUhawrs0ci7XRq6zhGFeu4n9uucrKF4o/w8P0mNWmruKT+vxzyt78IamFrvlFclq36sklSLDste+synsXDljXWpsO2TWjbNTK/zZwNMa6zbCbP7lwwLrWUThy7Q9txa7/Vk/5VEb9GlOeQ1KmXUBdrevzycSJ27Ztc+oqad8mWwg1AdVv9eM5fvz4qFGjVHY6WQ+1HwDlRQCBEBRwTvU67evkr0sADzpC8DcQ6EV2HsVs3rx51OjRrrKoN2KGCwj0g0r+EUAgscDZ0dc19PrKlSu530/Mwxz/F3Cu1+qW8b333vP/3JJDBBBAIC0Cc+bM+eGHH9J+vfZ1zLo7NlEN4/r06ZOYQEUaMWKEM18h+e64xsQpmYMAAgggEKACjzzyiLvr1uHDh3ssxWOPPeae74RTu78y4S0BPaPXHZQiz6ZMmXLgwIEShaxtA29tm+0gEOQC4b6uRAe5J8XzB4HLi1vL2grKPKNOm+Li4nSB4FWuPxwXv8qDfhK6Yd+9e7dTN3uhkV/ljsxkgID6Vl+7LxX7/X67K/578V+pWCVx0vFr7IVFiWcnnFPn0vPe43+1ySqPdAWgX8QnKs4e/coV7B4dl+Ta6mn+ifmuGPeL+BxyDUD13ydTJnvimv++epw6EJVcWT77zbYd8bjevzMfqWvZIpJL4F526ow9MNue+dpiT7nnXWBCCD1m2bdne2TfccTVqkER9in/qO/85uNNDQxS+8mQX2NqM0n6NAo0KmMNS9vJ2NihQ4c6dRVVV9K4TVYPKQGnJqNnIOoKSM9ASmW223KHFACFRQABBEJRQKd6nfB12tfJX5cA3dLyrCMUfwcBW2an9qKqr8bIjYuNNfVD3KJFwJaGjCOAAAJJC9SqZZ066aSn4bB00kt7GFzSe2IJAt4X0E/Xibh4++23o6PPf9Tr/b2xRQQQQCDjBQYNGpT25/M+DbdZtmzZn3/+6cg1b968QgUP4zRPnz5d44w7aTp37nzJJZdkvDQ5QAABBBDwqkDp0qVvvfXfDr1///33+fPnJ958nTp16tev78xfs2bN2rVrE6dhThoFdPuk2349rP/ggw+0qQdvsczhadwkqyMQkALdm9sbPVP35/H2AVlSMo1A8gKPtnEt/+yzzw4ePKirA2HryXOF2lKn2qBnEOpkXQ9eFRDc4opQM6C8XhCIjHF1K77z6EVuavkO6zkrRet2rfpfsom/2k0Tbffx/+ZcxNQ3W12h2B4/M363/l97XHKRM7tUdXWFnvznvZ+TXP760iQXaUHuLPZg7eQSxF+24YC9/0v8GSmd7vWF/b7fGo1x9bye2s/BaHtqQWpXupj0afw1XswuWSfNAk5zqQnjx6vnKt5hp5kz5DbgVGZiY2PVRFOFfzS/Zc4UcggUGAEEEAg1AZ3qdcLXRyd/XQKoP4TaDyDQy+vUXtR3wOQpU1xleeWVQC8R+UcAAQSSFHj5ZcuU6auvvvrjjz94N5GkEgv8UkDXa/1o1Ujyk08+8csMkikEEEDAywKLFy9WFF8ar9c+jVmfOXOm2yB+B7rumZrQ+2/3V3XE655mAgEEEEAgmATin+Hjn/njlzH+cByzZiURIRJ/BaZTI+Bu8rto0aLffvste1br0Tw165MWgSASUJxuav8UoEO+IPoBUBS3QJNqVrG0RUVFaXSsNN5nurfJRNAIOJ177dmzZ8yYMSrU83SyHjSH1ucF2R/lCluPS3G/3e4Mnj5j931hJ1OwosKy25b/d711e11reeXzyVobkigc/MyZFPX7nqoMZM1sD9e9wBpLd9javR7SfLnJfvU03520Vy3Ll939Lb0mFKp+9QjbGnmR2x+zyjbsv8h1U7XaRf8aU7UXEntRoElZu7YUXa17UTSENuV+BqLha9WrTt4w65k3hIpPURFAAIFQFtAJX6d9nfx1CeBZRyj/EgKu7E7Aun606nIo9uRJUx9P9eoFXCnIMAIIIJBSgSuusFtv1Y3biBEjuF6nFI10fiDgvl6PHj36xIkTfpAjsoAAAgj4QuCdd97R9VrNwnXtvrj9+S5m/eTJkwsXLnRyWbZs2WbNmiXO8cqVK7///ntnfoMGDWrUqJE4DXMQQAABBIJAoHHjxlWqVHEK8uWXX27cuDFxodq1a1ekSJH/Z+884KQosj/+2MAmlrDknLNEQRGVKAgoElSCiIB6Z7hTUVGM5/88s6cYTtFDMCfEhKKoICIqQY6cg2RYYGHZZZcM/n8ztdT2TuiemZ2Znen51WfE7srv2739qqtfvdJ5oO3c8zAmYAL6Der1119HJSN7SAXa4AZMkwVJgARIwC4Ebh/gkGTy5Ml4fcOrZsDvmXbhQTkKCOBOwEgMTtZfeuklOFnvUEMua0I4JBA4gfk75cl5fhdfsFNW7vOp1FUtJLW0I2fuMRn8sRw5aV2qbJKUT7bOdt8s+X1XkWzwv25uI14kt88nt3SQtESL3B5drZs7WS8dL3dGg5ED5ji/8vCCaAEksOTA7sbA2mKpoBBQi6befffdnTt3FmdOPCidYSVRREDPgcAAAt3+azlJD9+HkSjixK6SAAmQgA0J4IGPxz6CsoHD+AFKwYZyUiTbEVBTMYcPH1a+A+Tuu20nIgUiARIggaIEnA86bAO7d+9emq0XRcOzyCWg9DVcQU2aNClye8mekQAJkECwCXz++efbt29X79eBmROEb2p2zpw5eEwrAsOHD/eIwuhq94477vCYh5EkQAIkQAL2IHDbbbcpQaDAsAbLXaj4+PghQ4ao+IMHDy5YsMA9D2MCIwDmmJrHC//WrVt/+OEHVHKb00gxsNpYigRIgARIwDYErukuFcvKrl27vvnmG7xnIgT2nmkbIBREEVBmXtnZ2W+99RZi6GSdN0bxCbz+PzkdMkOR69oUdPCJeQKH3yahlMgd58u2sZJzv2TfJzvvkrGmJt3w9f6fRUXqW7qnyKn7SZnSMmWAbL/T8Zs3xnE8sJkkJ7hnLBKTkSrXtysS437y3grJO14keuFO+WlrkRiXk5GtpUZZl7gIPZ0RLpt1yB/SuzFC+UZzt3o1lAtqCRbXvfbaa1hMhbEKzc6i+XqGqe96DmTp0qWLFi3CM/iO8mFqms2QAAmQAAlEAgE89vHwhwqAIqANXCRcEfbBkgBGLxjo4nZ9//338XVMGjSQgQMtSzEDCZAACUQ3gYsvlg4djh079sYbb1BfR/eljJnea339ySefYIvamJGbgpIACZCAQFPDOyr+DdiWIHw269hzTV+xa665Rh/rA6yW++ijj9RprVq1Bg0apJN4QAIkQAIkYD8CI0aMqFixopIL9k85OTnuMhr1xVdffeWegTGBEdDfa6dNm4bjbq2lWe3AamIpEiABEiABWxFILi2jezkk+vTTT2kHZqtLWwxh9MQrnNxgd8uWlaV/02JUx6K2IwCb7CEt5alLZNoQebS7dKkrcbAEtwq7D8s3G60yBZRet5x0recoeeq0vL3crIr4UvLNCHmhr9Q5a7lYs6xM6CPvDTYrNXW1ZB8tzLDJ1CYe+YafI2PaSe1yjt9FdR3Hnw+TfffIc72lalphPe5Hd14g6KFJOHxC3l9ZJN3cyTquyz0XFsnv1wl8tPeo73DTPrqtALK/oUa6o+B9F8ng5pJq5UIelcP9eQAh0u7GAERgEV8I4EZC+PDDD+EeJeA5cV8aYh7bENBzILhtINRV6VLThweRbcSnICRAAiRAAnjs4+GPAEVAGzjeD1FBQPkOOHHiBBZqOjoMT39x4TPqiApE7CQJkIA9CThdrU+eMiUvL0+pbHuKSansQkDpa3xKmzhxol1kohwkQAIk4CuBd955B87OAvYpE6bXm9zc3J9//lnJ1Lp16xYtWrjLh50y8Oql4m+99daEBCuvU+5VMIYESIAESCB6CKSkpPzlL39R/cWb59tvv+3e906dOtWvX1/Fz5o1C67U3PMwJgAC+g3qiy++QPHh3QKog0VIgARIgATsSWBYV4dcULuHDh1S75mw8rGnqJTKNwJ62IDZB5S4qYNvxZgrNgjAiHnlLfLx1TL+IrmyhTzcVeaOkZnXSvlka/nfWGKdJ4AcI9tIKaep94yNkplnVsHfzpM+jT1kGNHaYZztLRw7Je8YTOEtPaYvzZQTp1wrS0+SuzrLptvl3gula13XVHVev4IDqXl4bXFh+oYs+WJd4an7Efy7N63kHu1TTMcasvQmmT1Knu8jbw6UFbd47bbH6m7tKOv/7ij45CXy6VD5abRUMbXXRyUnTsshw9oAj9W6REbg3ejSQ54Gi8BlTaRWWcnKypo+fXpxXLkEqz+sJ8IJaIP1o0ePYtda9HZUlOw4EeFg2T0SIAESiC4C6uEPRQB1QLP16Lp2MdhbPXqBQ8A//vhDypeX66+PQQ7RITKMWw4csP6dPu23OEeOWFd77Jjf1bIACUQ4gauuktq1D2Rlwdsp9XWEXyt2T+lrfET78ccf16xZQyAkQAIkEGsEYA3+7rvvKn2NT8n+ih8mm/Xvv/8eS4tU54xOc43dxeZW6jQ5OVlbMRoz8JgESIAESMBmBLBCKT4+Xgn1wQcfeJRu2LBhKh4e1ObMmeMxDyP9IqBnPNeuXYs3qMQEGdTZrwqYmQRIgARIwM4E2jaUJjUFW3Diwxjnhe18pX2TTQ8bFi5cuHr1apjnjmztW0nmigEC7arJrOukXgVXUXs1lMlXuEa6n3+/2T3Oj5jEOGlVRc6rKS5W49e1KajkzaVmtcFr+L+6e80AU3KT8PGqwsRWVQuPPR4t3i1tX5Npq+W025RdmSR5upf8o5vHco7IcVaj9GWZsmBHQfFnf5MzpiuMxpsK5bUTIh1qOKzMW1QpzFI22bFQIcG3OcW/tJdXLhMIq0PHmvJYD33m9WD/Ea9J7gkleze694cxISUQHyc3tne0gB3buC1MSFHbo3IMZvAJGcNafKE4cOBAtXjplWoPySgFCZAACZCAHwTw8IcKgCKAOoBSgGqAgvCjPLOSQBgJKN8BuFFfffVVR7N//auUKRPG9tmUPwQ++0wqVbL+bdjgT6XOvI8/bl3tWZ9fflfOAiQQsQTg2PT229E77DLB9/2IvUrsmCKgff288sorZEICJEACsUngv//9LywKAnu/9u37UrG5wtxB1VGqVCltfWisdfny5evWFfiDGjRoUCUM7hlIgARIgATsTqB27dp9+vRRUsIQasuWLe4SG1c6aW3ino0xvhPQM56fYTZNpHd7qeDcGtX3GpiTBGxG4OJxUnWYH78r/2UzABSHBFwJDO3qiIH7Mc4Lu6KJvXM9bIBdIKQfdo6UT4k9CpTYC4GUxAKP5u7pg1uYuSpX+eGwPCvfvahPMUNbys67ZMWtsvAvknOfTL1aKjkNEDvVksYVC2pYvtesqsYZAsNrb6FlZW8pjvgthwpTYTdvGdZmydWfSP0X5Olf5KA/dtiw7fbmhV03OtHpan3PYXnX4P1dp+qD7vXkvFr6zI8DeLP+ariklnYtUrWM9GrgGul+3r2ew2DdPQw/R9IS3aOLxGT5w6oE78YineZJuAjAZj2ulMyfP3/9+vVcYhcu6tHajrZZnzp1KmQYUVbindtxRKs87DcJkAAJkEBABPDwhwpAgDqgzXpACFkoTAS074Dff/8dX83krPlmmJpnM9FF4PDh6Oove0sCPhHAJu3p6Rs3bvzuu+/4vu8TMWYqCQJaX69ateqnn34qiS6wTRIgARIoeQI7duwIeCvUcNis79u3b9GiRYpT586d69at684Me7voSI9G7TqVByRAAiRAAnYiMHToUC2OURfoyHOcQZ3+/PPP2F5EJ/EgAALqDQoL3WCG+OWXX6IGZZgYQFUsQgK2IZCTLwcP+/HL9ceCyjaUKEhMEVCqYd68n/Eqx3nhmLr0LsLqiVf4osOkA1JvOtclC09JwCsBrHCwDLsC+rr6UBf56GqpctbNXOkEubqlrLxFBjSVmzsUtIl9CHeZvjes3i8DP/T6u7XA8YJnCfbly6mz23rDBzl8vfsSduTKfbOk1vPy1+my+aAvJRx57rFyjj51tcMO/oUFcvxslzxWfd9FHqMtIuGNftoQqeZlgaul4I0yHMUTCzbWKtIW3K43tfJWcdJUoiLVWZ2E7m60apnpoSJQs6xc3sRR+Ztvvkmzs1BRtkW9eg4kKyvrhx9+gEzXOQ0WbSEchSABEiABEvCPgFIBUAdQCpgexwptqAn/qmBuEgg9AdyWuD8xxH3nnXccreELWk3f3jlD3ze2QAIkQALhIFCunNxwAxp699131fs+VHY42mUbJOAPAf3pBDeqP+WYlwRIgATsRuC9996D7RmUtb/6Ohw2699++61+7R8+fLhH9h9//LGKL1eu3KWXXuoxDyNJgARIgATsR2DAgAHJyQUeDj3arENk7Wodqg57d9oPQjgl0m9QS5Ys2bp1a0qSXNEpnO2zLRIgARIggSgg0LSWtG0g2Cv7q6++Ujbr/r5nRoGQ7KIPBPSw4cMPP8Tmbq2rSqfaPhRjFhJwEujiwV+BKxpzs3LX3Ger/b9uHlJgV/3FcBnVtiApM09OWn3P+nK9ePt9Zbpr95k/ZU9eQUNxcTKpvyT4PLt29JRMWiItXpF7v5fcYx4EcYnq11hamDp9h7v6FxfKa05v6y5l9Wn76tK7kT7z4wDe6M/37p0drtbNw+DmkuH0f+8xWzWr4h5LBRYZorsxsM6wVLAIqGVUn3wyNS8vj2ZnwaJqv3owmFFWX59++inmlNomSesk+0lJiUiABEiABHwiABUARQB1gN1HuebNJ2TMFHYCah4GoxcMcTEp52gf/oYZSIAESCDWCDgffbNmz96/f7/6PIHHY6wxoLyRTEB/N8FHE+xXHMldZd9IgARIINQE5s2bt2vXrgD0tc9f1Yohwddff61Kx8fHX3311e41YWerLVu2qPiBAwcmJXHm2B0SY0iABEjAngTKli3bt29fJduKFSvWrl3rLqdx/40ZM0x9HroXZkxRAvp7LabmkXL5eZJWsGSgaD6ekQAJkAAJxDYB5Wr9iy++4HfcWL4RsFZBmXlhlTw40Ml6LN8MAcheNc260G4//azHl5I3B0i8D1NZcGoe0rDTUH/ravJiH4kr5UeDJ07Ls79J64myItOiVKlScvcFFnkenSu5x83y3GvlrN2ssPe0yt7t0b0XKkyp4sMdUpi7eEehuBuL1yOWDgKBPo2kbjk5dCiHw5Ug0LRvFXowM23aNEhJJ+v2vdSUjARIgAR8IqAUwSeffKLmOrg+3ydqzBRGAvrzzTfffOPYcxh713fpEsb22RQJkAAJRAaBFi2kfftTJ09i7XEANnCRIQN7YWcC2mZ99uzZ2MDHzqJSNhIgARKwIoDX6qlTpwZgTuDDhz6rts3TsZv86tWrVZ5LLrmkSpUq7vmNjnWNhonuORlDAvYggIHLd999h23dnn322XvuueeGG2646667nnvuOfwt/Pzzz5s3b8aCPHtISilIwBcCQ7G54dlg1Ahn46R+/foXXFBgqfH7778fPuynbYuuKOYP1BsUjM/gTkatKFMmiTEPhgBIgARIgARcCQxxfhFbtGjRzp07OS/sSic2zvXE66+//rphw4a0RLm2dWxITimDRMAXy/LTfvpIGthMGmT41D+4Qg9p2J9fpPpbz5NPh0hqYpFIy5NtOdJ5sszdapFxRGspjkvyhhXkqhYWTQSW7MslNqkZKxDCFnzpqr93Y9g6z4a8EcAuBze2dyRiF2a84eI9F5rLW2bGxyYBPQeyfv36pUuXxmMfv/TYJEGpSYAESIAECghAEUAdQClANWDwgI/rHD/w5ogoArgh1ecbmH04OjZihGAdMwMJkAAJxCCBkSMhNJeZxeCVjwqRlb7Gh7OPP/44KjrMTpIACZBASAnAV4ian/drWXjIbdbnz5+vxfboZF2Z26s8FStWhF27zs8DErAZgT179vznP//p0aNHtWrV+vTpM2rUqHvvvfff//73lClTJkyYMG7cuOHDh3ft2rVRo0YpKSn497bbbps7d65ff9I2I0ZxYoRA//7909IKnOx5tFkHh6uuukrRwF8EdueIETJBF1N/r4XxWWZmZtlU6dMh6I2wQhIgARIgATsQqFNFOjcXKA7tu5SDUjtcV39kwBXHh1JMvL799tsoN+wcKcu9WfwByLxbD1kzyEixzmPMcZeVx3GduWaIrRLdDWMHNpcFN0qP+roLPh3kn5Th08TFAt6lZFKC3H6+S5wfp+M6++SZ3o8aozBrKO7GKMRgwy7f0N5xe2NlOxym0OzMhhe42CLpwYyaa7o0TaomFLtSVkACJEACJBDNBKAIoA4QoBqUHzjOdUTz9bRb3/XnG3y7+WnuXId4TpNNu8lJeUiABEjAFwLDh0t8vFpmRpc6vgBjnrARUPoat2V2dvb3338ftnbZEAmQAAlELIF169YtX77c3/n5kNus//bbbxqZR3t0eJXevXu3yjN48OCEBM4ca2A8sA8BDFmeeOKJBg0awAx9zpw5+EO1lA3e1mHg3q1btxo1aqAUXBtaFmEGEohSAqmpqZdffrnqPG51vH+6C9KrVy8dadQsOpIHvhDAS5QyPpsxYwbyD+osSX46g/SlFeYhARIgARKwB4Gh"
+    }
+}
