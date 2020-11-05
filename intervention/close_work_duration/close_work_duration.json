@@ -32,7 +32,7 @@
             "value": {
               "trait": "activityTrait",
               "feature": "activityType",
-              "enum": "WORK"
+              "enum": "work"
             }
           }
         },
@@ -114,7 +114,7 @@
       "value": {
         "trait": "activityTrait",
         "feature": "activityType",
-        "enum": "WORK"
+        "enum": "work"
       }
     }
   ],

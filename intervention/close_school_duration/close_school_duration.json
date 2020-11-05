@@ -32,7 +32,7 @@
             "value": {
               "trait": "activityTrait",
               "feature": "activityType",
-              "enum": "SCHOOL"
+              "enum": "school"
             }
           }
         },
@@ -103,7 +103,7 @@
             "value": {
               "trait": "activityTrait",
               "feature": "activityType",
-              "enum": "SCHOOL"
+              "enum": "school"
             }
           }
         },
@@ -169,7 +169,7 @@
       "value": {
         "trait": "activityTrait",
         "feature": "activityType",
-        "enum": "SCHOOL"
+        "enum": "school"
       }
     }
   ],
