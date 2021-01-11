@@ -12,7 +12,7 @@
                     "left": {"observable": "time"},
                     "operator": "==",
                     "right": {
-                        "value": {"number": 10}
+                        "value": {"number": 5}
                     }
                 },
                 "interventionIds": []
