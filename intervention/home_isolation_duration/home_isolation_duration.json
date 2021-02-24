@@ -53,8 +53,7 @@
                             }
                         ]
                     }
-                ],
-                "once": []
+                ]
             },
             {
                 "$comment": "School Closure (teacher and other employees)",
