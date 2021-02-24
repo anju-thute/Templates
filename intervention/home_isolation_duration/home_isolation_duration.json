@@ -25,7 +25,7 @@
                         "value": {
                             "trait": "activityTrait",
                             "feature": "activityType",
-                            "enum": "WORK"
+                            "enum": "work"
                         }
                     }
                 },
@@ -71,7 +71,7 @@
                         "value": {
                             "trait": "activityTrait",
                             "feature": "activityType",
-                            "enum": "SCHOOL"
+                            "enum": "school"
                         }
                     }
                 },
@@ -129,7 +129,7 @@
             "value": {
                 "trait": "activityTrait",
                 "feature": "activityType",
-                "enum": "SCHOOL"
+                "enum": "school"
             }
         }
     ],
