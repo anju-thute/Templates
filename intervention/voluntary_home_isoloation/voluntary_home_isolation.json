@@ -211,7 +211,7 @@
         "$comment": "Select Participants for voluntary Home Isolation",
         "id": "intervention_0",
         "target": {
-          "set": {"idRef": "triggerTemplate1_enteredIsymp"}
+          "set": {"idRef": "enteredIsymp"}
         },
         "sampling": {
           "type": "individual",
@@ -357,7 +357,7 @@
   ],
   "requirements": [
     {
-      "set": {"idRef": "triggerTemplate1_enteredIsymp"}
+      "set": {"idRef": "enteredIsymp"}
     }
   ]
 }
