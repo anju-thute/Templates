@@ -1,11 +1,11 @@
 {
-    "$schema": "../../schema/templateSchema.json",
-    "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/templateSchema.json",
+    "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
+    "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/er-Schema/master/schema/templateSchema.json",
     "ann:id": "FluVacination_CDCagegroups",
     "ann:label": "Flu Vaccination using CDC Age Groups",
     "ann:description": "Seasonal influenza vaccination and age-specific effectiveness.",
     "template": {
-        "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/initializationSchema.json",
+        "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/er-Schema/master/schema/initializationSchema.json",
         "initializations": [
             {
                 "target": {

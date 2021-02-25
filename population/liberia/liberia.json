@@ -1,5 +1,5 @@
 {
-  "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/csvDataResourceSchema.json",
+  "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/csvDataResourceSchema.json",
   "description": "Person trait database for Liberia",
   "name": "liberia",
   "title": "Liberia Person Trait DB",

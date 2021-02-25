@@ -1,11 +1,11 @@
 {
- "$schema": "../../../EpiHiper-Schema/schema/templateSchema.json",
- "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/templateSchema.json",
- "ann:id": "COVID19_CDCparams_Best-Apr14th",
+ "$schema": "https://raw.githubusercontent.com//NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
+ "epiHiperSchema": "https://raw.githubusercontent.com//NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
+ "ann:id": "COVID19_CDCparams_Best_Apr14th",
  "ann:label": "COVID-19_CDCparams_BestGuess-Apr14",
  "ann:description": "Classic SEIR model extended to include both symptomatic and an asymptomatic infectious states as well as presymptomatic, medically attended, hospitalization, ventilation, death, hyptothetical treatments and vaccines, as well as post-recovery susceptibility.",
  "template": {
-  "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/diseaseModelSchema.json",
+  "epiHiperSchema": "https://raw.githubusercontent.com//NSSAC/EpiHiper-Schema/master/schema/diseaseModelSchema.json",
   "states": [
    {
     "id": "S_p",

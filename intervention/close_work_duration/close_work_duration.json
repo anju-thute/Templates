@@ -1,11 +1,11 @@
 {
-  "$schema": "../../../EpiHiper-Schema/schema/templateSchema.json",
-  "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/templateSchema.json",
+  "$schema": "https://raw.githubusercontent.com//NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
+  "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
   "ann:id": "WorkClosure",
   "ann:label": "Work Closure",
   "ann:description": "Work closure for a given time which removes interactions that occur at the workplace",
   "template": {
-    "epiHiperSchema": "https://github.com/NSSAC/EpiHiper-Schema/blob/master/schema/interventionSchema.json",
+    "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
     "variables": [
       {
         "id": "workClosed",
