@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
+  "$schema": "https://raw.githubusercontent.com//NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
   "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
   "ann:id": "Prophylax",
   "ann:label": "Prophylax Treatment of Household Members",
@@ -176,19 +176,6 @@
         "sweep": false,
         "calibrate": false
       }
-    },
-    {
-      "ann:id": "TreatedHealthStates",
-      "ann:label": "Treated Health States",
-      "ann:description": "The Health States of treated Individuals",
-      "value": [
-        "/template/interventions/1/foreach/1/condition/and/1/right/valueList/healthState/"
-      ],
-      "validValues": [
-        {
-          "jsonPath": "$..states.*.id"
-        }
-      ]
     }
   ],
   "requirements": [

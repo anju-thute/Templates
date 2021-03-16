@@ -150,12 +150,8 @@
       "ann:label": "Symptomatic Health States",
       "ann:description": "A list of state which are considered symptomatic.",
       "value": ["/template/sets/0/content/sets/0/right/valueList/healthState/"],
-      "validValues": [
-        {
-          "jsonPath": "$..states.*.id"
-        }
-      ],
       "exceads": {
+        "validValues": "file:///disease/template/states/*/id",
         "sweep": false,
         "calibrate": false
       }
