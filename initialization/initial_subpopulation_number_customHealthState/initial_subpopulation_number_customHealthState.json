@@ -81,6 +81,14 @@
       }
     }
   ],
-  "requirements": [],
-  "exceads": {}
+  "requirements": [
+    {
+      "value": {"healthState": "Isymp"}
+    }
+  ],
+  "exceads": {
+    "requires": {
+      "allOf": ["diseaseModelTemplate1.json"]
+    }
+  }
 }

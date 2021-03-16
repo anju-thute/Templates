@@ -8,7 +8,7 @@
     "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
     "sets": [
       {
-        "id": "enteredIsymp",
+        "id": "triggerTemplate1_enteredIsymp",
         "ann:label": "Nodes which entered state Isymp.",
         "scope": "local",
         "content": {
@@ -20,27 +20,9 @@
               "left": {
                 "node": {"property": "healthState"}
               },
-              "operator": "withPropertyIn",
+              "operator": "==",
               "right": {
-                "valueList": {
-                  "healthState": [
-                    "Ipresymp_p",
-                    "Isymp_p",
-                    "Iasymp_p",
-                    "Ipresymp_s",
-                    "Isymp_s",
-                    "Iasymp_s",
-                    "Ipresymp_a",
-                    "Isymp_a",
-                    "Iasymp_a",
-                    "Ipresymp_o",
-                    "Isymp_o",
-                    "Iasymp_o",
-                    "Ipresymp_g",
-                    "Isymp_g",
-                    "Iasymp_g"
-                  ]
-                }
+                "value": {"healthState": "Isymp"}
               }
             },
             {
@@ -70,7 +52,7 @@
         "trigger": {
           "left": {
             "sizeof": {
-              "set": {"idRef": "enteredIsymp"}
+              "set": {"idRef": "triggerTemplate1_enteredIsymp"}
             }
           },
           "operator": ">",
@@ -87,7 +69,7 @@
         "trigger": {
           "left": {
             "sizeof": {
-              "set": {"idRef": "enteredIsymp"}
+              "set": {"idRef": "triggerTemplate1_enteredIsymp"}
             }
           },
           "operator": ">",
@@ -96,7 +78,7 @@
           }
         },
         "target": {
-          "set": {"idRef": "enteredIsymp"}
+          "set": {"idRef": "triggerTemplate1_enteredIsymp"}
         },
         "foreach": [
           {
@@ -122,21 +104,11 @@
     ]
   },
   "userInput": [
-    {
-      "ann:id": "SymptomaticHealthStates",
-      "ann:label": "Symptomatic Health States",
-      "ann:description": "The Health States of symptomatic Individuals",
-      "value": [
-        "/template/sets/1/content/sets/1/right/valueList/healthState/"
-      ],
-      "validValues": [
-        {
-          "jsonPath": "$..states.*.id"
-        }
-      ]
-    }
   ],
   "requirements": [
+    {
+      "value": {"healthState": "Isymp"}
+    },
     {
       "property": "nodeTrait",
       "feature": "enteredIsymp"

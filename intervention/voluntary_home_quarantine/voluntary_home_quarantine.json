@@ -12,6 +12,21 @@
         "ann:label": "Node Trait",
         "features": [
           {
+            "id": "enteredIsymp",
+            "ann:label": "Entered State Isypm",
+            "enums": [
+              {
+                "id": "true",
+                "ann:label": "true"
+              },
+              {
+                "id": "false",
+                "ann:label": "false"
+              }
+            ],
+            "default": "false"
+          },
+          {
             "id": "participateInHomeQuarantine",
             "ann:label": "Treatment",
             "enums": [
@@ -452,28 +467,11 @@
         "sweep": true,
         "calibrate": false
       }
-    },
-    {
-      "ann:id": "QuarantinedHealthStates",
-      "ann:label": "Quarantined Health States",
-      "ann:description": "The Health States of duarantined Individuals",
-      "value": [
-        "/template/set/1/content/sets/1/right/valueList/healthState/"
-      ],
-      "validValues": [
-        {
-          "jsonPath": "$..states.*.id"
-        }
-      ]
     }
   ],
   "requirements": [
     {
-      "value": {
-        "trait": "nodeTrait",
-        "feature": "enteredIsymp",
-        "enum": "false"
-      }
+      "set": {"idRef": "triggerTemplate1_enteredIsymp"}
     }
   ]
 }

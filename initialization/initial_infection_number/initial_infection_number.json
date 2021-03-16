@@ -46,18 +46,11 @@
         "sweep": true,
         "calibrate": false
       }
-    },
-    {
-      "ann:id": "InfectedState",
-      "ann:label": "Infected State",
-      "ann:description": "The infected state to which individuals are set",
-      "value": ["/template/initializations/1/sampling/sampled/foreach/operations/1/value/healthState"],
-      "validValues": [
-        {
-          "jsonPath": "$..states.*.id"
-        }
-      ]
     }
   ],
-  "requirements": []
+  "requirements": [
+    {
+      "value": {"healthState": "/template/initializations/1/sampling/sampled/foreach/operations/1/value/healthState"}
+    }
+  ]
 }
