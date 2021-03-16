@@ -15,7 +15,7 @@
           "operation": "intersection",
           "sets": [
             {
-              "set": {"idRef": "triggerTemplate1_enteredIsymp"}
+              "set": {"idRef": "enteredIsymp"}
             },
             {
               "elementType": "node",
@@ -114,10 +114,7 @@
   ],
   "requirements": [
     {
-      "set": {"idRef": "triggerTemplate1_enteredIsymp"}
-    },
-    {
-      "value": {"healthState": "Isymp"}
+      "set": {"idRef": "enteredIsymp"}
     },
     {
       "property": "sourceActivity",
