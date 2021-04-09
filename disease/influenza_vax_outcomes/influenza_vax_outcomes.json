@@ -217,7 +217,7 @@
                 "ann:label": "Isymp to Recovered",
                 "entryState": "Isymp",
                 "exitState": "R",
-                "probability": 0.58,
+                "probability": 0.906,
                 "dwellTime": {
                     "discrete": [
                         {
