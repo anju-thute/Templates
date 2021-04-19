@@ -1,0 +1,46 @@
+{
+  "exampels": [
+    {
+      "content": {
+        "scope": "local",
+        "elementType": "node",
+        "left": {
+          "field": "age_group"
+        },
+        "operator": "==",
+        "right": {
+          "value": "p"
+        }
+      }
+    },
+    {
+      "content": {
+        "operation": "intersection",
+        "sets": [
+          {
+            "elementType": "node",
+            "scope": "local",
+            "left": {
+              "field": "county_fips"
+            },
+            "operator": "==",
+            "right": {
+              "value": "12345"
+            }
+          },
+          {
+            "scope": "local",
+            "elementType": "node",
+            "left": {
+              "field": "age_group"
+            },
+            "operator": "==",
+            "right": {
+              "value": "p"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
