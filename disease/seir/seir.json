@@ -5,6 +5,7 @@
     "ann:label": "Flu with symptomatic and asymptomatic infections",
     "ann:description": "Classic SEIR model with an extension to have a symptomatic and an asymptomatic infectious state (with reduced infectivity).",
     "template": {
+        "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/diseaseModelSchema.json",
         "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/diseaseModelSchema.json",
         "states": [
             {
