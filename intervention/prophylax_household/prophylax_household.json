@@ -5,6 +5,7 @@
   "ann:label": "Prophylax Treatment of Household Members",
   "ann:description": "For identified cases provide prophylactic treatment to their household members",
   "template": {
+    "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
     "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
     "sets": [],
     "variables": [],

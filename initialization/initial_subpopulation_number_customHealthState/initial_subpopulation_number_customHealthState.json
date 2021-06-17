@@ -5,6 +5,7 @@
   "ann:label": "Initial Infections - number and custom state",
   "ann:description": "Initially infect the specified number of individuals by moving them to the specified disease state.",
   "template": {
+    "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/initializationSchema.json",
     "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/initializationSchema.json",
     "sets": [
       {
@@ -76,8 +77,7 @@
       "ann:description": "The specific disease state the individuals will be placed in at the beginning of the simulation",
       "value": ["/template/initializations/1/sampling/sampled/foreach/1/operations/1/value/healthState"],
       "exceads": {
-        "attributeType": "text",
-        "validExpression": "$..states[?(@.id)]"
+        "attributeType": "text"
       }
     }
   ],

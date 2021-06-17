@@ -5,6 +5,7 @@
     "ann:label": "Age and risk based susceptible states with initial infection of school aged kids",
     "ann:description": "For age and risk expanded influenza models, with appropriate age-risk Susceptible states, initialize all individuals to their proper initial state along with some initial infections.",
     "template": {
+        "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/initializationSchema.json",
         "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/initializationSchema.json",
         "initializations": [
             {

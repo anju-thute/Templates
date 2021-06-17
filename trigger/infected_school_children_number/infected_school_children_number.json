@@ -5,6 +5,7 @@
   "ann:label": "Infected School Children - Number",
   "ann:description": "Trigger on a the number of symptomatic school children.",
   "template": {
+    "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
     "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
     "sets": [
       {

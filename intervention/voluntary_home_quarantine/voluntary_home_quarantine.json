@@ -5,6 +5,7 @@
   "ann:label": "Newly Symptomatic Individuals",
   "ann:description": "Helper trigger for counting and tagging people entering any of the specified symptomatic states",
   "template": {
+    "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
     "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
     "traits": [
       {
@@ -47,14 +48,14 @@
     "sets": [
       {
         "id": "enteredIsympGlobal",
-        "ann:label": "Nodes which newly entered a symptomatics State (e.g. Isymp).",
-        "scope": "local",
+        "ann:label": "Nodes which newly entered a symptomatic State (e.g. Isymp).",
+        "scope": "global",
         "content": {
           "operation": "intersection",
           "sets": [
             {
               "elementType": "node",
-              "scope": "local",
+              "scope": "global",
               "left": {
                 "node": {"property": "healthState"}
               },
@@ -83,7 +84,7 @@
             },
             {
               "elementType": "node",
-              "scope": "local",
+              "scope": "global",
               "left": {
                 "node": {
                   "property": "nodeTrait",
@@ -104,7 +105,7 @@
       },
       {
         "id": "activeEdgesWithSourceNodeNewlyInfected",
-        "ann:label": "All edges which are currently active, i.e., weight < 999,999",
+        "ann:label": "All edges which are currently active, i.e., weight < 1/999,999",
         "scope": "local",
         "content": {
           "operation": "intersection",
@@ -117,7 +118,7 @@
               },
               "operator": "<",
               "right": {
-                "value": {"number": 999999}
+                "value": {"number": 0.0000011}
               }
             },
             {
@@ -133,7 +134,7 @@
       },
       {
         "id": "knowsNewlySymptomatic",
-        "ann:label": "All nodes which are in contact with a newly symptomatics node",
+        "ann:label": "All nodes which are in contact with a newly symptomatic node",
         "scope": "local",
         "content": {
           "elementType": "node",
@@ -467,6 +468,19 @@
         "sweep": true,
         "calibrate": false
       }
+    },
+    {
+      "ann:id": "QuarantinedHealthStates",
+      "ann:label": "Quarantined Health States",
+      "ann:description": "The Health States of quarantined Individuals",
+      "value": [
+        "/template/set/1/content/sets/1/right/valueList/healthState/"
+      ],
+      "validValues": [
+        {
+          "jsonPath": "$..states.*.id"
+        }
+      ]
     }
   ],
   "requirements": [
