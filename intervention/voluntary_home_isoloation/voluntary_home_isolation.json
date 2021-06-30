@@ -13,21 +13,6 @@
         "ann:label": "Node Trait",
         "features": [
           {
-            "id": "enteredIsymp",
-            "ann:label": "Entered State Isypm",
-            "enums": [
-              {
-                "id": "true",
-                "ann:label": "true"
-              },
-              {
-                "id": "false",
-                "ann:label": "false"
-              }
-            ],
-            "default": "false"
-          },
-          {
             "id": "participateInHomeIsolation",
             "ann:label": "Treatment",
             "enums": [

@@ -13,21 +13,6 @@
         "ann:label": "Node Trait",
         "features": [
           {
-            "id": "enteredIsymp",
-            "ann:label": "Entered State Isypm",
-            "enums": [
-              {
-                "id": "true",
-                "ann:label": "true"
-              },
-              {
-                "id": "false",
-                "ann:label": "false"
-              }
-            ],
-            "default": "false"
-          },
-          {
             "id": "participateInHomeQuarantine",
             "ann:label": "Treatment",
             "enums": [
@@ -488,7 +473,11 @@
   ],
   "requirements": [
     {
-      "set": {"idRef": "triggerTemplate1_enteredIsymp"}
+      "value": {
+        "trait": "nodeTrait",
+        "feature": "enteredIsymp",
+        "enum": "false"
+      }
     }
   ]
 }

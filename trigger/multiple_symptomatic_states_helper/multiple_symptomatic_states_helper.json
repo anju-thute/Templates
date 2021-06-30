@@ -32,7 +32,7 @@
     ],
     "sets": [
       {
-        "id": "triggerTemplate1_enteredIsymp",
+        "id": "enteredIsymp",
         "ann:label": "Nodes which newly entered a symptomatics State (e.g. Isymp).",
         "scope": "local",
         "content": {
@@ -94,7 +94,7 @@
         "trigger": {
           "left": {
             "sizeof": {
-              "set": {"idRef": "triggerTemplate1_enteredIsymp"}
+              "set": {"idRef": "enteredIsymp"}
             }
           },
           "operator": ">",
@@ -111,7 +111,7 @@
         "trigger": {
           "left": {
             "sizeof": {
-              "set": {"idRef": "triggerTemplate1_enteredIsymp"}
+              "set": {"idRef": "enteredIsymp"}
             }
           },
           "operator": ">",
@@ -120,7 +120,7 @@
           }
         },
         "target": {
-          "set": {"idRef": "triggerTemplate1_enteredIsymp"}
+          "set": {"idRef": "enteredIsymp"}
         },
         "foreach": [
           {
@@ -150,9 +150,13 @@
       "ann:id": "SymptomaticHealthStates",
       "ann:label": "Symptomatic Health States",
       "ann:description": "A list of state which are considered symptomatic.",
-      "value": ["/template/sets/0/content/sets/0/right/valueList/healthState/"],
+      "value": ["/template/sets/1/content/sets/1/right/valueList/healthState/"],
+      "validValues": [
+        {
+          "jsonPath": "$..states.*.id"
+        }
+      ],
       "exceads": {
-        "validValues": "file:///disease/template/states/*/id",
         "sweep": false,
         "calibrate": false
       }
