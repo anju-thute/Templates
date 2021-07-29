@@ -1,0 +1,83 @@
+{
+  "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
+  "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
+  "ann:id": "NumberInitialInfections",
+  "ann:label": "Initial Infections - number and custom state",
+  "ann:description": "Initially infect the specified number of individuals by moving them to the specified disease state.",
+  "template": {
+    "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
+    "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
+    "sets": [
+      {
+        "id": "custom_population",
+        "ann:label": "Custom Sub Population",
+        "scope": "local",
+        "content": {
+          "scope": "local",
+          "elementType": "node",
+          "left": {"field": "age_group"},
+          "operator": "==",
+          "right": {"value": "p"}
+        }
+      }
+    ],
+    "triggers": [
+      {
+        "ann:id": "trigger_custom_population",
+        "trigger": {
+          "left": {
+            "sizeof": {
+              "set": {"idRef": "custom_population"}
+            }
+          },
+          "operator": "!=",
+          "right": {
+            "value": {"number": 0}
+          }
+        },
+        "interventionIds": []
+      }
+    ],
+    "interventions": []
+  },
+  "userInput": [
+    {
+      "ann:id": "SubPopulation",
+      "ann:label": "Sub Population",
+      "ann:description": "A subset of the population from which individuals are selected",
+      "value": [
+        "/template/sets/1/sampling/content"
+      ],
+      "exceads": {
+        "sweep": false,
+        "calibrate": false
+      }
+    },
+    {
+      "ann:id": "ComparisonOperator",
+      "ann:label": "Comparison Operator",
+      "ann:description": "Comparison Operator for the size of the custom population set",
+      "value": [
+        "/template/triggers/1/operator/"
+      ],
+      "exceads": {
+        "sweep": false,
+        "calibrate": false
+      }
+    },
+    {
+      "ann:id": "Threshold",
+      "ann:label": "Threshold",
+      "ann:description": "Threshold pf the custom population set size for which the trigger switches.",
+      "value": [
+        "/template/triggers/1/right/value/number"
+      ],
+      "exceads": {
+        "sweep": true,
+        "calibrate": false
+      }
+    }
+  ],
+  "requirements": [],
+  "exceads": {}
+}

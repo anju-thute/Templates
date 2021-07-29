@@ -1,0 +1,44 @@
+{
+  "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
+  "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
+  "sets": [
+    {
+      "id": "custom_population",
+      "ann:label": "Custom Sub Population",
+      "scope": "local",
+      "content": {
+        "scope": "local",
+        "elementType": "node",
+        "left": {
+          "field": "age_group"
+        },
+        "operator": "==",
+        "right": {
+          "value": "p"
+        }
+      }
+    }
+  ],
+  "triggers": [
+    {
+      "ann:id": "trigger_custom_population",
+      "trigger": {
+        "left": {
+          "sizeof": {
+            "set": {
+              "idRef": "custom_population"
+            }
+          }
+        },
+        "operator": "!=",
+        "right": {
+          "value": {
+            "number": 0
+          }
+        }
+      },
+      "interventionIds": []
+    }
+  ],
+  "interventions": []
+}
