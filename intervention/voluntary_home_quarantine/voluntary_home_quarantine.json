@@ -479,5 +479,12 @@
         "enum": "false"
       }
     }
-  ]
+  ],
+  "exceads": {
+    "requires": {
+      "allOf": [
+          "count_symptomatic_helper.json"
+      ]
+    }
+  }
 }

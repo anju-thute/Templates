@@ -7,6 +7,29 @@
   "template": {
     "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
     "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
+    "traits": [
+      {
+        "id": "nodeTrait",
+        "ann:label": "Node Trait",
+        "features": [
+          {
+            "id": "prophylaxTrigger",
+            "ann:label": "Prophylax Trigger",
+            "enums": [
+              {
+                "id": "true",
+                "ann:label": "true"
+              },
+              {
+                "id": "false",
+                "ann:label": "false"
+              }
+            ],
+            "default": "false"
+          }
+        ]
+      }
+    ],
     "sets": [
       {
         "id": "triggerTemplate4_prophylaxTrue",
@@ -37,15 +60,21 @@
         "trigger": {
           "left": {
             "sizeof": {
-              "set": {"idRef": "triggerTemplate4_prophylaxTrue"}
+              "set": {
+                "idRef": "triggerTemplate4_prophylaxTrue"
+              }
             }
           },
           "operator": ">",
           "right": {
-            "value": {"number": 0}
+            "value": {
+              "number": 0
+            }
           }
         },
-        "interventionIds": ["triggerTemplate4_1"]
+        "interventionIds": [
+          "triggerTemplate4_1"
+        ]
       }
     ],
     "interventions": [
@@ -53,7 +82,9 @@
         "$comment": "Mark indiviudal as having trigger prophylax previously",
         "id": "triggerTemplate4_1",
         "target": {
-          "set": {"idRef": "triggerTemplate4_prophylaxTrue"}
+          "set": {
+            "idRef": "triggerTemplate4_prophylaxTrue"
+          }
         },
         "foreach": [
           {
@@ -78,31 +109,5 @@
       }
     ]
   },
-  "userInput": [
-  ],
-  "requirements": [
-    {
-      "property": "nodeTrait",
-      "feature": "prophylaxTrigger"
-    },
-    {
-      "value": {
-        "trait": "nodeTrait",
-        "feature": "prophylaxTrigger",
-        "enum": "true"
-      }
-    },
-    {
-      "value": {
-        "trait": "nodeTrait",
-        "feature": "prophylaxTrigger",
-        "enum": "false"
-      }
-    }
-  ],
-  "exceads": {
-    "requires": {
-      "allOf": ["nodeTraits.json"]
-    }
-  }
+  "userInput": []
 }

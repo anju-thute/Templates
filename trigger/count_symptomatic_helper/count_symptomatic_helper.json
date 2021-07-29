@@ -7,6 +7,29 @@
   "template": {
     "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
     "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
+    "traits": [
+      {
+        "id": "nodeTrait",
+        "ann:label": "Node Trait",
+        "features": [
+          {
+            "id": "enteredIsymp",
+            "ann:label": "Entered State Isym",
+            "enums": [
+              {
+                "id": "true",
+                "ann:label": "true"
+              },
+              {
+                "id": "false",
+                "ann:label": "false"
+              }
+            ],
+            "default": "false"
+          }
+        ]
+      }
+    ],
     "sets": [
       {
         "id": "enteredIsymp",
@@ -19,7 +42,9 @@
               "elementType": "node",
               "scope": "local",
               "left": {
-                "node": {"property": "healthState"}
+                "node": {
+                  "property": "healthState"
+                }
               },
               "operator": "withPropertyIn",
               "right": {
@@ -71,12 +96,16 @@
         "trigger": {
           "left": {
             "sizeof": {
-              "set": {"idRef": "enteredIsymp"}
+              "set": {
+                "idRef": "enteredIsymp"
+              }
             }
           },
           "operator": ">",
           "right": {
-            "value": {"number": 0}
+            "value": {
+              "number": 0
+            }
           }
         },
         "interventionIds": []
@@ -88,16 +117,22 @@
         "trigger": {
           "left": {
             "sizeof": {
-              "set": {"idRef": "enteredIsymp"}
+              "set": {
+                "idRef": "enteredIsymp"
+              }
             }
           },
           "operator": ">",
           "right": {
-            "value": {"number": 0}
+            "value": {
+              "number": 0
+            }
           }
         },
         "target": {
-          "set": {"idRef": "enteredIsymp"}
+          "set": {
+            "idRef": "enteredIsymp"
+          }
         },
         "foreach": [
           {
@@ -136,30 +171,5 @@
         }
       ]
     }
-  ],
-  "requirements": [
-    {
-      "property": "nodeTrait",
-      "feature": "enteredIsymp"
-    },
-    {
-      "value": {
-        "trait": "nodeTrait",
-        "feature": "enteredIsymp",
-        "enum": "true"
-      }
-    },
-    {
-      "value": {
-        "trait": "nodeTrait",
-        "feature": "enteredIsymp",
-        "enum": "false"
-      }
-    }
-  ],
-  "exceads": {
-    "requires": {
-      "allOf": ["nodeTraits.json"]
-    }
-  }
+  ]
 }

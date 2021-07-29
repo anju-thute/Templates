@@ -345,5 +345,13 @@
     {
       "set": {"idRef": "enteredIsymp"}
     }
-  ]
+  ],
+  "exceads": {
+    "requires": {
+      "allOf": [
+          "prophylax_household_helper.json",
+          "count_symptomatic_helper.json"
+      ]
+    }
+  }
 }

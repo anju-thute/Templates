@@ -7,5 +7,5 @@ Specify:
 * Nothing
 
 Requires:
-* set: ```triggerTemplate1_enteredIsymp```  
+* set: ```enteredIsymp```  
 

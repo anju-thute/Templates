@@ -132,8 +132,7 @@
   "exceads": {
     "requires": {
       "allOf": [
-        "nodeTraits.json",
-        "triggerTemplate1.json"
+        "count_symptomatic_helper.json"
       ]
     }
   }

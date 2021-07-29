@@ -7,6 +7,29 @@
   "template": {
     "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
     "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
+    "traits": [
+      {
+        "id": "nodeTrait",
+        "ann:label": "Node Trait",
+        "features": [
+          {
+            "id": "prophylax",
+            "ann:label": "Prophylax",
+            "enums": [
+              {
+                "id": "true",
+                "ann:label": "true"
+              },
+              {
+                "id": "false",
+                "ann:label": "false"
+              }
+            ],
+            "default": "false"
+          }
+        ]
+      }
+    ],
     "sets": [],
     "variables": [],
     "triggers": [],
@@ -199,24 +222,6 @@
       }
     },
     {
-      "property": "nodeTrait",
-      "feature": "prophylax"
-    },
-    {
-      "value": {
-        "trait": "nodeTrait",
-        "feature": "prophylax",
-        "enum": "true"
-      }
-    },
-    {
-      "value": {
-        "trait": "nodeTrait",
-        "feature": "prophylax",
-        "enum": "false"
-      }
-    },
-    {
       "field": "hid"
     },
     {
@@ -234,8 +239,7 @@
   "exceads": {
     "requires": {
       "allOf": [
-        "treat_symptomatic_with_health_seeking_delay.json",
-        "montgomery_county_va.json"
+        "prophylax_household_helper.json"
       ]
     },
     "interventionType": "PROPHYLAX"
