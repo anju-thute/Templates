@@ -158,7 +158,8 @@
       ],
       "exceads": {
         "sweep": false,
-        "calibrate": false
+        "calibrate": false,
+        "attributeType": "text"
       }
     }
   ],
