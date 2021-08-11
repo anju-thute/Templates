@@ -212,7 +212,10 @@
         {
           "jsonPath": "$..states.*.id"
         }
-      ]
+      ],
+      "exceads": {
+        "attributeType": "text"
+      }
     }
   ],
   "requirements": [
