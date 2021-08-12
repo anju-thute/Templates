@@ -459,7 +459,7 @@
       "ann:label": "Quarantined Health States",
       "ann:description": "The Health States of quarantined Individuals",
       "value": [
-        "/template/set/1/content/sets/1/right/valueList/healthState/"
+        "/template/sets/1/content/sets/1/right/valueList/healthState/"
       ],
       "validValues": [
         {
