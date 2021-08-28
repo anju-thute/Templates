@@ -319,8 +319,8 @@
       "ann:description": "The percent of individuals voluntary participating.",
       "value": ["/template/interventions/1/sampling/number"],
       "exceads": {
-        "min": 0.0,
-        "max": 100.0,
+        "minValue": 0.0,
+        "maxValue": 100.0,
         "sweep": true,
         "calibrate": false
       }
@@ -334,8 +334,8 @@
         "/template/interventions/3/foreach/2/delay"
       ],
       "exceads": {
-        "min": 1,
-        "max": 30,
+        "minValue": 1,
+        "maxValue": 30,
         "sweep": true,
         "calibrate": false
       }
