@@ -1,9 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
   "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
-  "ann:id": "LocationInterventionIncompatiblityNumberInitialInfections",
-  "ann:label": "Initial Infections - number and custom state",
-  "ann:description": "Initially infect the specified number of individuals by moving them to the specified disease state.",
+    "ann:id": "FluVacination",
+  "ann:label": "Flu Vaccination by Age Group",
+  "ann:description": "Seasonal influenza vaccination and age-specific effectiveness.",
   "template": {
     "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
     "variables": [],
