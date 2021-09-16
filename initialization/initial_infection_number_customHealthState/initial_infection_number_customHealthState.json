@@ -43,7 +43,7 @@
             "value": ["/template/initializations/1/sampling/number"],
             "exceads": {
                 "minValue": 0,
-                "maxValue": 999,
+                "maxValue": 9999999,
                 "sweep": true,
                 "calibrate": false
             }
