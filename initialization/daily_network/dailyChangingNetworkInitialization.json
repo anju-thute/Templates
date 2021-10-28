@@ -4,75 +4,81 @@
     "ann:id": "DailyNetworkInitialization",
     "ann:label": "Daily Network Helper",
     "ann:description": "Initializes the daily interverntion that supports changing the active edges based on the current day in the simulation, thus supporting multi-day networks, one day at a time",
-    "initializations": [
-        {
-            "target": {
-                "elementType": "edge",
-                "scope": "local",
-                "left": {
-                    "edge": {
-                        "property": "edgeTrait",
-                        "feature": "day"
+    "template": {
+        "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/initializationSchema.json",
+        "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/initializationSchema.json",
+        "initializations": [
+            {
+                "target": {
+                    "elementType": "edge",
+                    "scope": "local",
+                    "left": {
+                        "edge": {
+                            "property": "edgeTrait",
+                            "feature": "day"
+                        }
+                    },
+                    "operator": "!=",
+                    "right": {
+                        "value": {
+                            "trait": "edgeTrait",
+                            "feature": "day",
+                            "enum": "0"
+                        }
                     }
                 },
-                "operator": "!=",
-                "right": {
-                    "value": {
-                        "trait": "edgeTrait",
-                        "feature": "day",
-                        "enum": "0"
+                "foreach": [
+                    {
+                        "operations": [
+                            {
+                                "ann:description": "Turn edge off",
+                                "target": {
+                                    "edge": {"property": "weight"}
+                                },
+                                "operator": "/=",
+                                "value": {"number": 100000}
+                            }
+                        ]
                     }
-                }
+                ]
             },
-            "foreach": [
-                {
-                    "operations": [
-                        {
-                            "ann:description": "Turn edge off",
-                            "target": {
-                                "edge": {"property": "weight"}
-                            },
-                            "operator": "/=",
-                            "value": {"number": 100000}
+            {
+                "target": {
+                    "elementType": "edge",
+                    "scope": "local",
+                    "left": {
+                        "edge": {
+                            "property": "edgeTrait",
+                            "feature": "day"
                         }
-                    ]
-                }
-            ]
-        },
-        {
-            "target": {
-                "elementType": "edge",
-                "scope": "local",
-                "left": {
-                    "edge": {
-                        "property": "edgeTrait",
-                        "feature": "day"
+                    },
+                    "operator": "==",
+                    "right": {
+                        "value": {
+                            "trait": "edgeTrait",
+                            "feature": "day",
+                            "enum": "0"
+                        }
                     }
                 },
-                "operator": "==",
-                "right": {
-                    "value": {
-                        "trait": "edgeTrait",
-                        "feature": "day",
-                        "enum": "0"
+                "foreach": [
+                    {
+                        "delay": 1,
+                        "operations": [
+                            {
+                                "ann:description": "Turn edge off",
+                                "target": {
+                                    "edge": {"property": "weight"}
+                                },
+                                "operator": "/=",
+                                "value": {"number": 100000}
+                            }
+                        ]
                     }
-                }
-            },
-            "foreach": [
-                {
-                    "delay": 1,
-                    "operations": [
-                        {
-                            "ann:description": "Turn edge off",
-                            "target": {
-                                "edge": {"property": "weight"}
-                            },
-                            "operator": "/=",
-                            "value": {"number": 100000}
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
+                ]
+            }
+        ]
+    },
+    "userInput": [],
+    "requirements": []
 }
