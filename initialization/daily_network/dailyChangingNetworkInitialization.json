@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/initializationSchema.json",
+  "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/initializationSchema.json",
+  "initializations": [
+    {
+      "target": {
+        "elementType": "edge",
+        "scope": "local",
+        "left": {
+          "edge": {
+            "property": "edgeTrait",
+            "feature": "day"
+          }
+        },
+        "operator": "!=",
+        "right": {
+          "value": {
+            "trait": "edgeTrait",
+            "feature": "day",
+            "enum": "0"
+          }
+        }
+      },
+      "foreach": [
+        {
+          "operations": [
+            {
+              "ann:description": "Turn edge off",
+              "target":{"edge":{"property": "weight"}},
+              "operator": "/=",
+              "value":{"number": 100000}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "target": {
+        "elementType": "edge",
+        "scope": "local",
+        "left": {
+          "edge": {
+            "property": "edgeTrait",
+            "feature": "day"
+          }
+        },
+        "operator": "==",
+        "right": {
+          "value": {
+            "trait": "edgeTrait",
+            "feature": "day",
+            "enum": "0"
+          }
+        }
+      },
+      "foreach": [
+        {
+          "delay": 1,
+          "operations": [
+            {
+              "ann:description": "Turn edge off",
+              "target":{"edge":{"property": "weight"}},
+              "operator": "/=",
+              "value":{"number": 100000}
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
