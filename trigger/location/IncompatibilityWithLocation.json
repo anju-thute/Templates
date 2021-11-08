@@ -1,0 +1,69 @@
+{
+  "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
+  "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
+  "ann:id": "TriggerLocationNumberInitialInfections",
+  "ann:label": "TriggerLocationInitial Infections - number and custom state",
+  "ann:description": "Initially infect the specified number of individuals by moving them to the specified disease state.",
+  "template": {
+    "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
+    "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
+    "sets": [
+      {
+        "id": "custom_population",
+        "ann:label": "Custom Sub Population",
+        "scope": "local",
+        "content": {
+          "scope": "local",
+          "elementType": "node",
+          "left": {
+            "field": "age_group"
+          },
+          "operator": "==",
+          "right": {
+            "value": "0-18"
+          }
+        }
+      }
+    ],
+    "triggers": [
+      {
+        "ann:id": "trigger_custom_population",
+        "trigger": {
+          "left": {
+            "sizeof": {
+              "set": {
+                "idRef": "custom_population"
+              }
+            }
+          },
+          "operator": "!=",
+          "right": {
+            "value": {
+              "number": 0
+            }
+          }
+        },
+        "interventionIds": []
+      }
+    ],
+    "interventions": []
+  },
+  "userInput": [
+    {
+      "ann:id": "Threshold",
+      "ann:label": "Threshold",
+      "ann:description": "Threshold pf the custom population set size for which the trigger switches.",
+      "value": [
+        "/template/triggers/1/trigger/right/value/number"
+      ],
+      "exceads": {
+        "sweep": true,
+        "calibrate": false,
+        "minValue": 0,
+        "maxValue": 999
+      }
+    }
+  ],
+  "requirements": [],
+  "exceads": {}
+}
