@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
   "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
   "ann:id": "NewlySymptomaticIndividuals",
-  "ann:label": "Newly Symptomatic Individuals",
+  "ann:label": "Newly Symptomatic Individuals ",
   "ann:description": "Helper trigger for counting and tagging people entering any of the specified symptomatic states",
   "template": {
     "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
