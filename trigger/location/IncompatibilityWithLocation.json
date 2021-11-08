@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
   "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
   "ann:id": "TriggerLocationNumberInitialInfections",
-  "ann:label": "TriggerLocationInitial Infections - number and custom state",
+  "ann:label": "Trigger LocationInitial Infections - number and custom state",
   "ann:description": "Initially infect the specified number of individuals by moving them to the specified disease state.",
   "template": {
     "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
