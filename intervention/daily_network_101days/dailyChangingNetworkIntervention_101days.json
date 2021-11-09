@@ -5423,6 +5423,6 @@
     "requirements": [],
     "exceads": {
         "requires": "",
-        "interventionType": "DYNAMIC_NETWORKS"
+        "interventionType": "SCHOOL_CLOSURE"
     }
 }
