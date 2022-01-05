@@ -181,6 +181,15 @@
   "requirements": [
     {
       "field": "age_group"
+    },
+    {
+      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('0-18'))]"
+    },
+    {
+      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('19-64'))]"
+    },
+    {
+      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('65+'))]"
     }
   ],
   "exceads": {

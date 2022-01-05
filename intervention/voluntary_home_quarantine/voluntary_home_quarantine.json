@@ -478,6 +478,9 @@
         "feature": "enteredIsymp",
         "enum": "false"
       }
+    },
+    {
+      "jsonPath": "$.[?(@.id=='nodeTrait')].features[?(@.id=='enteredIsymp')].enums[?(@.id=='false')]"
     }
   ],
   "exceads": {

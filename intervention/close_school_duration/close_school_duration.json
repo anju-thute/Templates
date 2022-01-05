@@ -172,6 +172,9 @@
         "feature": "activityType",
         "enum": "school"
       }
+    },
+    {
+      "jsonPath": "$.[?(@.id=='activityTrait')].features[?(@.id=='activityType')].enums[?(@.id=='school')]"
     }
   ],
   "exceads": {

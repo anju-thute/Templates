@@ -344,6 +344,9 @@
   "requirements": [
     {
       "set": {"idRef": "enteredIsymp"}
+    },
+    {
+      "jsonPath": "$.sets[?(@.id=='enteredIsymp')]"
     }
   ],
   "exceads": {

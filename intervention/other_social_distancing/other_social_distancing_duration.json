@@ -117,6 +117,9 @@
         "feature": "activityType",
         "enum": "shop"
       }
+    },
+    {
+      "jsonPath": "$.[?(@.id=='activityTrait')].features[?(@.id=='activityType')].enums[?(@.id=='shop')]"
     }
   ],
   "exceads": {

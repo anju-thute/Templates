@@ -454,6 +454,19 @@
         "feature": "prophylaxTrigger",
         "enum": "false"
       }
+    },
+    {
+      "jsonPath": "$.[?(@.id=='nodeTrait')].features[?(@.id=='prophylaxTrigger')].enums[?(@.id=='true')]"
+    }
+    ,
+    {
+      "jsonPath": "$.[?(@.id=='nodeTrait')].features[?(@.id=='prophylaxTrigger')].enums[?(@.id=='false')]"
+    },
+    {
+      "jsonPath": "$.[?(@.id=='nodeTrait')].features[?(@.id=='prophylaxTrigger')].enums[?(@.id=='true')]"
+    },
+    {
+      "jsonPath": "$.sets[?(@.id=='enteredIsymp')]"
     }
   ],
   "exceads": {

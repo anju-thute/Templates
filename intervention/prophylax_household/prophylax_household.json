@@ -237,6 +237,9 @@
         "feature": "prophylaxTrigger",
         "enum": "true"
       }
+    },
+    {
+      "jsonPath": "$.[?(@.id=='nodeTrait')].features[?(@.id=='prophylaxTrigger')].enums[?(@.id=='true')]"
     }
   ],
   "exceads": {

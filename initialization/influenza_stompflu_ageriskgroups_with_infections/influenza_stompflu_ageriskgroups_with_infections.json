@@ -328,7 +328,24 @@
         }
     ],
     "requirements": [
-        {"field": "age_group"}
+        {
+            "field": "age_group"
+        },
+        {
+            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('p'))]"
+        },
+        {
+            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('s'))]"
+        },
+        {
+            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('a'))]"
+        },
+        {
+            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('o'))]"
+        },
+        {
+            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('g'))]"
+        }
     ],
     "exceads": {
         "requires": {
