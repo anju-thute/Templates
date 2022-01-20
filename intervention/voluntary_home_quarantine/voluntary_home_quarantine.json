@@ -42,7 +42,9 @@
               "elementType": "node",
               "scope": "global",
               "left": {
-                "node": {"property": "healthState"}
+                "node": {
+                  "property": "healthState"
+                }
               },
               "operator": "withPropertyIn",
               "right": {
@@ -99,11 +101,15 @@
               "elementType": "edge",
               "scope": "local",
               "left": {
-                "edge": {"property": "weight"}
+                "edge": {
+                  "property": "weight"
+                }
               },
               "operator": "<",
               "right": {
-                "value": {"number": 0.0000011}
+                "value": {
+                  "number": 0.0000011
+                }
               }
             },
             {
@@ -111,7 +117,9 @@
               "scope": "local",
               "operator": "withSourceNodeIn",
               "selector": {
-                "set": {"idRef": "enteredIsympGlobal"}
+                "set": {
+                  "idRef": "enteredIsympGlobal"
+                }
               }
             }
           ]
@@ -126,7 +134,9 @@
           "scope": "local",
           "operator": "withIncomingEdgeIn",
           "selector": {
-              "set": {"idRef": "activeEdgesWithSourceNodeNewlyInfected"}
+            "set": {
+              "idRef": "activeEdgesWithSourceNodeNewlyInfected"
+            }
           }
         }
       },
@@ -229,11 +239,15 @@
               "elementType": "edge",
               "operator": "withTargetNodeIn",
               "selector": {
-                "set": {"idRef": "participateInHomeQuarantineLocal"}
+                "set": {
+                  "idRef": "participateInHomeQuarantineLocal"
+                }
               }
             },
             {
-              "set": {"idRef": "workEdgesTarget"}
+              "set": {
+                "idRef": "workEdgesTarget"
+              }
             }
           ]
         }
@@ -248,11 +262,15 @@
               "elementType": "edge",
               "operator": "withSourceNodeIn",
               "selector": {
-                "set": {"idRef": "participateInHomeQuarantineGlobal"}
+                "set": {
+                  "idRef": "participateInHomeQuarantineGlobal"
+                }
               }
             },
             {
-              "set": {"idRef": "workEdgesSource"}
+              "set": {
+                "idRef": "workEdgesSource"
+              }
             }
           ]
         }
@@ -265,53 +283,73 @@
         "trigger": {
           "left": {
             "sizeof": {
-              "set": {"idRef": "knowsNewlySymptomatic"}
+              "set": {
+                "idRef": "knowsNewlySymptomatic"
+              }
             }
           },
           "operator": ">",
           "right": {
-            "value": {"number": 0}
+            "value": {
+              "number": 0
+            }
           }
         },
-        "interventionIds": ["interventionVoluntaryHomeQuarantine_0"]
+        "interventionIds": [
+          "intervention_1"
+        ]
       },
       {
         "ann:id": "voluntaryHomeQuarantineSelf",
         "trigger": {
           "left": {
             "sizeof": {
-              "set": {"idRef": "targetNodeparticipateInHomeQuarantine"}
+              "set": {
+                "idRef": "targetNodeparticipateInHomeQuarantine"
+              }
             }
           },
           "operator": ">",
           "right": {
-            "value": {"number": 0}
+            "value": {
+              "number": 0
+            }
           }
         },
-        "interventionIds": ["interventionVoluntaryHomeQuarantine_1"]
+        "interventionIds": [
+          "intervention_2"
+        ]
       },
       {
         "ann:id": "voluntaryHomeQuarantineCoWorker",
         "trigger": {
           "left": {
             "sizeof": {
-              "set": {"idRef": "sourceNodeparticipateInHomeQuarantine"}
+              "set": {
+                "idRef": "sourceNodeparticipateInHomeQuarantine"
+              }
             }
           },
           "operator": ">",
           "right": {
-            "value": {"number": 0}
+            "value": {
+              "number": 0
+            }
           }
         },
-        "interventionIds": ["interventionVoluntaryHomeQuarantine_2"]
+        "interventionIds": [
+          "intervention_3"
+        ]
       }
     ],
     "interventions": [
       {
         "$comment": "Select Participants for voluntary home quarantine",
-        "id": "interventionVoluntaryHomeQuarantine_0",
+        "id": "intervention_1",
         "target": {
-          "set": {"idRef": "knowsNewlySymptomatic"}
+          "set": {
+            "idRef": "knowsNewlySymptomatic"
+          }
         },
         "sampling": {
           "type": "individual",
@@ -362,19 +400,25 @@
       },
       {
         "$comment": "voluntary home quarantine (self)",
-        "id": "interventionVoluntaryHomeQuarantine_1",
+        "id": "intervention_2",
         "target": {
-          "set": {"idRef": "targetNodeparticipateInHomeQuarantine"}
+          "set": {
+            "idRef": "targetNodeparticipateInHomeQuarantine"
+          }
         },
         "foreach": [
           {
             "operations": [
               {
                 "target": {
-                  "edge": {"property": "weight"}
+                  "edge": {
+                    "property": "weight"
+                  }
                 },
                 "operator": "/=",
-                "value": {"number": 1000000}
+                "value": {
+                  "number": 1000000
+                }
               }
             ]
           },
@@ -383,10 +427,14 @@
             "operations": [
               {
                 "target": {
-                  "edge": {"property": "weight"}
+                  "edge": {
+                    "property": "weight"
+                  }
                 },
                 "operator": "*=",
-                "value": {"number": 1000000}
+                "value": {
+                  "number": 1000000
+                }
               }
             ]
           }
@@ -394,19 +442,25 @@
       },
       {
         "$comment": "voluntary home quarantine (co-worker)",
-        "id": "interventionVoluntaryHomeQuarantine_2",
+        "id": "intervention_3",
         "target": {
-          "set": {"idRef": "sourceNodeparticipateInHomeQuarantine"}
+          "set": {
+            "idRef": "sourceNodeparticipateInHomeQuarantine"
+          }
         },
         "foreach": [
           {
             "operations": [
               {
                 "target": {
-                  "edge": {"property": "weight"}
+                  "edge": {
+                    "property": "weight"
+                  }
                 },
                 "operator": "/=",
-                "value": {"number": 1000000}
+                "value": {
+                  "number": 1000000
+                }
               }
             ]
           },
@@ -415,10 +469,14 @@
             "operations": [
               {
                 "target": {
-                  "edge": {"property": "weight"}
+                  "edge": {
+                    "property": "weight"
+                  }
                 },
                 "operator": "*=",
-                "value": {"number": 1000000}
+                "value": {
+                  "number": 1000000
+                }
               }
             ]
           }
@@ -431,10 +489,12 @@
       "ann:id": "ParticipationPercentage",
       "ann:label": "Participation Percentage",
       "ann:description": "The percent of individuals voluntary participating.",
-      "value": ["/template/interventions/1/sampling/number"],
+      "value": [
+        "/template/interventions/1/sampling/number"
+      ],
       "exceads": {
-        "minValue": 0.0,
-        "maxValue": 100.0,
+        "minValue": 0,
+        "maxValue": 100,
         "sweep": true,
         "calibrate": false
       }
@@ -486,7 +546,7 @@
   "exceads": {
     "requires": {
       "allOf": [
-          "count_symptomatic_helper.json"
+        "count_symptomatic_helper.json"
       ]
     }
   }
