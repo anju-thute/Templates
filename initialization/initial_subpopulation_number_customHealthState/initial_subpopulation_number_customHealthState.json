@@ -53,7 +53,7 @@
         "ann:id": "SubPopulation",
         "ann:label": "Sub Population",
         "ann:description": "A subset of the population from which individuals are selected",
-        "value": ["/template/sets/1/sampling/content"],
+        "value": ["/template/sets/1/content"],
         "exceads": {
           "sweep": false,
           "calibrate": false,
