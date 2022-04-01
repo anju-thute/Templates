@@ -15,9 +15,13 @@
         "content": {
           "scope": "local",
           "elementType": "node",
-          "left": {"field": "age_group"},
+          "left": {
+            "field": "age_group"
+          },
           "operator": "==",
-          "right": {"value": "p"}
+          "right": {
+            "value": "p"
+          }
         }
       }
     ],
@@ -27,24 +31,30 @@
         "trigger": {
           "left": {
             "sizeof": {
-              "set": {"idRef": "custom_population"}
+              "set": {
+                "idRef": "custom_population"
+              }
             }
           },
           "operator": "!=",
           "right": {
-            "value": {"number": 0}
+            "value": {
+              "number": 0
+            }
           }
         },
         "interventionIds": [
-          "subpopulation_number_customHealthState"
+          "intervention_1"
         ]
       }
     ],
     "interventions": [
       {
-        "id": "subpopulation_number_customHealthState",
+        "id": "intervention_1",
         "target": {
-          "set": {"idRef": "custom_population"}
+          "set": {
+            "idRef": "custom_population"
+          }
         },
         "sampling": {
           "type": "absolute",
@@ -55,10 +65,14 @@
                 "operations": [
                   {
                     "target": {
-                      "node": {"property": "healthState"}
+                      "node": {
+                        "property": "healthState"
+                      }
                     },
                     "operator": "=",
-                    "value": {"healthState": "Isymp"}
+                    "value": {
+                      "healthState": "Isymp"
+                    }
                   }
                 ]
               }
@@ -70,20 +84,26 @@
   },
   "userInput": [
     {
-        "ann:id": "SubPopulation",
-        "ann:label": "Sub Population",
-        "ann:description": "A subset of the population from which individuals are selected",
-        "value": ["/template/sets/1/sampling/content"],
-        "exceads": {
-          "sweep": false,
-          "calibrate": false
-        }
-      },
-      {
+      "ann:id": "SubPopulation",
+      "ann:label": "Sub Population",
+      "ann:description": "A subset of the population from which individuals are selected",
+      "value": [
+        "/template/sets/1/content"
+      ],
+      "exceads": {
+        "sweep": false,
+        "calibrate": false,
+        "attributeType": "text",
+        "isApplicable": false
+      }
+    },
+    {
       "ann:id": "NumberOfIndividuals",
       "ann:label": "Number of individuals to initially infect",
       "ann:description": "Number of individuals that will be infected at the start of the simulation",
-      "value": ["/template/interventions/1/sampling/number"],
+      "value": [
+        "/template/interventions/1/sampling/number"
+      ],
       "exceads": {
         "minValue": 0,
         "maxValue": 999,
@@ -95,7 +115,9 @@
       "ann:id": "StateOfInfections",
       "ann:label": "Health state of individuals for initial infections",
       "ann:description": "The specific disease state the individuals will be placed in at the beginning of the simulation",
-      "value": ["/template/interventions/1/sampling/sampled/foreach/1/operations/1/value/healthState"],
+      "value": [
+        "/template/interventions/1/sampling/sampled/foreach/1/operations/1/value/healthState"
+      ],
       "validValues": [
         {
           "jsonPath": "$..states.*.id"
