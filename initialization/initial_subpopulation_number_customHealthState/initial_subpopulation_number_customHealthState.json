@@ -56,7 +56,9 @@
         "value": ["/template/sets/1/sampling/content"],
         "exceads": {
           "sweep": false,
-          "calibrate": false
+          "calibrate": false,
+          "attributeType": "text",
+          "isApplicable" : false
         }
       },
       {
