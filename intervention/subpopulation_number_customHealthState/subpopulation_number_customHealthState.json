@@ -14,14 +14,7 @@
         "scope": "local",
         "content": {
           "scope": "local",
-          "elementType": "node",
-          "left": {
-            "field": "age_group"
-          },
-          "operator": "==",
-          "right": {
-            "value": "p"
-          }
+          "elementType": "node"
         }
       }
     ],
