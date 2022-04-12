@@ -43,8 +43,8 @@
   },
   "userInput": [
     {
-      "ann:id": "Threshold",
-      "ann:label": "Threshold",
+      "ann:id": "custom_population_set_size",
+      "ann:label": "Custom Sub Population Set Size",
       "ann:description": "Threshold pf the custom population set size for which the trigger switches.",
       "value": [
         "/template/triggers/1/trigger/right/value/number"
