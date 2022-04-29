@@ -18,29 +18,7 @@
         }
       }
     ],
-    "triggers": [
-      {
-        "ann:id": "trigger_custom_population",
-        "trigger": {
-          "left": {
-            "sizeof": {
-              "set": {
-                "idRef": "custom_population"
-              }
-            }
-          },
-          "operator": "!=",
-          "right": {
-            "value": {
-              "number": 0
-            }
-          }
-        },
-        "interventionIds": [
-          "intervention_1"
-        ]
-      }
-    ],
+    "triggers": [],
     "interventions": [
       {
         "id": "intervention_1",
