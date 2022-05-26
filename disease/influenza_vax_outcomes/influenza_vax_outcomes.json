@@ -354,7 +354,9 @@
                 }
             }
         ],
-        "analysis": {"infectiousStates": "Isymp+Iasymp"}
+        "analysis": {
+            "infectiousStates": "Isymp+Iasymp"
+        }
     },
     "userInput": [
         {
@@ -379,14 +381,18 @@
             "ann:id": "ProbabilityOfAsymptomaticProgression",
             "ann:label": "Probability of Asymptomatic Progression",
             "ann:description": "Proportion of Infectious that are asymptomatic.  Represents the probability an individual in the Exposed state will become Infectious and asymtomatic.",
-            "value": ["/template/transitions/2/probability"],
+            "value": [
+                "/template/transitions/2/probability"
+            ],
             "exceads": {
                 "minValue": 0,
                 "maxValue": 1,
                 "sweep": false,
                 "calibrate": false,
                 "autoAdjust": {
-                    "target": ["/template/transitions/1/probability"],
+                    "target": [
+                        "/template/transitions/1/probability"
+                    ],
                     "value": "1.0 - /template/transitions/2/probability"
                 }
             }
@@ -395,7 +401,9 @@
             "ann:id": "InfectivityAsymptomatic",
             "ann:label": "Infectiousness of asympotmatic infections",
             "ann:description": "Infectious without symptoms. Asymptomatic individuals are less likely to infect others or be observed, thus may not be counted and are less likely to receive interventions.",
-            "value": ["/template/states/6/infectivity"],
+            "value": [
+                "/template/states/6/infectivity"
+            ],
             "exceads": {
                 "minValue": 0,
                 "maxValue": 1,
@@ -405,6 +413,7 @@
         }
     ],
     "requirements": [],
+    "applications": ["EpiHiper"],
     "exceads": {
         "name": "Influenza Disease Model with vaccination and outcomes",
         "shortName": "Influenza_vax_and_outcomes",

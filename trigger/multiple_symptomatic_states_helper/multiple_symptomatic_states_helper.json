@@ -163,5 +163,6 @@
       }
     }
   ],
-  "requirements": []
+  "requirements": [],
+  "applications": ["EpiHiper"]
 }

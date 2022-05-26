@@ -1,6 +1,6 @@
 {
-    "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/initializationSchema.json",
-    "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/initializationSchema.json",
+    "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
+    "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
     "ann:id": "DailyNetworkInitialization",
     "ann:label": "Daily Network Helper",
     "ann:description": "Initializes the daily interverntion that supports changing the active edges based on the current day in the simulation, thus supporting multi-day networks, one day at a time",
@@ -33,10 +33,14 @@
                             {
                                 "ann:description": "Turn edge off",
                                 "target": {
-                                    "edge": {"property": "weight"}
+                                    "edge": {
+                                        "property": "weight"
+                                    }
                                 },
                                 "operator": "/=",
-                                "value": {"number": 100000}
+                                "value": {
+                                    "number": 100000
+                                }
                             }
                         ]
                     }
@@ -68,10 +72,14 @@
                             {
                                 "ann:description": "Turn edge off",
                                 "target": {
-                                    "edge": {"property": "weight"}
+                                    "edge": {
+                                        "property": "weight"
+                                    }
                                 },
                                 "operator": "/=",
-                                "value": {"number": 100000}
+                                "value": {
+                                    "number": 100000
+                                }
                             }
                         ]
                     }
@@ -81,6 +89,7 @@
     },
     "userInput": [],
     "requirements": [],
+    "applications": ["EpiHiper"],
     "exceads": {
         "requires": "",
         "interventionType": "DYNAMIC_NETWORKS"

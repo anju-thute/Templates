@@ -349,6 +349,7 @@
       "jsonPath": "$.sets[?(@.id=='enteredIsymp')]"
     }
   ],
+  "applications": ["EpiHiper"], 
   "exceads": {
     "requires": {
       "allOf": [

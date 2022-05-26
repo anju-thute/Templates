@@ -174,5 +174,7 @@
         "attributeType": "text"
       }
     }
-  ]
+  ],
+  "requirements": [],
+  "applications": ["EpiHiper"]
 }

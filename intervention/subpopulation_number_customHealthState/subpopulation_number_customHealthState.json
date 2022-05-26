@@ -100,5 +100,6 @@
     }
   ],
   "requirements": [],
+  "applications": ["EpiHiper"], 
   "exceads": {}
 }

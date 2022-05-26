@@ -242,6 +242,7 @@
       "jsonPath": "$.[?(@.id=='nodeTrait')].features[?(@.id=='prophylaxTrigger')].enums[?(@.id=='true')]"
     }
   ],
+  "applications": ["EpiHiper"], 
   "exceads": {
     "requires": {
       "allOf": [

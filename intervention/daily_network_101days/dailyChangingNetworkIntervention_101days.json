@@ -1,6 +1,6 @@
 {
-    "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
-    "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
+    "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
+    "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
     "ann:id": "DailyNetworkIntervention_101days",
     "ann:label": "DailyNetwork Intervention for 101 days",
     "ann:description": "Intervention to support multi-day networks, activates edges for each tick of the simulation upto 100 days",
@@ -5421,7 +5421,8 @@
     },
     "userInput": [],
     "requirements": [],
-    "exceads": {
+     "applications": ["EpiHiper"], 
+     "exceads": {
         "requires": "",
         "interventionType": "SCHOOL_CLOSURE"
     }

@@ -132,6 +132,7 @@
       "jsonPath": "$.[?(@.id=='activityTrait')].features[?(@.id=='activityType')].enums[?(@.id=='school')]"
     }
   ],
+  "applications": ["EpiHiper"], 
   "exceads": {
     "requires": {
       "allOf": [
