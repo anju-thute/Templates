@@ -276,7 +276,7 @@
             "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('g'))]"
         }
     ],
-     "applications": ["EpiHiper"], 
+     "engines": ["EpiHiper"], 
      "exceads": {
         "requires": {
             "allOf": ["montgomery_county_va.json"]

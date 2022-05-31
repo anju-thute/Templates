@@ -319,7 +319,7 @@
         }
     ],
     "requirements": [],
-    "applications": ["EpiHiper"],
+    "engines": ["EpiHiper"],
     "exceads": {
         "name": "Ebola Virus Disease Model",
         "shortName": "Ebola",

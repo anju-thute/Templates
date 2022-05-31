@@ -122,7 +122,7 @@
       "jsonPath": "$.[?(@.id=='activityTrait')].features[?(@.id=='activityType')].enums[?(@.id=='shop')]"
     }
   ],
-  "applications": ["EpiHiper"], 
+  "engines": ["EpiHiper"], 
   "exceads": {
     "interventionType": "SOCIAL_DISTANCE",
     "requires": {

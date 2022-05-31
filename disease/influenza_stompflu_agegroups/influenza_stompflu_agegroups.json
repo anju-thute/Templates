@@ -6353,7 +6353,7 @@
         }
     ],
     "requirements": [],
-    "applications": ["EpiHiper"],
+    "engines": ["EpiHiper"],
     "exceads": {
         "name": "Influenza Disease Model with vaccination and outcomes",
         "shortName": "Influenza_STOMPflu_age_risk_groups",

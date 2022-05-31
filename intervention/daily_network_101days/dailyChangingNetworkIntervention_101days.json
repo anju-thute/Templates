@@ -5421,7 +5421,7 @@
     },
     "userInput": [],
     "requirements": [],
-     "applications": ["EpiHiper"], 
+     "engines": ["EpiHiper"], 
      "exceads": {
         "requires": "",
         "interventionType": "SCHOOL_CLOSURE"

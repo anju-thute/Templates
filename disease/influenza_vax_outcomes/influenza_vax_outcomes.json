@@ -413,7 +413,7 @@
         }
     ],
     "requirements": [],
-    "applications": ["EpiHiper"],
+    "engines": ["EpiHiper"],
     "exceads": {
         "name": "Influenza Disease Model with vaccination and outcomes",
         "shortName": "Influenza_vax_and_outcomes",

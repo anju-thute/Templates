@@ -543,7 +543,7 @@
       "jsonPath": "$.[?(@.id=='nodeTrait')].features[?(@.id=='enteredIsymp')].enums[?(@.id=='false')]"
     }
   ],
-  "applications": ["EpiHiper"], 
+  "engines": ["EpiHiper"], 
   "exceads": {
     "requires": {
       "allOf": [

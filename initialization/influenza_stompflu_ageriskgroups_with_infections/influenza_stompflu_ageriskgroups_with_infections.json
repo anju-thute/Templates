@@ -347,7 +347,7 @@
             "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('g'))]"
         }
     ],
-     "applications": ["EpiHiper"], 
+     "engines": ["EpiHiper"], 
      "exceads": {
         "requires": {
             "allOf": ["influenza_stompflu_agegroups.json"]

@@ -469,7 +469,7 @@
       "jsonPath": "$.sets[?(@.id=='enteredIsymp')]"
     }
   ],
-  "applications": ["EpiHiper"], 
+  "engines": ["EpiHiper"], 
   "exceads": {
     "requires": {
       "allOf": [

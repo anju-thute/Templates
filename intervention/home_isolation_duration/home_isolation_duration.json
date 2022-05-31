@@ -140,7 +140,7 @@
           "jsonPath": "$.[?(@.id=='activityTrait')].features[?(@.id=='activityType')].enums[?(@.id=='work')]"
         }
     ],
-     "applications": ["EpiHiper"], 
+     "engines": ["EpiHiper"], 
      "exceads": {
         "requires": {
             "allOff": [

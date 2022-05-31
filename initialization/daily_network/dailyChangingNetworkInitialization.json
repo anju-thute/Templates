@@ -89,7 +89,7 @@
     },
     "userInput": [],
     "requirements": [],
-    "applications": ["EpiHiper"],
+    "engines": ["EpiHiper"],
     "exceads": {
         "requires": "",
         "interventionType": "DYNAMIC_NETWORKS"

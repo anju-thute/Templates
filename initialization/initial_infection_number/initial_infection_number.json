@@ -64,5 +64,5 @@
     }
   ],
   "requirements": [],
-  "applications": ["EpiHiper"]
+  "engines": ["EpiHiper"]
 }
