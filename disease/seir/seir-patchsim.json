@@ -1,8 +1,8 @@
 {
     "$schema": "https://raw.githubusercontent.com//NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
     "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
-    "ann:id": "FluWithAsymptomaticInfection",
-    "ann:label": "Flu with symptomatic and asymptomatic infections",
+    "ann:id": "SEIRWithAsymptomaticInfection",
+    "ann:label": "SEIR with symptomatic and asymptomatic infections",
     "ann:description": "Classic SEIR model with an extension to have a symptomatic and an asymptomatic infectious state (with reduced infectivity).",
     "template": {
         "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/diseaseModelSchema.json",
@@ -168,18 +168,14 @@
                 }
             }
         ],
-        "analysis": {
-            "infectiousStates": "Isymp+Iasymp"
-        }
+        "analysis": {"infectiousStates": "Isymp+Iasymp"}
     },
     "userInput": [
         {
             "ann:id": "Sucsceptibility",
             "ann:label": "Sucsceptibility Factor",
             "ann:description": "Level of susceptibility of an uninfected individual.",
-            "value": [
-                "/template/states/1/susceptibility"
-            ],
+            "value": ["/template/states/1/susceptibility"],
             "exceads": {
                 "minValue": 0,
                 "maxValue": 1,
@@ -191,9 +187,7 @@
             "ann:id": "InfectivitySymptomatic",
             "ann:label": "Infectious and symptomatic",
             "ann:description": "Infectious with symptoms. Symptomatic individuals are more likely to be observed, thus counted or eligible for interventions.",
-            "value": [
-                "/template/states/3/infectivity"
-            ],
+            "value": ["/template/states/3/infectivity"],
             "exceads": {
                 "minValue": 0,
                 "maxValue": 1,
@@ -205,9 +199,7 @@
             "ann:id": "InfectivityAsymptomatic",
             "ann:label": "Infectious but asympotmatic",
             "ann:description": "Infectious without symptoms. Asymptomatic individuals are less likely to infect others or be observed, thus may not be counted and are less likely to receive interventions.",
-            "value": [
-                "/template/states/4/infectivity"
-            ],
+            "value": ["/template/states/4/infectivity"],
             "exceads": {
                 "minValue": 0,
                 "maxValue": 1,
@@ -219,18 +211,14 @@
             "ann:id": "ProbabilityOfAsymptomaticProgression",
             "ann:label": "Probability of Asymptomatic Progression",
             "ann:description": "Proportion of Infectious that are asymptomatic.  Represents the probability an individual in the Exposed state will become Infectious and asymtomatic.",
-            "value": [
-                "/template/transitions/2/probability"
-            ],
+            "value": ["/template/transitions/2/probability"],
             "exceads": {
                 "minValue": 0,
                 "maxValue": 1,
                 "sweep": false,
                 "calibrate": false,
                 "autoAdjust": {
-                    "target": [
-                        "/template/transitions/1/probability"
-                    ],
+                    "target": ["/template/transitions/1/probability"],
                     "value": "1.0 - /template/transitions/2/probability"
                 }
             }
