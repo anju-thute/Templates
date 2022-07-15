@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com//NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
+  "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
+  "ann:id": "BetaSchedule",
+  "ann:label": "BetaSchedule",
+  "ann:description": "Changes to the beta schedule in PatchSim",
+  "template": {
+    "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
+    "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
+    "variables": [],
+    "triggers": [],
+    "interventions": [
+      {
+        "$comment": "Scheduled beta scaling event",
+        "id": "intervention_1",
+        "duration": 14,
+        "scaler" : 1.0
+        }
+        ],
+
+  "userInput": [
+    {
+      "ann:id": "Scaler",
+      "ann:label": "Scaling factor for beta adjustment ",
+      "ann:description": "Scaling factory for transmissibility (transmissibility will be multiplied by this factor)",
+      "value": [
+        "/template/interventions/1/scaler"
+      ],
+      "exceads": {
+        "minValue": 0.0,
+        "maxValue": 10.0,
+        "sweep": false,
+        "calibrate": false
+      }
+    },    
+    {
+      "ann:id": "Duration",
+      "ann:label": "Duration of scheduled change",
+      "ann:description": "Number of days the adjustment to transmissibility should last",
+      "value": [
+        "/template/interventions/1/duration"
+      ],
+      "exceads": {
+        "minValue": 0.0,
+        "maxValue": 999.0,
+        "sweep": false,
+        "calibrate": false
+      }
+    }
+  ],
+  "requirements": [],
+  "engines": ["PatchSim"], 
+  "exceads": {
+    "requires": {},
+    "interventionType": "BETA_SCHEDULE"
+    }
+  }
+}
