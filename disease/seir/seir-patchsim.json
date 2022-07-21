@@ -25,6 +25,8 @@
             }
         ],
         "ScalingFactor": 1,
+        "SymptomaticProbability": 1.0,
+        "AsymptomaticReduction": 1.0,
         "analysis": {"infectiousStates": "Isymp+Iasymp"}
     },
     "userInput": [
@@ -76,14 +78,43 @@
             "ann:id": "Scaling_Factor",
             "ann:label": "Infections to cases factor",
             "ann:description": "Proportion of Infectious that are reported as as case.",
-            "value": ["/template/ScalingFactor"],
+            "value": ["/template/2/ScalingFactor"],
             "exceads": {
                 "minValue": 0,
                 "maxValue": 99,
                 "sweep": false,
                 "calibrate": false
             }
+        },
+        {
+            "ann:id": "Asymptomatic_Probability",
+            "ann:label": "Probability of asymptomatic infection",
+            "ann:description": "Proportion of Infections that are asymptomatic",
+            "value": ["/template/3/SymptomaticProbability"],
+            "exceads": {
+                "minValue": 0,
+                "maxValue": 1.0,
+                "sweep": false,
+                "calibrate": false,
+                "autoAdjust": {
+                    "target": ["/template/3/SymptomaticProbability"],
+                    "value": "1.0 -  /template/3/SymptomaticProbability"
+                }
+            }
+        },
+        {
+            "ann:id": "Asymptomatic_Reduction",
+            "ann:label": "Level of reduction of infectivity for asymptomatically infected",
+            "ann:description": "Reduction in infectivity for those asymptomatically infected",
+            "value": ["/template/4/AsymptomaticReduction"],
+            "exceads": {
+                "minValue": 0,
+                "maxValue": 1.0,
+                "sweep": false,
+                "calibrate": false
+            }
         }
+
     ],
     "requirements": [],
     "engines": ["PatchSim"],
