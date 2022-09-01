@@ -540,7 +540,8 @@
       }
     },
     {
-      "jsonPath": "$.[?(@.id=='nodeTrait')].features[?(@.id=='enteredIsymp')].enums[?(@.id=='false')]"
+      "jsonPath": "$[?($['ann:id'] == 'NewlySymptomaticIndividuals')]",
+      "errorMessage": "The trigger 'Newly Symptomatic Individuals' is required."
     }
   ],
   "engines": ["EpiHiper"], 

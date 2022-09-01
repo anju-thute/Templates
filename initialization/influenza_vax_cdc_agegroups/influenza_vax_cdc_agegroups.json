@@ -15,7 +15,9 @@
                         "field": "age_group"
                     },
                     "operator": "==",
-                    "right": {"value": "p"}
+                    "right": {
+                        "value": "p"
+                    }
                 },
                 "sampling": {
                     "type": "individual",
@@ -26,17 +28,25 @@
                                 "operations": [
                                     {
                                         "target": {
-                                            "node": {"property": "infectivityFactor"}
+                                            "node": {
+                                                "property": "infectivityFactor"
+                                            }
                                         },
                                         "operator": "*=",
-                                        "value": {"number": 0.8}
+                                        "value": {
+                                            "number": 0.8
+                                        }
                                     },
                                     {
                                         "target": {
-                                            "node": {"property": "susceptibilityFactor"}
+                                            "node": {
+                                                "property": "susceptibilityFactor"
+                                            }
                                         },
                                         "operator": "*=",
-                                        "value": {"number": 0.8}
+                                        "value": {
+                                            "number": 0.8
+                                        }
                                     }
                                 ]
                             }
@@ -52,7 +62,9 @@
                         "field": "age_group"
                     },
                     "operator": "==",
-                    "right": {"value": "s"}
+                    "right": {
+                        "value": "s"
+                    }
                 },
                 "sampling": {
                     "type": "individual",
@@ -63,17 +75,25 @@
                                 "operations": [
                                     {
                                         "target": {
-                                            "node": {"property": "infectivityFactor"}
+                                            "node": {
+                                                "property": "infectivityFactor"
+                                            }
                                         },
                                         "operator": "*=",
-                                        "value": {"number": 0.8}
+                                        "value": {
+                                            "number": 0.8
+                                        }
                                     },
                                     {
                                         "target": {
-                                            "node": {"property": "susceptibilityFactor"}
+                                            "node": {
+                                                "property": "susceptibilityFactor"
+                                            }
                                         },
                                         "operator": "*=",
-                                        "value": {"number": 0.8}
+                                        "value": {
+                                            "number": 0.8
+                                        }
                                     }
                                 ]
                             }
@@ -89,7 +109,9 @@
                         "field": "age_group"
                     },
                     "operator": "==",
-                    "right": {"value": "a"}
+                    "right": {
+                        "value": "a"
+                    }
                 },
                 "sampling": {
                     "type": "individual",
@@ -100,17 +122,25 @@
                                 "operations": [
                                     {
                                         "target": {
-                                            "node": {"property": "infectivityFactor"}
+                                            "node": {
+                                                "property": "infectivityFactor"
+                                            }
                                         },
                                         "operator": "*=",
-                                        "value": {"number": 0.8}
+                                        "value": {
+                                            "number": 0.8
+                                        }
                                     },
                                     {
                                         "target": {
-                                            "node": {"property": "susceptibilityFactor"}
+                                            "node": {
+                                                "property": "susceptibilityFactor"
+                                            }
                                         },
                                         "operator": "*=",
-                                        "value": {"number": 0.8}
+                                        "value": {
+                                            "number": 0.8
+                                        }
                                     }
                                 ]
                             }
@@ -126,7 +156,9 @@
                         "field": "age_group"
                     },
                     "operator": "==",
-                    "right": {"value": "o"}
+                    "right": {
+                        "value": "o"
+                    }
                 },
                 "sampling": {
                     "type": "individual",
@@ -137,17 +169,25 @@
                                 "operations": [
                                     {
                                         "target": {
-                                            "node": {"property": "infectivityFactor"}
+                                            "node": {
+                                                "property": "infectivityFactor"
+                                            }
                                         },
                                         "operator": "*=",
-                                        "value": {"number": 0.8}
+                                        "value": {
+                                            "number": 0.8
+                                        }
                                     },
                                     {
                                         "target": {
-                                            "node": {"property": "susceptibilityFactor"}
+                                            "node": {
+                                                "property": "susceptibilityFactor"
+                                            }
                                         },
                                         "operator": "*=",
-                                        "value": {"number": 0.8}
+                                        "value": {
+                                            "number": 0.8
+                                        }
                                     }
                                 ]
                             }
@@ -163,7 +203,9 @@
                         "field": "age_group"
                     },
                     "operator": "==",
-                    "right": {"value": "g"}
+                    "right": {
+                        "value": "g"
+                    }
                 },
                 "sampling": {
                     "type": "individual",
@@ -174,17 +216,25 @@
                                 "operations": [
                                     {
                                         "target": {
-                                            "node": {"property": "infectivityFactor"}
+                                            "node": {
+                                                "property": "infectivityFactor"
+                                            }
                                         },
                                         "operator": "*=",
-                                        "value": {"number": 0.8}
+                                        "value": {
+                                            "number": 0.8
+                                        }
                                     },
                                     {
                                         "target": {
-                                            "node": {"property": "susceptibilityFactor"}
+                                            "node": {
+                                                "property": "susceptibilityFactor"
+                                            }
                                         },
                                         "operator": "*=",
-                                        "value": {"number": 0.8}
+                                        "value": {
+                                            "number": 0.8
+                                        }
                                     }
                                 ]
                             }
@@ -199,7 +249,9 @@
             "ann:id": "VaccinationRate0_4",
             "ann:label": "Vaccination Rate for Age Group 0-4",
             "ann:description": "Proportion of individuals in the Age Group 0-4 vaccinated",
-            "value": ["/template/initializations/1/sampling/number"],
+            "value": [
+                "/template/initializations/1/sampling/number"
+            ],
             "exceads": {
                 "minValue": 0,
                 "maxValue": 1,
@@ -211,7 +263,9 @@
             "ann:id": "VaccinationRate5_17",
             "ann:label": "Vaccination Rate for Age Group 5-17",
             "ann:description": "Proportion of individuals in the Age Group 5-17 vaccinated",
-            "value": ["/template/initializations/2/sampling/number"],
+            "value": [
+                "/template/initializations/2/sampling/number"
+            ],
             "exceads": {
                 "minValue": 0,
                 "maxValue": 1,
@@ -223,7 +277,9 @@
             "ann:id": "VaccinationRate18_49",
             "ann:label": "Vaccination Rate for Age Group 18-49",
             "ann:description": "Proportion of individuals in the Age Group 18-49 vaccinated",
-            "value": ["/template/initializations/2/sampling/number"],
+            "value": [
+                "/template/initializations/2/sampling/number"
+            ],
             "exceads": {
                 "minValue": 0,
                 "maxValue": 1,
@@ -235,7 +291,9 @@
             "ann:id": "VaccinationRate50_64",
             "ann:label": "Vaccination Rate for Age Group 50-64",
             "ann:description": "Proportion of individuals in the Age Group 50-64 vaccinated",
-            "value": ["/template/initializations/2/sampling/number"],
+            "value": [
+                "/template/initializations/2/sampling/number"
+            ],
             "exceads": {
                 "minValue": 0,
                 "maxValue": 1,
@@ -247,7 +305,9 @@
             "ann:id": "VaccinationRate65_",
             "ann:label": "Vaccination Rate for Age Group 65+",
             "ann:description": "Proportion of individuals in the Age Group 65+ vaccinated",
-            "value": ["/template/initializations/3/sampling/number"],
+            "value": [
+                "/template/initializations/3/sampling/number"
+            ],
             "exceads": {
                 "minValue": 0,
                 "maxValue": 1,
@@ -258,28 +318,38 @@
     ],
     "requirements": [
         {
-            "field": "age_group"
+            "jsonPath": "$.schema.fields[?(@.name=='age_group')]",
+            "errorMessage": "A population with the field 'age_group' is required."
         },
         {
-            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('p'))]"
+            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('p'))]",
+            "errorMessage": "A population with the enumeration value 'p' for the field 'age_group' is required."
         },
         {
-            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('s'))]"
+            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('s'))]",
+            "errorMessage": "A population with the enumeration value 's' for the field 'age_group' is required."
         },
         {
-            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('a'))]"
+            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('a'))]",
+            "errorMessage": "A population with the enumeration value 'a' for the field 'age_group' is required."
         },
         {
-            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('o'))]"
+            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('o'))]",
+            "errorMessage": "A population with the enumeration value 'o' for the field 'age_group' is required."
         },
         {
-            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('g'))]"
+            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('g'))]",
+            "errorMessage": "A population with the enumeration value 'g' for the field 'age_group' is required."
         }
     ],
-     "engines": ["EpiHiper"], 
-     "exceads": {
+    "engines": [
+        "EpiHiper"
+    ],
+    "exceads": {
         "requires": {
-            "allOf": ["montgomery_county_va.json"]
+            "allOf": [
+                "montgomery_county_va.json"
+            ]
         }
     }
 }

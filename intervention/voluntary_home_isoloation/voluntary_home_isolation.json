@@ -343,10 +343,12 @@
   ],
   "requirements": [
     {
-      "set": {"idRef": "enteredIsymp"}
+      "jsonPath": "$[?($['ann:id'] == 'ProphylaxTrigger')]",
+      "errorMessage": "The trigger 'Trigger Prophylax for Household Members' is required."
     },
     {
-      "jsonPath": "$.sets[?(@.id=='enteredIsymp')]"
+      "jsonPath": "$[?($['ann:id'] == 'NewlySymptomaticIndividuals')]",
+      "errorMessage": "The trigger 'Newly Symptomatic Individuals' is required."
     }
   ],
   "engines": ["EpiHiper"], 

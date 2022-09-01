@@ -456,20 +456,17 @@
       }
     },
     {
-      "jsonPath": "$.[?(@.id=='nodeTrait')].features[?(@.id=='prophylaxTrigger')].enums[?(@.id=='true')]"
-    }
-    ,
-    {
-      "jsonPath": "$.[?(@.id=='nodeTrait')].features[?(@.id=='prophylaxTrigger')].enums[?(@.id=='false')]"
+      "jsonPath": "$[?($['ann:id'] == 'ProphylaxTrigger')]",
+      "errorMessage": "The trigger 'Trigger Prophylax for Household Members' is required."
     },
     {
-      "jsonPath": "$.[?(@.id=='nodeTrait')].features[?(@.id=='prophylaxTrigger')].enums[?(@.id=='true')]"
-    },
-    {
-      "jsonPath": "$.sets[?(@.id=='enteredIsymp')]"
+      "jsonPath": "$[?($['ann:id'] == 'NewlySymptomaticIndividuals')]",
+      "errorMessage": "The trigger 'Newly Symptomatic Individuals' is required."
     }
   ],
-  "engines": ["EpiHiper"], 
+  "engines": [
+    "EpiHiper"
+  ],
   "exceads": {
     "requires": {
       "allOf": [

@@ -129,7 +129,12 @@
       }
     },
     {
-      "jsonPath": "$.[?(@.id=='activityTrait')].features[?(@.id=='activityType')].enums[?(@.id=='school')]"
+      "jsonPath": "$[?($['ann:id'] == 'NewlySymptomaticIndividuals')]",
+      "errorMessage": "The trigger 'Newly Symptomatic Individuals' is required."
+    },
+    {
+      "jsonPath": "$.[?(@.id=='activityTrait')].features[?(@.id=='activityType')].enums[?(@.id=='school')]",
+      "errorMessage": "A population with trait feature 'activityType' with the enum 'school' is required."
     }
   ],
   "engines": ["EpiHiper"], 

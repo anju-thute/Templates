@@ -239,10 +239,17 @@
       }
     },
     {
-      "jsonPath": "$.[?(@.id=='nodeTrait')].features[?(@.id=='prophylaxTrigger')].enums[?(@.id=='true')]"
+      "jsonPath": "$.schema.fields[?(@.name=='hid')]",
+      "errorMessage": "A population with the field 'hid' is required."
+    },
+     {
+      "jsonPath": "$[?($['ann:id'] == 'ProphylaxTrigger')]",
+      "errorMessage": "The trigger 'Trigger Prophylax for Household Members' is required."
     }
   ],
-  "engines": ["EpiHiper"], 
+  "engines": [
+    "EpiHiper"
+  ],
   "exceads": {
     "requires": {
       "allOf": [

@@ -4497,22 +4497,32 @@
       "field": "age_group"
     },
     {
-      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('p'))]"
+      "jsonPath": "$.schema.fields[?(@.name=='age_group')]",
+      "errorMessage": "A population with the field 'age_group' is required."
     },
     {
-      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('s'))]"
+      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('p'))]",
+      "errorMessage": "A population with the enumeration value 'p' for the field 'age_group' is required."
     },
     {
-      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('a'))]"
+      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('s'))]",
+      "errorMessage": "A population with the enumeration value 's' for the field 'age_group' is required."
     },
     {
-      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('o'))]"
+      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('a'))]",
+      "errorMessage": "A population with the enumeration value 'a' for the field 'age_group' is required."
     },
     {
-      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('g'))]"
+      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('o'))]",
+      "errorMessage": "A population with the enumeration value 'o' for the field 'age_group' is required."
     },
     {
-      "jsonPath": "$[?($['ann:id'] == 'AgeStratification')]"
+      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('g'))]",
+      "errorMessage": "A population with the enumeration value 'g' for the field 'age_group' is required."
+    },
+    {
+      "jsonPath": "$[?($['ann:id'] == 'AgeStratification')]",
+      "errorMessage": "The initialization 'Age Stratification' is required."
     }
   ],
   "engines": ["EpiHiper"],

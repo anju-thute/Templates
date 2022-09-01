@@ -213,34 +213,48 @@
       "field": "age_group"
     },
     {
-      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('p'))]"
+      "jsonPath": "$.schema.fields[?(@.name=='age_group')]",
+      "errorMessage": "A population with the field 'age_group' is required."
     },
     {
-      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('s'))]"
+      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('p'))]",
+      "errorMessage": "A population with the enumeration value 'p' for the field 'age_group' is required."
     },
     {
-      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('a'))]"
+      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('s'))]",
+      "errorMessage": "A population with the enumeration value 's' for the field 'age_group' is required."
     },
     {
-      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('o'))]"
+      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('a'))]",
+      "errorMessage": "A population with the enumeration value 'a' for the field 'age_group' is required."
     },
     {
-      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('g'))]"
+      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('o'))]",
+      "errorMessage": "A population with the enumeration value 'o' for the field 'age_group' is required."
     },
     {
-      "jsonPath": "$.states[?(@.id=='E_p')]"
+      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('g'))]",
+      "errorMessage": "A population with the enumeration value 'g' for the field 'age_group' is required."
     },
     {
-      "jsonPath": "$.states[?(@.id=='E_s')]"
+      "jsonPath": "$.template.states[?(@.id=='S_p')]",
+      "errorMessage": "A model with the state 'S_p' is required."
     },
     {
-      "jsonPath": "$.states[?(@.id=='E_a')]"
+      "jsonPath": "$.template.states[?(@.id=='S_s')]",
+      "errorMessage": "A model with the state 'S_s' is required."
     },
     {
-      "jsonPath": "$.states[?(@.id=='E_o')]"
+      "jsonPath": "$.template.states[?(@.id=='S_a')]",
+      "errorMessage": "A model with the state 'S_a' is required."
     },
     {
-      "jsonPath": "$.states[?(@.id=='E_g')]"
+      "jsonPath": "$.template.states[?(@.id=='S_o')]",
+      "errorMessage": "A model with the state 'S_o' is required."
+    },
+    {
+      "jsonPath": "$.template.states[?(@.id=='S_g')]",
+      "errorMessage": "A model with the state 'S_g' is required."
     }
   ],
   "engines": [
