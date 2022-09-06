@@ -107,7 +107,7 @@
       "value": ["/template/triggers/1/trigger/left/value/number"],
       "exceads": {
         "minValue": 0,
-        "maxValue": 1,
+        "maxValue": 9999,
         "sweep": false,
         "calibrate": false
       }
@@ -137,7 +137,7 @@
       "errorMessage": "A population with trait feature 'activityType' with the enum 'school' is required."
     }
   ],
-  "engines": ["EpiHiper"], 
+  "engines": ["EpiHiper"],
   "exceads": {
     "requires": {
       "allOf": [
