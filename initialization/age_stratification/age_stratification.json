@@ -207,7 +207,26 @@
       }
     ]
   },
-  "userInput": [],
+  "userInput": [
+    {
+      "ann:id": "dummy",
+      "ann:label": "Dummy Input",
+      "ann:description": "This input exists as a workaround.",
+      "value": [
+        "/template/sets/1/content/left/field"
+      ],
+      "validValues": [
+        {
+          "enum": [
+            "age_group"
+          ]
+        }
+      ],
+      "exceads": {
+        "attributeType": "text"
+      }
+    }
+  ],
   "requirements": [
     {
       "field": "age_group"
