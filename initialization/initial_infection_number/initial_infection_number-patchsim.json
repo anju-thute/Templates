@@ -3,36 +3,20 @@
   "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
   "ann:id": "NumberInitialInfections",
   "ann:label": "Initial Infections - number",
-  "ann:description": "Initially infect the specified number of individuals by moving them to the E health state",
+  "ann:description": "Initially infect the specified number of individuals by moving them to the I health state",
   "template": {
     "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/patchSimSchema.json",
     "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/patchSimSchema.json",
-    "initializations": [
-      {
-        "target": {
-          "elementType": "node",
-          "scope": "local"
-        },
-        "sampling": {
-          "type": "absolute",
-          "number": 25,
-          "sampled": {
-            "foreach": [
-              {
-                "operations": [
-                  {
-                    "target": {
-                      "node": {"property": "healthState"}
-                    },
-                    "operator": "=",
-                    "value": {"healthState": "E"}
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      }
+    "state_transitions": [
+            {
+                "source_state": "S",
+                "destination_state": "I",
+                "patches": "*",
+                "times": [
+                    0
+                ],
+                "value": 25
+            }
     ]
   },
   "userInput": [
@@ -40,26 +24,12 @@
       "ann:id": "NumberOfIndividuals",
       "ann:label": "Number of individuals to initially infect",
       "ann:description": "Number of individuals that will be infected at the start of the simulation",
-      "value": ["/template/initializations/1/sampling/number"],
+      "value": ["/template/state_transitions/0/value"],
       "exceads": {
         "minValue": 0,
         "maxValue": 999,
         "sweep": true,
         "calibrate": false
-      }
-    },
-    {
-      "ann:id": "InfectedState",
-      "ann:label": "Infected State",
-      "ann:description": "The infected state to which individuals are set",
-      "value": ["/template/initializations/1/sampling/sampled/foreach/1/operations/1/value/healthState"],
-      "validValues": [
-        {
-          "jsonPath": "$..states.*.id"
-        }
-      ],
-      "exceads": {
-        "attributeType": "text"
       }
     }
   ],

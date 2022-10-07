@@ -7,34 +7,21 @@
     "template": {
         "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/patchSimSchema.json",
         "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/patchSimSchema.json",
-        "rates": [
-            {
-                "id": "ExposureRate",
-                "ann:label": "Rate of exposure (beta) S->E",
-                "value": 0.35
-            },
-            {
-                "id": "InfectionRate",
-                "ann:label": "Rate of entering Infectious (alpha) E->I",
-                "value": 0.3
-            },
-            {
-                "id": "RecoveryRate",
-                "ann:label": "Rate of Recovering, leaving Infectious (gamma) I->R",
-                "value": 0.2
-            }
-        ],
-        "ScalingFactor": 1,
-        "SymptomaticProbability": 1.0,
-        "AsymptomaticReduction": 1.0,
-        "analysis": {"infectiousStates": "Isymp+Iasymp"}
+        "disease": {
+            "ExposureRate": 0.35,
+            "InfectionRate": 0.3,
+            "RecoveryRate": 0.2,
+            "SymptomaticProbability": 1.0,
+            "AsymptomaticReduction": 1.0
+        },
+        "analysis": {"infectiousStates": "I"}
     },
     "userInput": [
         {
             "ann:id": "Transmissibility",
             "ann:label": "Rate of exposure (beta) or contact rate",
             "ann:description": "Level of transmissibility, likelihood an infectious individual will transmit disease to a susceptible per day.",
-            "value": ["/template/rates/1/ExposureRate"],
+            "value": ["/template/disease/ExposureRate"],
             "exceads": {
                 "minValue": 0,
                 "maxValue": 1,
@@ -46,15 +33,15 @@
             "ann:id": "Latent_Period",
             "ann:label": "Period of time from infection to becoming infectious",
             "ann:description": "Number of days (simulation ticks) those infected in the population remain in the Exposed state before transitioning to Infectious",
-            "value": ["/template/rates/2/InfectionRate"],
+            "value": ["/template/disease/InfectionRate"],
             "exceads": {
                 "minValue": 0,
                 "maxValue": 999,
                 "sweep": false,
                 "calibrate": false,
                 "autoAdjust": {
-                    "target": ["/template/rates/2/InfectionRate"],
-                    "value": "1.0 /  /template/rates/1/InfectionRate"
+                    "target": ["/template/disease/InfectionRate"],
+                    "value": "1.0 / /template/disease/InfectionRate"
                 }
             }
         },
@@ -62,15 +49,15 @@
             "ann:id": "Infectious_Period",
             "ann:label": "Period of time from becoming infectious to leaving the infectious state",
             "ann:description": "Number of days (simulation ticks) those who are infectious remain infectious before leaving the Infectious state.",
-            "value": ["/template/rates/3/RecoveryRate"],
+            "value": ["/template/disease/RecoveryRate"],
             "exceads": {
                 "minValue": 0,
                 "maxValue": 999,
                 "sweep": false,
                 "calibrate": false,
                 "autoAdjust": {
-                    "target": ["/template/rates/3/RecoveryRate"],
-                    "value": "1.0 /  /template/rates/3/RecoveryRate"
+                    "target": ["/template/disease/RecoveryRate"],
+                    "value": "1.0 /  /template/disease/RecoveryRate"
                 }
             }
         },
@@ -78,7 +65,7 @@
             "ann:id": "Scaling_Factor",
             "ann:label": "Infections to cases factor",
             "ann:description": "Proportion of Infectious that are reported as as case.",
-            "value": ["/template/2/ScalingFactor"],
+            "value": ["/template/disease/ScalingFactor"],
             "exceads": {
                 "minValue": 0,
                 "maxValue": 99,
@@ -90,15 +77,15 @@
             "ann:id": "Asymptomatic_Probability",
             "ann:label": "Probability of asymptomatic infection",
             "ann:description": "Proportion of Infections that are asymptomatic",
-            "value": ["/template/3/SymptomaticProbability"],
+            "value": ["/template/disease/SymptomaticProbability"],
             "exceads": {
                 "minValue": 0,
                 "maxValue": 1.0,
                 "sweep": false,
                 "calibrate": false,
                 "autoAdjust": {
-                    "target": ["/template/3/SymptomaticProbability"],
-                    "value": "1.0 -  /template/3/SymptomaticProbability"
+                    "target": ["/template/disease/SymptomaticProbability"],
+                    "value": "1.0 - /template/disease/SymptomaticProbability"
                 }
             }
         },
@@ -106,7 +93,7 @@
             "ann:id": "Asymptomatic_Reduction",
             "ann:label": "Level of reduction of infectivity for asymptomatically infected",
             "ann:description": "Reduction in infectivity for those asymptomatically infected",
-            "value": ["/template/4/AsymptomaticReduction"],
+            "value": ["/template/disease/AsymptomaticReduction"],
             "exceads": {
                 "minValue": 0,
                 "maxValue": 1.0,

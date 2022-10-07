@@ -11,10 +11,40 @@
     "triggers": [],
     "interventions": [
       {
-        "$comment": "Scheduled beta scaling event",
-        "id": "intervention_1",
-        "duration": 14,
-        "scaler": 1.0
+        "target": "*",
+        "foreach": [
+          {
+            "condition": {
+              "and": [
+                {
+                  "left": {
+                    "observable": "time"
+                  },
+                  "operator": ">=",
+                  "right": 0
+                },
+                {
+                  "left": {
+                    "observable": "time"
+                  },
+                  "operator": "<",
+                  "right": 180
+                }
+              ]
+            },
+            "operations": [
+              {
+                "target": {
+                  "node": {
+                    "property": "beta"
+                  }
+                },
+                "operator": "*",
+                "value": 0.33
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -24,7 +54,7 @@
       "ann:label": "Scaling factor for beta adjustment",
       "ann:description": "Scaling factory for transmissibility (transmissibility will be multiplied by this factor)",
       "value": [
-        "/template/interventions/1/scaler"
+        "/template/interventions/1/foreach/1/operations/value"
       ],
       "exceads": {
         "minValue": 0.0,
@@ -34,17 +64,37 @@
       }
     },
     {
-      "ann:id": "Duration",
-      "ann:label": "Duration of scheduled change",
-      "ann:description": "Number of days the adjustment to transmissibility should last",
+      "ann:id": "Start",
+      "ann:label": "Start of scheduled change",
+      "ann:description": "Start day of the adjustment to transmissibility",
       "value": [
-        "/template/interventions/1/duration"
+        "/template/interventions/1/foreach/1/conditions/and/1/right"
       ],
       "exceads": {
         "minValue": 0.0,
         "maxValue": 999.0,
         "sweep": false,
         "calibrate": false
+      }
+    },
+    {
+      "ann:id": "Duration",
+      "ann:label": "Duration of scheduled change",
+      "ann:description": "Number of days the adjustment to transmissibility should last",
+      "value": [
+        "/template/interventions/1/foreach/1/conditions/and/2/right"
+      ],
+      "exceads": {
+        "minValue": 0.0,
+        "maxValue": 999.0,
+        "sweep": false,
+        "calibrate": false,
+        "autoAdjust": {
+          "target": [
+            "/template/interventions/1/foreach/1/conditions/and/2/right"
+          ],
+          "value": "/template/interventions/1/foreach/1/conditions/and/1/right + /template/interventions/1/foreach/1/conditions/and/2/right"
+        }
       }
     }
   ],
