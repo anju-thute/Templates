@@ -66,7 +66,7 @@
     {
       "ann:id": "Start",
       "ann:label": "Start of scheduled change",
-      "ann:description": "Start day of the adjustment to transmissibility",
+      "ann:description": "Start day of the adjustment to transmissibility (beta)",
       "value": [
         "/template/interventions/1/foreach/1/conditions/and/1/right"
       ],
