@@ -25,7 +25,7 @@
       "ann:label": "Percent of population to initially infect",
       "ann:description": "Percentage of population that will be infected at the start of the simulation.",
       "value": [
-        "/template/state_transitions/0/value"
+        "/template/state_transitions/1/fraction"
       ],
       "exceads": {
         "minValue": 0,
