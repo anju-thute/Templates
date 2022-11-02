@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
   "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
   "ann:id": "NewlySymptomaticIndividuals",
-  "ann:label": "Newly Symptomatic Individuals and custom health state",
+  "ann:label": "Newly Symptomatic Individuals with custom symptomatic Health States",
   "ann:description": "Helper trigger for counting and tagging people entering any of the specified symptomatic states",
   "template": {
     "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/interventionSchema.json",
@@ -14,7 +14,7 @@
         "features": [
           {
             "id": "enteredIsymp",
-            "ann:label": "Entered State Isypm",
+            "ann:label": "Node entered a Symptomatic State",
             "enums": [
               {
                 "id": "true",
@@ -33,7 +33,7 @@
     "sets": [
       {
         "id": "enteredIsymp",
-        "ann:label": "Nodes which newly entered a symptomatics State (e.g. Isymp).",
+        "ann:label": "Nodes which entered state Isymp.",
         "scope": "local",
         "content": {
           "operation": "intersection",
@@ -42,7 +42,9 @@
               "elementType": "node",
               "scope": "local",
               "left": {
-                "node": {"property": "healthState"}
+                "node": {
+                  "property": "healthState"
+                }
               },
               "operator": "withPropertyIn",
               "right": {
@@ -94,12 +96,16 @@
         "trigger": {
           "left": {
             "sizeof": {
-              "set": {"idRef": "enteredIsymp"}
+              "set": {
+                "idRef": "enteredIsymp"
+              }
             }
           },
           "operator": ">",
           "right": {
-            "value": {"number": 0}
+            "value": {
+              "number": 0
+            }
           }
         },
         "interventionIds": []
@@ -107,20 +113,26 @@
     ],
     "interventions": [
       {
-        "$comment": "Mark indiviudals as having entered previously",
+        "$comment": "Mark indiviudal as having entered previously",
         "trigger": {
           "left": {
             "sizeof": {
-              "set": {"idRef": "enteredIsymp"}
+              "set": {
+                "idRef": "enteredIsymp"
+              }
             }
           },
           "operator": ">",
           "right": {
-            "value": {"number": 0}
+            "value": {
+              "number": 0
+            }
           }
         },
         "target": {
-          "set": {"idRef": "enteredIsymp"}
+          "set": {
+            "idRef": "enteredIsymp"
+          }
         },
         "foreach": [
           {
