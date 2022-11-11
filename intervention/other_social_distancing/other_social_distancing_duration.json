@@ -119,7 +119,7 @@
       }
     },
     {
-      "jsonPath": "$.[?(@.id=='activityTrait')].features[?(@.id=='activityType')].enums[?(@.id=='shop')]",
+      "jsonPath": "$..[?(@.id=='activityTrait')].features[?(@.id=='activityType')].enums[?(@.id=='shop')]",
       "errorMessage": "A population with trait feature 'activityType' with the enum 'shop' is required."
     }
   ],
