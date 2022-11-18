@@ -5,36 +5,121 @@
     "ann:label": "SEIR general model",
     "ann:description": "Classic SEIR model with symptomatic and an asymptomatic infectious state (with reduced infectivity).",
     "template": {
-        "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/patchSimSchema.json",
-        "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/patchSimSchema.json",
-        "rates": [
+        "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/diseaseModelSchema.json",
+        "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/diseaseModelSchema.json",
+        "states": [
             {
-                "id": "ExposureRate",
-                "ann:label": "Rate of exposure (beta) S->E",
-                "value": 0.35
+                "id": "S",
+                "ann:label": "Susceptible",
+                "infectivity": 0,
+                "susceptibility": 1
             },
             {
-                "id": "InfectionRate",
-                "ann:label": "Rate of entering Infectious (alpha) E->I",
-                "value": 0.3
+                "id": "E",
+                "ann:label": "Exposed",
+                "infectivity": 0,
+                "susceptibility": 0
             },
             {
-                "id": "RecoveryRate",
-                "ann:label": "Rate of Recovering, leaving Infectious (gamma) I->R",
-                "value": 0.2
+                "id": "Isymp",
+                "ann:label": "Infectious (symptomatic)",
+                "infectivity": 1,
+                "susceptibility": 0
+            },
+            {
+                "id": "Iasymp",
+                "ann:label": "Infectious (asymptomatic)",
+                "infectivity": 0.0,
+                "susceptibility": 0
+            },
+            {
+                "id": "R",
+                "ann:label": "Recovered",
+                "infectivity": 0,
+                "susceptibility": 0
             }
         ],
-        "ScalingFactor": 1,
-        "SymptomaticProbability": 1.0,
-        "AsymptomaticReduction": 1.0,
-        "analysis": {"infectiousStates": "I"}
+        "initialState": "S",
+        "transmissions": [
+            {
+                "id": "infection_Isymp",
+                "ann:label": "Infection (symptomatic) (beta)",
+                "entryState": "S",
+                "exitState": "E",
+                "contactState": "Isymp",
+                "transmissibility": 0.65
+            },
+            {
+                "id": "infection_Iasymp",
+                "ann:label": "Infection (asymptomatic) (beta)",
+                "entryState": "S",
+                "exitState": "E",
+                "contactState": "Iasymp",
+                "transmissibility": 0.65
+            },
+            {
+                "id": "infection_E",
+                "ann:label": "Infection (presymptomatic) (beta)",
+                "entryState": "S",
+                "exitState": "E",
+                "contactState": "E",
+                "transmissibility": 0.65
+            }
+        ],
+        "transitions": [
+            {
+                "id": "E_to_Isymp",
+                "ann:label": "Exposed to Symptomatic (dwell time = 1/alpha)",
+                "entryState": "E",
+                "exitState": "Isymp",
+                "probability": 1,
+                "dwellTime": {
+                    "fixed": 1.492537313
+                }
+            },
+            {
+                "id": "E_to_Iasymp",
+                "ann:label": "Exposed to Asymptomatic (dwell time = 1/alpha)",
+                "entryState": "E",
+                "exitState": "Iasymp",
+                "probability": 0,
+                "dwellTime": {
+                    "fixed": 1.492537313
+                }
+            },
+            {
+                "id": "Isymp_to_R",
+                "ann:label": "Isymp to Recovered (dwell time = 1/gamma)",
+                "entryState": "Isymp",
+                "exitState": "R",
+                "probability": 1,
+                "dwellTime": {
+                    "fixed": 2.5
+                }
+            },
+            {
+                "id": "Iasymp_to_R",
+                "ann:label": "Asymptomatic to Recovered (dwell time = 1/gamma)",
+                "entryState": "Iasymp",
+                "exitState": "R",
+                "probability": 1,
+                "dwellTime": {
+                    "fixed": 2.5
+                }
+            }
+        ],
+        "analysis": {
+            "infectiousStates": "I+Isymp+Iasymp"
+        }
     },
     "userInput": [
         {
-            "ann:id": "Transmissibility",
-            "ann:label": "Rate of exposure (beta) or contact rate",
-            "ann:description": "Level of transmissibility, likelihood an infectious individual will transmit disease to a susceptible per day.",
-            "value": ["/template/rates/1/ExposureRate"],
+            "ann:id": "InfectivityAsymptomatic",
+            "ann:label": "Infectious but asymptomatic",
+            "ann:description": "Infectious without symptoms. Asymptomatic individuals are less likely to infect others. Fraction of infectivty of symptomatic individual",
+            "value": [
+                "/template/states/4/infectivity"
+            ],
             "exceads": {
                 "minValue": 0,
                 "maxValue": 1,
@@ -43,84 +128,108 @@
             }
         },
         {
-            "ann:id": "Latent_Period",
-            "ann:label": "Period of time from infection to becoming infectious",
-            "ann:description": "Number of days (simulation ticks) those infected in the population remain in the Exposed state before transitioning to Infectious",
-            "value": ["/template/rates/2/InfectionRate"],
+            "ann:id": "InfectivityPresymptomatic",
+            "ann:label": "Infectious but presymptomatic",
+            "ann:description": "Infectious before symptoms. Presymptomatic individuals are less likely to infect others. Fraction of infectivty of symptomatic individual",
+            "value": [
+                "/template/states/2/infectivity"
+            ],
             "exceads": {
                 "minValue": 0,
-                "maxValue": 999,
-                "sweep": false,
-                "calibrate": false,
-                "autoAdjust": {
-                    "target": ["/template/rates/2/InfectionRate"],
-                    "value": "1.0 /  /template/rates/1/InfectionRate"
-                }
-            }
-        },
-        {
-            "ann:id": "Infectious_Period",
-            "ann:label": "Period of time from becoming infectious to leaving the infectious state",
-            "ann:description": "Number of days (simulation ticks) those who are infectious remain infectious before leaving the Infectious state.",
-            "value": ["/template/rates/3/RecoveryRate"],
-            "exceads": {
-                "minValue": 0,
-                "maxValue": 999,
-                "sweep": false,
-                "calibrate": false,
-                "autoAdjust": {
-                    "target": ["/template/rates/3/RecoveryRate"],
-                    "value": "1.0 /  /template/rates/3/RecoveryRate"
-                }
-            }
-        },
-        {
-            "ann:id": "Scaling_Factor",
-            "ann:label": "Infections to cases factor",
-            "ann:description": "Proportion of Infectious that are reported as as case.",
-            "value": ["/template/2/ScalingFactor"],
-            "exceads": {
-                "minValue": 0,
-                "maxValue": 99,
+                "maxValue": 1,
                 "sweep": false,
                 "calibrate": false
             }
         },
         {
-            "ann:id": "Asymptomatic_Probability",
-            "ann:label": "Probability of asymptomatic infection",
-            "ann:description": "Proportion of Infections that are asymptomatic",
-            "value": ["/template/3/SymptomaticProbability"],
+            "ann:id": "ProbabilityOfAsymptomaticProgression",
+            "ann:label": "Probability of Asymptomatic Progression",
+            "ann:description": "Proportion of Infectious that are asymptomatic.  Represents the probability an individual in the Exposed state will become Infectious and asymptomatic.",
+            "value": [
+                "/template/transitions/2/probability"
+            ],
             "exceads": {
                 "minValue": 0,
-                "maxValue": 1.0,
+                "maxValue": 1,
                 "sweep": false,
                 "calibrate": false,
                 "autoAdjust": {
-                    "target": ["/template/3/SymptomaticProbability"],
-                    "value": "1.0 -  /template/3/SymptomaticProbability"
+                    "target": [
+                        "/template/transitions/1/probability"
+                    ],
+                    "value": "1.0 - /template/transitions/2/probability"
                 }
             }
         },
         {
-            "ann:id": "Asymptomatic_Reduction",
-            "ann:label": "Level of reduction of infectivity for asymptomatically infected",
-            "ann:description": "Reduction in infectivity for those asymptomatically infected",
-            "value": ["/template/4/AsymptomaticReduction"],
+            "ann:id": "Transmissibility",
+            "ann:label": "Effective transmissiblity factor (beta)",
+            "ann:description": "Effective transmissiblity factor (beta)",
+            "value": [
+                "/template/transmissions/1/transmissibility"
+            ],
             "exceads": {
                 "minValue": 0,
-                "maxValue": 1.0,
+                "maxValue": 100,
                 "sweep": false,
-                "calibrate": false
+                "calibrate": false,
+                "autoAdjust": {
+                    "target": [
+                        "/template/transmissions/2/transmissibility",
+                        "/template/transmissions/3/transmissibility"
+                    ],
+                    "value": "/template/transmissions/1/transmissibility"
+                }
+            }
+        },
+        {
+            "ann:id": "TimeToInfectious",
+            "ann:label": "Time (ticks) to infection",
+            "ann:description": "Time (in ticks) to infectious. 1/alpha",
+            "value": [
+                "/template/transitions/1/dwellTime/fixed"
+            ],
+            "exceads": {
+                "minValue": 0,
+                "maxValue": 100,
+                "sweep": false,
+                "calibrate": false,
+                "autoAdjust": {
+                    "target": [
+                        "/template/transitions/2/dwellTime/fixed"
+                    ],
+                    "value": "/template/transitions/1/dwellTime/fixed"
+                }
+            }
+        },
+        {
+            "ann:id": "TimeToRecovery",
+            "ann:label": "Time (ticks) to recovery",
+            "ann:description": "Time (in ticks) to recovery. 1/gamma",
+            "value": [
+                "/template/transitions/3/dwellTime/fixed"
+            ],
+            "exceads": {
+                "minValue": 0,
+                "maxValue": 100,
+                "sweep": false,
+                "calibrate": false,
+                "autoAdjust": {
+                    "target": [
+                        "/template/transitions/4/dwellTime/fixed"
+                    ],
+                    "value": "/template/transitions/3/dwellTime/fixed"
+                }
             }
         }
-
     ],
     "requirements": [],
-    "engines": ["PatchSim"],
+    "engines": [
+        "PatchSim"
+    ],
     "exceads": {
         "name": "SEIR Disease Model",
-        "shortName": "SEIR-PatchSim",
+        "shortName": "SEIR",
         "groupName": [
             "General",
             "SEIR"
