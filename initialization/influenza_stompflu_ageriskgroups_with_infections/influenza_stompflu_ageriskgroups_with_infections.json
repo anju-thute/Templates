@@ -414,27 +414,27 @@
         {
             "jsonPath": "$.schema.fields[?(@.name=='age_group')]",
             "errorMessage": "A population with the field 'age_group' is required."
-        },
-        {
-            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('p'))]",
+          },
+          {
+            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[?(@=='p')]",
             "errorMessage": "A population with the enumeration value 'p' for the field 'age_group' is required."
-        },
-        {
-            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('s'))]",
+          },
+          {
+            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[?(@=='s')]",
             "errorMessage": "A population with the enumeration value 's' for the field 'age_group' is required."
-        },
-        {
-            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('a'))]",
+          },
+          {
+            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[?(@=='a')]",
             "errorMessage": "A population with the enumeration value 'a' for the field 'age_group' is required."
-        },
-        {
-            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('o'))]",
+          },
+          {
+            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[?(@=='o')]",
             "errorMessage": "A population with the enumeration value 'o' for the field 'age_group' is required."
-        },
-        {
-            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('g'))]",
+          },
+          {
+            "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[?(@=='g')]",
             "errorMessage": "A population with the enumeration value 'g' for the field 'age_group' is required."
-        },
+          },
         {
             "jsonPath": "$.template.states[?(@.id=='S_pl')]",
             "errorMessage": "A model with the state 'S_pl' is required."

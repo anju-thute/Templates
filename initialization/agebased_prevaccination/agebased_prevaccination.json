@@ -187,15 +187,15 @@
       "errorMessage": "A population with the field 'age_group' is required."
     },
     {
-      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('0-18'))]",
+      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[?(@=='0-18')]",
       "errorMessage": "A population with the enumeration value '0-18' for the field 'age_group' is required."
     },
     {
-      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('19-64'))]",
+      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[?(@=='19-64')]",
       "errorMessage": "A population with the enumeration value '19-64' for the field 'age_group' is required."
     },
     {
-      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[(@.indexOf('65+'))]",
+      "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[?(@=='65+')]",
       "errorMessage": "A population with the enumeration value '65+' for the field 'age_group' is required."
     }
   ],
