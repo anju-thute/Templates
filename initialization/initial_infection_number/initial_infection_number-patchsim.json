@@ -1,35 +1,67 @@
 {
-  "$schema": "https://raw.githubusercontent.com//NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
+  "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
   "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
-  "ann:id": "NumberInitialInfections",
-  "ann:label": "Initial Infections - number",
-  "ann:description": "Initially infect the specified number of individuals by moving them to the I health state",
+  "ann:id": "SeedingNumberPatchsim",
+  "ann:label": "Seeding (number)",
+  "ann:description": "Transition given number of individuals in selected patches to the infected state.",
   "template": {
     "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/patchSimSchema.json",
     "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/patchSimSchema.json",
-    "state_transitions": [
+    "initializations": [
       {
+        "type": "filter",
         "source_state": "S",
         "destination_state": "I",
-        "patches": "*",
+        "patches": {
+          "target": {
+            "scope": "local",
+            "elementType": "node"
+          }
+        },
         "times": [
           0
         ],
-        "value": 25
+        "value": 0
       }
     ]
   },
   "userInput": [
     {
-      "ann:id": "NumberOfIndividuals",
-      "ann:label": "Number of individuals to initially infect",
-      "ann:description": "Number of individuals that will be infected at the start of the simulation",
+      "ann:id": "SubPopulation",
+      "ann:label": "Sub Population",
+      "ann:description": "A subset of the patches from which individuals are selected",
       "value": [
-        "/template/state_transitions/1/fraction"
+        "/template/initializations/1/content"
+      ],
+      "exceads": {
+        "sweep": false,
+        "calibrate": false,
+        "attributeType": "text",
+        "isApplicable": false
+      }
+    },
+    {
+      "ann:id": "NumberOfIndividuals",
+      "ann:label": "Number of individuals that change states",
+      "ann:description": "Number of individuals that will change state at specified time",
+      "value": [
+        "/template/initializations/1/value"
       ],
       "exceads": {
         "minValue": 0,
-        "maxValue": 999,
+        "sweep": true,
+        "calibrate": false
+      }
+    },
+    {
+      "ann:id": "Timepoint",
+      "ann:label": "Time when individuals will change state",
+      "ann:description": "Time when individuals will change state",
+      "value": [
+        "/template/initializations1/times/1"
+      ],
+      "exceads": {
+        "minValue": 0,
         "sweep": true,
         "calibrate": false
       }
@@ -38,5 +70,6 @@
   "requirements": [],
   "engines": [
     "PatchSim"
-  ]
+  ],
+  "exceads": {}
 }
