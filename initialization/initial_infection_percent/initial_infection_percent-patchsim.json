@@ -63,6 +63,7 @@
       ],
       "exceads": {
         "minValue": 0,
+        "minValue": 999,
         "sweep": true,
         "calibrate": false
       }

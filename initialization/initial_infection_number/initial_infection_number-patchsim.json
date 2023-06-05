@@ -49,6 +49,7 @@
       ],
       "exceads": {
         "minValue": 0,
+        "maxValue": 999,
         "sweep": true,
         "calibrate": false
       }
@@ -58,10 +59,11 @@
       "ann:label": "Time when individuals will change state",
       "ann:description": "Time when individuals will change state",
       "value": [
-        "/template/initializations1/times/1"
+        "/template/initializations/1/times/1"
       ],
       "exceads": {
         "minValue": 0,
+        "maxValue": 100000,
         "sweep": true,
         "calibrate": false
       }
