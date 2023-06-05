@@ -59,7 +59,7 @@
       "ann:label": "Time when individuals will change state",
       "ann:description": "Time when individuals will change state",
       "value": [
-        "/template/initializations1/times/1"
+        "/template/initializations/1/times/1"
       ],
       "exceads": {
         "minValue": 0,
