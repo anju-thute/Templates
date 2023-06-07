@@ -31,7 +31,7 @@
       "ann:label": "Sub Population",
       "ann:description": "A subset of the patches from which individuals are selected",
       "value": [
-        "/template/initializations/1/target"
+        "/template/initializations/1/patches/target"
       ],
       "exceads": {
         "sweep": false,
