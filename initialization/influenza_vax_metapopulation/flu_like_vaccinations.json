@@ -1,0 +1,172 @@
+{
+    "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
+    "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
+    "ann:id": "PatchSimFluVaccinations",
+    "ann:label": "Flu-like vaccination schedule",
+    "ann:description": "Vaccinates fraction of population in all patches using flu-like vaccine acceptance rates. Assumes year starts at tick 0",
+    "template": {
+        "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/patchSimSchema.json",
+        "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/patchSimSchema.json",
+        "initializations": [
+            {
+                "source_state": "S",
+                "destination_state": "V",
+                "patches": "*",
+                "times": [
+                    205
+                ],
+                "fraction": 0.004636029346234598
+            },
+            {
+                "source_state": "S",
+                "destination_state": "V",
+                "patches": "*",
+                "times": [
+                    212
+                ],
+                "fraction": 0.013603266181601027
+            },
+            {
+                "source_state": "S",
+                "destination_state": "V",
+                "patches": "*",
+                "times": [
+                    219
+                ],
+                "fraction": 0.019232864757810417
+            },
+            {
+                "source_state": "S",
+                "destination_state": "V",
+                "patches": "*",
+                "times": [
+                    226
+                ],
+                "fraction": 0.02400523269291193
+            },
+            {
+                "source_state": "S",
+                "destination_state": "V",
+                "patches": "*",
+                "times": [
+                    233
+                ],
+                "fraction": 0.029070923766600188
+            },
+            {
+                "source_state": "S",
+                "destination_state": "V",
+                "patches": "*",
+                "times": [
+                    240
+                ],
+                "fraction": 0.034854150160283676
+            },
+            {
+                "source_state": "S",
+                "destination_state": "V",
+                "patches": "*",
+                "times": [
+                    247
+                ],
+                "fraction": 0.0381806494767801
+            },
+            {
+                "source_state": "S",
+                "destination_state": "V",
+                "patches": "*",
+                "times": [
+                    254
+                ],
+                "fraction": 0.03975710850073219
+            },
+            {
+                "source_state": "S",
+                "destination_state": "V",
+                "patches": "*",
+                "times": [
+                    261
+                ],
+                "fraction": 0.04290783732431358
+            },
+            {
+                "source_state": "S",
+                "destination_state": "V",
+                "patches": "*",
+                "times": [
+                    268
+                ],
+                "fraction": 0.0454997825119682
+            },
+            {
+                "source_state": "S",
+                "destination_state": "V",
+                "patches": "*",
+                "times": [
+                    275
+                ],
+                "fraction": 0.046847582816521974
+            },
+            {
+                "source_state": "S",
+                "destination_state": "V",
+                "patches": "*",
+                "times": [
+                    282
+                ],
+                "fraction": 0.045816478148037555
+            },
+            {
+                "source_state": "S",
+                "destination_state": "V",
+                "patches": "*",
+                "times": [
+                    289
+                ],
+                "fraction": 0.04231310432056
+            },
+            {
+                "source_state": "S",
+                "destination_state": "V",
+                "patches": "*",
+                "times": [
+                    296
+                ],
+                "fraction": 0.03895319640624835
+            },
+            {
+                "source_state": "S",
+                "destination_state": "V",
+                "patches": "*",
+                "times": [
+                    303
+                ],
+                "fraction": 0.025395319593595308
+            },
+            {
+                "source_state": "S",
+                "destination_state": "V",
+                "patches": "*",
+                "times": [
+                    310
+                ],
+                "fraction": 0.007192295585823023
+            },
+            {
+                "source_state": "S",
+                "destination_state": "V",
+                "patches": "*",
+                "times": [
+                    317
+                ],
+                "fraction": 0.0017341784099778963
+            }
+        ]
+    },
+    "userInput": [],
+    "requirements": [],
+    "engines": [
+        "PatchSim"
+    ],
+    "exceads": {}
+}
