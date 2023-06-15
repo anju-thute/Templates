@@ -7,15 +7,26 @@
     "template": {
         "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/patchSimSchema.json",
         "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/patchSimSchema.json",
-        "sets" : {
-            "id": "custom_population",
-            "content": "*"
-        },
+        "sets": [
+            {
+                "id": "custom_population",
+                "ann:label": "Custom Sub Population",
+                "scope": "local",
+                "content": {
+                    "scope": "local",
+                    "elementType": "node"
+                }
+            }
+        ],
         "initializations": [
             {
                 "source_state": "S",
                 "destination_state": "V",
-                "target": { "set": { "idRef": "custom_population" } },
+                "target": {
+                    "set": {
+                        "idRef": "custom_population"
+                    }
+                },
                 "times": [
                     205
                 ],
@@ -24,7 +35,11 @@
             {
                 "source_state": "S",
                 "destination_state": "V",
-                "target": { "set": { "idRef": "custom_population" } },
+                "target": {
+                    "set": {
+                        "idRef": "custom_population"
+                    }
+                },
                 "times": [
                     212
                 ],
@@ -33,7 +48,11 @@
             {
                 "source_state": "S",
                 "destination_state": "V",
-                "target": { "set": { "idRef": "custom_population" } },
+                "target": {
+                    "set": {
+                        "idRef": "custom_population"
+                    }
+                },
                 "times": [
                     219
                 ],
@@ -42,7 +61,11 @@
             {
                 "source_state": "S",
                 "destination_state": "V",
-                "target": { "set": { "idRef": "custom_population" } },
+                "target": {
+                    "set": {
+                        "idRef": "custom_population"
+                    }
+                },
                 "times": [
                     226
                 ],
@@ -51,7 +74,11 @@
             {
                 "source_state": "S",
                 "destination_state": "V",
-                "target": { "set": { "idRef": "custom_population" } },
+                "target": {
+                    "set": {
+                        "idRef": "custom_population"
+                    }
+                },
                 "times": [
                     233
                 ],
@@ -60,7 +87,11 @@
             {
                 "source_state": "S",
                 "destination_state": "V",
-                "target": { "set": { "idRef": "custom_population" } },
+                "target": {
+                    "set": {
+                        "idRef": "custom_population"
+                    }
+                },
                 "times": [
                     240
                 ],
@@ -69,7 +100,11 @@
             {
                 "source_state": "S",
                 "destination_state": "V",
-                "target": { "set": { "idRef": "custom_population" } },
+                "target": {
+                    "set": {
+                        "idRef": "custom_population"
+                    }
+                },
                 "times": [
                     247
                 ],
@@ -78,7 +113,11 @@
             {
                 "source_state": "S",
                 "destination_state": "V",
-                "target": { "set": { "idRef": "custom_population" } },
+                "target": {
+                    "set": {
+                        "idRef": "custom_population"
+                    }
+                },
                 "times": [
                     254
                 ],
@@ -87,7 +126,11 @@
             {
                 "source_state": "S",
                 "destination_state": "V",
-                "target": { "set": { "idRef": "custom_population" } },
+                "target": {
+                    "set": {
+                        "idRef": "custom_population"
+                    }
+                },
                 "times": [
                     261
                 ],
@@ -96,7 +139,11 @@
             {
                 "source_state": "S",
                 "destination_state": "V",
-                "target": { "set": { "idRef": "custom_population" } },
+                "target": {
+                    "set": {
+                        "idRef": "custom_population"
+                    }
+                },
                 "times": [
                     268
                 ],
@@ -105,7 +152,11 @@
             {
                 "source_state": "S",
                 "destination_state": "V",
-                "target": { "set": { "idRef": "custom_population" } },
+                "target": {
+                    "set": {
+                        "idRef": "custom_population"
+                    }
+                },
                 "times": [
                     275
                 ],
@@ -114,7 +165,11 @@
             {
                 "source_state": "S",
                 "destination_state": "V",
-                "target": { "set": { "idRef": "custom_population" } },
+                "target": {
+                    "set": {
+                        "idRef": "custom_population"
+                    }
+                },
                 "times": [
                     282
                 ],
@@ -123,7 +178,11 @@
             {
                 "source_state": "S",
                 "destination_state": "V",
-                "target": { "set": { "idRef": "custom_population" } },
+                "target": {
+                    "set": {
+                        "idRef": "custom_population"
+                    }
+                },
                 "times": [
                     289
                 ],
@@ -132,7 +191,11 @@
             {
                 "source_state": "S",
                 "destination_state": "V",
-                "target": { "set": { "idRef": "custom_population" } },
+                "target": {
+                    "set": {
+                        "idRef": "custom_population"
+                    }
+                },
                 "times": [
                     296
                 ],
@@ -141,7 +204,11 @@
             {
                 "source_state": "S",
                 "destination_state": "V",
-                "target": { "set": { "idRef": "custom_population" } },
+                "target": {
+                    "set": {
+                        "idRef": "custom_population"
+                    }
+                },
                 "times": [
                     303
                 ],
@@ -150,7 +217,11 @@
             {
                 "source_state": "S",
                 "destination_state": "V",
-                "target": { "set": { "idRef": "custom_population" } },
+                "target": {
+                    "set": {
+                        "idRef": "custom_population"
+                    }
+                },
                 "times": [
                     310
                 ],
@@ -159,7 +230,11 @@
             {
                 "source_state": "S",
                 "destination_state": "V",
-                "target": { "set": { "idRef": "custom_population" } },
+                "target": {
+                    "set": {
+                        "idRef": "custom_population"
+                    }
+                },
                 "times": [
                     317
                 ],
@@ -169,18 +244,18 @@
     },
     "userInput": [
         {
-        "ann:id": "SubPopulation",
-        "ann:label": "Sub Population",
-        "ann:description": "A subset of the patches to which apply vaccinations",
-        "value": [
-            "/template/sets/1/content"
-        ],
-        "exceads": {
-            "sweep": false,
-            "calibrate": false,
-            "attributeType": "text",
-            "isApplicable": false
-        }
+            "ann:id": "SubPopulation",
+            "ann:label": "Sub Population",
+            "ann:description": "A subset of the patches to which apply vaccinations",
+            "value": [
+                "/template/sets/1/content"
+            ],
+            "exceads": {
+                "sweep": false,
+                "calibrate": false,
+                "attributeType": "text",
+                "isApplicable": false
+            }
         }
     ],
     "requirements": [],
