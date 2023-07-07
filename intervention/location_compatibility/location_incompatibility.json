@@ -25,7 +25,9 @@
         },
         "sampling": {
           "type": "individual",
-          "number": 70,
+          "percent": {
+            "number": 70
+          },
           "sampled": {
             "foreach": [
               {
@@ -74,7 +76,9 @@
         },
         "sampling": {
           "type": "individual",
-          "number": 30,
+          "percent": {
+            "number": 30
+          },
           "sampled": {
             "foreach": [
               {
@@ -123,7 +127,9 @@
         },
         "sampling": {
           "type": "individual",
-          "number": 50,
+          "percent": {
+            "number": 50
+          },
           "sampled": {
             "foreach": [
               {
@@ -161,8 +167,8 @@
   "userInput": [
     {
       "ann:id": "VaccinationRate0_18",
-      "ann:label": "Vaccination Rate for Age Group 0-18",
-      "ann:description": "Proportion of individuals in the Age Group 0-18 vaccinated",
+      "ann:label": "Percent of Vaccinations for Age Group 0-18",
+      "ann:description": "Percent of individuals in the Age Group 0-18 vaccinated",
       "value": [
         "/template/interventions/1/sampling/number"
       ],
@@ -175,8 +181,8 @@
     },
     {
       "ann:id": "VaccinationRate19_64",
-      "ann:label": "Vaccination Rate for Age Group 19-64",
-      "ann:description": "Proportion of individuals in the Age Group 19-64 vaccinated",
+      "ann:label": "Percent of Vaccinations for Age Group 19-64",
+      "ann:description": "Percent of individuals in the Age Group 19-64 vaccinated",
       "value": [
         "/template/interventions/2/sampling/number"
       ],
@@ -189,8 +195,8 @@
     },
     {
       "ann:id": "VaccinationRate65_",
-      "ann:label": "Vaccination Rate for Age Group 65+",
-      "ann:description": "Proportion of individuals in the Age Group 65+ vaccinated",
+      "ann:label": "Percent of Vaccinations for Age Group 65+",
+      "ann:description": "Percent of individuals in the Age Group 65+ vaccinated",
       "value": [
         "/template/interventions/3/sampling/number"
       ],

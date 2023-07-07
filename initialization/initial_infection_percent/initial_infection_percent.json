@@ -15,7 +15,9 @@
         },
         "sampling": {
           "type": "group",
-          "number": 2,
+          "percent": {
+            "number": 2
+          },
           "sampled": {
             "foreach": [
               {
@@ -38,12 +40,12 @@
   "userInput": [
     {
       "ann:id": "PercentOfInfectedPopulation",
-      "ann:label": "Precent of population to initially infect",
+      "ann:label": "Percent of population to initially infect",
       "ann:description": "Percentage of population that will be infected at the start of the simulation.",
       "value": ["/template/initializations/1/sampling/number"],
       "exceads": {
         "minValue": 0,
-        "maxValue": 1,
+        "maxValue": 100,
         "sweep": false,
         "calibrate": false
       }
