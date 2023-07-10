@@ -132,7 +132,7 @@
       "ann:id": "VaccinationRate0_18",
       "ann:label": "Percent of Vaccinations for Age Group 0-18",
       "ann:description": "Percent of individuals in the Age Group 0-18 vaccinated",
-      "value": ["/template/initializations/1/sampling/number"],
+      "value": ["/template/initializations/1/sampling/percent/number"],
       "exceads": {
         "minValue": 0,
         "maxValue": 1,
@@ -144,7 +144,7 @@
       "ann:id": "VaccinationRate19_64",
       "ann:label": "Percent of Vaccinations for Age Group 19-64",
       "ann:description": "Percent of individuals in the Age Group 19-64 vaccinated",
-      "value": ["/template/initializations/2/sampling/number"],
+      "value": ["/template/initializations/2/sampling/percent/number"],
       "exceads": {
         "minValue": 0,
         "maxValue": 1,
@@ -156,7 +156,7 @@
       "ann:id": "VaccinationRate65_",
       "ann:label": "Percent of Vaccinations for Age Group 65+",
       "ann:description": "Percent of individuals in the Age Group 65+ vaccinated",
-      "value": ["/template/initializations/3/sampling/number"],
+      "value": ["/template/initializations/3/sampling/percent/number"],
       "exceads": {
         "minValue": 0,
         "maxValue": 1,

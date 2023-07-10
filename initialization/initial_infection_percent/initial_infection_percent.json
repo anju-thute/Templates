@@ -42,7 +42,7 @@
       "ann:id": "PercentOfInfectedPopulation",
       "ann:label": "Percent of population to initially infect",
       "ann:description": "Percentage of population that will be infected at the start of the simulation.",
-      "value": ["/template/initializations/1/sampling/number"],
+      "value": ["/template/initializations/1/sampling/percent/number"],
       "exceads": {
         "minValue": 0,
         "maxValue": 100,

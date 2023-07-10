@@ -260,7 +260,7 @@
             "ann:label": "Percent of Vaccinations for Age Group 0-4",
             "ann:description": "Percent of individuals in the Age Group 0-4 vaccinated",
             "value": [
-                "/template/initializations/1/sampling/number"
+                "/template/initializations/1/sampling/percent/number"
             ],
             "exceads": {
                 "minValue": 0,
@@ -274,7 +274,7 @@
             "ann:label": "Percent of Vaccinations for Age Group 5-17",
             "ann:description": "Percent of individuals in the Age Group 5-17 vaccinated",
             "value": [
-                "/template/initializations/2/sampling/number"
+                "/template/initializations/2/sampling/percent/number"
             ],
             "exceads": {
                 "minValue": 0,
@@ -288,7 +288,7 @@
             "ann:label": "Percent of Vaccinations for Age Group 18-49",
             "ann:description": "Percent of individuals in the Age Group 18-49 vaccinated",
             "value": [
-                "/template/initializations/3/sampling/number"
+                "/template/initializations/3/sampling/percent/number"
             ],
             "exceads": {
                 "minValue": 0,
@@ -302,7 +302,7 @@
             "ann:label": "Percent of Vaccinations for Age Group 50-64",
             "ann:description": "Percent of individuals in the Age Group 50-64 vaccinated",
             "value": [
-                "/template/initializations/4/sampling/number"
+                "/template/initializations/4/sampling/percent/number"
             ],
             "exceads": {
                 "minValue": 0,
@@ -316,7 +316,7 @@
             "ann:label": "Percent of Vaccinations for Age Group 65+",
             "ann:description": "Percent of individuals in the Age Group 65+ vaccinated",
             "value": [
-                "/template/initializations/5/sampling/number"
+                "/template/initializations/5/sampling/percent/number"
             ],
             "exceads": {
                 "minValue": 0,
