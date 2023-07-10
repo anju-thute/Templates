@@ -174,7 +174,7 @@
       ],
       "exceads": {
         "minValue": 0,
-        "maxValue": 1,
+        "maxValue": 100,
         "sweep": false,
         "calibrate": false
       }
@@ -188,7 +188,7 @@
       ],
       "exceads": {
         "minValue": 0,
-        "maxValue": 1,
+        "maxValue": 100,
         "sweep": false,
         "calibrate": false
       }
@@ -202,7 +202,7 @@
       ],
       "exceads": {
         "minValue": 0,
-        "maxValue": 1,
+        "maxValue": 100,
         "sweep": false,
         "calibrate": false
       }
@@ -221,7 +221,7 @@
       ],
       "exceads": {
         "minValue": 0,
-        "maxValue": 1,
+        "maxValue": 100,
         "sweep": false,
         "calibrate": false
       }
