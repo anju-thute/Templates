@@ -1,8 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
   "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
-  "ann:id": "SeedingNumberPatchsim",
-  "ann:label": "Seeding (number)",
+  "ann:id": "GenericBetaPatchsim",
+  "ann:label": "Beta modification",
   "ann:description": "Modify the beta schedule.",
   "template": {
     "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/patchSimSchema.json",
