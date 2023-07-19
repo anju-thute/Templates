@@ -1,8 +1,6 @@
-## Close Schools by duration
-Close workplaces, thus remove interactions that occur at work.
+## Change the baseline transmissibility
+Change the baseline transmissiblity but specified multiplier
 
 Specify:  
-* Number of days the workplaces remain closed
-
-Requires:
-* Work activities are represented in the population and labeled "WORK"
+* Number of days the modification is in effect
+* Multiplier applied to baseline transmissiblity (beta) during the intervention period
