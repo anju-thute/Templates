@@ -18,6 +18,9 @@
                 }
             }
         ],
+        "constants": {
+            "population_fraction" : 1
+        },
         "initializations": [
             {
                 "source_state": "S",
@@ -256,7 +259,21 @@
                 "attributeType": "text",
                 "isApplicable": false
             }
+        },
+        {
+        "ann:id": "FractionOfIndividuals",
+        "ann:label": "[PLACEHOLDER] Fraction of distributed vaccinations",
+        "ann:description": "Fraction of original vaccinations that gets distributed. The time distribution is the same but the scale is modified. Fraction=1 corresponds to 50% of total vax coverage",
+        "value": [
+            "/template/constants/1/population_fraction"
+        ],
+        "exceads": {
+            "minValue": 1,
+            "maxValue": 1,
+            "sweep": false,
+            "calibrate": false
         }
+        },
     ],
     "requirements": [],
     "engines": [
