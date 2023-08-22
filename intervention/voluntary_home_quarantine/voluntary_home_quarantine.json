@@ -13,6 +13,22 @@
         "ann:label": "Node Trait",
         "features": [
           {
+            "id": "9ddee2fa-40e8-11ee-8ee0-f8b156b6e7a5",
+            "ann:id": "enteredIsymp",
+            "ann:label": "Node entered a Symptomatic State",
+            "enums": [
+              {
+                "id": "true",
+                "ann:label": "true"
+              },
+              {
+                "id": "false",
+                "ann:label": "false"
+              }
+            ],
+            "default": "false"
+          },
+          {
             "id": "participateInHomeQuarantine",
             "ann:label": "Treatment",
             "enums": [
@@ -31,6 +47,66 @@
       }
     ],
     "sets": [
+      {
+        "id": "9ddee2fa-40e8-11ee-8ee0-f8b156b6e7a5",
+        "ann:id": "enteredIsymp",
+        "ann:label": "Nodes which entered state Isymp.",
+        "scope": "local",
+        "content": {
+          "operation": "intersection",
+          "sets": [
+            {
+              "elementType": "node",
+              "scope": "local",
+              "left": {
+                "node": {
+                  "property": "healthState"
+                }
+              },
+              "operator": "withPropertyIn",
+              "right": {
+                "valueList": {
+                  "healthState": [
+                    "Ipresymp_p",
+                    "Isymp_p",
+                    "Iasymp_p",
+                    "Ipresymp_s",
+                    "Isymp_s",
+                    "Iasymp_s",
+                    "Ipresymp_a",
+                    "Isymp_a",
+                    "Iasymp_a",
+                    "Ipresymp_o",
+                    "Isymp_o",
+                    "Iasymp_o",
+                    "Ipresymp_g",
+                    "Isymp_g",
+                    "Iasymp_g"
+                  ]
+                }
+              }
+            },
+            {
+              "elementType": "node",
+              "scope": "local",
+              "left": {
+                "node": {
+                  "property": "nodeTrait",
+                  "feature": "9ddee2fa-40e8-11ee-8ee0-f8b156b6e7a5"
+                }
+              },
+              "operator": "==",
+              "right": {
+                "value": {
+                  "trait": "nodeTrait",
+                  "feature": "9ddee2fa-40e8-11ee-8ee0-f8b156b6e7a5",
+                  "enum": "false"
+                }
+              }
+            }
+          ]
+        }
+      },
       {
         "id": "enteredIsympGlobal",
         "ann:label": "Nodes which newly entered a symptomatic State (e.g. Isymp).",
@@ -75,14 +151,14 @@
               "left": {
                 "node": {
                   "property": "nodeTrait",
-                  "feature": "enteredIsymp"
+                  "feature": "9ddee2fa-40e8-11ee-8ee0-f8b156b6e7a5"
                 }
               },
               "operator": "==",
               "right": {
                 "value": {
                   "trait": "nodeTrait",
-                  "feature": "enteredIsymp",
+                  "feature": "9ddee2fa-40e8-11ee-8ee0-f8b156b6e7a5",
                   "enum": "false"
                 }
               }
@@ -277,9 +353,54 @@
       }
     ],
     "variables": [],
-    "triggers": [
+    "triggers": [],
+    "interventions": [
       {
-        "ann:id": "knowsNewlySymptomatic",
+        "$comment": "Mark individual as having entered previously",
+        "trigger": {
+          "left": {
+            "sizeof": {
+              "set": {
+                "idRef": "9ddee2fa-40e8-11ee-8ee0-f8b156b6e7a5"
+              }
+            }
+          },
+          "operator": ">",
+          "right": {
+            "value": {
+              "number": 0
+            }
+          }
+        },
+        "target": {
+          "set": {
+            "idRef": "9ddee2fa-40e8-11ee-8ee0-f8b156b6e7a5"
+          }
+        },
+        "foreach": [
+          {
+            "operations": [
+              {
+                "target": {
+                  "node": {
+                    "property": "nodeTrait",
+                    "feature": "9ddee2fa-40e8-11ee-8ee0-f8b156b6e7a5"
+                  }
+                },
+                "operator": "=",
+                "value": {
+                  "trait": "nodeTrait",
+                  "feature": "9ddee2fa-40e8-11ee-8ee0-f8b156b6e7a5",
+                  "enum": "true"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "$comment": "Select Participants for voluntary home quarantine",
+        "ann:id": "intervention_1",
         "trigger": {
           "left": {
             "sizeof": {
@@ -295,57 +416,6 @@
             }
           }
         },
-        "interventionIds": [
-          "intervention_1"
-        ]
-      },
-      {
-        "ann:id": "voluntaryHomeQuarantineSelf",
-        "trigger": {
-          "left": {
-            "sizeof": {
-              "set": {
-                "idRef": "targetNodeparticipateInHomeQuarantine"
-              }
-            }
-          },
-          "operator": ">",
-          "right": {
-            "value": {
-              "number": 0
-            }
-          }
-        },
-        "interventionIds": [
-          "intervention_2"
-        ]
-      },
-      {
-        "ann:id": "voluntaryHomeQuarantineCoWorker",
-        "trigger": {
-          "left": {
-            "sizeof": {
-              "set": {
-                "idRef": "sourceNodeparticipateInHomeQuarantine"
-              }
-            }
-          },
-          "operator": ">",
-          "right": {
-            "value": {
-              "number": 0
-            }
-          }
-        },
-        "interventionIds": [
-          "intervention_3"
-        ]
-      }
-    ],
-    "interventions": [
-      {
-        "$comment": "Select Participants for voluntary home quarantine",
-        "id": "intervention_1",
         "target": {
           "set": {
             "idRef": "knowsNewlySymptomatic"
@@ -400,7 +470,22 @@
       },
       {
         "$comment": "voluntary home quarantine (self)",
-        "id": "intervention_2",
+        "ann:id": "intervention_2",
+        "trigger": {
+          "left": {
+            "sizeof": {
+              "set": {
+                "idRef": "targetNodeparticipateInHomeQuarantine"
+              }
+            }
+          },
+          "operator": ">",
+          "right": {
+            "value": {
+              "number": 0
+            }
+          }
+        },
         "target": {
           "set": {
             "idRef": "targetNodeparticipateInHomeQuarantine"
@@ -442,7 +527,22 @@
       },
       {
         "$comment": "voluntary home quarantine (co-worker)",
-        "id": "intervention_3",
+        "ann:id": "intervention_3",
+        "trigger": {
+          "left": {
+            "sizeof": {
+              "set": {
+                "idRef": "sourceNodeparticipateInHomeQuarantine"
+              }
+            }
+          },
+          "operator": ">",
+          "right": {
+            "value": {
+              "number": 0
+            }
+          }
+        },
         "target": {
           "set": {
             "idRef": "sourceNodeparticipateInHomeQuarantine"
@@ -519,7 +619,8 @@
       "ann:label": "Quarantined Health States",
       "ann:description": "The Health States of quarantined Individuals",
       "value": [
-        "/template/sets/1/content/sets/1/right/valueList/healthState/"
+        "/template/sets/1/content/sets/1/right/valueList/healthState/",
+        "/template/sets/2/content/sets/1/right/valueList/healthState/"
       ],
       "validValues": [
         {
@@ -531,20 +632,10 @@
       }
     }
   ],
-  "requirements": [
-    {
-      "value": {
-        "trait": "nodeTrait",
-        "feature": "enteredIsymp",
-        "enum": "false"
-      }
-    },
-    {
-      "jsonPath": "$[?($['ann:id'] == 'NewlySymptomaticIndividuals')]",
-      "errorMessage": "The trigger 'Newly Symptomatic Individuals' is required."
-    }
+  "requirements": [],
+  "engines": [
+    "EpiHiper"
   ],
-  "engines": ["EpiHiper"], 
   "exceads": {
     "requires": {
       "allOf": [

@@ -113,7 +113,7 @@
     ],
     "interventions": [
       {
-        "$comment": "Mark indiviudal as having entered previously",
+        "$comment": "Mark individual as having entered previously",
         "trigger": {
           "left": {
             "sizeof": {
