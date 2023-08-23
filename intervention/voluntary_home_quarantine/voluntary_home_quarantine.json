@@ -305,7 +305,7 @@
         }
       },
       {
-        "id": "targetNodeparticipateInHomeQuarantine",
+        "id": "targetNodeParticipateInHomeQuarantine",
         "scope": "local",
         "content": {
           "operation": "intersection",
@@ -329,7 +329,7 @@
         }
       },
       {
-        "id": "sourceNodeparticipateInHomeQuarantine",
+        "id": "sourceNodeParticipateInHomeQuarantine",
         "scope": "local",
         "content": {
           "operation": "intersection",
@@ -353,10 +353,9 @@
       }
     ],
     "variables": [],
-    "triggers": [],
-    "interventions": [
+    "triggers": [
       {
-        "$comment": "Mark individual as having entered previously",
+        "ann:id": "mark_individual_as_having_entered_previously",
         "trigger": {
           "left": {
             "sizeof": {
@@ -372,6 +371,78 @@
             }
           }
         },
+        "interventionIds": [
+          "mark_individual_as_having_entered_previously"
+        ]
+      },
+      {
+        "ann:id": "select_participants_for_voluntary_home_quarantine",
+        "trigger": {
+          "left": {
+            "sizeof": {
+              "set": {
+                "idRef": "knowsNewlySymptomatic"
+              }
+            }
+          },
+          "operator": ">",
+          "right": {
+            "value": {
+              "number": 0
+            }
+          }
+        },
+        "interventionIds": [
+          "select_participants_for_voluntary_home_quarantine"
+        ]
+      },
+      {
+        "ann:id": "voluntary_home_quarantine_self",
+        "trigger": {
+          "left": {
+            "sizeof": {
+              "set": {
+                "idRef": "targetNodeParticipateInHomeQuarantine"
+              }
+            }
+          },
+          "operator": ">",
+          "right": {
+            "value": {
+              "number": 0
+            }
+          }
+        },
+        "interventionIds": [
+          "voluntary_home_quarantine_self"
+        ]
+      },
+      {
+        "ann:id": "voluntary_home_quarantine_self_co_worker",
+        "trigger": {
+          "left": {
+            "sizeof": {
+              "set": {
+                "idRef": "sourceNodeParticipateInHomeQuarantine"
+              }
+            }
+          },
+          "operator": ">",
+          "right": {
+            "value": {
+              "number": 0
+            }
+          }
+        },
+        "interventionIds": [
+          "voluntary_home_quarantine_self_co_worker"
+        ]
+      }
+    ],
+    "interventions": [
+      {
+        "$comment": "Mark individual as having entered previously",
+        "id": "mark_individual_as_having_entered_previously",
         "target": {
           "set": {
             "idRef": "9ddee2fa-40e8-11ee-8ee0-f8b156b6e7a5"
@@ -399,23 +470,8 @@
         ]
       },
       {
-        "$comment": "Select Participants for voluntary home quarantine",
-        "ann:id": "intervention_1",
-        "trigger": {
-          "left": {
-            "sizeof": {
-              "set": {
-                "idRef": "knowsNewlySymptomatic"
-              }
-            }
-          },
-          "operator": ">",
-          "right": {
-            "value": {
-              "number": 0
-            }
-          }
-        },
+        "ann:label": "Select Participants for voluntary home quarantine",
+        "id": "select_participants_for_voluntary_home_quarantine",
         "target": {
           "set": {
             "idRef": "knowsNewlySymptomatic"
@@ -469,26 +525,11 @@
         }
       },
       {
-        "$comment": "voluntary home quarantine (self)",
-        "ann:id": "intervention_2",
-        "trigger": {
-          "left": {
-            "sizeof": {
-              "set": {
-                "idRef": "targetNodeparticipateInHomeQuarantine"
-              }
-            }
-          },
-          "operator": ">",
-          "right": {
-            "value": {
-              "number": 0
-            }
-          }
-        },
+        "ann:label": "voluntary home quarantine (self)",
+        "id": "voluntary_home_quarantine_self",
         "target": {
           "set": {
-            "idRef": "targetNodeparticipateInHomeQuarantine"
+            "idRef": "targetNodeParticipateInHomeQuarantine"
           }
         },
         "foreach": [
@@ -527,25 +568,10 @@
       },
       {
         "$comment": "voluntary home quarantine (co-worker)",
-        "ann:id": "intervention_3",
-        "trigger": {
-          "left": {
-            "sizeof": {
-              "set": {
-                "idRef": "sourceNodeparticipateInHomeQuarantine"
-              }
-            }
-          },
-          "operator": ">",
-          "right": {
-            "value": {
-              "number": 0
-            }
-          }
-        },
+        "id": "voluntary_home_quarantine_self_co_worker",
         "target": {
           "set": {
-            "idRef": "sourceNodeparticipateInHomeQuarantine"
+            "idRef": "sourceNodeParticipateInHomeQuarantine"
           }
         },
         "foreach": [
