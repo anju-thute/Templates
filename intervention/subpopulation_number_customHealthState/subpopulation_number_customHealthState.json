@@ -99,7 +99,12 @@
       }
     }
   ],
-  "requirements": [],
+  "requirements": [
+    {
+      "jsonPath": "$.triggers..interventionIds[?(@ == 'intervention_1')]",
+      "errorMessage": "A trigger to assign the custom health state is required."
+    }
+  ],
   "engines": ["EpiHiper"], 
   "exceads": {}
 }

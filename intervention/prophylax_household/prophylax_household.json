@@ -220,25 +220,6 @@
   ],
   "requirements": [
     {
-      "set": {
-        "idRef": "triggerTemplate4_prophylaxTrue"
-      }
-    },
-    {
-      "field": "hid"
-    },
-    {
-      "property": "nodeTrait",
-      "feature": "prophylaxTrigger"
-    },
-    {
-      "value": {
-        "trait": "nodeTrait",
-        "feature": "prophylaxTrigger",
-        "enum": "true"
-      }
-    },
-    {
       "jsonPath": "$.schema.fields[?(@.name=='hid')]",
       "errorMessage": "A population with the field 'hid' is required."
     },

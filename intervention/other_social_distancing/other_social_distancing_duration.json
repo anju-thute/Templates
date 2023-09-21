@@ -108,19 +108,12 @@
   ],
   "requirements": [
     {
-      "property": "targetActivity",
-      "feature": "activityType"
-    },
-    {
-      "value": {
-        "trait": "activityTrait",
-        "feature": "activityType",
-        "enum": "shop"
-      }
-    },
-    {
       "jsonPath": "$..[?(@.id=='activityTrait')].features[?(@.id=='activityType')].enums[?(@.id=='shop')]",
       "errorMessage": "A population with trait feature 'activityType' with the enum 'shop' is required."
+    },
+    {
+      "jsonPath": "$.triggers..interventionIds[?(@ == 'intervention_1')]",
+      "errorMessage": "A trigger to start social distancing is required."
     }
   ],
   "engines": ["EpiHiper"], 

@@ -163,19 +163,12 @@
   ],
   "requirements": [
     {
-      "property": "targetActivity",
-      "feature": "activityType"
-    },
-    {
-      "value": {
-        "trait": "activityTrait",
-        "feature": "activityType",
-        "enum": "school"
-      }
-    },
-    {
       "jsonPath": "$..[?(@.id=='activityTrait')].features[?(@.id=='activityType')].enums[?(@.id=='school')]",
       "errorMessage": "A population with trait feature 'activityType' with the enum 'school' is required."
+    },
+    {
+      "jsonPath": "$.triggers..interventionIds[?(@ == 'intervention_1')]",
+      "errorMessage": "A trigger to start the school closure is required."
     }
   ],
   "engines": ["EpiHiper"], 

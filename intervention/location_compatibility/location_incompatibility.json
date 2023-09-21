@@ -229,9 +229,6 @@
   ],
   "requirements": [
     {
-      "field": "age_group"
-    },
-    {
       "jsonPath": "$.schema.fields[?(@.name=='age_group')]",
       "errorMessage": "A population with the field 'age_group' is required."
     },
@@ -246,6 +243,10 @@
     {
       "jsonPath": "$.schema.fields[?(@.name=='age_group')].constraints.enum[?(@=='65+')]",
       "errorMessage": "A population with the enumeration value '65+' for the field 'age_group' is required."
+    },
+    {
+      "jsonPath": "$.triggers[?(@.interventionIds.includes('intervention_1')&&@.interventionIds.includes('intervention_2')&&@.interventionIds.includes('intervention_3'))]",
+      "errorMessage": "A trigger starting the prompting the vaccination is required"
     }
   ],
   "engines": ["EpiHiper"], 

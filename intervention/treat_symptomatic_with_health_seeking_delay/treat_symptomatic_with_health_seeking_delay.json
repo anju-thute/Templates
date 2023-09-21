@@ -433,29 +433,6 @@
   ],
   "requirements": [
     {
-      "set": {
-        "idRef": "enteredIsymp"
-      }
-    },
-    {
-      "property": "nodeTrait",
-      "feature": "prophylaxTrigger"
-    },
-    {
-      "value": {
-        "trait": "nodeTrait",
-        "feature": "prophylaxTrigger",
-        "enum": "true"
-      }
-    },
-    {
-      "value": {
-        "trait": "nodeTrait",
-        "feature": "prophylaxTrigger",
-        "enum": "false"
-      }
-    },
-    {
       "jsonPath": "$[?($['ann:id'] == 'ProphylaxTrigger')]",
       "errorMessage": "The trigger 'Trigger Prophylax for Household Members' is required."
     },
