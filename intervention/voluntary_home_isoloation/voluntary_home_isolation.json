@@ -13,7 +13,8 @@
         "ann:label": "Node Trait",
         "features": [
           {
-            "id": "participateInHomeIsolation",
+            "id": "44cf15a7-560d-4988-89d8-720f07f82522",
+            "ann:id": "participateInHomeIsolation",
             "ann:label": "Treatment",
             "enums": [
               {
@@ -41,14 +42,14 @@
           "left": {
             "node": {
               "property": "nodeTrait",
-              "feature": "participateInHomeIsolation"
+              "feature": "44cf15a7-560d-4988-89d8-720f07f82522"
             }
           },
           "operator": "==",
           "right": {
             "value": {
               "trait": "nodeTrait",
-              "feature": "participateInHomeIsolation",
+              "feature": "44cf15a7-560d-4988-89d8-720f07f82522",
               "enum": "true"
             }
           }
@@ -64,14 +65,14 @@
           "left": {
             "node": {
               "property": "nodeTrait",
-              "feature": "participateInHomeIsolation"
+              "feature": "44cf15a7-560d-4988-89d8-720f07f82522"
             }
           },
           "operator": "==",
           "right": {
             "value": {
               "trait": "nodeTrait",
-              "feature": "participateInHomeIsolation",
+              "feature": "44cf15a7-560d-4988-89d8-720f07f82522",
               "enum": "true"
             }
           }
@@ -160,38 +161,7 @@
       }
     ],
     "variables": [],
-    "triggers": [
-      {
-        "ann:id": "voluntaryHomeIsolationSelf",
-        "trigger": {
-          "left": {
-            "sizeof": {
-              "set": {"idRef": "targetNodeParticipateInHomeIsolation"}
-            }
-          },
-          "operator": ">",
-          "right": {
-            "value": {"number": 0}
-          }
-        },
-        "interventionIds": ["intervention_1"]
-      },
-      {
-        "ann:id": "voluntaryHomeIsolationCoWorker",
-        "trigger": {
-          "left": {
-            "sizeof": {
-              "set": {"idRef": "sourceNodeParticipateInHomeIsolation"}
-            }
-          },
-          "operator": ">",
-          "right": {
-            "value": {"number": 0}
-          }
-        },
-        "interventionIds": ["intervention_2"]
-      }
-    ],
+    "triggers": [],
     "interventions": [
       {
         "$comment": "Select Participants for voluntary Home Isolation",
@@ -211,13 +181,13 @@
                     "target": {
                       "node": {
                         "property": "nodeTrait",
-                        "feature": "participateInHomeIsolation"
+                        "feature": "44cf15a7-560d-4988-89d8-720f07f82522"
                       }
                     },
                     "operator": "=",
                     "value": {
                       "trait": "nodeTrait",
-                      "feature": "participateInHomeIsolation",
+                      "feature": "44cf15a7-560d-4988-89d8-720f07f82522",
                       "enum": "true"
                     }
                   }
@@ -230,13 +200,13 @@
                     "target": {
                       "node": {
                         "property": "nodeTrait",
-                        "feature": "participateInHomeIsolation"
+                        "feature": "44cf15a7-560d-4988-89d8-720f07f82522"
                       }
                     },
                     "operator": "=",
                     "value": {
                       "trait": "nodeTrait",
-                      "feature": "participateInHomeIsolation",
+                      "feature": "44cf15a7-560d-4988-89d8-720f07f82522",
                       "enum": "false"
                     }
                   }
@@ -248,7 +218,18 @@
       },
       {
         "$comment": "Voluntary Home Isolation (self)",
-        "id": "intervention_1",
+        "ann:id": "voluntaryHomeIsolationSelf",
+        "trigger": {
+          "left": {
+            "sizeof": {
+              "set": {"idRef": "targetNodeParticipateInHomeIsolation"}
+            }
+          },
+          "operator": ">",
+          "right": {
+            "value": {"number": 0}
+          }
+        },
         "target": {
           "set": {"idRef": "targetNodeParticipateInHomeIsolation"}
         },
@@ -280,7 +261,18 @@
       },
       {
         "$comment": "Voluntary Home Isolation (co-worker)",
-        "id": "intervention_2",
+        "ann:id": "voluntaryHomeIsolationCoWorker",
+        "trigger": {
+          "left": {
+            "sizeof": {
+              "set": {"idRef": "sourceNodeParticipateInHomeIsolation"}
+            }
+          },
+          "operator": ">",
+          "right": {
+            "value": {"number": 0}
+          }
+        },
         "target": {
           "set": {"idRef": "sourceNodeParticipateInHomeIsolation"}
         },
@@ -343,20 +335,19 @@
   ],
   "requirements": [
     {
-      "jsonPath": "$[?($['ann:id'] == 'ProphylaxTrigger')]",
-      "errorMessage": "The trigger 'Trigger Prophylax for Household Members' is required."
+      "jsonPath": "$..[?(@.id=='activityTrait')].features[?(@.id=='activityType')].enums[?(@.id=='work')]",
+      "errorMessage": "A population with trait feature 'activityType' with the enum 'work' is required."
     },
     {
-      "jsonPath": "$[?($['ann:id'] == 'NewlySymptomaticIndividuals')]",
-      "errorMessage": "The trigger 'Newly Symptomatic Individuals' is required."
+      "jsonPath": "$[?($['ann:id'] == 'ProphylaxTrigger')]",
+      "errorMessage": "The trigger 'Trigger Prophylax for Household Members' is required."
     }
   ],
   "engines": ["EpiHiper"], 
   "exceads": {
     "requires": {
       "allOf": [
-          "prophylax_household_helper.json",
-          "count_symptomatic_helper.json"
+          "prophylax_household_helper.json"
       ]
     }
   }

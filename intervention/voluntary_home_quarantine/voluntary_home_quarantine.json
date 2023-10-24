@@ -353,8 +353,10 @@
       }
     ],
     "variables": [],
-    "triggers": [
+    "triggers": [],
+    "interventions": [
       {
+        "$comment": "Mark individual as having entered previously",
         "ann:id": "mark_individual_as_having_entered_previously",
         "trigger": {
           "left": {
@@ -371,78 +373,6 @@
             }
           }
         },
-        "interventionIds": [
-          "mark_individual_as_having_entered_previously"
-        ]
-      },
-      {
-        "ann:id": "select_participants_for_voluntary_home_quarantine",
-        "trigger": {
-          "left": {
-            "sizeof": {
-              "set": {
-                "idRef": "knowsNewlySymptomatic"
-              }
-            }
-          },
-          "operator": ">",
-          "right": {
-            "value": {
-              "number": 0
-            }
-          }
-        },
-        "interventionIds": [
-          "select_participants_for_voluntary_home_quarantine"
-        ]
-      },
-      {
-        "ann:id": "voluntary_home_quarantine_self",
-        "trigger": {
-          "left": {
-            "sizeof": {
-              "set": {
-                "idRef": "targetNodeParticipateInHomeQuarantine"
-              }
-            }
-          },
-          "operator": ">",
-          "right": {
-            "value": {
-              "number": 0
-            }
-          }
-        },
-        "interventionIds": [
-          "voluntary_home_quarantine_self"
-        ]
-      },
-      {
-        "ann:id": "voluntary_home_quarantine_self_co_worker",
-        "trigger": {
-          "left": {
-            "sizeof": {
-              "set": {
-                "idRef": "sourceNodeParticipateInHomeQuarantine"
-              }
-            }
-          },
-          "operator": ">",
-          "right": {
-            "value": {
-              "number": 0
-            }
-          }
-        },
-        "interventionIds": [
-          "voluntary_home_quarantine_self_co_worker"
-        ]
-      }
-    ],
-    "interventions": [
-      {
-        "$comment": "Mark individual as having entered previously",
-        "id": "mark_individual_as_having_entered_previously",
         "target": {
           "set": {
             "idRef": "9ddee2fa-40e8-11ee-8ee0-f8b156b6e7a5"
@@ -471,7 +401,22 @@
       },
       {
         "ann:label": "Select Participants for voluntary home quarantine",
-        "id": "select_participants_for_voluntary_home_quarantine",
+        "ann:id": "select_participants_for_voluntary_home_quarantine",
+        "trigger": {
+          "left": {
+            "sizeof": {
+              "set": {
+                "idRef": "knowsNewlySymptomatic"
+              }
+            }
+          },
+          "operator": ">",
+          "right": {
+            "value": {
+              "number": 0
+            }
+          }
+        },
         "target": {
           "set": {
             "idRef": "knowsNewlySymptomatic"
@@ -526,7 +471,22 @@
       },
       {
         "ann:label": "voluntary home quarantine (self)",
-        "id": "voluntary_home_quarantine_self",
+        "ann:id": "voluntary_home_quarantine_self",
+        "trigger": {
+          "left": {
+            "sizeof": {
+              "set": {
+                "idRef": "targetNodeParticipateInHomeQuarantine"
+              }
+            }
+          },
+          "operator": ">",
+          "right": {
+            "value": {
+              "number": 0
+            }
+          }
+        },
         "target": {
           "set": {
             "idRef": "targetNodeParticipateInHomeQuarantine"
@@ -568,7 +528,22 @@
       },
       {
         "$comment": "voluntary home quarantine (co-worker)",
-        "id": "voluntary_home_quarantine_self_co_worker",
+        "ann:id": "voluntary_home_quarantine_self_co_worker",
+        "trigger": {
+          "left": {
+            "sizeof": {
+              "set": {
+                "idRef": "sourceNodeParticipateInHomeQuarantine"
+              }
+            }
+          },
+          "operator": ">",
+          "right": {
+            "value": {
+              "number": 0
+            }
+          }
+        },
         "target": {
           "set": {
             "idRef": "sourceNodeParticipateInHomeQuarantine"
