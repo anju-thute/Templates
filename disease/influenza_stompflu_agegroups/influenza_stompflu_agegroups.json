@@ -2,7 +2,7 @@
     "$schema": "https://raw.githubusercontent.com//NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
     "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
     "ann:id": "FluWithAsymptomaticInfection",
-    "ann:label": "Flu with symptomatic and asymptomatic infections as well as outcomes from infection",
+    "ann:label": "Age-specific Flu with outcomes from infection",
     "ann:description": "Classic SEIR model extended to include both symptomatic and an asymptomatic infectious states as well as hospitalization, ventilation, death, as well as, vaccinated.",
     "template": {
         "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/diseaseModelSchema.json",

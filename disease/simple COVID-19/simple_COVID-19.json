@@ -1092,8 +1092,8 @@
     "requirements": [],
      "engines": ["EpiHiper"], 
      "exceads": {
-        "name": "Novel Coronavirus 2019, pandemic virus orginally discovered in Wuhan, China",
-        "shortName": "2019-nCoV",
+        "name": "Simple COVID-19, not age specific",
+        "shortName": "simple COVID-19",
         "groupName": [
             "Coronavirus",
             "2019-nCoV"

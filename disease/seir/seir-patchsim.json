@@ -2,7 +2,7 @@
     "$schema": "https://raw.githubusercontent.com//NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
     "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
     "ann:id": "SEIR_PatchSim",
-    "ann:label": "SEIR general model",
+    "ann:label": "SEIR for PatchSim",
     "ann:description": "Classic SEIR model with symptomatic and an asymptomatic infectious state (with reduced infectivity).",
     "template": {
         "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/diseaseModelSchema.json",
@@ -74,7 +74,7 @@
                 "exitState": "Isymp",
                 "probability": 1,
                 "dwellTime": {
-                    "fixed": 1.492537313
+                    "fixed": 1.5
                 }
             },
             {
@@ -84,7 +84,7 @@
                 "exitState": "Iasymp",
                 "probability": 0,
                 "dwellTime": {
-                    "fixed": 1.492537313
+                    "fixed": 1.5
                 }
             },
             {
@@ -116,23 +116,9 @@
         {
             "ann:id": "InfectivityAsymptomatic",
             "ann:label": "Infectious but asymptomatic",
-            "ann:description": "Infectious without symptoms. Asymptomatic individuals are less likely to infect others. Fraction of infectivty of symptomatic individual",
+            "ann:description": "Fraction of infectivty of asymptomatic individual",
             "value": [
                 "/template/states/4/infectivity"
-            ],
-            "exceads": {
-                "minValue": 0,
-                "maxValue": 1,
-                "sweep": false,
-                "calibrate": false
-            }
-        },
-        {
-            "ann:id": "InfectivityPresymptomatic",
-            "ann:label": "Infectious but presymptomatic",
-            "ann:description": "Infectious before symptoms. Presymptomatic individuals are less likely to infect others. Fraction of infectivty of symptomatic individual",
-            "value": [
-                "/template/states/2/infectivity"
             ],
             "exceads": {
                 "minValue": 0,
