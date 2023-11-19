@@ -3,7 +3,7 @@
   "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
   "ann:id": "AgeStratification",
   "ann:label": "Age Stratification",
-  "ann:description": "Age stratification of the initial health state of the population",
+  "ann:description": "Age stratification of the initial health state of the population by CDC age group",
   "template": {
     "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/initializationSchema.json",
     "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/initializationSchema.json",
