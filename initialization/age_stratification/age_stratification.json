@@ -208,6 +208,18 @@
     ]
   },
   "userInput": [
+  {
+     "ann:id": "BogusSeed",
+     "ann:label": "[PLACEHOLDER] Sampling Seed",
+     "ann:description": "Stratification seed",
+     "value": ["/template/initializations/1/sampling/number"],
+     "exceads": {
+          "minValue": 0,
+          "maxValue": 9999999,
+          "sweep": true,
+          "calibrate": false
+     }
+  }
   ],
   "requirements": [
     {
