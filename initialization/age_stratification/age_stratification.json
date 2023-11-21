@@ -209,18 +209,6 @@
   },
   "userInput": [
   {
-     "ann:id": "NumberOfIndividuals",
-     "ann:label": "[PLACEHOLDER] Sampling Seed",
-     "ann:description": "Stratification seed",
-     "value": ["/template/initializations/1/sampling/number"],
-     "exceads": {
-          "minValue": 0,
-          "maxValue": 9999999,
-          "sweep": false,
-          "calibrate": false
-     }
-  },
-  {
      "ann:id": "InfectedState",
      "ann:label": "Infected State",
      "ann:description": "[PLACEHOLDER] The infected state to which individuals are set",
