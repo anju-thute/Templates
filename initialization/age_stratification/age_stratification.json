@@ -209,9 +209,21 @@
   },
   "userInput": [
   {
+      "ann:id": "NumberOfIndividuals",
+      "ann:label": "[PLACEHOLDER] Number of individuals to initially infect",
+      "ann:description": "Number of individuals that will be infected at the start of the simulation",
+      "value": ["/template/initializations/1/sampling/number"],
+      "exceads": {
+        "minValue": 0,
+        "maxValue": 999,
+        "sweep": true,
+        "calibrate": false
+      }
+    },
+    {
      "ann:id": "InfectedState",
-     "ann:label": "Infected State",
-     "ann:description": "[PLACEHOLDER] The infected state to which individuals are set",
+     "ann:label": "[PLACEHOLDER] Infected State",
+     "ann:description": "The infected state to which individuals are set",
       "value": ["/template/initializations/1/sampling/sampled/foreach/1/operations/1/value/healthState"],
       "validValues": [
         {
