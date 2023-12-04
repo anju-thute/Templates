@@ -1,0 +1,87 @@
+{
+  "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
+  "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
+  "ann:id": "SeedingFractionPatchsim",
+  "ann:label": "Seeding (fraction)",
+  "ann:description": "Transition fraction of individuals in selected patches to the infected state.",
+  "template": {
+    "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/patchSimSchema.json",
+    "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/patchSimSchema.json",
+    "sets": [
+      {
+        "id": "custom_population",
+        "ann:label": "Custom Sub Population",
+        "scope": "local",
+        "content": {
+          "scope": "local",
+          "elementType": "node"
+        }
+      }
+    ],
+    "initializations": [
+      {
+        "type": "filter",
+        "source_state": "S",
+        "destination_state": "I",
+        "target": {
+          "set": {
+            "idRef": "custom_population"
+          }
+        },
+        "times": [
+          0
+        ],
+        "fraction": 0
+      }
+    ]
+  },
+  "userInput": [
+    {
+      "ann:id": "SubPopulation",
+      "ann:label": "Sub Population",
+      "ann:description": "A subset of the patches from which individuals are selected",
+      "value": [
+        "/template/sets/1/content"
+      ],
+      "exceads": {
+        "sweep": false,
+        "calibrate": false,
+        "attributeType": "text",
+        "isApplicable": false
+      }
+    },
+    {
+      "ann:id": "FractionOfIndividuals",
+      "ann:label": "Fraction of individuals that change states",
+      "ann:description": "Fraction of individuals that will change state at specified time",
+      "value": [
+        "/template/initializations/1/fraction"
+      ],
+      "exceads": {
+        "minValue": 0,
+        "maxValue": 1,
+        "sweep": true,
+        "calibrate": false
+      }
+    },
+    {
+      "ann:id": "Timepoint",
+      "ann:label": "Time when individuals will change state",
+      "ann:description": "Time when individuals will change state",
+      "value": [
+        "/template/initializations/1/times/1"
+      ],
+      "exceads": {
+        "minValue": 0,
+        "maxValue": 999,
+        "sweep": true,
+        "calibrate": false
+      }
+    }
+  ],
+  "requirements": [],
+  "engines": [
+    "PatchSim"
+  ],
+  "exceads": {}
+}
