@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com//NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
   "epiHiperSchema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/templateSchema.json",
   "ann:label": "Respiratory Syncytial Virus with vaccination and treatement",
-  "ann:id": "RSVwithTreatment",
+  "ann:id": "RSVwithTreatment_v2",
   "ann:description": "RSV model based on classic SEIR model with partial immunity from previous seasons and a treated state that reduces likelihood of hospitalization.",
   "template": {
     "$schema": "https://raw.githubusercontent.com/NSSAC/EpiHiper-Schema/master/schema/diseaseModelSchema.json",
